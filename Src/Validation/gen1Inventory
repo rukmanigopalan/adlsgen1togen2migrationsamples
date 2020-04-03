@@ -29,6 +29,10 @@ function WriteGen1ToSql {
     }
 
     #$sqlConn=ConnectToSql $connectionstring.SecretValueText;
+    if ($sqlConn.State -ne 'Open' -and $sqlConn -ne $null)
+    {
+    $sqlConn.Open();
+    }
 
     if ($batchid -eq '')
     {
@@ -36,14 +40,33 @@ function WriteGen1ToSql {
     }
 
     if ($FilePath -ne '' -and $AccountName -ne ''){
-        $gen1FileList=New-Object System.Data.DataTable;
-        $gen1FolderList=CreateGen1FolderTable;
-        $gen1AclList=CreateGen1AclTable;
+               
+        $query="EXEC GetColumn 'GEN1Folder', 'INVENTORY'";
+        $sqltable=ReadSqlTable $sqlConn $query;
+        $gen1FolderList=CreateDataTable $sqltable;
+
+        $query="EXEC GetColumn 'GEN1FILE', 'INVENTORY'";
+        $sqltable=ReadSqlTable $sqlConn $query;
+        $gen1FileList=CreateDataTable $sqltable;
+
+        $query="EXEC GetColumn 'Gen1ACL', 'INVENTORY'";
+        $sqltable=ReadSqlTable $sqlConn $query;
+        $gen1AclList=CreateDataTable $sqltable;
+
+        $folderid=GetSqlId $sqlConn 'folderid' 'inventory.gen1folder';
+        if ($folderid -eq 0){
+        $folderid=1;}
+
+        $fileid=GetSqlId $sqlConn 'fileid' 'inventory.gen1file'; 
+        if ($fileid -eq 0){
+        $fileid=1;}
+
         $time=get-date;
 
         $ChildItems= Get-AzDataLakeStoreItem -AccountName $AccountName -Path $FilePath;
-        if ($ChildItems.Type -eq "DIRECTORY"){          
+        if ($ChildItems.Type -eq "DIRECTORY"){      
             $gen1FolderList.rows.add($batchid, $ChildItems.name, $ChildItems.path, '','',$ChildItems.length, $time);
+            $folderid+=1;
             $ChildItems = Get-AzDataLakeStoreChildItem -AccountName $AccountName -Path $FilePath;
         }
 
@@ -55,24 +78,20 @@ function WriteGen1ToSql {
                         {
                         $sqlConn.Open();
                         }
+                        $gen1FileList.rows.add($folderid, $ChildItem.name, $ChildItem.path, $ChildItem.blocksize, $ChildItem.length, $ChildItem.modificationtime.datetime,$ChildItem.owner,$ChildItem.lastwritetime.datetime, $time);
 
+                        $fileid+=1;                       
                         $acl=Get-AzDataLakeStoreItemAclEntry -AccountName $AccountName -Path $ChildItem.path;
-                        #$fileid=GetFileId $sqlConn;
-                        #$folderid=GetFileId $sqlConn;
-                        $fileid=1;
-                        $folderid=1;
-                        #$file=$ChildItem|select-object name, path, blocksize, length, modificationtime.datetime, owner, lastwritetime.datetime ,@{name="RowInsertedDate";e={$time}};
-                        #$gen1FileList.add($file);
-                           Start-Job -ScriptBlock { 
+
                         foreach($aclitem in $acl)
                         {    
-                        $gen1AclList.rows.add($fileid,$ChildItem.name,  $aclitem.scope, $aclitem.type, $aclitem.id, $aclitem.permission, $time );
+                        $gen1AclList.rows.add($fileid, $ChildItem.name,$aclitem.scope, $aclitem.type, $aclitem.id, $aclitem.permission, $time);
                         }
-                           }
+
                         }
                 }
                 "DIRECTORY" {
-                    WriteGen1ToSql $ChildItem.path $AccountName $connectionstring $cutofftime $batchid;
+                    WriteGen1ToSql $ChildItem.path $AccountName $sqlConn $cutofftime $batchid;
                 }
             }
         }       
@@ -81,11 +100,17 @@ function WriteGen1ToSql {
         throw 'cannot find filepath or account';
     }  
     
-    return $gen1AclList;
-    
     #Start-Job -ScriptBlock { 
-    #WriteGen1AclToSql $sqlConn $ChildItem $fileid;
-    #}  
+    SqlBulkInsert $sqlConn $gen1FolderList 'inventory.gen1folder'
+    #};  
+
+    #Start-Job -ScriptBlock { 
+    SqlBulkInsert $sqlConn $gen1FileList 'inventory.gen1File'
+    #}; 
+
+    #Start-Job -ScriptBlock { 
+    SqlBulkInsert $sqlConn $gen1AclList 'inventory.gen1acl'
+    #};  
 }
 
 
@@ -98,101 +123,49 @@ function ConnectToSql
 }
 
 
-function GetFileId{
-    param([System.Data.SqlClient.SqlConnection] $sqlConn)
-    $query = "Select max(fileid) from [Inventory].[Gen1File]";
+function GetSqlId{
+    param([System.Data.SqlClient.SqlConnection] $sqlConn, [string] $idName, [string]$tablename)
+    $query = "Select max($($idName)) from $($tablename)";
     $cmd=New-Object System.Data.SqlClient.SqlCommand($query,$sqlConn);
-    [int]$fileid=$cmd.ExecuteScalar();
+    if($cmd.ExecuteScalar() -is [DBNull]){
+    $fileid=0;}
+    else{
+    $fileid=$cmd.ExecuteScalar();}
     return $fileid;
 }
 
-function GetFolderId{
-    param([System.Data.SqlClient.SqlConnection] $sqlConn)
-    $query = "Select max(folderid) from [Inventory].[Gen1Folder]";
-    $cmd=New-Object System.Data.SqlClient.SqlCommand($query,$sqlConn);
-    [int]$folderid=$cmd.ExecuteScalar();
-    return $folderid;
+function ReadSqlTable{
+    param([System.Data.SqlClient.SqlConnection] $sqlConn, [string] $query)
+    $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
+    $SqlCmd.CommandText = $query
+    $SqlCmd.Connection = $sqlConn
+    $SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
+    $SqlAdapter.SelectCommand = $SqlCmd
+    $DataSet = New-Object System.Data.DataSet
+    $SqlAdapter.Fill($DataSet)
+    return $DataSet.Tables[0]
 }
 
-function CreateGen1AclTable{
-$aclTable=New-Object System.Data.DataTable;
-$aclTable.Columns.Add((New-Object System.Data.DataColumn 'FileId', ([int])));
-$aclTable.Columns.Add((New-Object System.Data.DataColumn 'FileName', ([string])));
-$aclTable.Columns.Add((New-Object System.Data.DataColumn 'AccessScope', ([string])));
-$aclTable.Columns.Add((New-Object System.Data.DataColumn 'AccessType', ([string])));
-$aclTable.Columns.Add((New-Object System.Data.DataColumn 'AccessObjectId', ([string])));
-$aclTable.Columns.Add((New-Object System.Data.DataColumn 'FilePermission', ([string])));
-$aclTable.Columns.Add((New-Object System.Data.DataColumn 'RowInsertedDate', ([datetime])));
-return ,$aclTable;
+function CreateDataTable{
+    param([system.array] $sqltable)
+    $dataTable=New-Object System.Data.DataTable;
+    foreach($item in $sqltable)
+    {
+        if ($item[1] -ne $null){
+        $dataTable.Columns.Add((New-Object System.Data.DataColumn $item[0], ($item[1] -as [type])));
+        }
+    }
+    return ,$dataTable;
 }
-
-function CreateGen1FolderTable{
-$folderTable=New-Object System.Data.DataTable;
-$folderTable.Columns.Add((New-Object System.Data.DataColumn 'BatchId', ([int])));
-$folderTable.Columns.Add((New-Object System.Data.DataColumn 'FolderName', ([string])));
-$folderTable.Columns.Add((New-Object System.Data.DataColumn 'FolderPath', ([string])));
-$folderTable.Columns.Add((New-Object System.Data.DataColumn 'AssignedFolderType', ([string])));
-$folderTable.Columns.Add((New-Object System.Data.DataColumn 'IdentifiedFolderType', ([string])));
-$folderTable.Columns.Add((New-Object System.Data.DataColumn 'FolderSizeInBytes', ([float])));
-$folderTable.Columns.Add((New-Object System.Data.DataColumn 'RowInsertedDate', ([datetime])));
-$folderTable.Columns.Add((New-Object System.Data.DataColumn 'RowUpdatedDate', ([datetime])));
-return ,$folderTable;
-}
-
-function CreateGen1FileTable{
-$fileTable=New-Object System.Data.DataTable;
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'FolderId', ([int])));
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'FileName', ([string])));
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'FilePath', ([string])));
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'BlockSize', ([int])));
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'FileSizeInBytes', ([float])));
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'AssignedFolderType', ([string])));
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'IdentifiedFolderType', ([string])));
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'FolderSizeInBytes', ([float])));
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'RowInsertedDate', ([datetime])));
-$fileTable.Columns.Add((New-Object System.Data.DataColumn 'RowUpdatedDate', ([datetime])));
-return ,$filerTable;
-}
-
-[FolderId] int ,
-[FileName] nvarchar(max), 
-[FilePath] nvarchar(max), 
-[BlockSize] int, 
-[FileSizeInBytes] decimal(13,2),
-[FileModificationTime] datetime, 
-[FileOwner] uniqueidentifier, 
-[FileLastWriteTime] datetime, 
-[RowInsertedDate] datetime,
-[RowUpdatedDate] datetime
-
-$files.name, $files.path, $files.blocksize, $files.length, $files.modificationtime.datetime, $files.owner, $files.lastwritetime.datetime ,$time; 
 
 
 function SqlBulkInsert{
-    param([System.Data.SqlClient.SqlConnection] $sqlConn, [System.Data.DataTable] $dtable, [string] $tablename)
+    param([System.Object] $sqlConn, [System.Data.DataTable] $dtable, [string] $tablename)
     $bulkCopy = new-object ("System.Data.SqlClient.SqlBulkCopy") $sqlConn
+    foreach ($column in $dtable.Columns) 
+    {$bulkCopy.ColumnMappings.Add($column.ColumnName, $column.ColumnName) > $null }
     $bulkCopy.BatchSize = 10000;
     $bulkCopy.BulkCopyTimeout = 1000;
     $bulkCopy.DestinationTableName = $tablename;
     $bulkCopy.WriteToServer($dtable);
-}
-
-#get gen1 filelist
-#input: filelist
-#output: output location
-function ExportCSVFile{
-    param([System.Collections.ICollection] $Files, [string] $outputlocation)  
-    $Files | Export-Csv -Path $outputlocation
-}
-
-
-
-#get gen1 filelist
-#input: account name, filepath, outputlocation
-#output: none
-function UploadFileToGen1{
-    param([string] $Account, [string] $FilePath, [string] $outputlocation)  
-    Import-AzDataLakeStoreItem -AccountName $Account `
-        -Path $FilePath `
-        -Destination $outputlocation
 }
