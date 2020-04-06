@@ -51,7 +51,7 @@ Check the unblock option in the security to avoid below run time error
 
 ### Data Validation
 
-Post Incremental copy process is completed , the Gen1 file and folder details are written into CSV 
+Post Incremental copy process is completed , the Gen1 file and folder details are written into CSV. 
 
 
 ### Comparison Report
