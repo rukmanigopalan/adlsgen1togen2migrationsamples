@@ -117,3 +117,7 @@ $files=GetGen1DataList $InputFilePath $DataLakeGen1Account $time;
 $file2=ReadCSV 'C:\Users\v-wiya\Documents\InsertGen2files.csv'
 $diff=CompareFiles $files $file2
 ExportCSV $diff 'C:\Users\v-wiya\Documents\diff.csv'
+
+
+
+
