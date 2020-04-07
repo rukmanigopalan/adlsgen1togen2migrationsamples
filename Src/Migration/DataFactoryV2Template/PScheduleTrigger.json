@@ -1,26 +1,29 @@
 {
+    "name": "@@dataFactoryTriggerName@@",
     "properties": {
-        "name": "@@dataFactoryTriggerName@@",
-        "type": "ScheduleTrigger",
-		"runtimeState": "Started",
-        "typeProperties": {
-            "recurrence": {
-                "frequency": "@@frequency@@",
-                "interval": @@interval@@,
-                "startTime": "@@startTime@@",
-                "timeZone": "UTC"
+        "annotations": [],
+        "runtimeState": "Started",
+        "pipeline": {
+            "pipelineReference": {
+                "referenceName": "@@dataFactoryPipeLineName@@",
+                "type": "PipelineReference"
+            },
+            "parameters": {
+                "windowStart": "@trigger().outputs.windowStartTime",
+                "windowEnd": "@trigger().outputs.windowEndTime"
             }
         },
-        "pipelines": [{
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "@@dataFactoryPipeLineName@@"
-                },
-                "parameters": {
-                    "windowStart": "@{addminutes(trigger().scheduledTime, -@@interval@@)}",
-                    "windowEnd": "@trigger().scheduledTime"
-                }
-            }
-        ]
+        "type": "TumblingWindowTrigger",
+        "typeProperties": {
+            "frequency": "@@frequency@@",
+            "interval": @@interval@@,
+            "startTime": "@@startTime@@",
+            "delay": "00:00:00",
+            "maxConcurrency": 5,
+            "retryPolicy": {
+                "intervalInSeconds": 30
+            },
+            "dependsOn": []
+        }
     }
 }

@@ -1,10 +1,11 @@
+
 {
   "gen1SourceRootPath" : "https://sourcedatalakestoregen1.azuredatalakestore.net/webhdfs/v1",
   "gen2SourceRootPath" : "https://destndatalakestoregen2.dfs.core.windows.net",
-  "tenantId" : "72f988bf-XXXXXXXXXXXXXXXXXXXXXXXXX",
-  "subscriptionId" : "29440f0b-XXXXXXXXXXXXXXXXXXXXXX",
+  "tenantId" : "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "subscriptionId" : "29440f0b-dc91-4851-8e0a-b714bb5d3f78",
   "keyVaultName" : "Gen2MigrationKV",
-  "factoryName" : "Gen1ToGen2Factory",
+  "factoryName" : "Gen1ToGen2Factory1",
   "resourceGroupName" : "Gen1ToGen2Migration",
   "location" : "East US 2",
   "overwrite" : "true",
@@ -24,22 +25,28 @@
 				"destinationContainer" : "gen1sample"
 			},
 			{			
+				"sourcePath" : "/AdventureWorks/RawDataFolder/History/FactResellerSales",
+				"destinationPath" : "AdventureWorks/RawDataFolder/History/FactResellerSales",
+				"destinationContainer" : "gen1sample"
+			},
+			{			
+				"sourcePath" : "/AdventureWorks/RawDataFolder/History/FactFinance",
+				"destinationPath" : "AdventureWorks/RawDataFolder/History/FactFinance",
+				"destinationContainer" : "gen1sample"
+			},
+			{			
+				"sourcePath" : "/AdventureWorks/RawDataFolder/History/DimProduct",
+				"destinationPath" : "AdventureWorks/RawDataFolder/History/DimProduct",
+				"destinationContainer" : "gen1sample"
+			},
+			{			
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",
+				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",
+				"destinationContainer" : "gen1sample"
+			},
+			{			
 				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",
 				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales",
-				"destinationContainer" : "gen1sample"
-			}
-		]
-	},
-	{
-		"pipelineId" : "2",
-		"isChurningOrIsIncremental" : "true",
-		"triggerFrequency" : "Minute",
-		"triggerInterval" : "15",
-		"triggerUTCStartTime" : "2020-04-03T23:00:00Z",
-		"pipelineDetails":[			
-			{			
-				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment",
-				"destinationPath" : "AdventureWorks/RawDataFolder/Increment",
 				"destinationContainer" : "gen1sample"
 			}
 		]
