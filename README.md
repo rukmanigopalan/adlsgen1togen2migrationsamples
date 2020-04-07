@@ -29,11 +29,17 @@ You need below:
 
    ##### Install below modules :
    
-   * Module PowerShellGetRepository PSGallery -Force 
+   * PowerShellGetRepository PSGallery -Force 
 
-   * Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
-
-   * Import-module Az.DataLakeStore . Refer to [Import module Az Datalakestore](https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/import-azdatalakestoreitem?view=azps-3.7.0)
+   * az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
+   
+    ```scala
+    // Below is the command   
+       
+      Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
+   
+   ```
+    * Az.DataLakeStore . Refer to [Import module Az Datalakestore](https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/import-azdatalakestoreitem?view=azps-3.7.0)
 
 ## Steps to be followed
 
