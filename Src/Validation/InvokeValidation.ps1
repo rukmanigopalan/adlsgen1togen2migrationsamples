@@ -29,20 +29,20 @@ foreach($eachPipeline in $sourceConfigData.pipeline)
         $gen2Container = $eachPath.destinationContainer
         $ResultFilePath = $ValidationResultFolder + $gen1Path.Replace("/","-") + ".csv"
 
-        $Gen1FileDetails = & "C:\Vaibhav\03.Ph1-E2ETesting\20200407\Validation\GetGen1Inventory.ps1" `
+        $Gen1FileDetails = & "$PSScriptRoot\GetGen1Inventory.ps1" `
         -subscriptionId $subscriptionId  `
         -filePath $gen1Path  `
         -accountName $gen1AccountName      
 
      
-        $gen2FileDetails = & "C:\Vaibhav\03.Ph1-E2ETesting\20200407\Validation\GetGen2Inventory.ps1"  `
+        $gen2FileDetails = & "$PSScriptRoot\GetGen2Inventory.ps1"  `
         -subscriptionId $subscriptionId `
         -storageAccountName $gen2AccountName `
         -resourceGroupName $resourceGroupName `
         -gen2FilesystemName $gen2FileSystemName `
         -gen2FilePath $gen2Path
 
-        & "C:\Vaibhav\03.Ph1-E2ETesting\20200407\Validation\CompareGen1AndGen2.ps1" `
+        & "$PSScriptRoot\CompareGen1AndGen2.ps1" `
         -gen1Files $Gen1FileDetails `
         -gen2Files $gen2FileDetails `
         -ValidationResultFilePath $ResultFilePath `
