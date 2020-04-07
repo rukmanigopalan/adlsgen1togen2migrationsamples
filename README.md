@@ -1,7 +1,7 @@
 # Incremental Copy Pattern Guide : A quick start template
 
 ## Overview
-The purpose of this document is to provide a manual for the Incremental copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and Powershell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form to steps to follow to implement the solution from local machine.
+The purpose of this document is to provide a manual for the Incremental copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and Powershell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form of steps to follow to implement the solution from local machine.
 This guide covers the following tasks:
 
 :heavy_check_mark: Set up for migration of incremental data from Gen1 to Gen2 
@@ -44,6 +44,7 @@ Check the unblock option in the security to avoid below run time error
 
 ![image](https://user-images.githubusercontent.com/62353482/78596476-b29a2100-7800-11ea-8bb3-4f551a412dc4.png)
 
+Run the migration pipeline 
 
 ### 2. Post Migration Checks 
 
