@@ -21,11 +21,19 @@ You need below:
 
  * Azure Storage account with Data Lake Storage Gen2.For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* Service principal with permission on the subscription. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) 
+* Service principal with permission on the subscription. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
 * Azure Data Factory(v2) 
 
 * Windows Powershell ISE.
+
+   ##### Install- Run in Powershell
+   
+   * Module PowerShellGetRepository PSGallery -Force 
+
+   * Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
+
+   * Import-module Az.DataLakeStore
 
 ## Steps to be followed
 
