@@ -4,11 +4,11 @@
 The purpose of this document is to provide a manual for the Incremental copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and Powershell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form of steps to follow to implement the solution from local machine.
 This guide covers the following tasks:
 
-:heavy_check_mark: Set up for migration of incremental data from Gen1 to Gen2 
+   * Set up for migration of incremental data from Gen1 to Gen2 
 
-:heavy_check_mark: Enumerating Gen1 and Gen2 data into CSV
+   * Enumerating Gen1 and Gen2 data into CSV
 
-:heavy_check_mark: Data Validation and Comparison between Gen1 and Gen2 data using CSV
+   * Data Validation and Comparison between Gen1 and Gen2 data using CSV
 
 ##  Getting Started 
 
@@ -55,7 +55,6 @@ The downloaded migration folder will contain below listed contents :
 **2.InventoryInput.json** : This config file contains all the details of gen1 and gen2 ADLS. In this we have to list all the source and destination folders,which is being used to create data factory pipeline activities.Config pipeline elements contain number of pipelines to be created. We can have one time full load pipelines and incremental pipelines.
 
 **Note** : Setting multiple pipelines and activities enables parallelism mechanism.
-Below is the sample config file on how to set the parameters :
 
 **3.InvokeMethod.ps1**: This powershell script will execute PipelineConfig.ps1 and DataFactory.ps1
 
@@ -63,8 +62,11 @@ Below is the sample config file on how to set the parameters :
 
 **5.DataFactory.ps1** : This powershell will create the linked services, datasets and pipeline in sequence order,based on the input provided in InventoryInput.json
 
+Below is the sample config file on how to set the parameters :
 
 ### 2. Post Migration Checks 
+
+:heavy_check_mark: Check the data factory pipeline creation in ADF site 
 
 :heavy_check_mark: Data in forms of files and folders landed to Gen2 path.
 
@@ -87,8 +89,11 @@ Run the script (##name##) which will read the Gen1Inventory and Gen2Inventory
 ### 5. Application Migration check 
 
 **5.1** Get the mount path for Gen1 
+
 **5.2** Decommission Gen1 load 
+
 **5.3** Change and configure the mount path to Gen2 storage 
+
 **5.4** Re schedule the migration pipeline as per above path 
 
 
