@@ -47,11 +47,15 @@ The downloaded migration folder will contain below listed contents :
 
 ![image](https://user-images.githubusercontent.com/62351942/78710314-015fbd80-78ca-11ea-9773-b1bd361a59b6.png)
 
-#### Glossary on Contents 
+### Glossary on Contents 
 
-##### 1.DataFactoryV2Template 
-##### 2.InventoryInput.json
-##### 3.InvokeMethod.ps1
+##### 1.DataFactoryV2Template : This folder contain all the json templates which is being used for creating dynamic azure data factory.
+
+##### 2.InventoryInput.json : This config file contains all the details of gen1 and gen2 ADLS. In this we have to list all the source and destination folders,which is being used to create data factory pipeline activities.Config pipeline elements contain number of pipelines to be created. We can have one time full load pipelines and incremental pipelines.
+
+### Note : ##### Setting multiple pipelines and activities enables parallelism mechanism.
+
+##### 3.InvokeMethod.ps1 : 
 ##### 4.PipelineConfig.ps1
 ##### 5.DataFactory.ps1
 
