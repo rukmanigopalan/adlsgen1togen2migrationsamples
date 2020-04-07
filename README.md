@@ -45,9 +45,10 @@ Check the unblock option in the security to avoid below run time error
 
 The downloaded migration folder will contain below listed contents :
 
-### Glossary 
+#### Glossary 
 
-####1.
+##### 1.DataFactoryV2Template 
+##### 2.InventoryInput.json
 
 Run the migration pipeline 
 
@@ -73,10 +74,10 @@ Run the script (##name##) which will read the Gen1Inventory and Gen2Inventory
 
 ### 5. Application Migration check 
 
-####5.1 Get the mount path for Gen1 
-####5.2 Decommission Gen1 load 
-####5.3 Change and configure the mount path to Gen2 storage 
-####5.4 Re schedule the migration pipeline as per above path 
+#### 5.1 Get the mount path for Gen1 
+#### 5.2 Decommission Gen1 load 
+#### 5.3 Change and configure the mount path to Gen2 storage 
+#### 5.4 Re schedule the migration pipeline as per above path 
 
 
 
