@@ -27,13 +27,13 @@ You need below:
 
 * Windows Powershell ISE.
 
-   ##### Install- Run in Powershell
+   ##### Install below modules :
    
    * Module PowerShellGetRepository PSGallery -Force 
 
    * Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
 
-   * Import-module Az.DataLakeStore
+   * Import-module Az.DataLakeStore . Refer to [Import module Az Datalakestore](https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/import-azdatalakestoreitem?view=azps-3.7.0)
 
 ## Steps to be followed
 
