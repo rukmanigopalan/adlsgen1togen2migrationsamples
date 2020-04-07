@@ -45,13 +45,19 @@ Check the unblock option in the security to avoid below run time error
 ![image](https://user-images.githubusercontent.com/62353482/78596476-b29a2100-7800-11ea-8bb3-4f551a412dc4.png)
 
 
-### Post Migration Checks 
+### 2. Post Migration Checks 
 
 :heavy_check_mark: New data from Gen1 is copied to Gen2 path.
 
-### Data Validation
+### 3. Data Validation
 
-Post Incremental copy process is completed , the Gen1 file and folder details are written into CSV. 
+Post Incremental copy process is completed , the Gen1 file and folder details are written into CSV. Below is the sequence of functions being called out as part of Validation process :
+
+#### 3.1 InvokeValidation 
+#### 3.2 GetGen1Inventory
+#### 3.3 GetGen2Inventory
+#### 3.4 CompareGen1andGen2
+
 
 
 ### Comparison Report
