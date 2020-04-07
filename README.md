@@ -45,7 +45,7 @@ Check the unblock option in the security to avoid below run time error
 
 The downloaded migration folder will contain below listed contents :
 
-![image](https://user-images.githubusercontent.com/62351942/78710314-015fbd80-78ca-11ea-9773-b1bd361a59b6.png){width="100"}
+![image](https://user-images.githubusercontent.com/62351942/78710314-015fbd80-78ca-11ea-9773-b1bd361a59b6.png width ="100")
 
 #### Glossary 
 
