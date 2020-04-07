@@ -10,8 +10,8 @@ $inventoryInputsPath = $fileRootPath + "InventoryInputs.json"
 $inputConfigData = Get-Content -Raw -Path $inventoryInputsPath | ConvertFrom-Json
 $vaultName = $inputConfigData.keyVaultName
 $tenantId = $inputConfigData.tenantId
-$passwd = ConvertTo-SecureString (GetKeyVaultSecret -VaultName $vaultName -SecretName "SPNSecret") -AsPlainText -Force
-$pscredential = New-Object System.Management.Automation.PSCredential((GetKeyVaultSecret -VaultName $vaultName -SecretName "SPNId"), $passwd)
+$passwd = ConvertTo-SecureString ($inputConfigData.servicePrincipleSecret) -AsPlainText -Force
+$pscredential = New-Object System.Management.Automation.PSCredential(($inputConfigData.servicePrincipleId), $passwd)
 Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId
 Write-Host "Authenticated with SPN " -ForegroundColor Green
 
@@ -371,7 +371,7 @@ function CreateTrigger{
         $triggerTemplate = Get-Content -Raw -Path $tTemplatePath
         $triggerTemplate = $triggerTemplate.Replace("@@dataFactoryTriggerName@@",$pipelineTriggerName).Replace("@@dataFactoryPipeLineName@@",$pipelineName).Replace("@@frequency@@",$frequency).Replace("@@interval@@",$interval).Replace("@@startTime@@",$triggerStartTime)
         $triggerTemplate | Set-Content $tPublishPath
-        Set-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $pipelineTriggerName -DefinitionFile $tPublishPath
+        Set-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $pipelineTriggerName -DefinitionFile $tPublishPath -Force
      }    
 }
 
@@ -478,7 +478,7 @@ foreach($factory in $sourceConfigData.factories[0])
         {
             CreateTrigger -resourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName -pipelineName $pipelineName -pipelineTriggerName $eachPipeline.triggerName -frequency $triggerFrequency -interval $triggerInterval -triggerStartTime $triggerStartTime -tPublishPath $actualFilePath$triggerName'.JSON' -tTemplatePath $templatePath$pipelineTriggerFileName 
             Write-Host "Pipeline trigger created : "$eachPipeline.triggerName -ForegroundColor Green
-            Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $eachPipeline.triggerName
+            Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $eachPipeline.triggerName -Force
             Write-Host "Pipeline trigger started : "$eachPipeline.triggerName -ForegroundColor Green
         } 
    }
