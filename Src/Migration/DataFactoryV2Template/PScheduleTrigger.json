@@ -1,0 +1,26 @@
+{
+    "properties": {
+        "name": "@@dataFactoryTriggerName@@",
+        "type": "ScheduleTrigger",
+		"runtimeState": "Started",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "@@frequency@@",
+                "interval": @@interval@@,
+                "startTime": "@@startTime@@",
+                "timeZone": "UTC"
+            }
+        },
+        "pipelines": [{
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "@@dataFactoryPipeLineName@@"
+                },
+                "parameters": {
+                    "windowStart": "@{addminutes(trigger().scheduledTime, -@@interval@@)}",
+                    "windowEnd": "@trigger().scheduledTime"
+                }
+            }
+        ]
+    }
+}

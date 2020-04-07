@@ -1,0 +1,119 @@
+Install-Module PowerShellGet –Repository PSGallery –Force 
+Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
+import-module Az.DataLakeStore
+
+function ConnectGen1{
+    [cmdletBinding()]
+    param([string] $tenantid, [System.Management.Automation.PSCredential] $credential)
+
+    try {
+        Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $tenantid;
+    }
+    catch{
+        throw $error[0].Exception;
+    }
+}
+
+
+function GetGen1DataList {
+    [cmdletBinding()]
+    param([string] $FilePath, [string] $AccountName, [string] $cutofftime
+    ) 
+    if ($cutofftime -eq '')
+    {
+    $cutoffint=0;
+    }
+    else{
+    $cutoffint=[int64]((get-date $cutofftime)-(get-date "1/1/1970")).TotalMilliseconds;
+    }
+    $files=New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem];
+    if ($FilePath -ne '' -and $AccountName -ne ''){
+
+        $ChildItems = Get-AzDataLakeStoreChildItem -AccountName $AccountName -Path $FilePath;
+        foreach ($ChildItem in $ChildItems) {
+            switch ($ChildItem.Type) {
+                "FILE" {
+                    if ($ChildItem.modificationtime -gt $cutoffint){
+                        $Files+=$ChildItem; 
+                        }
+                }
+                "DIRECTORY" {
+                    $Files+=GetGen1DataList $ChildItem.path $AccountName $cutofftime ;
+                }
+            }
+        }       
+    }
+    else{
+        throw 'cannot find filepath or account';
+    }  
+    return $Files;
+}
+
+
+function ExportCSV{
+    param([System.Collections.ICollection]$files, [string] $path )
+    $files|Export-Csv -Path $path
+}
+
+function ReadCSV{
+    param([string] $filePath)
+    $filelist=Import-Csv $filePath
+    return $filelist
+}
+
+function CompareFiles{
+    param([System.Collections.ICollection] $Gen1Files, [System.Collections.ICollection] $Gen2Files)
+    $Gen1Files=$Gen1Files|Sort-object name;
+    $Gen2Files=$Gen2Files|Sort-object name;
+
+    $filediff=New-Object System.Data.DataTable;
+    $filediff.Columns.Add((New-Object System.Data.DataColumn 'Gen1Files', ([string])));
+    $filediff.Columns.Add((New-Object System.Data.DataColumn 'Gen2Files', ([string])));
+    $filediff.Columns.Add((New-Object System.Data.DataColumn 'difference', ([string])));
+
+    $listCount=($Gen1Files.Count, $Gen2Files.Count)|Measure-Object -Maximum;
+    try{
+        for($i=0; $i-lt $listCount.Count; $i++)
+        {
+            if($Gen1Files[$i].name -lt $Gen2Files[$i].name)
+                {
+                $filediff.Rows.Add(' ',$Gen2Files[$i].name, 'Gen1 Missing files');
+                }
+            elseif ($Gen2Files[$i].name -lt $Gen1Files[$i].name)
+                {
+                $filediff.Rows.Add($Gen1Files[$i].name,' ', 'Gen2 Missing files');
+                }
+            else {
+                if(Compare-Object -ReferenceObject $Gen1Files[$i].filepath -DifferenceObject $Gen2Files[$i].filepath)
+ 		            {
+                    $filediff.Rows.Add($Gen1Files[$i].name,$Gen2Files[$i].name, 'Filepath not same');
+                    };
+                if(Compare-Object -ReferenceObject $Gen1Files[$i].length -DifferenceObject $Gen2Files[$i].FileSizeInBytes )
+ 		            {
+                    $filediff.Rows.Add($Gen1Files[$i].name,$Gen2Files[$i].name, 'length not same');
+                    };
+                }
+        }
+    }
+    catch{
+        throw $error[0].Exception;   
+    }
+    return $filediff;
+}
+
+$vaultName='Gen2MigrationKV';
+$spnDetails = Get-AutomationPSCredential -Name 'pscredential'
+$tenantId = Get-AutomationVariable -Name 'tenantId';
+$passwd = $spnDetails.password
+$pscredential = New-Object System.Management.Automation.PSCredential($spnDetails.Username, $passwd)
+
+ConnectGen1 $tenantId $pscredential;
+
+$DataLakeGen1Account = "sourcedatalakestoregen1";
+$InputFilePath = "/AdventureWorks/RawDataFolder/History";
+$time="1/1/1970";
+
+$files=GetGen1DataList $InputFilePath $DataLakeGen1Account $time;
+$file2=ReadCSV 'C:\Users\v-wiya\Documents\InsertGen2files.csv'
+$diff=CompareFiles $files $file2
+ExportCSV $diff 'C:\Users\v-wiya\Documents\diff.csv'
