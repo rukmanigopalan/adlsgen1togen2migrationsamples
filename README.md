@@ -63,11 +63,13 @@ Post Incremental copy process is completed , the Gen1 file and folder details ar
 
 ## Error Handling
 
-## You found a bug or want to propose a feature?
+## Reach out to us
+
+### You found a bug or want to propose a feature?
 
 File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/issues/new). Make sure to remove any credential from your code before sharing it.
 
-## References
+### References
 
 [Azure Data Lake Storage migration from Gen1 to Gen2 ](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
 
