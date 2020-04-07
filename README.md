@@ -47,16 +47,18 @@ Check the unblock option in the security to avoid below run time error
 
 ### 2. Post Migration Checks 
 
-:heavy_check_mark: New data from Gen1 is copied to Gen2 path.
+:heavy_check_mark: Data in forms of files and folders landed to Gen2 path.
 
 ### 3. Data Validation
 
-Post Incremental copy process is completed , the Gen1 file and folder details are written into CSV. Below is the sequence of functions being called out as part of Validation process :
+This step ensures that the right data is migrated from Gen1 to Gen2.To validate the same process ,below is the sequence of functions being called out in a single script :
 
 #### 3.1 InvokeValidation 
 #### 3.2 GetGen1Inventory
 #### 3.3 GetGen2Inventory
 #### 3.4 CompareGen1andGen2
+
+Run the script (##name##) which will read the Gen1Inventory and Gen2Inventory 
 
 
 
