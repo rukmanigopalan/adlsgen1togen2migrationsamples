@@ -52,7 +52,7 @@
 		]
 	},
 	{
-		"pipelineId" : "1",
+		"pipelineId" : "2",
 		"isChurningOrIsIncremental" : "true",
 		"triggerFrequency" : "Minute",
 		"triggerInterval" : "15",
