@@ -53,7 +53,8 @@ The downloaded migration folder will contain below listed contents :
 
 **2.InventoryInput.json** : This config file contains all the details of gen1 and gen2 ADLS. In this we have to list all the source and destination folders,which is being used to create data factory pipeline activities.Config pipeline elements contain number of pipelines to be created. We can have one time full load pipelines and incremental pipelines.
 
-### Note : Setting multiple pipelines and activities enables parallelism mechanism.
+**Note** : Setting multiple pipelines and activities enables parallelism mechanism.
+Below is the sample config file on how to set the parameters :
 
 **3.InvokeMethod.ps1**: This powershell script will execute PipelineConfig.ps1 and DataFactory.ps1
 
