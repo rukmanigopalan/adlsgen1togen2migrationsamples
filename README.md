@@ -35,6 +35,7 @@ The config file sample format is available on GitHub in [config file sample](htt
 
 #### Download the repo to your local machine :
 ![image](https://user-images.githubusercontent.com/62353482/78593702-e4f54f80-77fb-11ea-8bfb-2ecc8e8ed757.png ) 
+
 Open the zip folder , right click and Goto properties :
 
 ![image](https://user-images.githubusercontent.com/62353482/78596270-56cf9800-7800-11ea-9d8d-c4767a6b0ee6.png) 
@@ -85,20 +86,18 @@ Run the script (##name##) which will read the Gen1Inventory and Gen2Inventory
 
 ### 5. Application Migration check 
 
-#### 5.1 Get the mount path for Gen1 
-#### 5.2 Decommission Gen1 load 
-#### 5.3 Change and configure the mount path to Gen2 storage 
-#### 5.4 Re schedule the migration pipeline as per above path 
+**5.1** Get the mount path for Gen1 
+**5.2** Decommission Gen1 load 
+**5.3** Change and configure the mount path to Gen2 storage 
+**5.4** Re schedule the migration pipeline as per above path 
 
-
-
-## Error Handling
 
 ## Reach out to us
 
 ### You found a bug or want to propose a feature?
 
-File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/issues/new). Make sure to remove any credential from your code before sharing it.
+File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/issues/new).
+Make sure to remove any credential from your code before sharing it.
 
 ### References
 
