@@ -45,11 +45,9 @@ Check the unblock option in the security to avoid below run time error
 ![image](https://user-images.githubusercontent.com/62353482/78596476-b29a2100-7800-11ea-8bb3-4f551a412dc4.png)
 
 
+### Post Migration Checks 
 
-
-
-#### 
-
+:heavy_check_mark: New data from Gen1 is copied to Gen2 path.
 
 ### Data Validation
 
