@@ -4,28 +4,28 @@
 The purpose of this document is to provide a manual for the Incremental copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and Powershell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form of steps to follow to implement the solution from local machine.
 This guide covers the following tasks:
 
-   * Set up for migration of incremental data from Gen1 to Gen2 
+   * Set up for Incremental copy pattern from Gen1 to Gen2 
 
    * Enumerating Gen1 and Gen2 data into CSV
 
    * Data Validation and Comparison between Gen1 and Gen2 data using CSV
 
-##  Getting Started 
-
 ### Prerequisites 
 You need below:
 
-:heavy_check_mark:Azure subscription 
+* An Azure account with an active subscription 
 
-:heavy_check_mark:Resource group 
+* Resource group 
 
-:heavy_check_mark:Azure Storage account with Data Lake Storage Gen1 and Gen2 enabled
+* Azure Storage account with Data Lake Storage Gen1. For more details please refer to [create azure data lake storage for Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal).
 
-:heavy_check_mark:Service principal with permission on the subscription 
+ * Azure Storage account with Data Lake Storage Gen2.For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-:heavy_check_mark:Azure Data Factory(v2) 
+* Service principal with permission on the subscription. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) 
 
-:heavy_check_mark: Windows Powershell ISE.
+* Azure Data Factory(v2) 
+
+* Windows Powershell ISE.
 
 ## Steps to be followed
 
