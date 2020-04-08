@@ -28,13 +28,17 @@ You need below for using Migration framework and Data validation :
 
    ##### Run below to Install modules :
    
-     * Install-Module Az.Accounts -AllowClobber -Force 
-     * Install-Module Az.DataFactory -AllowClobber -Force
-     * Install-Module Az.KeyVault -AllowClobber -Force    
-     * Install-Module Az.DataLakeStore -AllowClobber -Force
-     * Install-Module PowerShellGet –Repository PSGallery –Force
-     * Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
+```scala
+// Run below commands in PS
 
+       Install-Module Az.Accounts -AllowClobber -Force 
+       Install-Module Az.DataFactory -AllowClobber -Force
+       Install-Module Az.KeyVault -AllowClobber -Force    
+       Install-Module Az.DataLakeStore -AllowClobber -Force
+       Install-Module PowerShellGet –Repository PSGallery –Force
+       Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
+
+```
 **Note** : Open Powershell as admin
 
 ```scala
