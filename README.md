@@ -26,8 +26,7 @@ You need below for using Migration framework and Data validation :
 
 * **Windows Powershell ISE**.
 
-   ##### Run below to Install modules :
-   
+  
 ```scala
 // Run below commands in PS
 
@@ -47,8 +46,6 @@ You need below for using Migration framework and Data validation :
          Set-ExecutionPolicy Unrestricted
 	
 ```
-
-
 
 ## Steps to be followed
 
@@ -189,11 +186,30 @@ This step ensures that the new data is only migrated from Gen1 to Gen2.To valida
 
 ### 5. Application Migration check 
 
-**5.1** Get the mount path for Gen1 
+This check will ensure after the Incremental copy pattern is completed and data is validated , the mount path in the Azure data bricks is pointed to the Gen2 path.
 
-**5.2** Decommission Gen1 load 
+**Change and configure the mount path to Gen2 storage**
 
-**5.3** Change and configure the mount path to Gen2 storage 
+``scala
+// Change the mount path and point to Gen2 storage 
+
+      # DBTITLE 1,Mounting the Gen2 storage
+mountName = 'AdventureWorks'
+configs_Blob = {"fs.azure.account.key.destndatalakestoregen2.blob.core.windows.net": dbutils.secrets.get(scope = "Gen2migrationSP", key = "Gen2AccountKey")}
+
+mounts = [str(i) for i in dbutils.fs.ls('/mnt/')]
+if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=0)" in mounts: 
+  dbutils.fs.unmount("/mnt/"+mountName+"/")
+  print("Mounting the storage")
+  dbutils.fs.mount(
+  source = "wasbs://gen1sample@destndatalakestoregen2.blob.core.windows.net/", // Give the Gen2 storage path here 
+  mount_point = "/mnt/"+mountName+"/",
+  extra_configs = configs_Blob)
+  print(mountName + " got mounted")
+  print("Mountpoint:", "/mnt/" +mountName + "/")
+  
+```
+
 
 **5.4** Re schedule the migration pipeline as per above path 
 
