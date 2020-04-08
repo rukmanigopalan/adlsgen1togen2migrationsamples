@@ -127,11 +127,11 @@ The downloaded migration folder will contain below listed contents :
 
 //Run the below script in Powershell
 
-$PSScriptRoot
+	$PSScriptRoot
 
-& "$PSScriptRoot\PipelineConfig.ps1"
+	& "$PSScriptRoot\PipelineConfig.ps1"
 
-& "$PSScriptRoot\DataFactory.ps1"
+	& "$PSScriptRoot\DataFactory.ps1"
 
 ```
 
@@ -139,6 +139,9 @@ $PSScriptRoot
 ### 2. Post Migration Checks 
 
 :heavy_check_mark: Check the data factory pipeline creation in ADF site 
+You can check the pipelines created in the azure data factory like :
+
+
 
 
 
