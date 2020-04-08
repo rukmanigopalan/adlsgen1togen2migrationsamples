@@ -133,15 +133,13 @@ The downloaded migration folder will contain below listed contents :
 
 ### 3. Data Validation
 
-This step ensures that the right data is migrated from Gen1 to Gen2.To validate the same process ,below is the sequence of functions being called out in a single script :
+This step ensures that the new data is only migrated from Gen1 to Gen2.To validate the same process ,below is the sequence of functions being called out in a single script :
 
-#### 3.1 InvokeValidation 
-#### 3.2 GetGen1Inventory
-#### 3.3 GetGen2Inventory
-#### 3.4 CompareGen1andGen2
-
-Run the script (##name##) which will read the Gen1Inventory and Gen2Inventory 
-
+ **3.1 ConnectToAzure** : This script will connect to Azure using pre defined and saved subscription details and credntials 
+ **3.2 InvokeValidation** : This script will invoke the GetGen1Inventory and GetGen2Inventory scripts and validate the data from both.
+ **3.3 GetGen1Inventory** : This script will read the Gen1 file and folder details and save to buffer.
+ **3.4 GetGen2Inventory** : This script will read the Gen2 file and folder details and save to buffer.
+ **3.5 CompareGen1andGen2** : This script will compare the file and folder details between Gen1 and Gen2 and generate comparison report. 
 
 
 ### 4. Comparison Report
