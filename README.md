@@ -48,15 +48,9 @@ This step will ensure that the configuration file is ready before running the az
 The config file sample format is available on GitHub in [config file sample](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/Src/Migration/).
 
 #### Download the repo to your local machine :
-![image](https://user-images.githubusercontent.com/62353482/78593702-e4f54f80-77fb-11ea-8bfb-2ecc8e8ed757.png ) 
+![image](https://user-images.githubusercontent.com/62353482/78593702-e4f54f80-77fb-11ea-8bfb-2ecc8e8ed757.png) 
 
-Open the zip folder , right click and Goto properties :
-
-![image](https://user-images.githubusercontent.com/62353482/78596270-56cf9800-7800-11ea-9d8d-c4767a6b0ee6.png) 
-
-Check the unblock option in the security to avoid below run time error 
-
-![image](https://user-images.githubusercontent.com/62353482/78596476-b29a2100-7800-11ea-8bb3-4f551a412dc4.png)
+ * Note : To avoid security warning error --> Open the zip folder , right click and Goto properties --> General --> Check unblock option under security section.
 
 The downloaded migration folder will contain below listed contents :
 
@@ -76,7 +70,9 @@ The downloaded migration folder will contain below listed contents :
 
 **5.DataFactory.ps1** : This powershell will create the linked services, datasets and pipeline in sequence order,based on the input provided in InventoryInput.json
 
-Below is the sample config file on how to set the parameters :
+[InventoryInput Config file](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InventoryInputs.json) :
+
+Example of the 
 
 ### 2. Post Migration Checks 
 
