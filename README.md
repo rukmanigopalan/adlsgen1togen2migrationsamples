@@ -26,19 +26,25 @@ You need below for using Migration framework and Data validation :
 
 * **Windows Powershell ISE**.
 
-   ##### Install below modules :
+   ##### Run below to Install modules :
    
-   * PowerShellGetRepository PSGallery -Force 
+     * Install-Module Az.Accounts -AllowClobber -Force 
+     * Install-Module Az.DataFactory -AllowClobber -Force
+     * Install-Module Az.KeyVault -AllowClobber -Force    
+     * Install-Module Az.DataLakeStore -AllowClobber -Force
+     * Install-Module PowerShellGet –Repository PSGallery –Force
+     * Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
 
-   * Azure storage - version 1.13.3-preview 
-   
-    ```scala
-    // Below is the command   
-       
-      Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
-   
-   ```
-    * Az.DataLakeStore . Refer to [Import module Az Datalakestore](https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/import-azdatalakestoreitem?view=azps-3.7.0)
+**Note** : Open Powershell as admin
+
+```scala
+// Run below code to enable running PS files
+
+         Set-ExecutionPolicy Unrestricted
+	
+```
+
+
 
 ## Steps to be followed
 
@@ -141,11 +147,21 @@ The downloaded migration folder will contain below listed contents :
 :heavy_check_mark: Check the data factory pipeline creation in ADF site 
 You can check the pipelines created in the azure data factory like :
 
+![image](https://user-images.githubusercontent.com/62351942/78803126-776c2f00-7973-11ea-94cf-1c0d6de20e64.png)
+
+
+Once the pipeline run is completed , please check for the files copied to Gen2 container 
+
+
+![image](https://user-images.githubusercontent.com/62351942/78804420-f0b85180-7974-11ea-8777-c4fd25add31f.png)
+
+
+:heavy_check_mark: Data (in forms of files and folders) landed to Gen2 path.
 
 
 
+You can check the Gen1 files 
 
-:heavy_check_mark: Data in forms of files and folders landed to Gen2 path.
 
 ### 3. Data Validation
 
