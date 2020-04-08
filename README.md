@@ -77,16 +77,16 @@ The downloaded migration folder will contain below listed contents :
 //Below is the code snapshot for setting the configuration file for each variable
 
 {
-  "gen1SourceRootPath" : "https://<<adlsgen1>>.azuredatalakestore.net/webhdfs/v1", <--- Provide the source Gen1 root path --->
-  "gen2SourceRootPath" : "https://<<adlsgen2>>.dfs.core.windows.net", <-- Provide the Gen2 source root path-->
-  "tenantId" : "<<tenantId>>", <-- Provide the tenantId -->
-  "subscriptionId" : "<<subscriptionId>>", <-- Provide the SubscriptionId -->
-  "servicePrincipleId" : "<<servicePrincipleId>>", <-- Provide the servicePrincipleId-->
-  "servicePrincipleSecret" : "<<servicePrincipleSecret>>", <--Provide the servicePrinciplesecret key-->
-  "factoryName" : "<<factoryName>>", <-- Give the factory name e.g Gen1ToGen2DataFactory -->
-  "resourceGroupName" : "<<resourceGroupName>>", <-- Give the resource group name -->
-  "location" : "<<location>>", 
-  "overwrite" : "true", <-- default -->
+  "gen1SourceRootPath" : "https://<<adlsgen1>>.azuredatalakestore.net/webhdfs/v1", // Provide the source Gen1 root path 
+  "gen2SourceRootPath" : "https://<<adlsgen2>>.dfs.core.windows.net", // Provide the Gen2 source root path
+  "tenantId" : "<<tenantId>>", // Provide the tenantId 
+  "subscriptionId" : "<<subscriptionId>>", // Provide the SubscriptionId 
+  "servicePrincipleId" : "<<servicePrincipleId>>", // Provide the servicePrincipleId
+  "servicePrincipleSecret" : "<<servicePrincipleSecret>>", // Provide the servicePrinciplesecret key 
+  "factoryName" : "<<factoryName>>", // Give the factory name e.g Gen1ToGen2DataFactory 
+  "resourceGroupName" : "<<resourceGroupName>>", // Give the resource group name 
+  "location" : "<<location>>", // Provide the Data factory location 
+  "overwrite" : "true", // default 
 
 ```
 
