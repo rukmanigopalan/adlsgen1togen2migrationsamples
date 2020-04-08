@@ -12,19 +12,19 @@ This guide covers the following tasks:
 ### Prerequisites 
 You need below for using Migration framework and Data validation :
 
-* An Azure account with an active subscription 
+* **An Azure account with an active subscription** 
 
-* Resource group 
+* **Azure Storage account with Data Lake Storage Gen1**. 
 
-* Azure Storage account with Data Lake Storage Gen1. 
+* **Resource group to hold the storage account**
 
- * Azure Storage account with Data Lake Storage Gen2.For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
+ * **Azure Storage account with Data Lake Storage Gen2**.For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* Service principal account with read / write permission on the subscription. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
+* **Service principal account with read / write permission on the subscription**. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
-* Azure Data Factory(v2) 
+* **Azure Data Factory(v2)** 
 
-* Windows Powershell ISE.
+* **Windows Powershell ISE**.
 
    ##### Install below modules :
    
@@ -80,7 +80,7 @@ The downloaded migration folder will contain below listed contents :
 {
   "gen1SourceRootPath" : "https://<<adlsgen1>>.azuredatalakestore.net/webhdfs/v1", // Provide the source Gen1 root path 
   "gen2SourceRootPath" : "https://<<adlsgen2>>.dfs.core.windows.net", // Provide the Gen2 source root path
-  "tenantId" : "<<tenantId>>", // Provide the tenantId 
+  "tenantId" : "<<tenantId>>", // Provide the tenantId .Where to find TenantId --> Go to Portal.azure.com > Azure Active Directory > Properties. The directory ID it shows there is your tennant ID
   "subscriptionId" : "<<subscriptionId>>", // Provide the SubscriptionId 
   "servicePrincipleId" : "<<servicePrincipleId>>", // Provide the servicePrincipleId
   "servicePrincipleSecret" : "<<servicePrincipleSecret>>", // Provide the servicePrinciplesecret key 
@@ -122,6 +122,18 @@ The downloaded migration folder will contain below listed contents :
 ### 1.3 Azure data factory pipeline execution 
 
  **Run the [InvokeMethod script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InvokeMethod.ps1)**
+ 
+``` scala
+
+//Run the below script in Powershell
+
+$PSScriptRoot
+
+& "$PSScriptRoot\PipelineConfig.ps1"
+
+& "$PSScriptRoot\DataFactory.ps1"
+
+```
 
 
 ### 2. Post Migration Checks 
