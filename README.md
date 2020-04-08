@@ -90,28 +90,28 @@ The downloaded migration folder will contain below listed contents :
 
 ```
 
+**Setting up and scheduling the Factory pipeline for Incremental copy pattern**
+
 ```scala
 
-//Below is how to configure the data factory pipeline 
+//Below is how to configure and schedule the data factory pipeline 
 
-~~"pipeline":~~ [  
+ "pipeline": [  
 	{
-		"pipelineId" : "1",
-		"isChurningOrIsIncremental" : "false",
+		"pipelineId" : "1",   // Set this value between 1 and 50 to start factory and run in parallel  
+		"isChurningOrIsIncremental" : "true",   // Value is set to true for Incremental copy pattern
+		"triggerFrequency" : "Minute",   // frequency in units 
+		"triggerInterval" : "15",   // Set the time interval for scheduling 
+		"triggerUTCStartTime" : "2020-04-07T13:00:00Z",   // Provide the UTC time to start the factory 
 		"pipelineDetails":[			
 			{			
-				"sourcePath" : "/AdventureWorks/RawDataFolder/History/FactInternetSales",
-				"destinationPath" : "AdventureWorks/RawDataFolder/History/FactInternetSales",
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source path from the 
+				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",
 				"destinationContainer" : "gen1sample"
 			},
 			{			
-				"sourcePath" : "/AdventureWorks/RawDataFolder/History/FactProductInventory",
-				"destinationPath" : "AdventureWorks/RawDataFolder/History/FactProductInventory",
-				"destinationContainer" : "gen1sample"
-			},
-			{			
-				"sourcePath" : "/AdventureWorks/RawDataFolder/History/FactResellerSales",
-				"destinationPath" : "AdventureWorks/RawDataFolder/History/FactResellerSales",
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",
+				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales",
 				"destinationContainer" : "gen1sample"
 ```
 
