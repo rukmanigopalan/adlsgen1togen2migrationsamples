@@ -105,9 +105,9 @@ The downloaded migration folder will contain below listed contents :
 		"triggerUTCStartTime" : "2020-04-07T13:00:00Z",   // Provide the UTC time to start the factory 
 		"pipelineDetails":[			
 			{			
-				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source path from the 
-				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",
-				"destinationContainer" : "gen1sample"
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source path for each folder 
+				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",   // Give the Gen2 landing path
+				"destinationContainer" : "gen1sample"  // Give the destination container name 
 			},
 			{			
 				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",
