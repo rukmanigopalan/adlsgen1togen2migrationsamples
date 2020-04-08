@@ -150,6 +150,8 @@ You can check the pipelines created in the azure data factory like :
 
 ![image](https://user-images.githubusercontent.com/62351942/78803126-776c2f00-7973-11ea-94cf-1c0d6de20e64.png)
 
+**Note** : Tested on sample data of 100 GB 
+
 
 Once the pipeline run is completed , please check for the files copied to Gen2 container 
 
