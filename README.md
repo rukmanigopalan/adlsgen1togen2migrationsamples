@@ -31,7 +31,7 @@ You need below:
    
    * PowerShellGetRepository PSGallery -Force 
 
-   * az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
+   * Azure storage - version 1.13.3-preview 
    
     ```scala
     // Below is the command   
@@ -88,6 +88,31 @@ The downloaded migration folder will contain below listed contents :
   "location" : "<<location>>", // Provide the Data factory location 
   "overwrite" : "true", // default 
 
+```
+
+```scala
+
+//Below is how to configure the data factory pipeline 
+
+~~"pipeline":~~ [  
+	{
+		"pipelineId" : "1",
+		"isChurningOrIsIncremental" : "false",
+		"pipelineDetails":[			
+			{			
+				"sourcePath" : "/AdventureWorks/RawDataFolder/History/FactInternetSales",
+				"destinationPath" : "AdventureWorks/RawDataFolder/History/FactInternetSales",
+				"destinationContainer" : "gen1sample"
+			},
+			{			
+				"sourcePath" : "/AdventureWorks/RawDataFolder/History/FactProductInventory",
+				"destinationPath" : "AdventureWorks/RawDataFolder/History/FactProductInventory",
+				"destinationContainer" : "gen1sample"
+			},
+			{			
+				"sourcePath" : "/AdventureWorks/RawDataFolder/History/FactResellerSales",
+				"destinationPath" : "AdventureWorks/RawDataFolder/History/FactResellerSales",
+				"destinationContainer" : "gen1sample"
 ```
 
 ### 2. Post Migration Checks 
