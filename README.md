@@ -190,21 +190,22 @@ This check will ensure after the Incremental copy pattern is completed and data 
 **Change and configure the mount path to Gen2 storage**
 
 ```scala
+
 // Change the mount path and point to Gen2 storage 
 
-      # DBTITLE 1,Mounting the Gen2 storage
-      mountName = 'AdventureWorks'
-      configs_Blob = {"fs.azure.account.key.destndatalakestoregen2.blob.core.windows.net": dbutils.secrets.get(scope = "Gen2migrationSP", key = "Gen2AccountKey")}
-      mounts = [str(i) for i in dbutils.fs.ls('/mnt/')]
-      if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=0)" in mounts: 
-      dbutils.fs.unmount("/mnt/"+mountName+"/")
-      print("Mounting the storage")
-      dbutils.fs.mount(
-      source = "wasbs://gen1sample@destndatalakestoregen2.blob.core.windows.net/", // Give the Gen2 storage path here 
-      mount_point = "/mnt/"+mountName+"/",
-      extra_configs = configs_Blob)
-      print(mountName + " got mounted")
-      print("Mountpoint:", "/mnt/" +mountName + "/")
+     		# DBTITLE 1,Mounting the Gen2 storage
+		mountName = ''  // Name of the storage container
+		configs_Blob = {"fs.azure.account.key.destndatalakestoregen2.blob.core.windows.net": dbutils.secrets.get(scope =   	"Gen2migrationSP", key = "Gen2AccountKey")}
+		mounts = [str(i) for i in dbutils.fs.ls('/mnt/')]
+		if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=0)" in mounts: 
+  		dbutils.fs.unmount("/mnt/"+mountName+"/")
+  		print("Mounting the storage")
+  		dbutils.fs.mount(
+  		source = "wasbs://gen1sample@destndatalakestoregen2.blob.core.windows.net/",
+  		mount_point = "/mnt/"+mountName+"/",
+  		extra_configs = configs_Blob)
+  		print(mountName + " got mounted")
+  		print("Mountpoint:", "/mnt/" +mountName + "/")
   
 ```
 
