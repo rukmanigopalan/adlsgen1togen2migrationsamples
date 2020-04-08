@@ -47,7 +47,7 @@ You need below:
 This step will ensure that the configuration file is ready before running the azure data factory pipeline for incremental copy pattern. 
 The config file sample format is available on GitHub in [config file sample](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/Src/Migration/).
 
-#### Download the repo to your local machine :
+### 1.1 Download the repo to your local machine :
 ![image](https://user-images.githubusercontent.com/62353482/78593702-e4f54f80-77fb-11ea-8bfb-2ecc8e8ed757.png) 
 
  **Note** : To avoid security warning error --> Open the zip folder , right click and Goto properties --> General --> Check unblock option under security section.
@@ -69,6 +69,8 @@ The downloaded migration folder will contain below listed contents :
 **4.PipelineConfig.ps1** : This powershell script will create all the required json input data, which is being used in Datafactory.ps1 powershell.This will dynamically create the json file considering all the required inputs from InventoryInput.json file.
 
 **5.DataFactory.ps1** : This powershell will create the linked services, datasets and pipeline in sequence order,based on the input provided in InventoryInput.json
+
+### 1.2 Configuration file set up 
 
 **Path for config file** : [InventoryInput.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InventoryInputs.json)
 
@@ -105,15 +107,23 @@ The downloaded migration folder will contain below listed contents :
 		"triggerUTCStartTime" : "2020-04-07T13:00:00Z",   // Provide the UTC time to start the factory 
 		"pipelineDetails":[			
 			{			
-				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source path for each folder 
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source path for first folder 
 				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",   // Give the Gen2 landing path
 				"destinationContainer" : "gen1sample"  // Give the destination container name 
 			},
 			{			
-				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",
-				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales",
-				"destinationContainer" : "gen1sample"
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",  // Give the Gen1 source path for second folder 
+				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales", // Give the Gen2 landing path 
+				"destinationContainer" : "gen1sample"  // Give the destination container name
+				
+// The source path , destination path and destination container name will be repeated for all Gen1 folders existing in the path
+
 ```
+
+### 1.3 Azure data factory pipeline execution 
+
+ **Run the [InvokeMethod script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InvokeMethod.ps1)**
+
 
 ### 2. Post Migration Checks 
 
