@@ -50,7 +50,7 @@ The config file sample format is available on GitHub in [config file sample](htt
 #### Download the repo to your local machine :
 ![image](https://user-images.githubusercontent.com/62353482/78593702-e4f54f80-77fb-11ea-8bfb-2ecc8e8ed757.png) 
 
- * Note : To avoid security warning error --> Open the zip folder , right click and Goto properties --> General --> Check unblock option under security section.
+ **Note** : To avoid security warning error --> Open the zip folder , right click and Goto properties --> General --> Check unblock option under security section.
 
 The downloaded migration folder will contain below listed contents :
 
@@ -70,9 +70,9 @@ The downloaded migration folder will contain below listed contents :
 
 **5.DataFactory.ps1** : This powershell will create the linked services, datasets and pipeline in sequence order,based on the input provided in InventoryInput.json
 
-[InventoryInput Config file](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InventoryInputs.json) :
+**Path for config file** : [InventoryInput Config file](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InventoryInputs.json) :
 
-Example of the 
+
 
 ### 2. Post Migration Checks 
 
