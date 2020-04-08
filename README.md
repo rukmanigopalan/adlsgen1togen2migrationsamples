@@ -59,15 +59,15 @@ The downloaded migration folder will contain below listed contents :
 
  * **DataFactoryV2Template** : This folder contain all the json templates which is being used for creating dynamic azure data factory.
 
- * **InventoryInput.json** : This config file contains all the details of gen1 and gen2 ADLS. In this we have to list all the source and      destination folders,which is being used to create data factory pipeline activities.Config pipeline elements contain number of            pipelines to be created. We can have one time full load pipelines and incremental pipelines.
+ *  **InventoryInput.json** : This config file contains all the details of gen1 and gen2 ADLS. In this we have to list all the source and      destination folders,which is being used to create data factory pipeline activities.Config pipeline elements contain number of            pipelines to be created. We can have one time full load pipelines and incremental pipelines.
 
      **Note** : Setting multiple pipelines and activities enables parallelism mechanism.
 
- * **InvokeMethod.ps1**: This powershell script will execute PipelineConfig.ps1 and DataFactory.ps1
+ *  **InvokeMethod.ps1**: This powershell script will execute PipelineConfig.ps1 and DataFactory.ps1
 
- * **PipelineConfig.ps1** : This powershell script will create all the required json input data, which is being used in Datafactory.ps1      powershell.This will dynamically create the json file considering all the required inputs from InventoryInput.json file.
+ *  **PipelineConfig.ps1** : This powershell script will create all the required json input data, which is being used in Datafactory.ps1      powershell.This will dynamically create the json file considering all the required inputs from InventoryInput.json file.
 
-**5.DataFactory.ps1** : This powershell will create the linked services, datasets and pipeline in sequence order,based on the input provided in InventoryInput.json
+  * **DataFactory.ps1** : This powershell will create the linked services, datasets and pipeline in sequence order,based on the input         provided in InventoryInput.json
 
 ### 1.2 Configuration file set up 
 
