@@ -197,7 +197,7 @@ This check will ensure after the Incremental copy pattern is completed and data 
 		mountName = ''  // Name of the storage container
 		configs_Blob = {"fs.azure.account.key.destndatalakestoregen2.blob.core.windows.net": dbutils.secrets.get(scope =   	"Gen2migrationSP", key = "Gen2AccountKey")}
 		mounts = [str(i) for i in dbutils.fs.ls('/mnt/')]
-		if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=0)" in mounts: 
+		if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=0)" in mounts : 
   		dbutils.fs.unmount("/mnt/"+mountName+"/")
   		print("Mounting the storage")
   		dbutils.fs.mount(
@@ -209,8 +209,7 @@ This check will ensure after the Incremental copy pattern is completed and data 
   
 ```
 
-
- Re schedule 
+Re schedule the incremental pipeline and check the new data landing to the Gen2 mounted path. 
 
 
 ## Reach out to us
