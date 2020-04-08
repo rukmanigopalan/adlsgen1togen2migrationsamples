@@ -70,9 +70,25 @@ The downloaded migration folder will contain below listed contents :
 
 **5.DataFactory.ps1** : This powershell will create the linked services, datasets and pipeline in sequence order,based on the input provided in InventoryInput.json
 
-**Path for config file** : [InventoryInput Config file](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InventoryInputs.json) :
+**Path for config file** : [InventoryInput.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InventoryInputs.json)
 
+```scala
 
+//Below is the code snapshot for setting the configuration file for each variable
+
+{
+  "gen1SourceRootPath" : "https://<<adlsgen1>>.azuredatalakestore.net/webhdfs/v1", <--- Provide the source Gen1 root path --->
+  "gen2SourceRootPath" : "https://<<adlsgen2>>.dfs.core.windows.net", <-- Provide the Gen2 source root path-->
+  "tenantId" : "<<tenantId>>", <-- Provide the tenantId -->
+  "subscriptionId" : "<<subscriptionId>>", <-- Provide the SubscriptionId -->
+  "servicePrincipleId" : "<<servicePrincipleId>>", <-- Provide the servicePrincipleId-->
+  "servicePrincipleSecret" : "<<servicePrincipleSecret>>", <--Provide the servicePrinciplesecret key-->
+  "factoryName" : "<<factoryName>>", <-- Give the factory name e.g Gen1ToGen2DataFactory -->
+  "resourceGroupName" : "<<resourceGroupName>>", <-- Give the resource group name -->
+  "location" : "<<location>>", 
+  "overwrite" : "true", <-- default -->
+
+```
 
 ### 2. Post Migration Checks 
 
