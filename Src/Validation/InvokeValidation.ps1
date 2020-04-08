@@ -17,7 +17,8 @@ $gen1SourceRootPath = $sourceConfigData.gen1SourceRootPath
 $gen2SourceRootPath = $SourceConfigData.gen2SourceRootPath
 $gen1AccountName = $gen1SourceRootPath.Substring(8,$gen1SourceRootPath.indexOf(".")-8)
 $gen2AccountName = $gen2SourceRootPath.Substring(8,$gen2SourceRootPath.indexOf(".")-8)
-$ValidationResultFolder = $PSScriptRoot
+$currentDate = (Get-Date).ToString("yyyyMMddHHmm")
+$validationResultFolder = $PSScriptRoot + "\Output\" +$currentDate+"\"
 
 
 foreach($eachPipeline in $sourceConfigData.pipeline)
@@ -27,13 +28,12 @@ foreach($eachPipeline in $sourceConfigData.pipeline)
         $gen1Path = $eachPath.sourcePath
         $gen2Path = $eachPath.destinationPath
         $gen2Container = $eachPath.destinationContainer
-        $ResultFilePath = $ValidationResultFolder + $gen1Path.Replace("/","-") + ".csv"
+        $resultFilePath = $validationResultFolder + $gen1Path.Replace("/","-") + ".csv"
 
-        $Gen1FileDetails = & "$PSScriptRoot\GetGen1Inventory.ps1" `
+        $gen1FileDetails = & "$PSScriptRoot\GetGen1Inventory.ps1" `
         -subscriptionId $subscriptionId  `
         -filePath $gen1Path  `
-        -accountName $gen1AccountName      
-
+        -accountName $gen1AccountName
      
         $gen2FileDetails = & "$PSScriptRoot\GetGen2Inventory.ps1"  `
         -subscriptionId $subscriptionId `
@@ -43,9 +43,9 @@ foreach($eachPipeline in $sourceConfigData.pipeline)
         -gen2FilePath $gen2Path
 
         & "$PSScriptRoot\CompareGen1AndGen2.ps1" `
-        -gen1Files $Gen1FileDetails `
+        -gen1Files $gen1FileDetails `
         -gen2Files $gen2FileDetails `
-        -ValidationResultFilePath $ResultFilePath `
+        -ValidationResultFilePath $resultFilePath `
         
     }
 }
