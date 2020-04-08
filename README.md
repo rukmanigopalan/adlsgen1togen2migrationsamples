@@ -4,24 +4,23 @@
 The purpose of this document is to provide a manual for the Incremental copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and Powershell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form of steps to follow to implement the solution from local machine.
 This guide covers the following tasks:
 
-   * Set up for Incremental copy pattern from Gen1 to Gen2 
+   * Set up kit for Incremental copy pattern from Gen1 to Gen2 
 
-   * Enumerating Gen1 and Gen2 data into CSV
+   * Data Validation of Gen1 and Gen2 
 
-   * Data Validation and Comparison between Gen1 and Gen2 data using CSV
-
+   
 ### Prerequisites 
-You need below:
+You need below for using Migration framework and Data validation :
 
 * An Azure account with an active subscription 
 
 * Resource group 
 
-* Azure Storage account with Data Lake Storage Gen1. For more details please refer to [create azure data lake storage for Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal).
+* Azure Storage account with Data Lake Storage Gen1. 
 
  * Azure Storage account with Data Lake Storage Gen2.For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* Service principal with permission on the subscription. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
+* Service principal account with read / write permission on the subscription. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
 * Azure Data Factory(v2) 
 
@@ -43,7 +42,7 @@ You need below:
 
 ## Steps to be followed
 
-### 1. Migration Pipeline Setup
+### 1. Migration Framework Setup
 This step will ensure that the configuration file is ready before running the azure data factory pipeline for incremental copy pattern. 
 The config file sample format is available on GitHub in [config file sample](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/Src/Migration/).
 
@@ -56,17 +55,17 @@ The downloaded migration folder will contain below listed contents :
 
 ![image](https://user-images.githubusercontent.com/62351942/78715961-02491d00-78d3-11ea-89e5-5132cf49898d.png)
 
-### Glossary on Contents 
+### Glossary of Contents 
 
-**1.DataFactoryV2Template** : This folder contain all the json templates which is being used for creating dynamic azure data factory.
+ * **DataFactoryV2Template** : This folder contain all the json templates which is being used for creating dynamic azure data factory.
 
-**2.InventoryInput.json** : This config file contains all the details of gen1 and gen2 ADLS. In this we have to list all the source and destination folders,which is being used to create data factory pipeline activities.Config pipeline elements contain number of pipelines to be created. We can have one time full load pipelines and incremental pipelines.
+ * **InventoryInput.json** : This config file contains all the details of gen1 and gen2 ADLS. In this we have to list all the source and      destination folders,which is being used to create data factory pipeline activities.Config pipeline elements contain number of            pipelines to be created. We can have one time full load pipelines and incremental pipelines.
 
-**Note** : Setting multiple pipelines and activities enables parallelism mechanism.
+     **Note** : Setting multiple pipelines and activities enables parallelism mechanism.
 
-**3.InvokeMethod.ps1**: This powershell script will execute PipelineConfig.ps1 and DataFactory.ps1
+ * **InvokeMethod.ps1**: This powershell script will execute PipelineConfig.ps1 and DataFactory.ps1
 
-**4.PipelineConfig.ps1** : This powershell script will create all the required json input data, which is being used in Datafactory.ps1 powershell.This will dynamically create the json file considering all the required inputs from InventoryInput.json file.
+ * **PipelineConfig.ps1** : This powershell script will create all the required json input data, which is being used in Datafactory.ps1      powershell.This will dynamically create the json file considering all the required inputs from InventoryInput.json file.
 
 **5.DataFactory.ps1** : This powershell will create the linked services, datasets and pipeline in sequence order,based on the input provided in InventoryInput.json
 
@@ -129,11 +128,13 @@ The downloaded migration folder will contain below listed contents :
 
 :heavy_check_mark: Check the data factory pipeline creation in ADF site 
 
+
+
 :heavy_check_mark: Data in forms of files and folders landed to Gen2 path.
 
 ### 3. Data Validation
 
-This step ensures that the new data is only migrated from Gen1 to Gen2.To validate the same process ,below is the sequence of functions being called out in a single script :
+This step ensures that the new data is only migrated from Gen1 to Gen2.To validate the same process ,below is the sequence of functions being called out :
 
    *  **ConnectToAzure** : This script will connect to Azure using pre defined and saved subscription details and credntials .
  
@@ -144,6 +145,8 @@ This step ensures that the new data is only migrated from Gen1 to Gen2.To valida
    *  **GetGen2Inventory** : This script will read the Gen2 file and folder details and save to buffer.
  
    *  **CompareGen1andGen2** : This script will compare the file and folder details between Gen1 and Gen2 and generate comparison report. 
+   
+  
 
 
 ### 4. Comparison Report
