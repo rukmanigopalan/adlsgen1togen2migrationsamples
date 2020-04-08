@@ -134,12 +134,9 @@ The downloaded migration folder will contain below listed contents :
 
 //Run the below script in Powershell
 
-	$PSScriptRoot
-
-	& "$PSScriptRoot\PipelineConfig.ps1"
-
-	& "$PSScriptRoot\DataFactory.ps1"
-
+			$PSScriptRoot
+			& "$PSScriptRoot\PipelineConfig.ps1"
+			& "$PSScriptRoot\DataFactory.ps1"
 ```
 
 
