@@ -170,7 +170,26 @@ This step ensures that the incremental data is only migrated from Gen1 to Gen2.T
  
    *  **CompareGen1andGen2** : This script will compare the file and folder details between Gen1 and Gen2 and generate comparison     		report.
    
-Run the script [StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
+**Run the script** [StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
+
+```scala
+
+// Run the command in Powershell
+
+$incrementalConfigRootPath = $PSScriptRoot + "\Configuration\IncrementalLoadConfig.json"
+
+$outerConfig = Get-Content -Raw -Path $incrementalConfigRootPath | ConvertFrom-Json
+
+$pipelineRunIdDetails = @{}
+
+foreach($eachPipeline in $outerConfig.pipeline)
+{       
+    $pipelineRunIdDetails.Add($eachPipeline.pipelineId,"")
+}
+
+& "$PSScriptRoot\Validation\InvokeValidation.ps1" -inputConfigFilePath $incrementalConfigRootPath -pipelineIds $pipelineRunIdDetails
+
+```
   
 ### 4. Data Comparison Report
 
