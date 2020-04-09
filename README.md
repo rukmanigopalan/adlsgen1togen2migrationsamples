@@ -24,13 +24,13 @@ You need below for using Migration framework and Data validation :
 
   **Note** : Open Powershell as admin
 
- ```scala
+ ```powershell
    // Run below code to enable running PS files
 
          Set-ExecutionPolicy Unrestricted
 	
 ```
-```scala
+```powershell
 
    // Run below commands in PS
 
@@ -85,7 +85,7 @@ The downloaded src folder will contain below listed contents :
 
 **Path for config file** : [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json)
 
-```scala
+```powershell
 
 //Below is the code snapshot for setting the configuration file to connect to azure data factory
 
@@ -105,7 +105,7 @@ The downloaded src folder will contain below listed contents :
 
 **Setting up and scheduling the Factory pipeline for Incremental copy pattern**
 
-```scala
+```powershell
 
 //Below is how to configure and schedule the data factory pipeline 
 
@@ -134,7 +134,7 @@ The downloaded src folder will contain below listed contents :
 
  **Run the script [StartIncrementalLoadMigration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadMigration.ps1)** to start the Incremental copy process 
  
- ```scala
+ ```powershell
  
  // Run the below script in PSE
  
@@ -179,7 +179,7 @@ This step ensures that the incremental data is only migrated from Gen1 to Gen2.T
    
 **Run the script** [StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
 
-```scala
+```powershell
 
 // Run the command in Powershell
 
@@ -216,7 +216,7 @@ This check will ensure after the Incremental copy pattern is completed and data 
 
 * **Stop the job scheduler** 
 
-```scala
+```powershell
 // Get Gen1 mountName 
 
 mountName = 'AdventureWorksProd'
@@ -225,7 +225,7 @@ mountName = 'AdventureWorksProd'
 
 * **Change and configure the mount path to Gen2 storage**
 
-```scala
+```powershell
 
 // Change the mount path and point to Gen2 storage 
 
