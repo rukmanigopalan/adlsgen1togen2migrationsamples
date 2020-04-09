@@ -39,23 +39,21 @@ This guide covers the following tasks:
 
   ```
 
-### Step 1. Migration Framework Setup
+### Migration Framework Setup
 
-* **Download the Github repo to your local machine** :
+* **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine** :
 
 ![image](https://user-images.githubusercontent.com/62351942/78865940-6105b800-79f3-11ea-9e8e-a39b597695cd.png)
 
 
-The folder contains all the source code required for the migration and validation of the gen1 and gen2 data.
-
- **Note** : To avoid security warning error --> Right click on the zip folder downloaded , Goto properties --> General --> Check unblock option under security section.
+ **Note** : To avoid security warning error --> Right click on the zip folder downloaded --> Goto properties --> General --> Check unblock option under security section.
 
 The downloaded src folder will contain below listed contents :
 
-![image](https://user-images.githubusercontent.com/62351942/78846271-14ed5000-79c0-11ea-8f83-90cb0925ed22.png)
+![image](https://user-images.githubusercontent.com/62351942/78938131-897aca00-7a66-11ea-86ad-42ad2a80399e.png)
 
 
-### Glossary of Contents 
+#### Glossary of Contents 
 
  * **Configuration** : This folder will contain the configuration file [IncrementalLoadConfig.json]( https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration). It will contain all the details of Gen1 and Gen2 ADLS along with source and destination path.
 
