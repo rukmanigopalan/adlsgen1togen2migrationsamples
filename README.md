@@ -207,7 +207,7 @@ The CSV file will show the matched and unmatched records with file name , Gen1 F
 
 This check will ensure after the Incremental copy pattern is completed and data is validated , the mount path in the Azure data bricks script is pointed to the Gen2 path.
 
-** **Stop the job scheduler** 
+* **Stop the job scheduler** 
 
 ```scala
 // Get Gen1 mountName 
@@ -216,7 +216,7 @@ mountName = 'AdventureWorksProd'
 
 ```
 
-**Change and configure the mount path to Gen2 storage**
+* **Change and configure the mount path to Gen2 storage**
 
 ```scala
 
@@ -238,8 +238,10 @@ mountName = 'AdventureWorksProd'
   
 ```
 
-**Re schedule the job scheduler**
-**Check the new files getting generated at Gen2 root folder path**
+* **Re schedule the job scheduler**
+* **Check for the new files getting generated at Gen2 root folder path**
+
+The above steps will conclude that the mount path is changed and pointing to Gen2 now. The data will start flowing to Gen2 .
 
 
 ## Reach out to us
