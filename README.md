@@ -183,11 +183,11 @@ The CSV file will show the matched and unmatched records with file name , Gen1 F
 
 ![image](https://user-images.githubusercontent.com/62351942/78856720-51c74000-79dc-11ea-8b20-a718fc35ae36.png)
 
-**Note ** : IsMatching status = Yes (For matched records ) and No (Unmatched records)
+**Note** : IsMatching status = Yes (For matched records ) and No (Unmatched records)
 
 ### 5. Application Migration check 
 
-This check will ensure after the Incremental copy pattern is completed and data is validated , the mount path in the Azure data bricks is pointed to the Gen2 path.
+This check will ensure after the Incremental copy pattern is completed and data is validated , the mount path in the Azure data bricks script is pointed to the Gen2 path.
 
 **Change and configure the mount path to Gen2 storage**
 
@@ -195,19 +195,19 @@ This check will ensure after the Incremental copy pattern is completed and data 
 
 // Change the mount path and point to Gen2 storage 
 
-     		# DBTITLE 1,Mounting the Gen2 storage
-		mountName = ''  // Name of the storage container
-		configs_Blob = {"fs.azure.account.key.destndatalakestoregen2.blob.core.windows.net": dbutils.secrets.get(scope =   	"Gen2migrationSP", key = "Gen2AccountKey")}
-		mounts = [str(i) for i in dbutils.fs.ls('/mnt/')]
-		if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=0)" in mounts : 
-  		dbutils.fs.unmount("/mnt/"+mountName+"/")
-  		print("Mounting the storage")
-  		dbutils.fs.mount(
-  		source = "wasbs://gen1sample@destndatalakestoregen2.blob.core.windows.net/", // Provide the Gen2 path here to change the mount path
-  		mount_point = "/mnt/"+mountName+"/",
-  		extra_configs = configs_Blob)
-  		print(mountName + " got mounted")
-  		print("Mountpoint:", "/mnt/" +mountName + "/")
+     	# DBTITLE 1,Mounting the Gen2 storage
+	mountName = ''  // Name of the storage container
+	configs_Blob = {"fs.azure.account.key.destndatalakestoregen2.blob.core.windows.net": dbutils.secrets.get(scope =   	"Gen2migrationSP", key = "Gen2AccountKey")}
+	mounts = [str(i) for i in dbutils.fs.ls('/mnt/')]
+	if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=0)" in mounts : 
+  	dbutils.fs.unmount("/mnt/"+mountName+"/")
+  	print("Mounting the storage")
+  	dbutils.fs.mount(
+  	source = "wasbs://gen1sample@destndatalakestoregen2.blob.core.windows.net/", // Provide the Gen2 path here to change the mount path
+  	mount_point = "/mnt/"+mountName+"/",
+  	extra_configs = configs_Blob)
+  	print(mountName + " got mounted")
+  	print("Mountpoint:", "/mnt/" +mountName + "/")
   
 ```
 
