@@ -14,10 +14,7 @@ function GetGen1DataList {
         [string] $cutofftime
         )
 
-   Write-Host "Getting ADL Gen1 File details" -ForegroundColor Yellow
-   Write-Host "ADL Gen1 Account: $($accountName)"
-   Write-Host "ADL Gen1 Root Path: $($filePath)"
-   Write-Host "`n"
+
    
     # convert cutofftime to int
 
@@ -64,7 +61,7 @@ $Gen1AllAttributes | select Path, Name, Length
 
 
 
-Write-Host "Finished getting ADL Gen1 File details" -ForegroundColor Green
-
+  Write-Host "Finished getting ADL Gen1 File details" -ForegroundColor Green
+  Write-Host "`n"
 
 
