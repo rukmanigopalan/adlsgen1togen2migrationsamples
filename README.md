@@ -41,7 +41,7 @@ This guide covers the following tasks:
 
 ### Migration Framework Setup
 
-#### Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine** :
+ * **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine** :
 
 ![image](https://user-images.githubusercontent.com/62351942/78865940-6105b800-79f3-11ea-9e8e-a39b597695cd.png)
 
@@ -64,7 +64,7 @@ The downloaded src folder will contain below listed contents :
   **Note** : DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The [Full load Migration and Validation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load from Gen1 to Gen2.
   
  
-#### Configuration file setup:
+ * **Configuration file setup** :
 
 **Path for config file** : [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json)
 
