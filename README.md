@@ -142,6 +142,7 @@ The downloaded src folder will contain below listed contents :
 ### 2. Migration status check 
 
 :heavy_check_mark: Check the data factory pipeline creation in ADF  
+
 You can check the pipelines created in the azure data factory like :
 
 ![image](https://user-images.githubusercontent.com/62351942/78803126-776c2f00-7973-11ea-94cf-1c0d6de20e64.png)
