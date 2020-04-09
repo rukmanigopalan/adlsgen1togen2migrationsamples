@@ -50,7 +50,9 @@ You need below for using Migration framework and Data validation :
 This step will ensure that the configuration file is ready before running the azure data factory pipeline for incremental copy pattern. 
 
 ### 1.1 Download the repo to your local machine :
-![image](https://user-images.githubusercontent.com/62353482/78593702-e4f54f80-77fb-11ea-8bfb-2ecc8e8ed757.png) 
+
+![image](https://user-images.githubusercontent.com/62351942/78865940-6105b800-79f3-11ea-9e8e-a39b597695cd.png)
+
 
  **Note** : To avoid security warning error --> Open the zip folder , right click and Goto properties --> General --> Check unblock option under security section.
 
