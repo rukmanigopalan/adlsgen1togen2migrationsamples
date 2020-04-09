@@ -30,9 +30,9 @@ You need below for using Migration framework and Data validation :
          Set-ExecutionPolicy Unrestricted
 	
 ```
-```powershell
+// Check for the below modules in PS . If not existing,Install one by one :
 
-   // Run below commands in PS
+```powershell
 
        Install-Module Az.Accounts -AllowClobber -Force 
        Install-Module Az.DataFactory -AllowClobber -Force
@@ -56,7 +56,7 @@ This step will ensure that the configuration file is ready before running the az
 
 This folder contains all the source code required for the migration and validation of the gen1 and gen2 data.
 
- **Note** : To avoid security warning error --> Open the zip folder , right click and Goto properties --> General --> Check unblock option under security section.
+ **Note** : To avoid security warning error --> Right click on the zip folder downloaded , Goto properties --> General --> Check unblock option under security section.
 
 The downloaded src folder will contain below listed contents :
 
@@ -67,7 +67,7 @@ The downloaded src folder will contain below listed contents :
 
  * **Configuration** : This folder will contain the configuration file [IncrementalLoadConfig.json]( https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration). It will contain all the details of Gen1 and Gen2 ADLS along with source and destination path.
 
-  **Note** : Setting multiple pipelines and activities enables parallelism mechanism.
+   **Note** : Setting multiple pipelines and activities enables parallelism mechanism.
      
  * **Migration** : This folder will contain all the json files , templates which will be used to create dynamic data factory pipeline      and copy the data from Gen1 path to Gen2 container.
 
