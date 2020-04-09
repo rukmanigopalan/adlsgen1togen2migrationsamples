@@ -6,7 +6,7 @@ This guide covers the following tasks:
 
    * Set up kit for Incremental copy pattern from Gen1 to Gen2 
 
-   * Data Validation of Gen1 and Gen2 
+   * Data Validation between Gen1 and Gen2 
 
    
 ### Prerequisites 
