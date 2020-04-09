@@ -70,16 +70,16 @@ The downloaded src folder will contain below listed contents :
 
 // Below is the code snapshot for setting the configuration file to connect to azure data factory
 
-  "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
-  "gen2DestinationRootPath" : "https://<<Enter the Gen2 detsination root path>>.dfs.core.windows.net", 
-  "tenantId" : "<< Enter the tenantId>>", 
-  "subscriptionId" : "<<Enter the subscriptionId>>", 
-  "servicePrincipleId" : "<<Enter the servicePrincipleId>>", 
-  "servicePrincipleSecret" : "<<Enter the servicePrincipleSecret Key>>", 
-  "factoryName" : "<<Enter the factoryName>>", 
-  "resourceGroupName" : "<<Enter the resourceGroupName under which the azure data factory pipeline will be created>>",
-  "location" : "<<Enter the location>>", 
-  "overwrite" : "Enter the value" //  True = It will overwrite the existing data factory ,False = It will skip creating data factory
+	  "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
+	  "gen2DestinationRootPath" : "https://<<Enter the Gen2 detsination root path>>.dfs.core.windows.net", 
+	  "tenantId" : "<< Enter the tenantId>>", 
+	  "subscriptionId" : "<<Enter the subscriptionId>>", 
+	  "servicePrincipleId" : "<<Enter the servicePrincipleId>>", 
+	  "servicePrincipleSecret" : "<<Enter the servicePrincipleSecret Key>>", 
+	  "factoryName" : "<<Enter the factoryName>>", 
+	  "resourceGroupName" : "<<Enter the resourceGroupName under which the azure data factory pipeline will be created>>",
+	  "location" : "<<Enter the location>>", 
+	  "overwrite" : "Enter the value" //  True = It will overwrite the existing data factory ,False = It will skip creating data factory
 
 ```
 
@@ -87,38 +87,32 @@ The downloaded src folder will contain below listed contents :
 
 ```powershell
 
-// Below is how to configure and schedule the data factory pipeline 
-
-
-{
-		"pipelineId" : "Enter disticnt pipeline id eg 1,2,3,..40", 
-		"isChurningOrIsIncremental" : "true",
-		"triggerFrequency" : "Provide the frequency in Minute or Hour",
-		"triggerInterval" : "Enter the time interval for scheduling (Minimum trigger interval time = 15 minute  ",
-		"triggerUTCStartTime" : "Enter UTC time to start the factory for Incremental copy pattern .Eg 2020-04-09T18:00:00Z",
-		"triggerUTCEndTime" : "Enter the UTC time to end the factory for Incremental copy pattern. Eg 2020-04-10T13:00:00Z",
-		"pipelineDetails":[			
-			{	
-			        // Activity 1 //
-				"sourcePath" : "Enter the Gen1 full path. Eg: /path-name",
-				"destinationPath" : "Enter the Gen2 full path.Eg: path-name",
-				"destinationContainer" : "Enter the Gen2 container name"
-			},
-			{	
-			        // Activity 2 //
-				"sourcePath" : "Enter the Gen1 full path. Eg: /path-name",
-				"destinationPath" : "Enter the Gen2 full path.Eg: path-name",
-				"destinationContainer" : "Enter the Gen2 container name"
-			}
-		]
-	}
-
+	  "pipelineId" : "Enter disticnt pipeline id eg 1,2,3,..40", 
+	  "isChurningOrIsIncremental" : "true",
+	  "triggerFrequency" : "Provide the frequency in Minute or Hour",
+	  "triggerInterval" : "Enter the time interval for scheduling (Minimum trigger interval time = 15 minute  ",
+	  "triggerUTCStartTime" : "Enter UTC time to start the factory for Incremental copy pattern .Eg 2020-04-09T18:00:00Z",
+	  "triggerUTCEndTime" : "Enter the UTC time to end the factory for Incremental copy pattern. Eg 2020-04-10T13:00:00Z",
+	  "pipelineDetails":[		
+	  
+  // Activity 1 //
+  	  "sourcePath" : "Enter the Gen1 full path. Eg: /path-name",
+	  "destinationPath" : "Enter the Gen2 full path.Eg: path-name",
+	  "destinationContainer" : "Enter the Gen2 container name"
+  // Activity 2 //
+   	  "sourcePath" : "Enter the Gen1 full path. Eg: /path-name",
+	  "destinationPath" : "Enter the Gen2 full path.Eg: path-name",
+	  "destinationContainer" : "Enter the Gen2 container name"
+  
+  // Note : Maximum activities per pipeline is 40
+  
 ```
+
  **Note** Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/Configuration/IncrementalLoadConfig.json)script
  
-### 1.3 Azure data factory pipeline execution 
+### 3. Azure data factory pipeline execution 
 
- **Run the script [StartIncrementalLoadMigration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadMigration.ps1)** to start the Incremental copy process 
+ Run the script [StartIncrementalLoadMigration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadMigration.ps1) to start the Incremental copy process 
  
  ```powershell
  
@@ -132,21 +126,18 @@ The downloaded src folder will contain below listed contents :
  
  ```
 
-### 2. Migration status check 
+### 4. Migration process  
 
-:heavy_check_mark: Check the data factory pipeline creation in ADF  
+ * The data factory pipeline is created in Azure Data Factory 
+ 
+  ![image](https://user-images.githubusercontent.com/62351942/78803126-776c2f00-7973-11ea-94cf-1c0d6de20e64.png)
 
-You can check the pipelines created in the azure data factory like :
-
-![image](https://user-images.githubusercontent.com/62351942/78803126-776c2f00-7973-11ea-94cf-1c0d6de20e64.png)
-
-
-Once the pipeline run is completed , please check for the files copied to Gen2 container 
+ * Once the pipeline run is completed , check for the files copied to Gen2 container 
 
 ![image](https://user-images.githubusercontent.com/62351942/78804420-f0b85180-7974-11ea-8777-c4fd25add31f.png)
 
 
-:heavy_check_mark: Data (in forms of files and folders) landed to Gen2 container path.
+ * Data (folders and files) is landed to Gen2 container path.
 
 
 ### 3. Data Validation
