@@ -206,7 +206,8 @@ Once the data between Gen1 and Gen2 is compared and validated , the result summa
 
 The CSV file will show the matched and unmatched records with file name , Gen1 File path , Gen2 file path ,Gen1 file size ,Gen2 File size and Ismatching status
 
-![image](https://user-images.githubusercontent.com/62351942/78856720-51c74000-79dc-11ea-8b20-a718fc35ae36.png)
+![image](https://user-images.githubusercontent.com/62351942/78914832-da2afc80-7a3f-11ea-8e94-b788ee2bd710.png)
+
 
 **Note** : IsMatching status = Yes (For matched records ) and No (Unmatched records)
 
