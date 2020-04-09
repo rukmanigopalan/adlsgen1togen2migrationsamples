@@ -170,8 +170,7 @@ This step ensures that the incremental data is only migrated from Gen1 to Gen2.T
  
    *  **CompareGen1andGen2** : This script will compare the file and folder details between Gen1 and Gen2 and generate comparison     		report.
    
-  Once the azure data factory pipeline run status is succeeded , run the script [StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell .
-  
+Run the script [StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
   
 ### 4. Data Comparison Report
 
@@ -196,14 +195,14 @@ This check will ensure after the Incremental copy pattern is completed and data 
 // Change the mount path and point to Gen2 storage 
 
      	# DBTITLE 1,Mounting the Gen2 storage
-	mountName = ''  // Name of the storage container
+	mountName = ''  // Name of the Gen2 storage container
 	configs_Blob = {"fs.azure.account.key.destndatalakestoregen2.blob.core.windows.net": dbutils.secrets.get(scope =   	"Gen2migrationSP", key = "Gen2AccountKey")}
 	mounts = [str(i) for i in dbutils.fs.ls('/mnt/')]
 	if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=0)" in mounts : 
   	dbutils.fs.unmount("/mnt/"+mountName+"/")
   	print("Mounting the storage")
   	dbutils.fs.mount(
-  	source = "wasbs://gen1sample@destndatalakestoregen2.blob.core.windows.net/", // Provide the Gen2 path here to change the mount path
+  	source = "wasbs://~~gen1sample~~@destndatalakestoregen2.blob.core.windows.net/", // Provide the Gen2 container name 
   	mount_point = "/mnt/"+mountName+"/",
   	extra_configs = configs_Blob)
   	print(mountName + " got mounted")
