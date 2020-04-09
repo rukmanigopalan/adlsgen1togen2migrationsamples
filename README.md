@@ -8,7 +8,7 @@ This guide covers the following tasks:
 
    * Set up kit for Incremental copy pattern from Gen1 to Gen2 
 
-   * Data Validation between Gen1 and Gen2 
+   * Data Validation between Gen1 and Gen2 post migration  
    
  
 ### Prerequisites 
@@ -23,7 +23,7 @@ This guide covers the following tasks:
 
 * **Windows Powershell ISE**.
 
-  **Note** : Run Powershell as administrator
+  **Note** : Run as administrator
 
  ```powershell
    // Run below code to enable running PS files
@@ -39,18 +39,14 @@ This guide covers the following tasks:
 
   ```
 
-## Steps to be followed
+### Step 1. Migration Framework Setup
 
-### 1. Migration Framework Setup
-
-This step will ensure that the configuration file is ready before running the azure data factory pipeline for incremental copy pattern. 
-
-### 1.1 Download the Github repo to your local machine :
+* **Download the Github repo to your local machine** :
 
 ![image](https://user-images.githubusercontent.com/62351942/78865940-6105b800-79f3-11ea-9e8e-a39b597695cd.png)
 
 
-This folder contains all the source code required for the migration and validation of the gen1 and gen2 data.
+The folder contains all the source code required for the migration and validation of the gen1 and gen2 data.
 
  **Note** : To avoid security warning error --> Right click on the zip folder downloaded , Goto properties --> General --> Check unblock option under security section.
 
