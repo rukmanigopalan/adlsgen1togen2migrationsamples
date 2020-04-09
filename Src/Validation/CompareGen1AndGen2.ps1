@@ -39,11 +39,12 @@ try{
         }
     }
 
-$MatchResult | Select FileName, Gen1Filepath,Gen2FilePath, Gen1FileSize,Gen2FileSize,IsMatching  | Export-Csv $ValidationResultFilePath
+$MatchResult | Select FileName, Gen1Filepath,Gen2FilePath, Gen1FileSize,Gen2FileSize,IsMatching  | Export-Csv $ValidationResultFilePath -NoTypeInformation
   
   
 Write-Host "`n"
-Write-Host "Finished comparison. Please check the validation result at: $($ValidationResultFilePath)" -ForegroundColor Green
+Write-Host "Finished comparison. Please check the validation result at below path: " -ForegroundColor Green
+Write-Host "$($ValidationResultFilePath)" 
   
 }
 catch
