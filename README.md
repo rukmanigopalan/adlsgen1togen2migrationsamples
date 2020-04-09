@@ -26,8 +26,17 @@ You need below for using Migration framework and Data validation :
 
 * **Windows Powershell ISE**.
 
-  
+**Note** : Open Powershell as admin
+
 ```scala
+// Run below code to enable running PS files
+
+         Set-ExecutionPolicy Unrestricted
+	
+```
+
+```scala
+
 // Run below commands in PS
 
        Install-Module Az.Accounts -AllowClobber -Force 
@@ -38,18 +47,11 @@ You need below for using Migration framework and Data validation :
        Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
 
 ```
-**Note** : Open Powershell as admin
-
-```scala
-// Run below code to enable running PS files
-
-         Set-ExecutionPolicy Unrestricted
-	
-```
 
 ## Steps to be followed
 
 ### 1. Migration Framework Setup
+
 This step will ensure that the configuration file is ready before running the azure data factory pipeline for incremental copy pattern. 
 The config file sample format is available on GitHub in [config file sample](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/Src/Migration/).
 
@@ -58,17 +60,22 @@ The config file sample format is available on GitHub in [config file sample](htt
 
  **Note** : To avoid security warning error --> Open the zip folder , right click and Goto properties --> General --> Check unblock option under security section.
 
-The downloaded migration folder will contain below listed contents :
+The downloaded src folder will contain below listed contents :
 
-![image](https://user-images.githubusercontent.com/62351942/78715961-02491d00-78d3-11ea-89e5-5132cf49898d.png)
+![image](https://user-images.githubusercontent.com/62351942/78846271-14ed5000-79c0-11ea-8f83-90cb0925ed22.png)
+
 
 ### Glossary of Contents 
 
- * **DataFactoryV2Template** : This folder contain all the json templates which is being used for creating dynamic azure data factory.
-
- *  **InventoryInput.json** : This config file contains all the details of gen1 and gen2 ADLS. In this we have to list all the source and      destination folders,which is being used to create data factory pipeline activities.Config pipeline elements contain number of            pipelines to be created. We can have one time full load pipelines and incremental pipelines.
+* **Configuration** : This folder will contain the configuration file [IncrementalLoadConfig.json]( ). This will contain all the details of Gen1 and Gen2 ADLS and list all source and destinations path used to run the data factory pipeline and schedule the frequency of copy activity.
 
      **Note** : Setting multiple pipelines and activities enables parallelism mechanism.
+     
+ * **Migration** : This folder will contain all the 
+
+ * **DataFactoryV2Template** : This folder contain all the json templates which is being used for creating dynamic azure data factory.
+
+
 
  *  **InvokeMethod.ps1**: This powershell script will execute PipelineConfig.ps1 and DataFactory.ps1
 
@@ -92,7 +99,7 @@ The downloaded migration folder will contain below listed contents :
   "servicePrincipleId" : "<<servicePrincipleId>>", // Provide the servicePrincipleId
   "servicePrincipleSecret" : "<<servicePrincipleSecret>>", // Provide the servicePrinciplesecret key 
   "factoryName" : "<<factoryName>>", // Give the factory name e.g Gen1ToGen2DataFactory 
-  "resourceGroupName" : "<<resourceGroupName>>", // Give the resource group name 
+  "resourceGroupName" : "<<resourceGroupName>>", // Give the resource group name where to create azure factory pipeline
   "location" : "<<location>>", // Provide the Data factory location 
   "overwrite" : "true", // default 
 
@@ -165,7 +172,7 @@ You can check the Gen1 files
 
 ### 3. Data Validation
 
-This step ensures that the new data is only migrated from Gen1 to Gen2.To validate the same process ,below is the sequence of functions being called out :
+This step ensures that the incremental data is only migrated from Gen1 to Gen2.To validate this ,below are the sequence of functions being called out :
 
    *  **ConnectToAzure** : This script will connect to Azure using pre defined and saved subscription details and credntials .
  
@@ -181,6 +188,8 @@ This step ensures that the new data is only migrated from Gen1 to Gen2.To valida
 
 
 ### 4. Comparison Report
+
+Once the data between Gen1 and Gen2 is compared and validated , log files will be generated at specified path which will report out matched and unmatched status.
 
 
 ### 5. Application Migration check 
