@@ -12,32 +12,25 @@ This guide covers the following tasks:
 ### Prerequisites 
 You need below for using Migration framework and Data validation :
 
-* **An Azure account with an active subscription** 
+* **Azure Data Lake Storage Gen1**
 
-* **Azure Storage account with Data Lake Storage Gen1**. 
+* **Azure Data Lake Storage Gen2**.For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* **Resource group to hold the storage account**
-
- * **Azure Storage account with Data Lake Storage Gen2**.For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
-
-* **Service principal account with read / write permission on the subscription**. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
-
-* **Azure Data Factory(v2)** 
+* **Service principal account with read / write (contributor) permission on the resource group**. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
 * **Windows Powershell ISE**.
 
-**Note** : Open Powershell as admin
+  **Note** : Open Powershell as admin
 
-```scala
-// Run below code to enable running PS files
+ ```scala
+   // Run below code to enable running PS files
 
          Set-ExecutionPolicy Unrestricted
 	
 ```
-
 ```scala
 
-// Run below commands in PS
+   // Run below commands in PS
 
        Install-Module Az.Accounts -AllowClobber -Force 
        Install-Module Az.DataFactory -AllowClobber -Force
@@ -53,7 +46,7 @@ You need below for using Migration framework and Data validation :
 ### 1. Migration Framework Setup
 
 This step will ensure that the configuration file is ready before running the azure data factory pipeline for incremental copy pattern. 
-The config file sample format is available on GitHub in [config file sample](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/Src/Migration/).
+The config file sample format is available on GitHub in [config file sample](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/Src/).
 
 ### 1.1 Download the repo to your local machine :
 ![image](https://user-images.githubusercontent.com/62353482/78593702-e4f54f80-77fb-11ea-8bfb-2ecc8e8ed757.png) 
@@ -67,25 +60,22 @@ The downloaded src folder will contain below listed contents :
 
 ### Glossary of Contents 
 
-* **Configuration** : This folder will contain the configuration file [IncrementalLoadConfig.json]( ). This will contain all the details of Gen1 and Gen2 ADLS and list all source and destinations path used to run the data factory pipeline and schedule the frequency of copy activity.
+ * **Configuration** : This folder will contain the configuration file [IncrementalLoadConfig.json]( ). It will contain all the details    of Gen1 and Gen2 ADLS along with source and destination path.
 
      **Note** : Setting multiple pipelines and activities enables parallelism mechanism.
      
- * **Migration** : This folder will contain all the 
+ * **Migration** : This folder will contain all the json files , templates which will be used to create dynamic data factory pipeline      and copy the data from Gen1 path to Gen2 container.
 
- * **DataFactoryV2Template** : This folder contain all the json templates which is being used for creating dynamic azure data factory.
-
-
-
- *  **InvokeMethod.ps1**: This powershell script will execute PipelineConfig.ps1 and DataFactory.ps1
-
- *  **PipelineConfig.ps1** : This powershell script will create all the required json input data, which is being used in Datafactory.ps1      powershell.This will dynamically create the json file considering all the required inputs from InventoryInput.json file.
-
-  * **DataFactory.ps1** : This powershell will create the linked services, datasets and pipeline in sequence order,based on the input         provided in InventoryInput.json
-
+ * **Validation** : This folder will contain powershell scripts which will read the Gen1 and Gen2 data and validate it. The      comparison logs will be created in this folder[Output] ()
+ 
+ * **StartIncrementalLoadMigration** : The script to invoke the migration acitvity by creating increment pipeline in the data factory.
+ 
+ * **StartIncrementalLoadValidation** : The script to invoke the Validation process which will compare the data between Gen1 and Gen2 
+   and generate logs in the output folder under Validation.
+ 
 ### 1.2 Configuration file set up 
 
-**Path for config file** : [InventoryInput.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InventoryInputs.json)
+**Path for config file** : [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json)
 
 ```scala
 
@@ -93,15 +83,15 @@ The downloaded src folder will contain below listed contents :
 
 {
   "gen1SourceRootPath" : "https://<<adlsgen1>>.azuredatalakestore.net/webhdfs/v1", // Provide the source Gen1 root path 
-  "gen2SourceRootPath" : "https://<<adlsgen2>>.dfs.core.windows.net", // Provide the Gen2 source root path
+  "gen2DestinationRootPath" : "https://<<adlsgen2>>.dfs.core.windows.net", // Provide the Gen2 destination root path
   "tenantId" : "<<tenantId>>", // Provide the tenantId .Where to find TenantId --> Go to Portal.azure.com > Azure Active Directory > Properties. The directory ID it shows there is your tennant ID
   "subscriptionId" : "<<subscriptionId>>", // Provide the SubscriptionId 
   "servicePrincipleId" : "<<servicePrincipleId>>", // Provide the servicePrincipleId
   "servicePrincipleSecret" : "<<servicePrincipleSecret>>", // Provide the servicePrinciplesecret key 
   "factoryName" : "<<factoryName>>", // Give the factory name e.g Gen1ToGen2DataFactory 
-  "resourceGroupName" : "<<resourceGroupName>>", // Give the resource group name where to create azure factory pipeline
+  "resourceGroupName" : "<<resourceGroupName>>", // Give the resource group name under which azure data factory pipeline will be created
   "location" : "<<location>>", // Provide the Data factory location 
-  "overwrite" : "true", // default 
+  "overwrite" : "true", //  True = It will overwrite all the existing data factory   , False = It will skip creating data factory
 
 ```
 
@@ -113,24 +103,23 @@ The downloaded src folder will contain below listed contents :
 
  "pipeline": [  
 	{
-		"pipelineId" : "1",   // Set this value between 1 and 50 to start factory and run in parallel  
+		"pipelineId" : "1",   //  Set distinct pipeline id (Note : Maximum pipelines created under data factory is 40)
 		"isChurningOrIsIncremental" : "true",   // Value is set to true for Incremental copy pattern
-		"triggerFrequency" : "Minute",   // frequency in units 
-		"triggerInterval" : "15",   // Set the time interval for scheduling 
-		"triggerUTCStartTime" : "2020-04-07T13:00:00Z",   // Provide the UTC time to start the factory 
+		"triggerFrequency" : "Minute",   // frequency in units (can be Minute or Hour)
+		"triggerInterval" : "15",   // Set the time interval for scheduling the factory pipeline ( Minimum trigger interval Time is 15 minutes )
+		"triggerUTCStartTime" : "2020-04-07T13:00:00Z",   // Provide the UTC time to start the factory for Incremental copy 
+		"triggerUTCEndTime" : "2020-04-08T13:00:00Z",   // Provide the UTC time to end the factory for Incremental copy (Note : End time > Start Time )
 		"pipelineDetails":[			
 			{			
-				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source path for first folder 
-				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",   // Give the Gen2 landing path
-				"destinationContainer" : "gen1sample"  // Give the destination container name 
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source full path 
+				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",   // Give the Gen2 destination full path excluding container name 
+				"destinationContainer" : "gen1sample"  // Give the Gen2 destination container name 
 			},
 			{			
-				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",  // Give the Gen1 source path for second folder 
-				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales", // Give the Gen2 landing path 
-				"destinationContainer" : "gen1sample"  // Give the destination container name
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",  
+				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales", 
+				"destinationContainer" : "gen1sample"  
 				
-// The source path , destination path and destination container name will be repeated for all Gen1 folders existing in the path
-
 ```
 
 ### 1.3 Azure data factory pipeline execution 
