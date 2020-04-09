@@ -41,32 +41,32 @@ This guide covers the following tasks:
 
 ### Migration Framework Setup
 
- 1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine** :
+1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine** :
 
 ![image](https://user-images.githubusercontent.com/62351942/78865940-6105b800-79f3-11ea-9e8e-a39b597695cd.png)
 
 
- **Note** : To avoid security warning error --> Right click on the zip folder downloaded --> Goto properties --> General --> Check unblock option under security section.
+**Note** : To avoid security warning error --> Right click on the zip folder downloaded --> Goto properties --> General --> Check unblock option under security section.
 
 The downloaded src folder will contain below listed contents :
 
- * **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json]( https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration) having all the details of recource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
+* **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json]( https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration) having all the details of recource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
- * **Migration** : This contains the json files , templates used to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
+* **Migration** : This contains the json files , templates used to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
  
- * **Validation** : This folder has powershell scripts which will read the Gen1 and Gen2 data and validate it post migration.
+* **Validation** : This folder has powershell scripts which will read the Gen1 and Gen2 data and validate it post migration.
  
- * **StartIncrementalLoadMigration** : The script to invoke the migration acitvity by creating increment pipeline in the data factory.
+* **StartIncrementalLoadMigration** : The script to invoke the migration acitvity by creating increment pipeline in the data factory.
  
- * **StartIncrementalLoadValidation** : The script to invoke the Validation process which will compare the data between Gen1 and Gen2 
+* **StartIncrementalLoadValidation** : The script to invoke the Validation process which will compare the data between Gen1 and Gen2 
    and generate logs in the output folder under Validation.
    
-  **Note** : DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The [Full load Migration and Validation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load from Gen1 to Gen2.
+ **Note** : DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The  [Full load Migration and Validation](https://github.com/rukmani- msft/adlsgen1togen2migrationsamples/blob/develop/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load  from Gen1 to Gen2.
   
  
- 2. **Configuration file setup** :
+ 2. **Set up the Configuration file to connect to azure data factory** :
 
- **Path for config file** : [IncrementalLoadConfig.json](https://github.com/rukmani- msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json)
+ Path to the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani- msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json) 
 
 ```powershell
 
