@@ -125,16 +125,19 @@ The downloaded src folder will contain below listed contents :
 
 ### 1.3 Azure data factory pipeline execution 
 
- **Run the [InvokeMethod script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/Migration/InvokeMethod.ps1)**
+ **Run the script [StartIncrementalLoadMigration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadMigration.ps1)** to start the Incremental copy process 
  
-``` scala
+ ```scala
+ 
+ // Run the below script in PSE
+ 
+ $incrementalConfigRootPath = $PSScriptRoot + "\Configuration\IncrementalLoadConfig.json"
 
-//Run the below script in Powershell
+ & "$PSScriptRoot\Migration\PipelineConfig.ps1" -inputConfigFilePath $incrementalConfigRootPath
 
-		$PSScriptRoot
-		& "$PSScriptRoot\PipelineConfig.ps1"
-		& "$PSScriptRoot\DataFactory.ps1"
-```
+ & "$PSScriptRoot\Migration\DataFactory.ps1" -inputConfigFilePath $incrementalConfigRootPath
+ 
+ ```
 
 ### 2. Migration status check 
 
