@@ -131,11 +131,11 @@ The downloaded src folder will contain below listed contents :
  
  // Run the below script in PSE
  
- $incrementalConfigRootPath = $PSScriptRoot + "\Configuration\IncrementalLoadConfig.json"
+ 	$incrementalConfigRootPath = $PSScriptRoot + "\Configuration\IncrementalLoadConfig.json"
 
- & "$PSScriptRoot\Migration\PipelineConfig.ps1" -inputConfigFilePath $incrementalConfigRootPath
+ 	& "$PSScriptRoot\Migration\PipelineConfig.ps1" -inputConfigFilePath $incrementalConfigRootPath
 
- & "$PSScriptRoot\Migration\DataFactory.ps1" -inputConfigFilePath $incrementalConfigRootPath
+ 	& "$PSScriptRoot\Migration\DataFactory.ps1" -inputConfigFilePath $incrementalConfigRootPath
  
  ```
 
@@ -203,7 +203,7 @@ This check will ensure after the Incremental copy pattern is completed and data 
   		dbutils.fs.unmount("/mnt/"+mountName+"/")
   		print("Mounting the storage")
   		dbutils.fs.mount(
-  		source = "wasbs://gen1sample@destndatalakestoregen2.blob.core.windows.net/",
+  		source = "wasbs://gen1sample@destndatalakestoregen2.blob.core.windows.net/", // Provide the Gen2 path here to change the mount path
   		mount_point = "/mnt/"+mountName+"/",
   		extra_configs = configs_Blob)
   		print(mountName + " got mounted")
@@ -216,7 +216,7 @@ Re schedule the incremental pipeline and check the new data landing to the Gen2 
 
 ## Reach out to us
 
-### You found a bug or want to propose a feature?
+**You found a bug or want to propose a feature?**
 
 File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/issues/new).
 Make sure to remove any credential from your code before sharing it.
