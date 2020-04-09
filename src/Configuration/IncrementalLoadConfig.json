@@ -1,14 +1,14 @@
 {
   "gen1SourceRootPath" : "https://<<gen1AccountName>>.azuredatalakestore.net/webhdfs/v1",
   "gen2DestinationRootPath" : "https://<<gen2AccountName>>.dfs.core.windows.net",
-  "tenantId" : "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "tenantId" : "<<tenantId>>",
   "subscriptionId" : "<<subscriptionId>>",
   "servicePrincipleId" : "<<servicePrincipleId>>",
   "servicePrincipleSecret" : "<<servicePrincipleSecret>>",
-  "keyVaultName" : "Gen2MigrationKV",
-  "factoryName" : "Gen1ToGen2Factory1",
-  "resourceGroupName" : "Gen1ToGen2Migration",
-  "location" : "East US 2",
+  "keyVaultName" : "<<keyVaultName>>",
+  "factoryName" : "<<factoryName>>",
+  "resourceGroupName" : "<<resourceGroupName>>",
+  "location" : "<<location>>",
   "overwrite" : "true",
   "pipeline": [
 	{
@@ -16,18 +16,18 @@
 		"isChurningOrIsIncremental" : "true",
 		"triggerFrequency" : "Minute",
 		"triggerInterval" : "15",
-		"triggerUTCStartTime" : "2020-04-07T13:00:00Z",
-		"triggerUTCEndTime" : "2020-04-07T13:00:00Z",
+		"triggerUTCStartTime" : "2020-04-09T18:00:00Z",
+		"triggerUTCEndTime" : "2020-04-10T13:00:00Z",
 		"pipelineDetails":[			
 			{			
 				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",
 				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",
-				"destinationContainer" : "gen1sample"
+				"destinationContainer" : "samplecontainer"
 			},
 			{			
 				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",
 				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales",
-				"destinationContainer" : "gen1sample"
+				"destinationContainer" : "samplecontainer"
 			}
 		]
 	}
