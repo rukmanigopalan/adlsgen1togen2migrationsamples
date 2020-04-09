@@ -50,7 +50,7 @@ This guide covers the following tasks:
 
 The downloaded src folder will contain below listed contents :
 
-* **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json]( https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration) having all the details of recource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
+* **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration) having all the details of recource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
 * **Migration** : This contains the json files , templates used to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
  
@@ -61,7 +61,7 @@ The downloaded src folder will contain below listed contents :
 * **StartIncrementalLoadValidation** : The script to invoke the Validation process which will compare the data between Gen1 and Gen2 
    and generate logs in the output folder under Validation.
    
- **Note** : DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The  [Full load Migration and Validation](https://github.com/rukmani- msft/adlsgen1togen2migrationsamples/blob/develop/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load  from Gen1 to Gen2.
+ **Note** : DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The  [Full load Migration and Validation](https://github.com/rukmanimsft/adlsgen1togen2migrationsamples/blob/develop/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load  from Gen1 to Gen2.
   
  
  2. **Set up the Configuration file to connect to azure data factory** :
@@ -83,7 +83,7 @@ The downloaded src folder will contain below listed contents :
 
 ```
 
- Path to the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani- msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json) 
+ Path to the [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/Configuration/IncrementalLoadConfig.json) 
 
 **Setting up and scheduling the Factory pipeline for Incremental copy pattern**
 
