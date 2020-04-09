@@ -29,10 +29,10 @@ You need below for using Migration framework and Data validation :
 
          Set-ExecutionPolicy Unrestricted
 	
-```
-   // Check for the below modules in PS . If not existing,Install one by one :
+ ```
+    Check for the below modules in PS . If not existing,Install one by one :
 
-```powershell
+ ```powershell
 
       	 Install-Module Az.Accounts -AllowClobber -Force 
        	 Install-Module Az.DataFactory -AllowClobber -Force
@@ -41,7 +41,7 @@ You need below for using Migration framework and Data validation :
          Install-Module PowerShellGet –Repository PSGallery –Force
          Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
 
-```
+ ```
 
 ## Steps to be followed
 
