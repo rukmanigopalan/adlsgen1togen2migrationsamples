@@ -41,7 +41,7 @@ This guide covers the following tasks:
 
 ### Migration Framework Setup
 
- * **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine** :
+ 1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine** :
 
 ![image](https://user-images.githubusercontent.com/62351942/78865940-6105b800-79f3-11ea-9e8e-a39b597695cd.png)
 
@@ -64,18 +64,17 @@ The downloaded src folder will contain below listed contents :
   **Note** : DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The [Full load Migration and Validation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load from Gen1 to Gen2.
   
  
- * **Configuration file setup** :
+ 2. **Configuration file setup** :
 
-**Path for config file** : [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json)
+ **Path for config file** : [IncrementalLoadConfig.json](https://github.com/rukmani- msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json)
 
 ```powershell
 
 //Below is the code snapshot for setting the configuration file to connect to azure data factory
 
-{
   "gen1SourceRootPath" : "https://<<adlsgen1>>.azuredatalakestore.net/webhdfs/v1", // Provide the source Gen1 root path 
   "gen2DestinationRootPath" : "https://<<adlsgen2>>.dfs.core.windows.net", // Provide the Gen2 destination root path
-  "tenantId" : "<<tenantId>>", // Provide the tenantId .Where to find TenantId --> Go to Portal.azure.com > Azure Active Directory > Properties. The directory ID it shows there is your tennant ID
+  "tenantId" : "<<tenantId>>", // Provide the tenantId .Where to find TenantId --> Go to Portal.azure.com > Azure Active Directory >  Properties. The directory ID it shows there is your tennant ID
   "subscriptionId" : "<<subscriptionId>>", // Provide the SubscriptionId 
   "servicePrincipleId" : "<<servicePrincipleId>>", // Provide the servicePrincipleId
   "servicePrincipleSecret" : "<<servicePrincipleSecret>>", // Provide the servicePrinciplesecret key 
