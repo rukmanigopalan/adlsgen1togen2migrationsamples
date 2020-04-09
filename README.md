@@ -154,7 +154,7 @@ Once the pipeline run is completed , please check for the files copied to Gen2 c
 
 ### 3. Data Validation
 
-This step ensures that the incremental data is only migrated from Gen1 to Gen2.To validate this ,below are the sequence of functions being called out :
+This step ensures that the incremental data is only migrated from Gen1 to Gen2.To validate this , below are the sequence of scripts being called out :
 
    *  **ConnectToAzure** : This script will connect to Azure using pre defined and saved subscription details and credentials .
  
@@ -166,6 +166,7 @@ This step ensures that the incremental data is only migrated from Gen1 to Gen2.T
  
    *  **CompareGen1andGen2** : This script will compare the file and folder details between Gen1 and Gen2 and generate comparison     		report.
    
+  Once the azure data factory pipeline run status is succeeded , run the script StartIncrementalLoadValidation(https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell .
   
 ### 4. Data Comparison Report
 
