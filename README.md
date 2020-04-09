@@ -13,13 +13,13 @@ This guide covers the following tasks:
  
 ### Prerequisites 
 
-* **An Azure Subscription**
-
 * **Azure Data Lake Storage Gen1**
 
 * **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* **Service principal with read ,write and execute permission to the resource groups (Gen1 and Gen2)**. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
+* **Azure KeyVault** 
+
+* **Service principal with read ,write and execute permission to the resource group,key vault,data lake store Gen1 and data lake store Gen2 **. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
 * **Windows Powershell ISE**.
 
@@ -66,6 +66,10 @@ The downloaded src folder will contain below listed contents :
  
  2. **Set up the Configuration file to connect to azure data factory** :
 
+* **Prerequisites** : Make an entry of Gen2 connection string with below highlighted name in key vault.
+
+![image](https://user-images.githubusercontent.com/62351942/78945763-efbb1900-7a75-11ea-9bc5-3e5012078487.png)
+
 ```powershell
 
 // Below is the code snapshot for setting the configuration file to connect to azure data factory
@@ -110,37 +114,21 @@ The downloaded src folder will contain below listed contents :
 
  **Note** Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/Configuration/IncrementalLoadConfig.json)script
  
-### 3. Azure data factory pipeline execution 
+### 3. Azure data factory pipeline creation and execution 
 
- Run the script [StartIncrementalLoadMigration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadMigration.ps1) to start the Incremental copy process 
+ Run the script [StartIncrementalLoadMigration.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadMigration.ps1) to start the Incremental copy process 
  
- ```powershell
+ ![image](https://user-images.githubusercontent.com/62351942/78946426-8a682780-7a77-11ea-973b-8f7cad667295.png)
+
  
- // Run the below script in PSE
+### 4. Azure Data factory pipeline monitoring  
+
+ * The data factory pipeline is created in Azure Data Factory and can be monitored as below :
  
- 	$incrementalConfigRootPath = $PSScriptRoot + "\Configuration\IncrementalLoadConfig.json"
+ ![image](https://user-images.githubusercontent.com/62351942/78946760-6fe27e00-7a78-11ea-915e-e716fb1d1c78.png)
 
- 	& "$PSScriptRoot\Migration\PipelineConfig.ps1" -inputConfigFilePath $incrementalConfigRootPath
-
- 	& "$PSScriptRoot\Migration\DataFactory.ps1" -inputConfigFilePath $incrementalConfigRootPath
  
- ```
-
-### 4. Migration process  
-
- * The data factory pipeline is created in Azure Data Factory 
- 
-  ![image](https://user-images.githubusercontent.com/62351942/78803126-776c2f00-7973-11ea-94cf-1c0d6de20e64.png)
-
- * Once the pipeline run is completed , check for the files copied to Gen2 container 
-
-![image](https://user-images.githubusercontent.com/62351942/78804420-f0b85180-7974-11ea-8777-c4fd25add31f.png)
-
-
- * Data (folders and files) is landed to Gen2 container path.
-
-
-### 3. Data Validation
+ ### Data Validation
 
 This step ensures that the incremental data is only migrated from Gen1 to Gen2.To validate this , below are the sequence of scripts being called out :
 
@@ -154,27 +142,11 @@ This step ensures that the incremental data is only migrated from Gen1 to Gen2.T
  
    *  **CompareGen1andGen2** : This script will compare the file and folder details between Gen1 and Gen2 and generate comparison     		report.
    
-**Run the script** [StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
+**Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
 
-```powershell
+![image](https://user-images.githubusercontent.com/62351942/78947387-0c595000-7a7a-11ea-9d8d-b4b73b8bd976.png)
 
-// Run the command in Powershell
 
-$incrementalConfigRootPath = $PSScriptRoot + "\Configuration\IncrementalLoadConfig.json"
-
-$outerConfig = Get-Content -Raw -Path $incrementalConfigRootPath | ConvertFrom-Json
-
-$pipelineRunIdDetails = @{}
-
-foreach($eachPipeline in $outerConfig.pipeline)
-{       
-    $pipelineRunIdDetails.Add($eachPipeline.pipelineId,"")
-}
-
-& "$PSScriptRoot\Validation\InvokeValidation.ps1" -inputConfigFilePath $incrementalConfigRootPath -pipelineIds $pipelineRunIdDetails
-
-```
-  
 ### 4. Data Comparison Report
 
 Once the data between Gen1 and Gen2 is compared and validated , the result summary is generated in CSV file into the folder Output as below :
