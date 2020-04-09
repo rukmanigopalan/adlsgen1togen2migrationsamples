@@ -12,9 +12,11 @@ This guide covers the following tasks:
 ### Prerequisites 
 You need below for using Migration framework and Data validation :
 
+* **An Azure Subscription**
+
 * **Azure Data Lake Storage Gen1**
 
-* **Azure Data Lake Storage Gen2**.For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
+* **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
 * **Service principal account with read / write (contributor) permission on the resource group**. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
@@ -78,7 +80,7 @@ The downloaded src folder will contain below listed contents :
 
 ```scala
 
-//Below is the code snapshot for setting the configuration file for each variable
+//Below is the code snapshot for setting the configuration file to connect to azure data factory
 
 {
   "gen1SourceRootPath" : "https://<<adlsgen1>>.azuredatalakestore.net/webhdfs/v1", // Provide the source Gen1 root path 
@@ -100,24 +102,24 @@ The downloaded src folder will contain below listed contents :
 
 //Below is how to configure and schedule the data factory pipeline 
 
- "pipeline": [  
-	{       
-		"pipelineId" : "1",   //  Set distinct pipeline id (Note : Maximum pipelines created under data factory is 40)
-		"isChurningOrIsIncremental" : "true",   // Value is set to true for Incremental copy pattern
-		"triggerFrequency" : "Minute",   // frequency in units (can be Minute or Hour)
-		"triggerInterval" : "15",   // Set the time interval for scheduling the factory pipeline ( Minimum trigger interval Time is 15 minutes )
-		"triggerUTCStartTime" : "2020-04-07T13:00:00Z",   // Provide the UTC time to start the factory for Incremental copy 
-		"triggerUTCEndTime" : "2020-04-08T13:00:00Z",   // Provide the UTC time to end the factory for Incremental copy (Note : End time > Start Time )
-		"pipelineDetails":[			
-			{	// Activity 1 details below :		
-				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source full path 
-				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",   // Give the Gen2 destination full path excluding container name 
-				"destinationContainer" : "gen1sample"  // Give the Gen2 destination container name 
-			},
-			{	// Activity 2 details below :		
-				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",  
-				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales", 
-				"destinationContainer" : "gen1sample"  
+"pipeline": [  
+{       
+	"pipelineId" : "1",   //  Set distinct pipeline id (Note : Maximum pipelines created under data factory is 40)
+	"isChurningOrIsIncremental" : "true",   // Value is set to true for Incremental copy pattern
+	"triggerFrequency" : "Minute",   // frequency in units (can be Minute or Hour)
+	"triggerInterval" : "15",   // Set the time interval for scheduling the factory pipeline ( Minimum trigger interval Time is 15 minutes )
+	"triggerUTCStartTime" : "2020-04-07T13:00:00Z",   // Provide the UTC time to start the factory for Incremental copy 
+	"triggerUTCEndTime" : "2020-04-08T13:00:00Z",   // Provide the UTC time to end the factory for Incremental copy (Note : End time > Start Time )
+	"pipelineDetails":[			
+{	// Activity 1 details below :		
+	"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source full path 
+	"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",   // Give the Gen2 destination full path excluding container name 
+	"destinationContainer" : "gen1sample"  // Give the Gen2 destination container name 
+},
+{	// Activity 2 details below :		
+	"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",  
+	"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales", 
+	"destinationContainer" : "gen1sample"  
 				
 ```
 
@@ -129,56 +131,53 @@ The downloaded src folder will contain below listed contents :
 
 //Run the below script in Powershell
 
-			$PSScriptRoot
-			& "$PSScriptRoot\PipelineConfig.ps1"
-			& "$PSScriptRoot\DataFactory.ps1"
+		$PSScriptRoot
+		& "$PSScriptRoot\PipelineConfig.ps1"
+		& "$PSScriptRoot\DataFactory.ps1"
 ```
 
+### 2. Migration status check 
 
-### 2. Post Migration Checks 
-
-:heavy_check_mark: Check the data factory pipeline creation in ADF site 
+:heavy_check_mark: Check the data factory pipeline creation in ADF  
 You can check the pipelines created in the azure data factory like :
 
 ![image](https://user-images.githubusercontent.com/62351942/78803126-776c2f00-7973-11ea-94cf-1c0d6de20e64.png)
 
-**Note** : Tested on sample data of 100 GB 
-
 
 Once the pipeline run is completed , please check for the files copied to Gen2 container 
-
 
 ![image](https://user-images.githubusercontent.com/62351942/78804420-f0b85180-7974-11ea-8777-c4fd25add31f.png)
 
 
-:heavy_check_mark: Data (in forms of files and folders) landed to Gen2 path.
-
-
-
-You can check the Gen1 files 
+:heavy_check_mark: Data (in forms of files and folders) landed to Gen2 container path.
 
 
 ### 3. Data Validation
 
 This step ensures that the incremental data is only migrated from Gen1 to Gen2.To validate this ,below are the sequence of functions being called out :
 
-   *  **ConnectToAzure** : This script will connect to Azure using pre defined and saved subscription details and credntials .
+   *  **ConnectToAzure** : This script will connect to Azure using pre defined and saved subscription details and credentials .
  
    *  **InvokeValidation** : This script will invoke the GetGen1Inventory and GetGen2Inventory scripts and validate the data from both.
  
-   *  **GetGen1Inventory** : This script will read the Gen1 file and folder details and save to buffer.
+   *  **GetGen1Inventory** : This script will read the Gen1 file and folder details.
  
-   *  **GetGen2Inventory** : This script will read the Gen2 file and folder details and save to buffer.
+   *  **GetGen2Inventory** : This script will read the Gen2 file and folder details.
  
-   *  **CompareGen1andGen2** : This script will compare the file and folder details between Gen1 and Gen2 and generate comparison report. 
+   *  **CompareGen1andGen2** : This script will compare the file and folder details between Gen1 and Gen2 and generate comparison     		report.
    
   
+### 4. Data Comparison Report
 
+Once the data between Gen1 and Gen2 is compared and validated , the result summary is generated in CSV file into the folder Output as below :
 
-### 4. Comparison Report
+![image](https://user-images.githubusercontent.com/62351942/78856445-ad44fe00-79db-11ea-89e7-c4f89dd62701.png)
 
-Once the data between Gen1 and Gen2 is compared and validated , log files will be generated at specified path which will report out matched and unmatched status.
+The CSV file will show the matched and unmatched records with file name , Gen1 File path , Gen2 file path ,Gen1 file size ,Gen2 File size and Ismatching status
 
+![image](https://user-images.githubusercontent.com/62351942/78856720-51c74000-79dc-11ea-8b20-a718fc35ae36.png)
+
+**Note ** : IsMatching status = Yes (For matched records ) and No (Unmatched records)
 
 ### 5. Application Migration check 
 
