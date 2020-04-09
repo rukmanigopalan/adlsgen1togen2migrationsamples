@@ -66,24 +66,24 @@ The downloaded src folder will contain below listed contents :
  
  2. **Set up the Configuration file to connect to azure data factory** :
 
- Path to the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani- msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json) 
-
 ```powershell
 
 //Below is the code snapshot for setting the configuration file to connect to azure data factory
 
   "gen1SourceRootPath" : "https://<<adlsgen1>>.azuredatalakestore.net/webhdfs/v1", // Provide the source Gen1 root path 
   "gen2DestinationRootPath" : "https://<<adlsgen2>>.dfs.core.windows.net", // Provide the Gen2 destination root path
-  "tenantId" : "<<tenantId>>", // Provide the tenantId .Where to find TenantId --> Go to Portal.azure.com > Azure Active Directory >  Properties. The directory ID it shows there is your tennant ID
-  "subscriptionId" : "<<subscriptionId>>", // Provide the SubscriptionId 
-  "servicePrincipleId" : "<<servicePrincipleId>>", // Provide the servicePrincipleId
-  "servicePrincipleSecret" : "<<servicePrincipleSecret>>", // Provide the servicePrinciplesecret key 
-  "factoryName" : "<<factoryName>>", // Give the factory name e.g Gen1ToGen2DataFactory 
-  "resourceGroupName" : "<<resourceGroupName>>", // Give the resource group name under which azure data factory pipeline will be created
-  "location" : "<<location>>", // Provide the Data factory location 
-  "overwrite" : "true", //  True = It will overwrite all the existing data factory   , False = It will skip creating data factory
+  "tenantId" : "<< Enter the tenantId>>", 
+  "subscriptionId" : "<<Enter the subscriptionId>>", 
+  "servicePrincipleId" : "<<Enter the servicePrincipleId>>", 
+  "servicePrincipleSecret" : "<<Enter the servicePrincipleSecret Key>>", 
+  "factoryName" : "<<Enter the factoryName>>", 
+  "resourceGroupName" : "<<Entere the resourceGroupName under which the azure data factory pipeline will be created>>",
+  "location" : "<<Entere the location>>", // Provide the Data factory location 
+  "overwrite" : "Enter the value", //  True = It will overwrite all the existing data factory   , False = It will skip creating data factory
 
 ```
+
+ Path to the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani- msft/adlsgen1togen2migrationsamples/blob/develop/Src/InventoryInputs.json) 
 
 **Setting up and scheduling the Factory pipeline for Incremental copy pattern**
 
