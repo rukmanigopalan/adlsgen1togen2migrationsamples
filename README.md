@@ -214,6 +214,7 @@ The CSV file will show the matched and unmatched records with file name , Gen1 F
 
 This check will ensure after the Incremental copy pattern is completed and data is validated , the mount path in the Azure data bricks script is pointed to the Gen2 path.
 
+
 * **Stop the job scheduler** 
 
 ```powershell
@@ -244,6 +245,7 @@ mountName = 'AdventureWorksProd'
   	print("Mountpoint:", "/mnt/" +mountName + "/")
   
 ```
+**Note** : Please refer to the [MountConfiguration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/DataSimulation/MountConfiguration.py) script for more reference.
 
 * **Re schedule the job scheduler**
 * **Check for the new files getting generated at Gen2 root folder path**
