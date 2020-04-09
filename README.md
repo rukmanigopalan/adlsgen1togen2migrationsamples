@@ -1,16 +1,17 @@
-# Incremental Copy Pattern Guide : A quick start template
+Incremental Copy Pattern Guide : A quick start template
+ ===================================================
 
-## Overview
+### Overview
+
 The purpose of this document is to provide a manual for the Incremental copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and Powershell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form of steps to follow to implement the solution from local machine.
 This guide covers the following tasks:
 
    * Set up kit for Incremental copy pattern from Gen1 to Gen2 
 
    * Data Validation between Gen1 and Gen2 
-
    
+ 
 ### Prerequisites 
-You need below for using Migration framework and Data validation :
 
 * **An Azure Subscription**
 
@@ -18,27 +19,23 @@ You need below for using Migration framework and Data validation :
 
 * **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* **Service principal account with read / write (contributor) permission on the resource group**. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
+* **Service principal with read ,write and execute permission to the resource groups (Gen1 and Gen2)**. To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
 * **Windows Powershell ISE**.
 
-  **Note** : Open Powershell as admin
+  **Note** : Run Powershell as administrator
 
  ```powershell
    // Run below code to enable running PS files
-
       Set-ExecutionPolicy Unrestricted
 	
- ```
-    Check for the below modules in PS . If not existing,Install one by one :
-
-  ```powershell
-       Install-Module Az.Accounts -AllowClobber -Force 
-       Install-Module Az.DataFactory -AllowClobber -Force
-       Install-Module Az.KeyVault -AllowClobber -Force    
-       Install-Module Az.DataLakeStore -AllowClobber -Force
-       Install-Module PowerShellGet –Repository PSGallery –Force
-       Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
+   // Check for the below modules in PS . If not existing,Install one by one :
+      Install-Module Az.Accounts -AllowClobber -Force 
+      Install-Module Az.DataFactory -AllowClobber -Force
+      Install-Module Az.KeyVault -AllowClobber -Force    
+      Install-Module Az.DataLakeStore -AllowClobber -Force
+      Install-Module PowerShellGet –Repository PSGallery –Force
+      Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
 
   ```
 
