@@ -46,7 +46,6 @@ You need below for using Migration framework and Data validation :
 ### 1. Migration Framework Setup
 
 This step will ensure that the configuration file is ready before running the azure data factory pipeline for incremental copy pattern. 
-The config file sample format is available on GitHub in [config file sample](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/Src/).
 
 ### 1.1 Download the repo to your local machine :
 ![image](https://user-images.githubusercontent.com/62353482/78593702-e4f54f80-77fb-11ea-8bfb-2ecc8e8ed757.png) 
@@ -60,13 +59,13 @@ The downloaded src folder will contain below listed contents :
 
 ### Glossary of Contents 
 
- * **Configuration** : This folder will contain the configuration file [IncrementalLoadConfig.json]( ). It will contain all the details    of Gen1 and Gen2 ADLS along with source and destination path.
+ * **Configuration** : This folder will contain the configuration file [IncrementalLoadConfig.json]( https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration). It will contain all the details of Gen1 and Gen2 ADLS along with source and destination path.
 
-     **Note** : Setting multiple pipelines and activities enables parallelism mechanism.
+    **Note** : Setting multiple pipelines and activities enables parallelism mechanism.
      
  * **Migration** : This folder will contain all the json files , templates which will be used to create dynamic data factory pipeline      and copy the data from Gen1 path to Gen2 container.
 
- * **Validation** : This folder will contain powershell scripts which will read the Gen1 and Gen2 data and validate it. The      comparison logs will be created in this folder[Output] ()
+ * **Validation** : This folder will contain powershell scripts which will read the Gen1 and Gen2 data and validate it.
  
  * **StartIncrementalLoadMigration** : The script to invoke the migration acitvity by creating increment pipeline in the data factory.
  
@@ -102,7 +101,7 @@ The downloaded src folder will contain below listed contents :
 //Below is how to configure and schedule the data factory pipeline 
 
  "pipeline": [  
-	{
+	{       
 		"pipelineId" : "1",   //  Set distinct pipeline id (Note : Maximum pipelines created under data factory is 40)
 		"isChurningOrIsIncremental" : "true",   // Value is set to true for Incremental copy pattern
 		"triggerFrequency" : "Minute",   // frequency in units (can be Minute or Hour)
@@ -110,12 +109,12 @@ The downloaded src folder will contain below listed contents :
 		"triggerUTCStartTime" : "2020-04-07T13:00:00Z",   // Provide the UTC time to start the factory for Incremental copy 
 		"triggerUTCEndTime" : "2020-04-08T13:00:00Z",   // Provide the UTC time to end the factory for Incremental copy (Note : End time > Start Time )
 		"pipelineDetails":[			
-			{			
+			{	// Activity 1 details below :		
 				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",  // Give the Gen1 source full path 
 				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",   // Give the Gen2 destination full path excluding container name 
 				"destinationContainer" : "gen1sample"  // Give the Gen2 destination container name 
 			},
-			{			
+			{	// Activity 2 details below :		
 				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",  
 				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales", 
 				"destinationContainer" : "gen1sample"  
