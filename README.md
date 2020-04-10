@@ -63,7 +63,6 @@ This version of code will have below limitations:
 
    * Gen1 & Gen2 should be in same subscription
    * Supports only for single Gen1 sorce and Gen2 destination
-   * Monitoring of incremental pipeline is done through azure portal
    * Trigger event is manual process for incremental copy
 
 ## Migration Framework Setup
@@ -188,15 +187,29 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 
  This step will configure the path in the work loads (**Azure DataBricks**) to Gen2 endpoint. 
 
-:heavy_check_mark: **Stop the job scheduler** 
+ Before the migration:
+ 
+ **Mount configured to Gen1 path**
 
-:heavy_check_mark: **Unmount the Gen1 path**
+![image](https://user-images.githubusercontent.com/62353482/79012121-63166680-7b1a-11ea-9815-a8ec0d54a07b.png)
 
-:heavy_check_mark: **Mount to Gen2 storage**
+ **Databricks cluster for scheduled job run**
+ 
+  After the migration:
+  
+ **Point Mount configuration to Gen2 container**
+  
+  ![image](https://user-images.githubusercontent.com/62353482/79012867-35322180-7b1c-11ea-9201-8b948febae10.png)
+  
 
-:heavy_check_mark: **Reschedule the job scheduler**
+  **Note**: Stop the job scheduler and change the mount configuration to point to Gen2 with the same mount name.
 
-:heavy_check_mark: **Check for the new files getting generated at Gen2 root folder path**
+![image](https://user-images.githubusercontent.com/62353482/79009824-49beeb80-7b15-11ea-8d14-ce444f7fd4b8.png)
+
+
+ **Reschedule the job scheduler**
+
+ **Check for the new files getting generated at Gen2 root folder path**
 
 The above steps will make sure that the new data will start flowing to Gen2.
 
@@ -210,5 +223,6 @@ Make sure to remove any credential from your code before sharing it.
 
 ## References
 
-[Azure Data Lake Storage migration from Gen1 to Gen2 ](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
+* [Azure Data Lake Storage migration from Gen1 to Gen2 ](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
 
+* [Azure Databricks guide](https://docs.databricks.com/data/data-sources/azure/azure-storage.html)
