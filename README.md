@@ -44,7 +44,7 @@ To learn more see [create service principal account](https://docs.microsoft.com/
 
 1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine** :
 
-![image](https://user-images.githubusercontent.com/62351942/78865940-6105b800-79f3-11ea-9e8e-a39b597695cd.png)
+![image](https://user-images.githubusercontent.com/62351942/78950970-50058700-7a85-11ea-9485-9cd605b1e0fe.png)
 
 
 **Note** : To avoid security warning error --> Right click on the zip folder downloaded --> Goto properties --> General --> Check unblock option under security section.
