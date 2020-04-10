@@ -65,14 +65,14 @@ The downloaded zip folder will contain below listed contents under src :
  
 * **[StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1)** : The script to invoke the Validation process to compare the data between Gen1 and Gen2 post migration to generate logs in the output folder under Validation.
    
- **Note** : DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The  [Full load Migration and Validation](https://github.com/rukmanimsft/adlsgen1togen2migrationsamples/blob/develop/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load from Gen1 to Gen2.
+ **Note** : DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The  [Full load Migration and Validation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load from Gen1 to Gen2.
   
  
  2. **Set up the Configuration file to connect to azure data factory** :
 
 * **Prerequisites** : Make an entry of Gen2 connection string with below highlighted name in key vault.
 
-![image](https://user-images.githubusercontent.com/62353482/78953362-74656180-7a8d-11ea-9691-3c4242f4235b.png)
+![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
 
 
 
