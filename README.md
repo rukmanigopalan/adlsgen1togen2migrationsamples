@@ -49,6 +49,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
       Install-Module Az.KeyVault -AllowClobber -Force    
       Install-Module Az.DataLakeStore -AllowClobber -Force
       Install-Module PowerShellGet –Repository PSGallery –Force
+    // Close the PowerShell ISE and Reopen as administrator. Run the below module       
       Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
 
   ```
