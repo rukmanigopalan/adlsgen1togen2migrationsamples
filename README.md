@@ -9,7 +9,18 @@ This guide covers the following tasks:
    * Set up kit for Incremental copy pattern from Gen1 to Gen2 
 
    * Data Validation between Gen1 and Gen2 post migration  
+  
+  
+**Table of contents**
+
    
+ <!--ts-->
+   * [Overview](#overview)
+   * [Prerequisites](#prerequisites)
+   * [Migration Framework Setup](#migration-framework-setup)
+   * [Data Validation](#data-validation)
+   * [Application Update](#application-update)
+<!--te-->
  
 ### Prerequisites 
 
