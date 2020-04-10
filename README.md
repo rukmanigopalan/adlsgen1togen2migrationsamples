@@ -150,7 +150,7 @@ The folder will contain below listed contents under **src**:
  
  ## Data Validation 
 
- This step will validate the Gen1 and Gen2 data based on file name, file path and file size. 
+ This step will validate the Gen1 and Gen2 data based on file path and file size. 
   
 **Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1) in PowerShell.
 
@@ -164,9 +164,9 @@ Note: This script will be run only after the azure data factory pipeline run is 
 
 ![image](https://user-images.githubusercontent.com/62351942/78856445-ad44fe00-79db-11ea-89e7-c4f89dd62701.png)
 
-The CSV file will show the matched and unmatched records with file name, Gen1 and Gen2 file path, Gen1 and Gen2 file size and Ismatching status.
+The CSV file will show the matched and unmatched records with Gen1 and Gen2 file path, Gen1 and Gen2 file size and Ismatching status.
 
-![image](https://user-images.githubusercontent.com/62351942/78914832-da2afc80-7a3f-11ea-8e94-b788ee2bd710.png)
+![image](https://user-images.githubusercontent.com/62353482/78966833-ad193100-7ab5-11ea-97b6-cf3ca372a451.png)
 
 
 **Note**: IsMatching status = Yes (For matched records ) and No (Unmatched records)
