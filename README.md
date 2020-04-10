@@ -47,9 +47,9 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 ![image](https://user-images.githubusercontent.com/62351942/78950970-50058700-7a85-11ea-9485-9cd605b1e0fe.png)
 
 
-**Note** : To avoid security warning error --> Right click on the zip folder downloaded --> Goto properties --> General --> Check unblock option under security section.
+**Note** : To avoid security warning error --> Right click on the zip folder downloaded --> Goto --> properties --> General --> Check unblock option under security section. Unzip and extract the folder .
 
-The downloaded zip folder will contain below listed contents under src :
+The folder will contain below listed contents under src :
 
 ![image](https://user-images.githubusercontent.com/62351942/78948773-4debfa00-7a7e-11ea-952a-52071e5924c4.png)
 
