@@ -49,7 +49,11 @@ To learn more see [create service principal account](https://docs.microsoft.com/
 
 **Note** : To avoid security warning error --> Right click on the zip folder downloaded --> Goto properties --> General --> Check unblock option under security section.
 
-The downloaded src folder will contain below listed contents :
+The downloaded zip folder will contain below listed contents under src :
+
+![image](https://user-images.githubusercontent.com/62351942/78948773-4debfa00-7a7e-11ea-952a-52071e5924c4.png)
+
+
 
 * **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration) holding all the details of recource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
@@ -123,7 +127,7 @@ The downloaded src folder will contain below listed contents :
  
 ### 4. Azure Data factory pipeline monitoring  
 
- * The data factory pipeline is created in Azure Data Factory and can be monitored as below :
+ The data factory pipeline will be created in Azure Data Factory and can be monitored as below :
  
  ![image](https://user-images.githubusercontent.com/62351942/78946760-6fe27e00-7a78-11ea-915e-e716fb1d1c78.png)
 
@@ -132,15 +136,15 @@ The downloaded src folder will contain below listed contents :
 
 This step ensures that the incremental data is only migrated from Gen1 to Gen2.To validate this , below are the sequence of scripts being called out :
 
-   *  **ConnectToAzure** : This script will connect to Azure using pre defined and saved subscription details and credentials .
+   *  **ConnectToAzure** : Connects to Azure using pre defined and saved subscription details and credentials .
  
-   *  **InvokeValidation** : This script will invoke the GetGen1Inventory and GetGen2Inventory scripts and validate the data from both.
+   *  **InvokeValidation** : Invokes the Gen1 Inventory and Gen2 Inventory scripts and validate the data from both.
  
    *  **GetGen1Inventory** : This script will read the Gen1 file and folder details.
  
    *  **GetGen2Inventory** : This script will read the Gen2 file and folder details.
  
-   *  **CompareGen1andGen2** : This script will compare the file and folder details between Gen1 and Gen2 and generate comparison     		report.
+   *  **CompareGen1andGen2** : This script will compare the Gen1 and Gen2 folder and file details and generate output     		report post migration.
    
 **Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
 
@@ -149,7 +153,7 @@ This step ensures that the incremental data is only migrated from Gen1 to Gen2.T
 
 ### 4. Data Comparison Report
 
-Once the data between Gen1 and Gen2 is compared and validated , the result summary is generated in CSV file into the folder Output as below :
+Once the Gen1 and Gen2 data is compared and validated , the result summary is generated in CSV file into the Output folder as below :
 
 ![image](https://user-images.githubusercontent.com/62351942/78856445-ad44fe00-79db-11ea-89e7-c4f89dd62701.png)
 
@@ -160,44 +164,18 @@ The CSV file will show the matched and unmatched records with file name , Gen1 F
 
 **Note** : IsMatching status = Yes (For matched records ) and No (Unmatched records)
 
-### 5. Application Migration check 
+### 5. Application update  
 
-This check will ensure after the Incremental copy pattern is completed and data is validated , the mount path in the Azure data bricks script is pointed to the Gen2 path.
-
+This section makes sure that post Incremental copy pattern is complete and data is validated , the mount path in the work loads is configured to Gen2 endpoint. 
 
 * **Stop the job scheduler** 
 
-```powershell
-// Get Gen1 mountName 
+* **Unmount the Gen1 path**
 
-mountName = 'AdventureWorksProd'
-
-```
-
-* **Change and configure the mount path to Gen2 storage**
-
-```powershell
-
-// Change the mount path and point to Gen2 storage 
-
-     	# DBTITLE 1,Mounting the Gen2 storage
-	mountName = 'AdventureWorksProd'  // **Note : Keep the same mountName for Gen1 and Gen2 
-	configs_Blob = {"fs.azure.account.key.destndatalakestoregen2.blob.core.windows.net": dbutils.secrets.get(scope =   	"Gen2migrationSP", key = "Gen2AccountKey")}
-	mounts = [str(i) for i in dbutils.fs.ls('/mnt/')]
-	if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=0)" in mounts : 
-  	dbutils.fs.unmount("/mnt/"+mountName+"/")
-  	print("Mounting the storage")
-  	dbutils.fs.mount(
-  	source = "wasbs://fis@destndatalakestoregen2.blob.core.windows.net/AdventureWorks", // Provide the Gen2 container name and the root folder name (fis = Gen2 container name and root folder name = AdventureWorks
-  	mount_point = "/mnt/"+mountName+"/",
-  	extra_configs = configs_Blob)
-  	print(mountName + " got mounted")
-  	print("Mountpoint:", "/mnt/" +mountName + "/")
-  
-```
-**Note** : Please refer to the [MountConfiguration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/DataSimulation/MountConfiguration.py) script for more reference.
+* **Mount to Gen2 storage**
 
 * **Re schedule the job scheduler**
+
 * **Check for the new files getting generated at Gen2 root folder path**
 
 The above steps will conclude that the mount path is changed and pointing to Gen2 now. The data will start flowing to Gen2 .
