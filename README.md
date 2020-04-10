@@ -17,6 +17,7 @@ This guide covers the following tasks:
  <!--ts-->
    * [Overview](#overview)
    * [Prerequisites](#prerequisites)
+   * [Limitations](#limitations)
    * [Migration Framework Setup](#migration-framework-setup)
    * [Data Validation](#data-validation)
    * [Application Update](#application-update)
@@ -26,11 +27,13 @@ This guide covers the following tasks:
  
 ## Prerequisites 
 
+* **Active Azure Subscription
+
 * **Azure Data Lake Storage Gen1**
 
 * **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* **Azure Key Vault** 
+* **Azure Key Vault**. Required keys and secrets to be configured here.
 
 * **Service principal** with read, write and execute permission to the resource group, key vault, data lake store Gen1 and data lake store Gen2. 
 To learn more, see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
@@ -53,6 +56,15 @@ To learn more, see [create service principal account](https://docs.microsoft.com
       Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
 
   ```
+
+## Limitations
+
+This version of code will have below limitations:
+
+   * Gen1 & Gen2 should be in same subscription
+   * Supports only for single Gen1 sorce and Gen2 destination
+   * Monitoring of incremental pipeline is done through azure portal
+   * Trigger event is manual process for incremental copy
 
 ## Migration Framework Setup
 
