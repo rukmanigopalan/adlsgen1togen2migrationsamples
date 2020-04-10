@@ -1,5 +1,5 @@
 # adlsgen1togen2migrationsamples
-This folder contains the working code samples for :
-  * **Incremental Copy Pattern**
-  * **Data Validation**
+This folder contains the working code samples for 
+  * **Application update of ADB**
+  
 

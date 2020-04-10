@@ -187,21 +187,23 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 
  This step will configure the path in the work loads (**Azure DataBricks**) to Gen2 endpoint. 
 
- Before the migration:
+ **Before the migration**:
  
- **Mount configured to Gen1 path**
+ * **Mount configured to Gen1 path**
 
 ![image](https://user-images.githubusercontent.com/62353482/79015974-be4c5700-7b22-11ea-897d-08a91fff4513.png)
 
- **Set up DataBricks cluster for scheduled job run**
- 
- Sample code :
+ * **Set up DataBricks cluster for scheduled job run**
+  
+ Sample snapshot of working code:
  
  ![image](https://user-images.githubusercontent.com/62353482/79017669-c27a7380-7b26-11ea-8e3e-353b7b18e51c.png)
  
-  After the migration:
+  **Note**: Refer to [IncrementalSampleLoad](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Application/IncrementSampleLoad.py) script for more details.
+ 
+  **After the migration**:
   
- **Change the mount configuration to Gen2 container**
+ * **Change the mount configuration to Gen2 container**
   
   ![image](https://user-images.githubusercontent.com/62353482/79016042-dfad4300-7b22-11ea-97c2-274e533a37e7.png)
 
@@ -209,11 +211,11 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 
 ![image](https://user-images.githubusercontent.com/62353482/79009824-49beeb80-7b15-11ea-8d14-ce444f7fd4b8.png)
 
- **Reschedule the job scheduler**
+  **Note**: Refer to [mountconfiguration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Application/MountConfiguration.py) script for more details.
+  
+ * **Reschedule the job scheduler**
 
- **Check for the new files getting generated at Gen2 root folder path**
-
-The above steps will make sure that the new data will start flowing to Gen2.
+ * **Check for the new files getting generated at Gen2 root folder path**
 
 ## Reach out to us
 
