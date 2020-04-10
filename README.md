@@ -191,17 +191,21 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
  
  **Mount configured to Gen1 path**
 
-![image](https://user-images.githubusercontent.com/62353482/79012121-63166680-7b1a-11ea-9815-a8ec0d54a07b.png)
+![image](https://user-images.githubusercontent.com/62353482/79015974-be4c5700-7b22-11ea-897d-08a91fff4513.png)
 
  **Set up DataBricks cluster for scheduled job run**
  
+ Sample code :
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/79017669-c27a7380-7b26-11ea-8e3e-353b7b18e51c.png)
+ 
   After the migration:
   
- **Point Mount configuration to Gen2 container**
+ **Change the mount configuration to Gen2 container**
   
-  ![image](https://user-images.githubusercontent.com/62353482/79012867-35322180-7b1c-11ea-9201-8b948febae10.png)  
-  
-  **Note**: Stop the job scheduler and change the mount configuration to point to Gen2 with the same mount name.
+  ![image](https://user-images.githubusercontent.com/62353482/79016042-dfad4300-7b22-11ea-97c2-274e533a37e7.png)
+
+  **Note**: **Stop** the job scheduler and change the mount configuration to point to Gen2 with the same mount name.
 
 ![image](https://user-images.githubusercontent.com/62353482/79009824-49beeb80-7b15-11ea-8d14-ce444f7fd4b8.png)
 
