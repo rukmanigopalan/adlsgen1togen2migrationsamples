@@ -55,13 +55,13 @@ The downloaded zip folder will contain below listed contents under src :
 
 
 
-* **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration) holding all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
+* **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
-* **Migration** : This contains the json files , templates used to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
+* **Migration** : Contains the json files , templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
  
-* **Validation** : This folder has powershell scripts which will read the Gen1 and Gen2 data and validate it post migration to generate migration report.
+* **Validation** : Contains the powershell scripts which will read the Gen1 and Gen2 data and validate it post migration to generate migration report.
  
-* **StartIncrementalLoadMigration** : The script to invoke the migration activity by creating increment pipeline in the data factory.
+* **[StartIncrementalLoadMigration](** : Script to invoke the migration activity by creating increment pipeline in the data factory.
  
 * **StartIncrementalLoadValidation** : The script to invoke the Validation process to compare the data between Gen1 and Gen2 post migration to generate logs in the output folder under Validation.
    
