@@ -194,10 +194,12 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 ![image](https://user-images.githubusercontent.com/62353482/79015974-be4c5700-7b22-11ea-897d-08a91fff4513.png)
 
  **Set up DataBricks cluster for scheduled job run**
- 
+  
  Sample code :
  
  ![image](https://user-images.githubusercontent.com/62353482/79017669-c27a7380-7b26-11ea-8e3e-353b7b18e51c.png)
+ 
+  **Note**: Refer to working code sample[IncrementalSampleLoad](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Application/IncrementSampleLoad.py)script for more details.
  
   After the migration:
   
@@ -209,6 +211,8 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 
 ![image](https://user-images.githubusercontent.com/62353482/79009824-49beeb80-7b15-11ea-8d14-ce444f7fd4b8.png)
 
+  **Note**: Refer to [mountconfiguration]https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Application/MountConfiguration.py script for more details.
+  
  **Reschedule the job scheduler**
 
  **Check for the new files getting generated at Gen2 root folder path**
