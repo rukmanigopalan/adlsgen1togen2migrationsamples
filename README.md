@@ -3,7 +3,7 @@ Incremental Copy Pattern Guide : A quick start template
 
 ### Overview
 
-The purpose of this document is to provide a manual for the Incremental copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and Powershell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form of steps to follow to implement the solution from local machine.
+The purpose of this document is to provide a manual for the Incremental copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and PowerShell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form of steps to follow to implement the solution from local machine.
 This guide covers the following tasks:
 
    * Set up kit for Incremental copy pattern from Gen1 to Gen2 
@@ -20,9 +20,9 @@ This guide covers the following tasks:
 * **Azure Key Vault** 
 
 * **Service principal** with read,write and execute permission to the resource group,key vault,data lake store Gen1 and data lake store Gen2 . 
-To learn more see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
+To learn more, see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
-* **Windows Powershell ISE**.
+* **Windows PowerShell ISE**.
 
   **Note** : Run as administrator
 
@@ -70,7 +70,7 @@ The downloaded zip folder will contain below listed contents under src :
  
  2. **Set up the Configuration file to connect to azure data factory** :
 
-* **Important Prerequisite** : Make an entry of Gen2 connection string with below highlighted name in key vault.
+* **Important Prerequisite** : Make an entry of Gen2 connection string in the key vault as shown below :
 
 ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
 
@@ -118,11 +118,12 @@ The downloaded zip folder will contain below listed contents under src :
   
 ```
 
- **Note** Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json)script
+ 
+ **Note** Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json)script for more reference .
  
 ### 3. Azure data factory pipeline creation and execution 
 
- Run the script [StartIncrementalLoadMigration.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadMigration.ps1) to start the incremental copy process 
+ Run the script [StartIncrementalLoadMigration.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadMigration.ps1) to start the incremental copy process. 
  
  ![image](https://user-images.githubusercontent.com/62351942/78946426-8a682780-7a77-11ea-973b-8f7cad667295.png)
 
