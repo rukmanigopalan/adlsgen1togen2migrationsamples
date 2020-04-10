@@ -27,7 +27,7 @@ This guide covers the following tasks:
  
 ## Prerequisites 
 
-* **Active Azure Subscription
+* **Active Azure Subscription**
 
 * **Azure Data Lake Storage Gen1**
 
