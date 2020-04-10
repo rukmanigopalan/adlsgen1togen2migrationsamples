@@ -70,7 +70,7 @@ The downloaded zip folder will contain below listed contents under src :
  
  2. **Set up the Configuration file to connect to azure data factory** :
 
-* **Prerequisites** : Make an entry of Gen2 connection string with below highlighted name in key vault.
+* **Important Prerequisite** : Make an entry of Gen2 connection string with below highlighted name in key vault.
 
 ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
 
@@ -81,7 +81,7 @@ The downloaded zip folder will contain below listed contents under src :
 // Below is the code snapshot for setting the configuration file to connect to azure data factory
 
 	  "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
-	  "gen2DestinationRootPath" : "https://<<Enter the Gen2 detsination root path>>.dfs.core.windows.net", 
+	  "gen2DestinationRootPath" : "https://<<Enter the Gen2 destination root path>>.dfs.core.windows.net", 
 	  "tenantId" : "<< Enter the tenantId>>", 
 	  "subscriptionId" : "<<Enter the subscriptionId>>", 
 	  "servicePrincipleId" : "<<Enter the servicePrincipleId>>", 
@@ -93,14 +93,14 @@ The downloaded zip folder will contain below listed contents under src :
 
 ```
 
- **Scheduling the Factory pipeline for Incremental copy pattern**
+ **Scheduling the factory pipeline for incremental copy pattern**
 
 ```powershell
 
-	  "pipelineId" : "Enter disticnt pipeline id eg 1,2,3,..40", 
-	  "isChurningOrIsIncremental" : "true",
+	  "pipelineId" : "Enter distinct pipeline id eg 1,2,3,..40", 
+	  "isChurningOrIsIncremental" : "true", 
 	  "triggerFrequency" : "Provide the frequency in Minute or Hour",
-	  "triggerInterval" : "Enter the time interval for scheduling (Minimum trigger interval time = 15 minute  ",
+	  "triggerInterval" : "Enter the time interval for scheduling (Minimum trigger interval time = 15 minute)",
 	  "triggerUTCStartTime" : "Enter UTC time to start the factory for Incremental copy pattern .Eg 2020-04-09T18:00:00Z",
 	  "triggerUTCEndTime" : "Enter the UTC time to end the factory for Incremental copy pattern. Eg 2020-04-10T13:00:00Z",
 	  "pipelineDetails":[		
@@ -118,29 +118,29 @@ The downloaded zip folder will contain below listed contents under src :
   
 ```
 
- **Note** Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/Configuration/IncrementalLoadConfig.json)script
+ **Note** Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json)script
  
 ### 3. Azure data factory pipeline creation and execution 
 
- Run the script [StartIncrementalLoadMigration.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadMigration.ps1) to start the Incremental copy process 
+ Run the script [StartIncrementalLoadMigration.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadMigration.ps1) to start the incremental copy process 
  
  ![image](https://user-images.githubusercontent.com/62351942/78946426-8a682780-7a77-11ea-973b-8f7cad667295.png)
 
  
 ### 4. Azure Data factory pipeline monitoring  
 
- The data factory pipeline will be created in Azure Data Factory and can be monitored as below :
+ The pipeline will be created in Azure data factory and can be monitored in below way :
  
  ![image](https://user-images.githubusercontent.com/62351942/78946760-6fe27e00-7a78-11ea-915e-e716fb1d1c78.png)
 
  
- ### Data Validation
+ ### Data Validation 
 
-This step ensures that the incremental data is only migrated from Gen1 to Gen2.To validate this , below are the sequence of scripts being called out :
+This step ensures that the incremental data is only migrated from Gen1 to Gen2.To validate this,below are the sequence of scripts being called out :
 
    *  **ConnectToAzure** : Connects to Azure using pre defined and saved subscription details and credentials .
  
-   *  **InvokeValidation** : Invokes the Gen1 Inventory and Gen2 Inventory scripts and validate the data from both.
+   *  **InvokeValidation** : Invokes the Gen1 Inventory and Gen2 Inventory details and validate the data from both.
  
    *  **GetGen1Inventory** : This script will read the Gen1 file and folder details.
  
@@ -148,9 +148,9 @@ This step ensures that the incremental data is only migrated from Gen1 to Gen2.T
  
    *  **CompareGen1andGen2** : This script will compare the Gen1 and Gen2 folder and file details and generate output     		report post migration.
    
-**Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/develop/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
+**Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
 
-![image](https://user-images.githubusercontent.com/62351942/78947387-0c595000-7a7a-11ea-9d8d-b4b73b8bd976.png)
+![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
 
 
 ### 4. Data Comparison Report
