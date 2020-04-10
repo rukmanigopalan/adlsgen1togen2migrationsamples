@@ -20,6 +20,8 @@ This guide covers the following tasks:
    * [Migration Framework Setup](#migration-framework-setup)
    * [Data Validation](#data-validation)
    * [Application Update](#application-update)
+   * [Reach out to us](#reach-out-to-us)
+   * [References](#references)
 <!--te-->
  
 ### Prerequisites 
