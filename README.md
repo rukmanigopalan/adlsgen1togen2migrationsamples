@@ -1,7 +1,7 @@
 Incremental Copy Pattern Guide: A quick start template
 ===================================================
 
-### Overview
+## Overview
 
 The purpose of this document is to provide a manual for the Incremental copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and PowerShell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form of steps to follow to implement the solution from local machine.
 This guide covers the following tasks:
@@ -24,7 +24,7 @@ This guide covers the following tasks:
    * [References](#references)
 <!--te-->
  
-### Prerequisites 
+## Prerequisites 
 
 * **Azure Data Lake Storage Gen1**
 
@@ -53,7 +53,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
   ```
 
-### Migration Framework Setup
+## Migration Framework Setup
 
 1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine**:
 
@@ -148,7 +148,7 @@ The folder will contain below listed contents under **src**:
  ![image](https://user-images.githubusercontent.com/62351942/78946760-6fe27e00-7a78-11ea-915e-e716fb1d1c78.png)
 
  
- ### Data Validation 
+ ## Data Validation 
 
  This step will validate the Gen1 and Gen2 data based on file name, file path and file size. 
   
@@ -171,7 +171,7 @@ The CSV file will show the matched and unmatched records with file name, Gen1 an
 
 **Note**: IsMatching status = Yes (For matched records ) and No (Unmatched records)
 
-### Application update  
+## Application update  
 
  This step will configure the path in the work loads (**Azure DataBricks**) to Gen2 endpoint. 
 
@@ -195,7 +195,7 @@ The above steps will make sure that the new data will start flowing to Gen2.
 File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/issues/new).
 Make sure to remove any credential from your code before sharing it.
 
-### References
+## References
 
 [Azure Data Lake Storage migration from Gen1 to Gen2 ](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
 
