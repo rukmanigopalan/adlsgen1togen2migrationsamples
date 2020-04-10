@@ -11,7 +11,7 @@ This guide covers the following tasks:
    * Data Validation between Gen1 and Gen2 post migration  
   
   
-##Table of contents##
+## Table of contents
 
    
  <!--ts-->
