@@ -55,7 +55,7 @@ The downloaded zip folder will contain below listed contents under src :
 
 
 
-* **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration) holding all the details of recource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
+* **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/develop/src/Configuration) holding all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
 * **Migration** : This contains the json files , templates used to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
  
