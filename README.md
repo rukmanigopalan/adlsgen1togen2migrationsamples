@@ -30,7 +30,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
    // Run below code to enable running PS files
       Set-ExecutionPolicy Unrestricted
 	
-   // Check for the below modules in PS . If not existing,Install one by one :
+   // Check for the below modules in PowerShell . If not existing, install one by one:
       Install-Module Az.Accounts -AllowClobber -Force 
       Install-Module Az.DataFactory -AllowClobber -Force
       Install-Module Az.KeyVault -AllowClobber -Force    
@@ -42,35 +42,35 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
 ### Migration Framework Setup
 
-1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine** :
+1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine**:
 
 ![image](https://user-images.githubusercontent.com/62351942/78950970-50058700-7a85-11ea-9485-9cd605b1e0fe.png)
 
 
-**Note** : To avoid security warning error --> Right click on the zip folder downloaded --> Goto --> properties --> General --> Check unblock option under security section. Unzip and extract the folder .
+**Note**: To avoid security warning error --> Right click on the zip folder downloaded --> Go to --> Properties --> General --> Check unblock option under security section. Unzip and extract the folder.
 
-The folder will contain below listed contents under src :
+The folder will contain below listed contents under **src**:
 
 ![image](https://user-images.githubusercontent.com/62351942/78948773-4debfa00-7a7e-11ea-952a-52071e5924c4.png)
 
 
 
-* **Configuration** : This folder will have the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
+* **Configuration**: This folder will have the configuration file [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
-* **Migration** : Contains the json files , templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
+* **Migration**: Contains the json files, templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
  
-* **Validation** : Contains the powershell scripts which will read the Gen1 and Gen2 data and validate it post migration to generate migration report.
+* **Validation**: Contains the PowerShell scripts which will read the Gen1 and Gen2 data and validate it post migration to generate post migration report.
  
-* **[StartIncrementalLoadMigration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadMigration.ps1)** : Script to invoke the migration activity by creating increment pipeline in the data factory.
+* **[StartIncrementalLoadMigration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadMigration.ps1)**: Script to invoke the migration activity by creating increment pipeline in the data factory.
  
 * **[StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1)** : The script to invoke the Validation process to compare the data between Gen1 and Gen2 post migration to generate logs in the output folder under Validation.
    
- **Note**: DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The  [Full load Migration and Validation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load from Gen1 to Gen2.
+ **Note**: The [Full load Migration and Validation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load from Gen1 to Gen2.
   
  
- 2. **Set up the Configuration file to connect to azure data factory** :
+ 2. **Set up the Configuration file to connect to azure data factory**:
 
-* **Important Prerequisite** : Make an entry of Gen2 connection string in the key vault as shown below :
+* **Important Prerequisite**: Make an entry of Gen2 connection string in the key vault as shown below :
 
 ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
 
@@ -78,11 +78,11 @@ The folder will contain below listed contents under src :
 
 ```powershell
 
-// Below is the code snapshot for setting the configuration file to connect to azure data factory
+// Below is the code snapshot for setting the configuration file to connect to azure data factory:
 
 	  "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
 	  "gen2DestinationRootPath" : "https://<<Enter the Gen2 destination root path>>.dfs.core.windows.net", 
-	  "tenantId" : "<< Enter the tenantId>>", 
+	  "tenantId" : "<<Enter the tenantId>>", 
 	  "subscriptionId" : "<<Enter the subscriptionId>>", 
 	  "servicePrincipleId" : "<<Enter the servicePrincipleId>>", 
 	  "servicePrincipleSecret" : "<<Enter the servicePrincipleSecret Key>>", 
@@ -119,7 +119,7 @@ The folder will contain below listed contents under src :
 ```
 
  
- **Note** Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json)script for more reference .
+ **Note**: Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json) script for more reference.
  
 3. **Azure data factory pipeline creation and execution**
 
@@ -141,17 +141,17 @@ The folder will contain below listed contents under src :
   
 **Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1) in PowerShell.
 
-Note: This script will be run only after the azure data factory pipeline run is completed(run status = succeeded).
+Note: This script will be run only after the azure data factory pipeline run is complete (run status = succeeded).
 
 ![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
 
  **Data Comparison Report**
 
-  Once the Gen1 and Gen2 data is compared and validated, the result is generated in CSV file into the Output folder as below:
+  Once the Gen1 and Gen2 data is compared and validated, the result is generated in CSV file into the **Output** folder as below:
 
 ![image](https://user-images.githubusercontent.com/62351942/78856445-ad44fe00-79db-11ea-89e7-c4f89dd62701.png)
 
-The CSV file will show the matched and unmatched records with file name, Gen1 and Gen2 File path, Gen1 and Gen2 file size and Ismatching status
+The CSV file will show the matched and unmatched records with file name, Gen1 and Gen2 file path, Gen1 and Gen2 file size and Ismatching status.
 
 ![image](https://user-images.githubusercontent.com/62351942/78914832-da2afc80-7a3f-11ea-8e94-b788ee2bd710.png)
 
@@ -162,17 +162,17 @@ The CSV file will show the matched and unmatched records with file name, Gen1 an
 
  This step will configure the path in the work loads (**Azure DataBricks**) to Gen2 endpoint. 
 
-* **Stop the job scheduler** 
+:heavy_check_mark: **Stop the job scheduler** 
 
-* **Unmount the Gen1 path**
+:heavy_check_mark: **Unmount the Gen1 path**
 
-* **Mount to Gen2 storage**
+:heavy_check_mark: **Mount to Gen2 storage**
 
-* **Reschedule the job scheduler**
+:heavy_check_mark: **Reschedule the job scheduler**
 
-* **Check for the new files getting generated at Gen2 root folder path**
+:heavy_check_mark: **Check for the new files getting generated at Gen2 root folder path**
 
-The above steps will conclude that the mount path is changed and pointing to Gen2. The new data will start flowing to Gen2 .
+The above steps will make sure that the new data will start flowing to Gen2.
 
 
 ## Reach out to us
