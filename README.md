@@ -1,4 +1,4 @@
-Incremental Copy Pattern Guide : A quick start template
+Incremental Copy Pattern Guide: A quick start template
 ===================================================
 
 ### Overview
@@ -19,7 +19,7 @@ This guide covers the following tasks:
 
 * **Azure Key Vault** 
 
-* **Service principal** with read,write and execute permission to the resource group,key vault,data lake store Gen1 and data lake store Gen2 . 
+* **Service principal** with read, write and execute permission to the resource group, key vault, data lake store Gen1 and data lake store Gen2. 
 To learn more, see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
 * **Windows PowerShell ISE**.
@@ -65,7 +65,7 @@ The folder will contain below listed contents under src :
  
 * **[StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1)** : The script to invoke the Validation process to compare the data between Gen1 and Gen2 post migration to generate logs in the output folder under Validation.
    
- **Note** : DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The  [Full load Migration and Validation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load from Gen1 to Gen2.
+ **Note**: DataSimulation folder contains the sample data generation scripts used to simulate the data for testing the framework. The  [Full load Migration and Validation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartFullLoadMigrationAndValidation.ps1) script is to migrate the full data load from Gen1 to Gen2.
   
  
  2. **Set up the Configuration file to connect to azure data factory** :
@@ -121,55 +121,46 @@ The folder will contain below listed contents under src :
  
  **Note** Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json)script for more reference .
  
-### 3. Azure data factory pipeline creation and execution 
+3. **Azure data factory pipeline creation and execution**
 
  Run the script [StartIncrementalLoadMigration.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadMigration.ps1) to start the incremental copy process. 
  
  ![image](https://user-images.githubusercontent.com/62351942/78946426-8a682780-7a77-11ea-973b-8f7cad667295.png)
 
  
-### 4. Azure Data factory pipeline monitoring  
+4. **Azure Data factory pipeline monitoring**
 
- The pipeline will be created in Azure data factory and can be monitored in below way :
+ The pipeline will be created in Azure data factory and can be monitored in below way:
  
  ![image](https://user-images.githubusercontent.com/62351942/78946760-6fe27e00-7a78-11ea-915e-e716fb1d1c78.png)
 
  
  ### Data Validation 
 
-This step ensures that the incremental data is only migrated from Gen1 to Gen2.To validate this,below are the sequence of scripts being called out :
+ This step will validate the Gen1 and Gen2 data based on file name, file path and file size. 
+  
+**Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1) in PowerShell.
 
-   *  **ConnectToAzure** : Connects to Azure using pre defined and saved subscription details and credentials .
- 
-   *  **InvokeValidation** : Invokes the Gen1 Inventory and Gen2 Inventory details and validate the data from both.
- 
-   *  **GetGen1Inventory** : This script will read the Gen1 file and folder details.
- 
-   *  **GetGen2Inventory** : This script will read the Gen2 file and folder details.
- 
-   *  **CompareGen1andGen2** : This script will compare the Gen1 and Gen2 folder and file details and generate output     		report post migration.
-   
-**Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1) in powershell , once the azure data factory pipeline run status is succeeded 
+Note: This script will be run only after the azure data factory pipeline run is completed(run status = succeeded).
 
 ![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
 
+ **Data Comparison Report**
 
-### 4. Data Comparison Report
-
-Once the Gen1 and Gen2 data is compared and validated , the result summary is generated in CSV file into the Output folder as below :
+  Once the Gen1 and Gen2 data is compared and validated, the result is generated in CSV file into the Output folder as below:
 
 ![image](https://user-images.githubusercontent.com/62351942/78856445-ad44fe00-79db-11ea-89e7-c4f89dd62701.png)
 
-The CSV file will show the matched and unmatched records with file name , Gen1 File path , Gen2 file path ,Gen1 file size ,Gen2 File size and Ismatching status
+The CSV file will show the matched and unmatched records with file name, Gen1 and Gen2 File path, Gen1 and Gen2 file size and Ismatching status
 
 ![image](https://user-images.githubusercontent.com/62351942/78914832-da2afc80-7a3f-11ea-8e94-b788ee2bd710.png)
 
 
-**Note** : IsMatching status = Yes (For matched records ) and No (Unmatched records)
+**Note**: IsMatching status = Yes (For matched records ) and No (Unmatched records)
 
-### 5. Application update  
+### Application update  
 
-This section makes sure that post Incremental copy pattern is complete and data is validated , the mount path in the work loads is configured to Gen2 endpoint. 
+ This step will configure the path in the work loads (**Azure DataBricks**) to Gen2 endpoint. 
 
 * **Stop the job scheduler** 
 
@@ -177,11 +168,11 @@ This section makes sure that post Incremental copy pattern is complete and data 
 
 * **Mount to Gen2 storage**
 
-* **Re schedule the job scheduler**
+* **Reschedule the job scheduler**
 
 * **Check for the new files getting generated at Gen2 root folder path**
 
-The above steps will conclude that the mount path is changed and pointing to Gen2 now. The data will start flowing to Gen2 .
+The above steps will conclude that the mount path is changed and pointing to Gen2. The new data will start flowing to Gen2 .
 
 
 ## Reach out to us
