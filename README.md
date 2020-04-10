@@ -72,7 +72,9 @@ The downloaded zip folder will contain below listed contents under src :
 
 * **Prerequisites** : Make an entry of Gen2 connection string with below highlighted name in key vault.
 
-![image](https://user-images.githubusercontent.com/62351942/78945763-efbb1900-7a75-11ea-9bc5-3e5012078487.png)
+![image](https://user-images.githubusercontent.com/62353482/78953362-74656180-7a8d-11ea-9691-3c4242f4235b.png)
+
+
 
 ```powershell
 
