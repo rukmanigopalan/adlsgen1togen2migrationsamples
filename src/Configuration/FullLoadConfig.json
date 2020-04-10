@@ -1,0 +1,38 @@
+{
+  "gen1SourceRootPath" : "https://<<gen1AccountName>>.azuredatalakestore.net/webhdfs/v1",
+  "gen2DestinationRootPath" : "https://<<gen2AccountName>>.dfs.core.windows.net",
+  "tenantId" : "<<tenantId>>",
+  "subscriptionId" : "<<subscriptionId>>",
+  "servicePrincipleId" : "<<servicePrincipleId>>",
+  "servicePrincipleSecret" : "<<servicePrincipleSecret>>",
+  "keyVaultName" : "<<keyVaultName>>",
+  "factoryName" : "<<factoryName>>",
+  "resourceGroupName" : "<<resourceGroupName>>",
+  "location" : "location",
+  "overwrite" : "true",
+  "pipeline": [  
+	{
+		"pipelineId" : "1",
+		"isChurningOrIsIncremental" : "false",
+		"pipelineDetails":[			
+			{			
+				"sourcePath" : "/AdventureWorks/Raw/DimProduct",
+				"destinationPath" : "AdventureWorks/Raw/DimProduct",
+				"destinationContainer" : "prod"
+			}
+		]
+	},
+	{
+		"pipelineId" : "2",
+		"isChurningOrIsIncremental" : "false",
+		"pipelineDetails":[			
+			
+			{			
+				"sourcePath" : "/AdventureWorks/Raw/FactFinance",
+				"destinationPath" : "AdventureWorks/Raw/FactFinance",
+				"destinationContainer" : "prod1"
+			}
+		]
+	}
+  ]
+}

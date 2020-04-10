@@ -1,0 +1,35 @@
+{
+  "gen1SourceRootPath" : "https://<<gen1AccountName>>.azuredatalakestore.net/webhdfs/v1",
+  "gen2DestinationRootPath" : "https://<<gen2AccountName>>.dfs.core.windows.net",
+  "tenantId" : "<<tenantId>>",
+  "subscriptionId" : "<<subscriptionId>>",
+  "servicePrincipleId" : "<<servicePrincipleId>>",
+  "servicePrincipleSecret" : "<<servicePrincipleSecret>>",
+  "keyVaultName" : "<<keyVaultName>>",
+  "factoryName" : "<<factoryName>>",
+  "resourceGroupName" : "<<resourceGroupName>>",
+  "location" : "<<location>>",
+  "overwrite" : "true",
+  "pipeline": [
+	{
+		"pipelineId" : "1",
+		"isChurningOrIsIncremental" : "true",
+		"triggerFrequency" : "Minute",
+		"triggerInterval" : "15",
+		"triggerUTCStartTime" : "2020-04-09T18:00:00Z",
+		"triggerUTCEndTime" : "2020-04-10T13:00:00Z",
+		"pipelineDetails":[			
+			{			
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactFinance",
+				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactFinance",
+				"destinationContainer" : "samplecontainer"
+			},
+			{			
+				"sourcePath" : "/AdventureWorks/RawDataFolder/Increment/FactInternetSales",
+				"destinationPath" : "AdventureWorks/RawDataFolder/Increment/FactInternetSales",
+				"destinationContainer" : "samplecontainer"
+			}
+		]
+	}
+  ]
+}

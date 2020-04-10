@@ -1,0 +1,13 @@
+{
+    "name": "@@linkedServiceName@@",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "@@url@@",
+            "accountkey": { 
+                "type": "SecureString", 
+                "value": "@@accountKey@@" 
+            }
+        }
+    }
+}
