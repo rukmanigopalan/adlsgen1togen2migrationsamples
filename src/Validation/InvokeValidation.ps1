@@ -6,7 +6,7 @@ Param(
     [hashtable] $pipelineIds
 )
 
-Import-module az.storage -RequiredVersion 1.33.3
+Import-module az.storage
 Import-Module az.datalakestore
 
 $sourceConfigFullPath = $inputConfigFilePath
