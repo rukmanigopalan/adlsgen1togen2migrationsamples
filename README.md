@@ -166,18 +166,20 @@ The folder will contain below listed contents under **src**:
  
  ### Prerequisites
  
-  * No Incremental copy should be happening before running the validation script. 
+  * **No Incremental copy should be happening before running the validation script**. 
  
- Stop the trigger as below if any incremental copy is running :
+  Stop the trigger in the azure data factory as below:
  
  ![image](https://user-images.githubusercontent.com/62353482/79170712-0a0e3300-7da5-11ea-9268-1462751db77c.png)
 
+
+  **Note: This script will be run only after the azure data factory pipeline run is complete (run status = succeeded)**.
   
-**Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1) in PowerShell.
 
-Note: This script will be run only after the azure data factory pipeline run is complete (run status = succeeded).
+  **Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1) in PowerShell.
 
-![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
+  ![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
+
 
  **Data Comparison Report**
 
