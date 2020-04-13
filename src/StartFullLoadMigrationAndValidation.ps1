@@ -1,5 +1,6 @@
 ﻿
 $fullConfigRootPath = $PSScriptRoot + "\Configuration\FullLoadConfig.json"
+$inputConfigData = Get-Content -Raw -Path $fullConfigRootPath | ConvertFrom-Json
 
 & "$PSScriptRoot\Migration\PipelineConfig.ps1" -inputConfigFilePath $fullConfigRootPath
 
@@ -10,7 +11,7 @@ while ($true) {
    
     foreach($item in $pipelineRunIds.GetEnumerator()) 
     {       
-        $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName "Gen1ToGen2Migration" -DataFactoryName "Gen1ToGen2Factory1" -PipelineRunId $item.Value
+        $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $inputConfigData.resourceGroupName -DataFactoryName $inputConfigData.factoryName -PipelineRunId $item.Value
         
         if ($run) {
             if ($run.Status -ne 'InProgress') {
