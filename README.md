@@ -166,7 +166,12 @@ The folder will contain below listed contents under **src**:
  
  ### Prerequisites
  
-  * No Incremental copy should be happening before running the validation script
+  * No Incremental copy should be happening before running the validation script. 
+ 
+ Stop the trigger as below if any incremental copy is running :
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/79170712-0a0e3300-7da5-11ea-9268-1462751db77c.png)
+
   
 **Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1) in PowerShell.
 
