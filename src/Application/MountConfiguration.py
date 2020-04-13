@@ -2,9 +2,9 @@
 # DBTITLE 1,Mount ADLS Storage
 #Mounting ADLS Storage
 configs = {"dfs.adls.oauth2.access.token.provider.type": "ClientCredential",
-           "dfs.adls.oauth2.client.id": dbutils.secrets.get(scope = "Gen2migrationSP", key = "SPNId"), 
-           "dfs.adls.oauth2.credential": dbutils.secrets.get(scope = "Gen2migrationSP", key = "SPNSecret"), 
-           "dfs.adls.oauth2.refresh.url": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token"}
+           "dfs.adls.oauth2.client.id": dbutils.secrets.get(scope = "<<spn>>", key = "<<spnId>>"), 
+           "dfs.adls.oauth2.credential": dbutils.secrets.get(scope = "<<spn>>", key = "<<spnSecret>>"), 
+           "dfs.adls.oauth2.refresh.url": "https://login.microsoftonline.com/<<tenantId>>/oauth2/token"}
 
 mountName = 'AdventureWorks'
 
@@ -15,7 +15,7 @@ if "FileInfo(path='dbfs:/mnt/" +mountName + "/', name='" +mountName + "/', size=
 
 print("Mounting the data lake file system")
 dbutils.fs.mount(
-  source = "adl://sourcedatalakestoregen1.azuredatalakestore.net/AdventureWorks", 
+  source = "adl://<<adlsGen1Name>>.azuredatalakestore.net/AdventureWorks", 
   mount_point = "/mnt/AdventureWorks/",extra_configs = configs)
 
 # COMMAND ----------
@@ -23,9 +23,9 @@ dbutils.fs.mount(
 # DBTITLE 1,Mounting to another ADLS Account 
 #Mounting ADLS Storage
 configs = {"dfs.adls.oauth2.access.token.provider.type": "ClientCredential",
-           "dfs.adls.oauth2.client.id": dbutils.secrets.get(scope = "Gen2migrationSP", key = "SPNId"), 
-           "dfs.adls.oauth2.credential": dbutils.secrets.get(scope = "Gen2migrationSP", key = "SPNSecret"), 
-           "dfs.adls.oauth2.refresh.url": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token"}
+           "dfs.adls.oauth2.client.id": dbutils.secrets.get(scope = "<<spn>>", key = "<<spnId>>"), 
+           "dfs.adls.oauth2.credential": dbutils.secrets.get(scope = "<<spn>>", key = "<<spnSecret>>"), 
+           "dfs.adls.oauth2.refresh.url": "https://login.microsoftonline.com/<<tenantId>>/oauth2/token"}
 
 mountName = 'AdventureWorksProd'
 
