@@ -163,6 +163,10 @@ The folder will contain below listed contents under **src**:
  ## Data Validation 
 
  This step will validate the Gen1 and Gen2 data based on file path and file size. 
+ 
+ ### Prerequisites
+ 
+  * No Incremental copy should be happening before running the validation script
   
 **Run the script** [StartIncrementalLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/StartIncrementalLoadValidation.ps1) in PowerShell.
 
