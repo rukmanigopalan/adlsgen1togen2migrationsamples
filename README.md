@@ -64,7 +64,7 @@ This version of code will have below limitations:
    * Gen1 & Gen2 should be in same subscription
    * Supports only for single Gen1 source and Gen2 destination
    * Trigger event is manual process for incremental copy
-   
+      
 ## Migration Framework Setup
 
 1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine**:
@@ -197,13 +197,15 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 
 ## Application update  
 
- This step will configure the path in the work loads (**Azure DataBricks**) to Gen2 endpoint. 
+ This step will configure the path in the work loads to Gen2 endpoint. 
+ 
+ **1. Application update for Azure DataBricks**
 
  **Before the migration**:
  
  * **Mount configured to Gen1 path**
 
-![image](https://user-images.githubusercontent.com/62353482/79015974-be4c5700-7b22-11ea-897d-08a91fff4513.png)
+![image](https://user-images.githubusercontent.com/62353482/79265180-90c91b80-7e4a-11ea-9000-0f86aa7c6ebb.png)
 
  * **Set up DataBricks cluster for scheduled job run**
   
@@ -227,8 +229,44 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
   
  * **Reschedule the job scheduler**
 
- * **Check for the new files getting generated at Gen2 root folder path**
+ * **Check for the new files getting generated at the Gen2 root folder path**
+ 
+  **2. Application update for Azure Data Factory**
+  
+  * **Stop the trigger to Gen1**
+    
+  * **Modify the existing factory by creating new linked service to point to Gen2 storage**.
+  
+  Go to **-->** Azure Data Factory **-->** Click on Author **-->** Connections **-->** Linked Service **-->** click on New **-->**   Choose Azure Data Lake Storage Gen2 **-->** Click on Continue button
 
+ ![image](https://user-images.githubusercontent.com/62353482/79276321-a3e4e700-7e5c-11ea-9908-b013e2d1e12b.png)
+
+
+ Provide the details to create new Linked service to point to Gen2 storage account.
+
+
+![image](https://user-images.githubusercontent.com/62353482/79276405-cd057780-7e5c-11ea-9c31-95dfd26db5b9.png)
+
+   * **Modify the existing factory by creating new dataset in Gen2 storage**.
+   
+   Go to **-->** Azure Data Factory **-->** Click on Author **-->** Click on Pipelines **-->** Select the pipeline **-->** Click on Activity **-->** Click on sink tab **-->** Choose the dataset to point to Gen2 
+   
+   ![image](https://user-images.githubusercontent.com/62353482/79279985-20c78f00-7e64-11ea-9e04-cdfd770d210f.png)
+
+
+   * **Click on Publish all**
+   
+   ![image](https://user-images.githubusercontent.com/62353482/79280406-21145a00-7e65-11ea-8950-bff27882c4de.png)
+
+
+   * **Go to Triggers and activate it**.
+   
+   ![image](https://user-images.githubusercontent.com/62353482/79280526-66388c00-7e65-11ea-895e-915018092b67.png)
+
+
+   * **Check for the new files getting generated at the Gen2 root folder path**
+  
+   
 ## Reach out to us
 
 **You found a bug or want to propose a feature?**
