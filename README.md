@@ -199,15 +199,15 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 
  This step will configure the path in the work loads to Gen2 endpoint. 
  
- **1. Application update for Azure DataBricks**
+ ### Application update for Azure DataBricks
 
  **Before the migration**:
  
- * **Mount configured to Gen1 path**
+ **1. Mount configured to Gen1 path**
 
 ![image](https://user-images.githubusercontent.com/62353482/79265180-90c91b80-7e4a-11ea-9000-0f86aa7c6ebb.png)
 
- * **Set up DataBricks cluster for scheduled job run**
+ **2. Set up DataBricks cluster for scheduled job run**
   
  Sample snapshot of working code:
  
@@ -217,7 +217,7 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
  
   **After the migration**:
   
- * **Change the mount configuration to Gen2 container**
+ **1. Change the mount configuration to Gen2 container**
   
   ![image](https://user-images.githubusercontent.com/62353482/79016042-dfad4300-7b22-11ea-97c2-274e533a37e7.png)
 
@@ -227,15 +227,15 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 
   **Note**: Refer to [mountconfiguration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Application/MountConfiguration.py) script for more details.
   
- * **Reschedule the job scheduler**
+ **2. Reschedule the job scheduler**
 
- * **Check for the new files getting generated at the Gen2 root folder path**
+ **3. Check for the new files getting generated at the Gen2 root folder path**
  
-  **2. Application update for Azure Data Factory**
+ ### Application update for Azure Data Factory
   
-  * **Stop the trigger to Gen1**
+  **1. Stop the trigger to Gen1**
     
-  * **Modify the existing factory by creating new linked service to point to Gen2 storage**.
+  **2. Modify the existing factory by creating new linked service to point to Gen2 storage**.
   
   Go to **-->** Azure Data Factory **-->** Click on Author **-->** Connections **-->** Linked Service **-->** click on New **-->**   Choose Azure Data Lake Storage Gen2 **-->** Click on Continue button
 
@@ -247,24 +247,24 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 
 ![image](https://user-images.githubusercontent.com/62353482/79276405-cd057780-7e5c-11ea-9c31-95dfd26db5b9.png)
 
-   * **Modify the existing factory by creating new dataset in Gen2 storage**.
+   **3. Modify the existing factory by creating new dataset in Gen2 storage**.
    
    Go to **-->** Azure Data Factory **-->** Click on Author **-->** Click on Pipelines **-->** Select the pipeline **-->** Click on Activity **-->** Click on sink tab **-->** Choose the dataset to point to Gen2 
    
    ![image](https://user-images.githubusercontent.com/62353482/79279985-20c78f00-7e64-11ea-9e04-cdfd770d210f.png)
 
 
-   * **Click on Publish all**
+   **4. Click on Publish all**
    
    ![image](https://user-images.githubusercontent.com/62353482/79280406-21145a00-7e65-11ea-8950-bff27882c4de.png)
 
 
-   * **Go to Triggers and activate it**.
+   **5. Go to Triggers and activate it**.
    
    ![image](https://user-images.githubusercontent.com/62353482/79280526-66388c00-7e65-11ea-895e-915018092b67.png)
 
 
-   * **Check for the new files getting generated at the Gen2 root folder path**
+   **6. Check for the new files getting generated at the Gen2 root folder path**
   
    
 ## Reach out to us
