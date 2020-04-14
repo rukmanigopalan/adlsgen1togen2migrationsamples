@@ -143,9 +143,9 @@ The folder will contain below listed contents under **src**:
   // Note : Maximum activities per pipeline is 40
   
 ```
-
  
- **Note**: Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json) script for more reference.
+  **Note**: Please note the **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
+   Path to [IncrementalLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Configuration/IncrementalLoadConfig.json) script for more reference.
  
 3. **Azure data factory pipeline creation and execution**
 
