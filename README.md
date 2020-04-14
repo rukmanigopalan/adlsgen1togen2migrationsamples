@@ -64,8 +64,7 @@ This version of code will have below limitations:
    * Gen1 & Gen2 should be in same subscription
    * Supports only for single Gen1 source and Gen2 destination
    * Trigger event is manual process for incremental copy
-   * ACL's are not part of this copy pattern
-
+   
 ## Migration Framework Setup
 
 1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples) to local machine**:
