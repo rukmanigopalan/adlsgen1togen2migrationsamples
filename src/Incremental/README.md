@@ -225,7 +225,7 @@ The CSV file will show the matched and unmatched records with Gen1 and Gen2 file
 
 ![image](https://user-images.githubusercontent.com/62353482/79009824-49beeb80-7b15-11ea-8d14-ce444f7fd4b8.png)
 
-  **Note**: Refer to [mountconfiguration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Application/MountConfiguration.py) script for more details.
+  **Note**: Refer to [mountconfiguration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/Application/MountConfiguration.py) script for more details.
   
  **2. Reschedule the job scheduler**
 
