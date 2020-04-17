@@ -64,6 +64,7 @@ This version of code will have below limitations:
    * Gen1 & Gen2 should be in same subscription
    * Supports only for single Gen1 source and Gen2 destination
    * Trigger event is manual process for incremental copy
+   * Code Developed and Supported only in Windows PowerShell ISE
       
 ## Migration Framework Setup
 
