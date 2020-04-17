@@ -95,9 +95,16 @@ The folder will contain below listed contents under **src**:
  
  2. **Set up the Configuration file to connect to azure data factory**:
 
-* **Important Prerequisite**: Make an entry of Gen2 connection string in the key vault as shown below :
+    **Important Prerequisite**: 
 
-![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
+     * Provide Service principal access to configure keyvault as below:
+     
+     ![image](https://user-images.githubusercontent.com/62353482/79594064-3e2d7080-8091-11ea-872e-d69052da0ff7.png)
+     
+    
+     * Make an entry of Gen2 connection string in the key vault as shown below :
+
+     ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
 
 
 
