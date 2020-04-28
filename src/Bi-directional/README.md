@@ -62,18 +62,36 @@ Considerations for using the bi-directional sync pattern:
   
     docker-compose up -d // start the fusion
    ```
- 3. **Login to Fusion UI**. Create account and set up ADLS Gen1 and Gen2 storage. [Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
+ 3. **Login to Fusion UI**. Set up ADLS Gen1 and Gen2 storage. [Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
  
     URL --> http://<dnsname>:8081
   
- 4. 
-  
- 
-
-
 ## Create Replication Rule
 
+ On the dashboard, create a HCFS rule with the following parameters:
+
+ Rule Name = migration
+ Path for all storages = /
+ Default exclusions
+ Preserve HCFS Block Size = False
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/80546359-44153280-896a-11ea-9e12-bb85b6ceeafc.png)
+ 
+ **Click Finish**
+
 ## Migration using LivMigrator
+
+ 1. **Get Sample data**
+ 
+ Upload sample data to your ADLS Gen1 storage account, see the [guide](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#uploaddata) to know more.
+ 
+ 2. Place it within the Home Mount Point. 
+ 
+ 3. On the Fusion UI dashboard, view the migration rule.
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/80547216-8c355480-896c-11ea-8adb-1a58d4e1be6c.png)
+
+
 
 Follow the steps below to demonstrate the migration of data from your ADLS Gen1 to Gen2 storage.
 
