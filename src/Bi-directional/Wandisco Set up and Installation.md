@@ -26,7 +26,7 @@ This quickstart will help in setting up the Azure Linux Virtual Machine (VM) sui
    * [References](#references)
  <!--te-->
  
- ## Prerequisites
+## Prerequisites
  
  * **Active Azure Subscription**
 
@@ -68,9 +68,9 @@ This quickstart will help in setting up the Azure Linux Virtual Machine (VM) sui
 
  10. On the Create a virtual machine page, you can see the details about the VM you are about to create. When you are ready, select         **Create**.
  
- ## Virtual Machine Connection set up
+## Virtual Machine Connection set up
  
- ### Create an SSH connection with the VM.
+### Create an SSH connection with the VM.
 
  1. Select the **Connect** button on the overview page for your VM.
  
@@ -90,7 +90,7 @@ This quickstart will help in setting up the Azure Linux Virtual Machine (VM) sui
  
  5. Click on **Add** button.
  
- ### Connect to VM
+### Connect to VM
  
  To connect to the VM created above, you need a secure shell protocol (SSH) client like [Putty](https://www.putty.org/), [Git for Windows](https://gitforwindows.org/), [Cygwin](https://cygwin.com/), [MobaXterm](https://mobaxterm.mobatek.net/)
  
@@ -171,7 +171,7 @@ The above DNS name can be used to login into SSH client.
 
 ## ADLS Gen1 and Gen2 Configuration
 
-  ### ADLS Gen1 storage Configuration
+### ADLS Gen1 storage Configuration
  
  1. Log in to Fusion via a web browser.
  
@@ -187,7 +187,7 @@ The above DNS name can be used to login into SSH client.
  
  ![image](https://user-images.githubusercontent.com/62353482/80416242-a8f85c00-8888-11ea-851c-d23f38749d56.png)
  
-   **ADLS Gen1 storage account details**:
+ **ADLS Gen1 storage account details**:
 
    * Hostname / Endpoint (Example: <account-name>.azuredatalakestore.net)
  
@@ -204,7 +204,7 @@ The above DNS name can be used to login into SSH client.
    
    5. Click on **APPLY CONFIGURATION**
   
-      ### ADLS Gen2 storage Configuration
+### ADLS Gen2 storage Configuration
 
   1. Click on settings icon for the adls2 storage. Select the ADLS Gen2 storage type
   
@@ -213,7 +213,7 @@ The above DNS name can be used to login into SSH client.
    ![image](https://user-images.githubusercontent.com/62353482/80425042-c1bc3e00-8897-11ea-96b8-891c6e739935.png)
 
    
-   **ADLS Gen2 storage account details**:
+  **ADLS Gen2 storage account details**:
    
    * Account name (Example: adlsg2storage)
    
@@ -237,4 +237,3 @@ Make sure to remove any credential from your code before sharing it.
    * [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)
    
    * [How to use SSH key with Windows on Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)   
-
