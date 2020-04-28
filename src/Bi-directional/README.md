@@ -92,14 +92,15 @@ Follow the steps below to demonstrate the migration of data from your ADLS Gen1 
   
   
   
-  
-  
-  
-  
-  
-  
-  ## References
+## Reach out to us
 
-   * [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)
+**You found a bug or want to propose a feature?**
+
+ File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)] (https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/issues/new).
+ Make sure to remove any credential from your code before sharing it. 
+  
+ ## References
+
+ * [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)
    
    * [How to use SSH key with Windows on Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)
