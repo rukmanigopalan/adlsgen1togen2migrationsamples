@@ -46,7 +46,29 @@ Considerations for using the bi-directional sync pattern:
 
 
 ## Connect to Wandisco UI
+ 
+ 1. **Start** the VM in azure portal
+ 
+    ![image](https://user-images.githubusercontent.com/62353482/80544309-9b64d400-8965-11ea-9b28-a4e4daf05a3d.png)
 
+ 2. **Start the Fusion**
+ 
+    Go to **SSH Client**. Connect and run below commands:
+ 
+   ```scala
+    cd fusion-docker-compose // Change to the repository directory
+  
+    ./setup-env.sh // set up script
+  
+    docker-compose up -d // start the fusion
+   ```
+ 3. **Login to Fusion UI**. Create account and set up ADLS Gen1 and Gen2 storage. [Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
+ 
+    URL --> http://<dnsname>:8081
+  
+ 4. 
+  
+ 
 
 
 ## Create Replication Rule
