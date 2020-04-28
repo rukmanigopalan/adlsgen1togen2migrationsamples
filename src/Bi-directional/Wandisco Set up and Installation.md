@@ -59,7 +59,7 @@ This quickstart will help in setting up the Azure Linux Virtual Machine (VM) sui
   
   ![image](https://user-images.githubusercontent.com/62353482/80262658-000cef80-8643-11ea-9007-462dc366e2d3.png)
 
-  8. Leave the defaults under **Disks**, **Networking**, **Management** . In the **Advanced** tab under **Cloud init**, paste the [cloud init](https://github.com/chjayashree25/bi-directional-sync-pattern/blob/master/cloud-init.txt) content. 
+  8. Leave the defaults under **Disks**, **Networking**, **Management** . In the **Advanced** tab under **Cloud init**, paste the [cloud init](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/cloud-init.txt) content. 
   
   
   ![image](https://user-images.githubusercontent.com/62353482/80263267-f2586980-8644-11ea-86b8-4b1714779948.png)
