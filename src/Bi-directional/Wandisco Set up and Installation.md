@@ -175,7 +175,7 @@ The above DNS name can be used to login into SSH client.
  
  1. Log in to Fusion via a web browser.
  
-    Enter the address in the form of : http://<dnsname>:8081
+    Enter the address in the form of: http://<dnsname>:8081
  
    ![image](https://user-images.githubusercontent.com/62353482/80413692-b7dd0f80-8884-11ea-82d0-9925706b4522.png)
    
