@@ -65,13 +65,13 @@ Considerations for using the bi-directional sync pattern:
    ```
  3. **Login to Fusion UI**. Set up ADLS Gen1 and Gen2 storage. [Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
  
-    URL --> http://<dnsname>:8081
+    URL --> http://{dnsname}:8081
   
 ## Create Replication Rule
 
  On the dashboard, create a HCFS rule with the following parameters:
 
- Rule Name = migration
+ Rule Name = <Define the rule name>
  Path for all storages = /
  Default exclusions
  Preserve HCFS Block Size = False
@@ -98,9 +98,8 @@ Considerations for using the bi-directional sync pattern:
   Target Zone = adls2
   Overwrite Settings = Skip
 
+ 5. Wait until the migration is complete, and check the contents of your ADLS Gen2 container.
 
-
-Follow the steps below to demonstrate the migration of data from your ADLS Gen1 to Gen2 storage.
 
 ## Consistency Check
 
