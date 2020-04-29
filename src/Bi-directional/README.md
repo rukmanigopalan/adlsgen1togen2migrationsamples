@@ -24,8 +24,8 @@ Considerations for using the bi-directional sync pattern:
    * [Prerequisites](#prerequisites)
    * [Connect to Wandisco UI](#connect-to-wandisco-ui)
    * [Create Replication Rule](#create-replication-rule)
-   * [Migration using LivMigrator](#migration-using-livmigrator)
    * [Consistency check](#consistency-check)
+   * [Migration using LivMigrator](#migration-using-livmigrator)
    * [Application Update](#application-update)
    * [Reach out to us](#reach-out-to-us)
    * [References](#references)
@@ -71,16 +71,38 @@ Considerations for using the bi-directional sync pattern:
 
  On the dashboard, create a HCFS rule with the following parameters:
 
- Rule Name = <Define the rule name>
- Path for all storages = /
- Default exclusions
- Preserve HCFS Block Size = False
+ * Rule Name = <Give the rule a unique name>
+  
+ * Path for all storages = /
+ 
+ * Default exclusions
+ 
+ * Preserve HCFS Block Size = False
  
  ![image](https://user-images.githubusercontent.com/62353482/80546359-44153280-896a-11ea-9e12-bb85b6ceeafc.png)
  
+ To know more [how to create rule](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/operation/create-rule)
+ 
  **Click Finish**
 
+## Consistency Check
+  
+  Once you have created a [replication rule](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/operation/create-rule)
+  as per above mentioned steps, run a consistency check to compare the contents between all zones.
+  
+  On the Rules table, click to View rule.
+
+  1. On the rule page, start consistency check and wait for the Consistency status to update. The more objects contained within the     path, the longer it will take to complete the check.
+
+  2. The Consistency Status will determine the next steps:
+
+   * Consistent - no further action is required.
+   
+   * Inconsistent - consider migration
+
 ## Migration using LivMigrator
+
+Once HCFS replication rule is created, migration activity can be started using the LiveMigrator. This allows migration of  data in a single pass while keeping up with all changes to the source storage(ADLS Gen1). The outcome is guaranteed data consistency between source and target. As data is being migrated it is immediately ready to be used, without interruption.
 
  1. **Get Sample data**
  
@@ -88,20 +110,26 @@ Considerations for using the bi-directional sync pattern:
  
  2. Place it within the Home Mount Point. 
  
- 3. On the Fusion UI dashboard, view the migration rule.
+ 3. On the Fusion UI dashboard, view the HCFS rule.
  
  ![image](https://user-images.githubusercontent.com/62353482/80547216-8c355480-896c-11ea-8adb-1a58d4e1be6c.png)
  
+  You will need to configure the overwrite settings. This determines what happens if the LiveMigrator encounters content in the target  path with the same name and size.
+
+  * **Skip** - If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
+
+  * **Overwrite** - Everything is replaced, even if the file size is identical.
+        
  4. Start your migration with the following settings:
 
   Source Zone = adls1
+ 
   Target Zone = adls2
+ 
   Overwrite Settings = Skip
 
  5. Wait until the migration is complete, and check the contents of your ADLS Gen2 container.
 
-
-## Consistency Check
 
 
 ## Application Update
