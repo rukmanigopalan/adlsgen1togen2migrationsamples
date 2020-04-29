@@ -26,6 +26,7 @@ Considerations for using the bi-directional sync pattern:
    * [Create Replication Rule](#create-replication-rule)
    * [Migration using LivMigrator](#migration-using-livmigrator)
    * [Consistency check](#consistency-check)
+   * [Application Update](#application-update)
    * [Reach out to us](#reach-out-to-us)
    * [References](#references)
  <!--te-->
@@ -90,12 +91,21 @@ Considerations for using the bi-directional sync pattern:
  3. On the Fusion UI dashboard, view the migration rule.
  
  ![image](https://user-images.githubusercontent.com/62353482/80547216-8c355480-896c-11ea-8adb-1a58d4e1be6c.png)
+ 
+ 4. Start your migration with the following settings:
+
+  Source Zone = adls1
+  Target Zone = adls2
+  Overwrite Settings = Skip
 
 
 
 Follow the steps below to demonstrate the migration of data from your ADLS Gen1 to Gen2 storage.
 
 ## Consistency Check
+
+
+## Application Update
   
   
   
@@ -115,6 +125,4 @@ Make sure to remove any credential from your code before sharing it.
   
 ## References
 
- * [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)
-   
-   * [How to use SSH key with Windows on Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)
+ * [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)     
