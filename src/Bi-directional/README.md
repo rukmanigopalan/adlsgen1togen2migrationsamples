@@ -101,6 +101,12 @@ Considerations for using the bi-directional sync pattern:
    
    * Inconsistent - consider migration
 
+  Consistency check before migration:
+  
+  ![image](https://user-images.githubusercontent.com/62353482/80765875-f418a600-8af8-11ea-9129-0791ccfcba12.png)
+  
+  To know more refer [Consistency Check using Wandisco fusion](https://docs.wandisco.com/bigdata/wdfusion/2.12/#consistency-check)
+ 
 ## Migration using LivMigrator
 
 Once HCFS replication rule is created, migration activity can be started using the LiveMigrator. This allows migration of  data in a single pass while keeping up with all changes to the source storage(ADLS Gen1). The outcome is guaranteed data consistency between source and target. As data is being migrated it is immediately ready to be used, without interruption.
@@ -134,6 +140,8 @@ Once HCFS replication rule is created, migration activity can be started using t
 ## Managing Replication
 
    ![image](https://user-images.githubusercontent.com/62353482/80671739-a439d080-8a5f-11ea-8b68-bfee84d8e6af.png)
+   
+   To know more visit [How to manage replication](https://docs.wandisco.com/bigdata/wdfusion/2.12/#managing-replication)
 
 
 ## Application Update
@@ -158,4 +166,4 @@ Make sure to remove any credential from your code before sharing it.
 
  * [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)     
  
- * [Wandisco LivMigrator}(https://www.wandisco.com/products/live-migrator)
+ * [Wandisco LivMigrator](https://www.wandisco.com/products/live-migrator)
