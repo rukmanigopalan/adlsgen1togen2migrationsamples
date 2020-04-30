@@ -26,6 +26,7 @@ Considerations for using the bi-directional sync pattern:
    * [Create Replication Rule](#create-replication-rule)
    * [Consistency check](#consistency-check)
    * [Migration using LivMigrator](#migration-using-livmigrator)
+   * [Managing Replication](managing-replication)
    * [Application Update](#application-update)
    * [Reach out to us](#reach-out-to-us)
    * [References](#references)
@@ -114,7 +115,7 @@ Once HCFS replication rule is created, migration activity can be started using t
  
  ![image](https://user-images.githubusercontent.com/62353482/80547216-8c355480-896c-11ea-8adb-1a58d4e1be6c.png)
  
-  You will need to configure the overwrite settings. This determines what happens if the LiveMigrator encounters content in the target  path with the same name and size.
+  The overwrite settings needs to be configured. This determines what happens if the LiveMigrator encounters content in the target  path with the same name and size.
 
   * **Skip** - If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
 
@@ -122,14 +123,17 @@ Once HCFS replication rule is created, migration activity can be started using t
         
  4. Start your migration with the following settings:
 
-  Source Zone = adls1
+    Source Zone = adls1
  
-  Target Zone = adls2
+    Target Zone = adls2
  
-  Overwrite Settings = Skip
+    Overwrite Settings = Skip
 
  5. Wait until the migration is complete, and check the contents of your ADLS Gen2 container.
 
+## Managing Replication
+
+   ![image](https://user-images.githubusercontent.com/62353482/80671739-a439d080-8a5f-11ea-8b68-bfee84d8e6af.png)
 
 
 ## Application Update
@@ -153,3 +157,5 @@ Make sure to remove any credential from your code before sharing it.
 ## References
 
  * [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)     
+ 
+ * [Wandisco LivMigrator}(https://www.wandisco.com/products/live-migrator)
