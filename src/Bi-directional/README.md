@@ -99,9 +99,9 @@ Considerations for using the bi-directional sync pattern:
 
   2. The Consistency Status will determine the next steps:
 
-   * Consistent - no further action is required.
+       * Consistent - no further action is required.
    
-   * Inconsistent - consider migration
+       * Inconsistent - consider migration
 
   Consistency check before migration:
   
@@ -111,7 +111,7 @@ Considerations for using the bi-directional sync pattern:
  
 ## Migration using LivMigrator
 
-Once HCFS replication rule is created, migration activity can be started using the LiveMigrator. This allows migration of  data in a single pass while keeping up with all changes to the source storage(ADLS Gen1). The outcome is guaranteed data consistency between source and target. As data is being migrated it is immediately ready to be used, without interruption.
+Once HCFS replication rule is created, migration activity can be started using the LiveMigrator. This allows migration of data in a single pass while keeping up with all changes to the source storage(ADLS Gen1). The outcome is guaranteed data consistency between source and target. As data is being migrated it is immediately ready to be used, without interruption.
 
  1. **Get Sample data**
  
@@ -125,9 +125,9 @@ Once HCFS replication rule is created, migration activity can be started using t
  
   The overwrite settings needs to be configured. This determines what happens if the LiveMigrator encounters content in the target  path with the same name and size.
 
-  * **Skip** - If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
+     * **Skip** - If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
 
-  * **Overwrite** - Everything is replaced, even if the file size is identical.
+     * **Overwrite** - Everything is replaced, even if the file size is identical.
         
  4. Start your migration with the following settings:
 
@@ -149,6 +149,17 @@ Once HCFS replication rule is created, migration activity can be started using t
 
 
 ## Application Update
+  
+  As part of this, we will [configure services in workloads](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-supported-azure-services) used to point to Gen2 endpoint.
+ 
+:bulb: **Note**: We will be covering below azure services
+
+  Azure Services           |        Related articles                                                     
+  -------------            |   -------------------------------------------------------------------       
+ Azure Data Factory        |   [Load data into Azure Data Lake Storage Gen2 with Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+ Azure Databricks          |   [Use with Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [Quickstart: Analyze data in Azure Data Lake Storage Gen2 by using Azure Databricks](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account) <br>                    [Tutorial: Extract, transform, and load data by using Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/databricks-extract-load-sql-data-warehouse)
+ SQL Data Warehouse        |   [Use with Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse)
+  
   
   
   
