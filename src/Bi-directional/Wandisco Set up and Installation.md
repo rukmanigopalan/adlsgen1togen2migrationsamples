@@ -3,7 +3,7 @@ Wandisco Fusion Set up and Installation Guide
 
 ## Overview
 
-This quickstart will help in setting up the Azure Linux Virtual Machine (VM) suitable for the Fusion installation. Below will be covered:
+This quickstart will help in setting up the Azure Linux Virtual Machine (VM) suitable for the Wandisco Fusion installation. Below will be covered:
 
   *  Azure Linux Virtual Machine (VM) creation using Azure Portal
   
@@ -59,7 +59,7 @@ This quickstart will help in setting up the Azure Linux Virtual Machine (VM) sui
   
   ![image](https://user-images.githubusercontent.com/62353482/80262658-000cef80-8643-11ea-9007-462dc366e2d3.png)
 
-  8. Leave the defaults under **Disks**, **Networking**, **Management** . In the **Advanced** tab under **Cloud init**, paste the [cloud init](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/cloud-init.txt) content. 
+  8. Leave the defaults under **Disks**, **Networking**, **Management** . In the **Advanced** tab under **Cloud init** text field, paste the [cloud init](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/cloud-init.txt) content. 
   
   
   ![image](https://user-images.githubusercontent.com/62353482/80263267-f2586980-8644-11ea-86b8-4b1714779948.png)
@@ -100,7 +100,9 @@ This quickstart will help in setting up the Azure Linux Virtual Machine (VM) sui
 
 The above DNS name can be used to login into SSH client.
 
-2. Open the SSH client (Putty , Git , Cygwin, MobaXterm). Here we will be using MobaXterm.
+2. Open the SSH client (Putty , Git , Cygwin, MobaXterm). 
+
+ :bulb: Note : Here we will be using MobaXterm.
 
  Go to **Session** ---> **Click** on **SSH** 
  
@@ -234,6 +236,6 @@ Make sure to remove any credential from your code before sharing it.
    
 ## References
 
-   * [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)
+   * :link: [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)
    
-   * [How to use SSH key with Windows on Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)   
+   * :link: [How to use SSH key with Windows on Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)   
