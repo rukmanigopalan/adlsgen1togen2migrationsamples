@@ -125,9 +125,9 @@ Once HCFS replication rule is created, migration activity can be started using t
  
   The overwrite settings needs to be configured. This determines what happens if the LiveMigrator encounters content in the target  path with the same name and size.
 
-     * **Skip** - If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
+    * **SKip** - If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
 
-     * **Overwrite** - Everything is replaced, even if the file size is identical.
+    * **Overwrite** - Everything is replaced, even if the file size is identical.
         
  4. Start your migration with the following settings:
 
