@@ -3,13 +3,13 @@ Bi-directional sync pattern Guide: A quick start template
 
 ## Overview
 
-This manual will introduce [Wandisco](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) as a recommended tool to set up bi-directional sync between Gen1 and Gen2. Below will be covered as part of this guide:
+This manual will introduce [Wandisco](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) as a recommended tool to set up bi-directional sync between Gen1 and Gen2 using the Replication feature. Below will be covered as part of this guide:
   
   *  Live replication from Gen1 to Gen2
   
   *  Data Consistency Check
   
-  *  Application update for ADF, ADB and SQL DWH
+  *  Application update for ADF, ADB and SQL DWH workloads 
 
 Considerations for using the bi-directional sync pattern:
 
@@ -138,6 +138,8 @@ Once HCFS replication rule is created, migration activity can be started using t
     Overwrite Settings = Skip
 
  5. Wait until the migration is complete, and check the contents of your ADLS Gen2 container.
+ 
+ :bulb: **NOTE** : A hidden folder :file_folder: .fusion will be present in the ADLS Gen2 path.
 
 ## Managing Replication
 
