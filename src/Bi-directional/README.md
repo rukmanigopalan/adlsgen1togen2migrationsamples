@@ -144,7 +144,7 @@ Once HCFS replication rule is created, migration activity can be started using t
 
 ## Managing Replication
 
-   ![image](https://user-images.githubusercontent.com/62353482/80671739-a439d080-8a5f-11ea-8b68-bfee84d8e6af.png)
+   ![image](https://user-images.githubusercontent.com/62353482/80843564-7799cc00-8bb9-11ea-89bb-b7009162f6a1.png)
    
    To know more visit :link: [How to manage replication](https://docs.wandisco.com/bigdata/wdfusion/2.12/#managing-replication)
 
@@ -162,11 +162,11 @@ Once HCFS replication rule is created, migration activity can be started using t
  SQL Data Warehouse        |   [Use with Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse)
  
 
- Below is the 
+ Below is a set up of bi-directional sync between Gen1 and Gen2
 
  ![image](https://user-images.githubusercontent.com/62353482/80842921-b6c71d80-8bb7-11ea-8414-47d0ccb19ab0.png)
 
-  
+ 
   
   
   
