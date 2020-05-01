@@ -123,11 +123,12 @@ Once HCFS replication rule is created, migration activity can be started using t
  
  ![image](https://user-images.githubusercontent.com/62353482/80547216-8c355480-896c-11ea-8adb-1a58d4e1be6c.png)
  
-  The overwrite settings needs to be configured. This determines what happens if the LiveMigrator encounters content in the target  path with the same name and size.
+ 
+  The overwrite settings needs to be configured. This determines what happens if the LiveMigrator encounters content in the target path with the same name and size.
 
-    * **SKip** - If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
+     Skip:     If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
 
-    * **Overwrite** - Everything is replaced, even if the file size is identical.
+    Overwrite: Everything is replaced, even if the file size is identical.
         
  4. Start your migration with the following settings:
 
@@ -159,6 +160,13 @@ Once HCFS replication rule is created, migration activity can be started using t
  Azure Data Factory        |   [Load data into Azure Data Lake Storage Gen2 with Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
  Azure Databricks          |   [Use with Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [Quickstart: Analyze data in Azure Data Lake Storage Gen2 by using Azure Databricks](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account) <br>                    [Tutorial: Extract, transform, and load data by using Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/databricks-extract-load-sql-data-warehouse)
  SQL Data Warehouse        |   [Use with Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse)
+ 
+
+ Below is the 
+
+ ![image](https://user-images.githubusercontent.com/62353482/80842921-b6c71d80-8bb7-11ea-8414-47d0ccb19ab0.png)
+
+  
   
   
   
