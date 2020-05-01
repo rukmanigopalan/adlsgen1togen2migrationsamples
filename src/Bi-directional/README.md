@@ -5,7 +5,7 @@ Bi-directional sync pattern Guide: A quick start template
 
 This manual will introduce [Wandisco](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) as a recommended tool to set up bi-directional sync between Gen1 and Gen2. Below will be covered as part of this guide:
   
-  *  Live Migration from Gen1 to Gen2
+  *  Live replication from Gen1 to Gen2
   
   *  Data Consistency Check
   
@@ -17,6 +17,8 @@ Considerations for using the bi-directional sync pattern:
 
 ✔️ Migration effort is high, but it provides side-by-side support for Gen1 and Gen2.
   
+ :bulb: **Note** : The guide will be focussing on the migration of data from ADLS Gen1 as source to ADLS Gen2 as destination using the Wandisco replication .
+ 
  ## Table of contents
    
  <!--ts-->
@@ -38,11 +40,11 @@ Considerations for using the bi-directional sync pattern:
 
 * **Azure Data Lake Storage Gen1**
 
-* **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
+* **Azure Data Lake Storage Gen2**. For more details please refer to :link: [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
 * **Licenses for WANdisco Fusion** that accommodate the volume of data that you want to make available to ADLS Gen2
 
-* **Azure Linux Virtual Machine** .Please refer here to know [How to create Azure VM](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md)
+* **Azure Linux Virtual Machine** .Please refer here to know :link: [How to create Azure VM](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md)
 
 * **Windows SSH client** like [Putty](https://www.putty.org/), [Git for Windows](https://gitforwindows.org/), [Cygwin](https://cygwin.com/), [MobaXterm](https://mobaxterm.mobatek.net/)
 
@@ -64,7 +66,7 @@ Considerations for using the bi-directional sync pattern:
   
     docker-compose up -d // start the fusion
    ```
- 3. **Login to Fusion UI**. Set up ADLS Gen1 and Gen2 storage. [Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
+ 3. **Login to Fusion UI**. Set up ADLS Gen1 and Gen2 storage. :link: [Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
  
     URL --> http://{dnsname}:8081
   
@@ -82,7 +84,7 @@ Considerations for using the bi-directional sync pattern:
  
  ![image](https://user-images.githubusercontent.com/62353482/80546359-44153280-896a-11ea-9e12-bb85b6ceeafc.png)
  
- To know more [how to create rule](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/operation/create-rule)
+ To know more click :link: [how to create rule](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/operation/create-rule)
  
  **Click Finish**
 
@@ -105,7 +107,7 @@ Considerations for using the bi-directional sync pattern:
   
   ![image](https://user-images.githubusercontent.com/62353482/80765875-f418a600-8af8-11ea-9129-0791ccfcba12.png)
   
-  To know more refer [Consistency Check using Wandisco fusion](https://docs.wandisco.com/bigdata/wdfusion/2.12/#consistency-check)
+  To know more refer to :link: [Consistency Check using Wandisco fusion](https://docs.wandisco.com/bigdata/wdfusion/2.12/#consistency-check)
  
 ## Migration using LivMigrator
 
@@ -141,7 +143,7 @@ Once HCFS replication rule is created, migration activity can be started using t
 
    ![image](https://user-images.githubusercontent.com/62353482/80671739-a439d080-8a5f-11ea-8b68-bfee84d8e6af.png)
    
-   To know more visit [How to manage replication](https://docs.wandisco.com/bigdata/wdfusion/2.12/#managing-replication)
+   To know more visit :link: [How to manage replication](https://docs.wandisco.com/bigdata/wdfusion/2.12/#managing-replication)
 
 
 ## Application Update
@@ -164,6 +166,6 @@ Make sure to remove any credential from your code before sharing it.
   
 ## References
 
- * [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)     
+ * :link: [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)     
  
- * [Wandisco LivMigrator](https://www.wandisco.com/products/live-migrator)
+ * :link: [Wandisco LivMigrator](https://www.wandisco.com/products/live-migrator)
