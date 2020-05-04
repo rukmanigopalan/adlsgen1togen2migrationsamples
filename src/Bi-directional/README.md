@@ -5,19 +5,19 @@ Bi-directional sync pattern Guide: A quick start template
 
 This manual will introduce [Wandisco](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) as a recommended tool to set up bi-directional sync between Gen1 and Gen2 using the Replication feature. Below will be covered as part of this guide:
   
-  *  Live replication from Gen1 to Gen2
+  ✔️ Live migration from Gen1 to Gen2
   
-  *  Data Consistency Check
+  ✔️ Data Consistency Check
   
-  *  Application update for ADF, ADB and SQL DWH workloads 
+  ✔️ Application update for ADF, ADB and SQL DWH workloads 
 
 Considerations for using the bi-directional sync pattern:
 
-✔️ Ideal for complex scenarios that involve a large number of pipelines and dependencies where a phased approach might make more sense.
+ ✔️ Ideal for complex scenarios that involve a large number of pipelines and dependencies where a phased approach might make more  sense.
 
-✔️ Migration effort is high, but it provides side-by-side support for Gen1 and Gen2.
+ ✔️ Migration effort is high, but it provides side-by-side support for Gen1 and Gen2.
   
- :bulb: **Note** : The guide will be focussing on the migration of data from ADLS Gen1 as source to ADLS Gen2 as destination using the Wandisco replication .
+ :bulb: **Note** : The guide will be focussing on the migration of data from ADLS Gen1 as source to ADLS Gen2 as destination using the Wandisco replication mechanism.
  
  ## Table of contents
    
@@ -36,17 +36,17 @@ Considerations for using the bi-directional sync pattern:
  
  ## Prerequisites 
 
-* **Active Azure Subscription**
+   * **Active Azure Subscription**
 
-* **Azure Data Lake Storage Gen1**
+   * **Azure Data Lake Storage Gen1**
 
-* **Azure Data Lake Storage Gen2**. For more details please refer to :link: [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
+   * **Azure Data Lake Storage Gen2**. For more details please refer to :link: [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* **Licenses for WANdisco Fusion** that accommodate the volume of data that you want to make available to ADLS Gen2
+   * **Licenses for WANdisco Fusion** that accommodate the volume of data that you want to make available to ADLS Gen2
 
-* **Azure Linux Virtual Machine** .Please refer here to know :link: [How to create Azure VM](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md)
+   * **Azure Linux Virtual Machine** .Please refer here to know :link: [How to create Azure VM](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md)
 
-* **Windows SSH client** like [Putty](https://www.putty.org/), [Git for Windows](https://gitforwindows.org/), [Cygwin](https://cygwin.com/), [MobaXterm](https://mobaxterm.mobatek.net/)
+   * **Windows SSH client** like [Putty](https://www.putty.org/), [Git for Windows](https://gitforwindows.org/), [Cygwin](https://cygwin.com/), [MobaXterm](https://mobaxterm.mobatek.net/)
 
 
 ## Connect to Wandisco UI
@@ -86,16 +86,19 @@ Considerations for using the bi-directional sync pattern:
  
  To know more click :link: [how to create rule](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/operation/create-rule)
  
- **Click Finish**
+ **Click Finish** and wait for the rule to appear on the dashboard.
 
 ## Consistency Check
   
   Once you have created a [replication rule](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/operation/create-rule)
-  as per above mentioned steps, run a consistency check to compare the contents between all zones.
+  as per above mentioned steps, run a consistency check to compare the contents between both zones.
   
   On the Rules table, click to View rule.
 
   1. On the rule page, start consistency check and wait for the Consistency status to update. The more objects contained within the     path, the longer it will take to complete the check.
+  
+  ![image](https://user-images.githubusercontent.com/62353482/80934228-0e15eb00-8d7c-11ea-8a8c-1975e2c0c9ba.png)
+
 
   2. The Consistency Status will determine the next steps:
 
@@ -109,9 +112,13 @@ Considerations for using the bi-directional sync pattern:
   
   To know more refer to :link: [Consistency Check using Wandisco fusion](https://docs.wandisco.com/bigdata/wdfusion/2.12/#consistency-check)
  
+ :bulb: **Note**: **START CONSISTENCY CHECK** is recommended for small set of data volume.
+ 
 ## Migration using LivMigrator
 
 Once HCFS replication rule is created, migration activity can be started using the LiveMigrator. This allows migration of data in a single pass while keeping up with all changes to the source storage(ADLS Gen1). The outcome is guaranteed data consistency between source and target. As data is being migrated it is immediately ready to be used, without interruption.
+
+**Note**: The Gen2 is synchronized with Gen1 source using consistency checks and scheduled migrations
 
  1. **Get Sample data**
  
@@ -126,9 +133,9 @@ Once HCFS replication rule is created, migration activity can be started using t
  
   The overwrite settings needs to be configured. This determines what happens if the LiveMigrator encounters content in the target path with the same name and size.
 
-     Skip:     If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
+  * **Skip**:     If the filesize is identical between the source and target, the file is skipped. If it’s a different size, the whole file is replaced.
 
-    Overwrite: Everything is replaced, even if the file size is identical.
+  * **Overwrite**: Everything is replaced, even if the file size is identical.
         
  4. Start your migration with the following settings:
 
@@ -141,7 +148,9 @@ Once HCFS replication rule is created, migration activity can be started using t
  5. Wait until the migration is complete, and check the contents of your ADLS Gen2 container.
  
  :bulb: **NOTE** : A hidden folder :file_folder: .fusion will be present in the ADLS Gen2 path.
-
+                   
+ :bulb: **Limitation : Client based replication is not enabled in Fusion UI , so replication process is manual driven.
+ 
 ## Managing Replication
 
    ![image](https://user-images.githubusercontent.com/62353482/80843564-7799cc00-8bb9-11ea-89bb-b7009162f6a1.png)
@@ -165,6 +174,8 @@ Once HCFS replication rule is created, migration activity can be started using t
  Below is a set up of bi-directional sync between Gen1 and Gen2
 
  ![image](https://user-images.githubusercontent.com/62353482/80842921-b6c71d80-8bb7-11ea-8414-47d0ccb19ab0.png)
+
+
 
  
   
