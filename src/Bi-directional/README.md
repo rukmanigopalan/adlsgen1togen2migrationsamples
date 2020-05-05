@@ -13,9 +13,9 @@ This manual will introduce [Wandisco](https://wandisco.github.io/wandisco-docume
 
 Considerations for using the bi-directional sync pattern:
 
- ✔️ Ideal for complex scenarios that involve a large number of pipelines and dependencies where a phased approach might make more  sense.
+  ✔️ Ideal for complex scenarios that involve a large number of pipelines and dependencies where a phased approach might make more  sense.
 
- ✔️ Migration effort is high, but it provides side-by-side support for Gen1 and Gen2.
+  ✔️ Migration effort is high, but it provides side-by-side support for Gen1 and Gen2.
   
  :bulb: **Note** : The guide will be focussing on the migration of data from ADLS Gen1 as source to ADLS Gen2 as destination using the Wandisco replication mechanism.
  
@@ -149,7 +149,7 @@ Once HCFS replication rule is created, migration activity can be started using t
  
  :bulb: **NOTE** : A hidden folder :file_folder: .fusion will be present in the ADLS Gen2 path.
                    
- :bulb: **Limitation : Client based replication is not enabled in Fusion UI , so replication process is manual driven.
+ :bulb: **Limitation : Client based replication is not enabled in Fusion UI , so replication process here is manually driven.
  
 ## Managing Replication
 
@@ -158,9 +158,9 @@ Once HCFS replication rule is created, migration activity can be started using t
    To know more visit :link: [How to manage replication](https://docs.wandisco.com/bigdata/wdfusion/2.12/#managing-replication)
 
 
-## Application Update
+## Application Configuration
   
-  As part of this, we will [configure services in workloads](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-supported-azure-services) used to point to Gen2 endpoint.
+  As part of this, we will [configure services in workloads](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-supported-azure-services) used to point to Gen2 endpoint and update the applications to use Gen2 mount.
  
 :bulb: **Note**: We will be covering below azure services
 
@@ -169,21 +169,28 @@ Once HCFS replication rule is created, migration activity can be started using t
  Azure Data Factory        |   [Load data into Azure Data Lake Storage Gen2 with Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
  Azure Databricks          |   [Use with Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [Quickstart: Analyze data in Azure Data Lake Storage Gen2 by using Azure Databricks](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account) <br>                    [Tutorial: Extract, transform, and load data by using Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/databricks-extract-load-sql-data-warehouse)
  SQL Data Warehouse        |   [Use with Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse)
+
+ This can be achieved by following phased approach where in the migration of data, work loads and applications will be validated incrementally.
  
-
- Below is a set up of bi-directional sync between Gen1 and Gen2
-
- ![image](https://user-images.githubusercontent.com/62353482/80842921-b6c71d80-8bb7-11ea-8414-47d0ccb19ab0.png)
-
-
-
+ **Beginning State** (**Before Migration**)-- The data pipeline on Gen1
  
+ In this state the data pipeline is set to Gen1 which will include the data ingestion from ADB, writing the processed data and loading the processed data to SQL DW from Gen1 
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/81105450-c650aa00-8ec8-11ea-917c-619c6909b2c9.png)
+
+ Sample design:
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/81109171-8a204800-8ece-11ea-9ddc-a8c12007e32a.png)
+
+ All the ADB notebooks will be pointing to Gen1 Mounth path in this state and the data will be ingested, processed and loaded to SQL DW from Gen1.
+ 
+ **Interim State** --The data pipeline on Gen1 and Gen2 partially
+ 
+ In this state we will start with the migration of the existing Gen1 data to Gen2 using Wandisco fusion. The data pipeline will be set to both Gen1 and Gen2 which will include the data ingestion from ADB and writing the processed data still to Gen1 meanwhile loading the processed data to SQL DW from Gen2.
   
-  
-  
-  
-  
-  
+ ![image](https://user-images.githubusercontent.com/62353482/81121499-beeaca00-8ee3-11ea-8c4e-dd6832a42dfe.png)
+
+Follow the steps for the [migration](## Migration using LivMigrator).
   
   
   
