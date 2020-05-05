@@ -30,6 +30,9 @@ Considerations for using the bi-directional sync pattern:
    * [Migration using LivMigrator](#migration-using-livmigrator)
    * [Managing Replication](managing-replication)
    * [Application Update](#application-update)
+     * [Beginning State](#beginning-state)
+     * [Interim State](#interim-state)
+     * [Eventual End State](#eventual-end-state)
    * [Reach out to us](#reach-out-to-us)
    * [References](#references)
  <!--te-->
@@ -158,7 +161,7 @@ Once HCFS replication rule is created, migration activity can be started using t
    To know more visit :link: [How to manage replication](https://docs.wandisco.com/bigdata/wdfusion/2.12/#managing-replication)
 
 
-## Application Configuration
+## Application Update
   
   As part of this, we will [configure services in workloads](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-supported-azure-services) used to point to Gen2 endpoint and update the applications to use Gen2 mount.
  
@@ -172,7 +175,9 @@ Once HCFS replication rule is created, migration activity can be started using t
 
  This can be achieved by following phased approach where in the migration of data, work loads and applications will be validated incrementally.
  
- **Beginning State** (**Before Migration**)-- The data pipeline on Gen1
+ ### Beginning State 
+ 
+ (**Before Migration**)-- The data pipeline on Gen1
  
  In this state the data pipeline is set to Gen1 which will include the data ingestion from ADB, writing the processed data and loading the processed data to SQL DW from Gen1 
  
@@ -184,16 +189,31 @@ Once HCFS replication rule is created, migration activity can be started using t
 
  All the ADB notebooks will be pointing to Gen1 Mounth path in this state and the data will be ingested, processed and loaded to SQL DW from Gen1.
  
- **Interim State** --The data pipeline on Gen1 and Gen2 partially
+ ### Interim State 
+ 
+ The data pipeline on Gen1 and Gen2 partially
  
  In this state we will start with the migration of the existing Gen1 data to Gen2 using Wandisco fusion. The data pipeline will be set to both Gen1 and Gen2 which will include the data ingestion from ADB and writing the processed data still to Gen1 meanwhile loading the processed data to SQL DW from Gen2.
   
  ![image](https://user-images.githubusercontent.com/62353482/81121499-beeaca00-8ee3-11ea-8c4e-dd6832a42dfe.png)
 
-Follow the steps for the [migration](## Migration using LivMigrator).
+Follow the steps for the [migration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md#migration-using-livmigrator).
+
+**How to change the load to SQL DW to Gen2**
+
+![image](https://user-images.githubusercontent.com/62353482/81126936-b4cfc800-8ef1-11ea-86bc-8550b21a8aa3.png)
+
+
+
+### Eventual End State  
   
-  
-  
+This state depicts when all the work loads and applications are moved from Gen1 to Gen2 and the bi directional replication is ready to be turned off.
+
+![image](https://user-images.githubusercontent.com/62353482/81124187-ad0c2580-8ee9-11ea-9ca5-f1e2327dc2ab.png)
+
+Below are the steps to change the mount path from Gen1 to Gen2 for the Azure Databricks notebook.
+
+
   
 ## Reach out to us
 
