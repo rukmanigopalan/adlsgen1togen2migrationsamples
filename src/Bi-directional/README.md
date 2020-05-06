@@ -30,6 +30,7 @@ Considerations for using the bi-directional sync pattern:
    * [Migration using LivMigrator](#migration-using-livmigrator)
    * [Managing Replication](managing-replication)
    * [Application Update](#application-update)
+     * [Mouth path configuration](#mount-path-configuration)
      * [Beginning State](#beginning-state)
      * [Interim State](#interim-state)
      * [Eventual End State](#eventual-end-state)
@@ -174,6 +175,20 @@ Once HCFS replication rule is created, migration activity can be started using t
  SQL Data Warehouse        |   [Use with Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse)
 
  This can be achieved by following phased approach where in the migration of data, work loads and applications will be validated incrementally.
+ 
+ ### Mount path configuration
+ 
+ This will show how to set and configure the mount paths for Gen1 and Gen2 in the script.
+ 
+ **Gen1 mount path configuration**:
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/81219887-4e9c8100-8f95-11ea-8b81-e32122547757.png)
+
+
+**Gen2 mount path configuration**:
+
+![image](https://user-images.githubusercontent.com/62353482/81220219-cff41380-8f95-11ea-9295-4df62c7a9afe.png)
+
  
  ### Beginning State 
  
