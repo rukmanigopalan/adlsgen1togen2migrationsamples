@@ -3,11 +3,11 @@ Bi-directional sync pattern Guide: A quick start template
 
 ## Overview
 
-This manual will introduce [Wandisco](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) as a recommended tool to set up bi-directional sync between Gen1 and Gen2 using the Replication feature. Below will be covered as part of this guide:
+This manual will introduce [Wandisco](https://docs.wandisco.com/bigdata/wdfusion/adls/) as a recommended tool to set up bi-directional sync between ADLS Gen1 and Gen2 using the Replication feature. Below will be covered as part of this guide:
   
   ✔️ Live migration from Gen1 to Gen2
   
-  ✔️ Data Consistency Check
+  ✔️ Data Consistency Check 
   
   ✔️ Application update for ADF, ADB and SQL DWH workloads 
 
@@ -17,7 +17,6 @@ Considerations for using the bi-directional sync pattern:
 
   ✔️ Migration effort is high, but it provides side-by-side support for Gen1 and Gen2.
   
-:bulb: **Note** : The guide will be focussing on the migration of data from ADLS Gen1 as source to ADLS Gen2 as destination using the  Wandisco replication mechanism.
  
 ## Table of contents
    
@@ -55,13 +54,15 @@ Considerations for using the bi-directional sync pattern:
 
 ## Connect to Wandisco UI
  
- 1. **Start** the VM in azure portal
+ 1. **Start** the VM in azure portal if not in Running status.
  
     ![image](https://user-images.githubusercontent.com/62353482/80544309-9b64d400-8965-11ea-9b28-a4e4daf05a3d.png)
 
+    Click here [how to create azure vm](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-     directional/Wandisco%20Set%20up%20and%20Installation.md#azure-linux-virtual-machine-creation)
+   
  2. **Start the Fusion**
  
-    Go to **SSH Client**. Connect and run below commands:
+    Go to **SSH Client**. [Connect](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#connect-to-vm) and run below commands:
  
     ```scala
        cd fusion-docker-compose // Change to the repository directory
