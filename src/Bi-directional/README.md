@@ -110,12 +110,18 @@ Considerations for using the bi-directional sync pattern:
    
        * Inconsistent - migration required
 
-  Consistency check before migration:
+ **Consistency check before migration**:
   
   ![image](https://user-images.githubusercontent.com/62353482/80765875-f418a600-8af8-11ea-9129-0791ccfcba12.png)
   
-  To know more refer to :link: [Consistency Check using Wandisco fusion](https://docs.wandisco.com/bigdata/wdfusion/2.12/#consistency-check)
  
+ **Consistency check after migration**:
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/81225979-f8ccd680-8f9e-11ea-9d93-42f8d4ad2c63.png)
+
+ 
+  To know more refer to :link: [Consistency Check using Wandisco fusion](https://docs.wandisco.com/bigdata/wdfusion/2.12/#consistency-check)
+
  :bulb: **Note**: **START CONSISTENCY CHECK** is recommended for small set of data volume.
  
 ## Migration using LivMigrator
