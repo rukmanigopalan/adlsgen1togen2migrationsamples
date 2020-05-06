@@ -17,9 +17,9 @@ Considerations for using the bi-directional sync pattern:
 
   ✔️ Migration effort is high, but it provides side-by-side support for Gen1 and Gen2.
   
- :bulb: **Note** : The guide will be focussing on the migration of data from ADLS Gen1 as source to ADLS Gen2 as destination using the Wandisco replication mechanism.
+:bulb: **Note** : The guide will be focussing on the migration of data from ADLS Gen1 as source to ADLS Gen2 as destination using the  Wandisco replication mechanism.
  
- ## Table of contents
+## Table of contents
    
  <!--ts-->
    * [Overview](#overview)
@@ -37,7 +37,7 @@ Considerations for using the bi-directional sync pattern:
    * [References](#references)
  <!--te-->
  
- ## Prerequisites 
+## Prerequisites 
 
    * **Active Azure Subscription**
 
@@ -62,34 +62,34 @@ Considerations for using the bi-directional sync pattern:
  
     Go to **SSH Client**. Connect and run below commands:
  
-   ```scala
-    cd fusion-docker-compose // Change to the repository directory
+    ```scala
+       cd fusion-docker-compose // Change to the repository directory
   
-    ./setup-env.sh // set up script
+       ./setup-env.sh // set up script
   
-    docker-compose up -d // start the fusion
-   ```
+       docker-compose up -d // start the fusion
+    ```
  3. **Login to Fusion UI**. Set up ADLS Gen1 and Gen2 storage. :link: [Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
  
-    URL --> http://{dnsname}:8081
+ URL --> http://{dnsname}:8081
   
 ## Create Replication Rule
 
- On the dashboard, create a HCFS rule with the following parameters:
+  On the dashboard, create a HCFS rule with the following parameters:
 
- * Rule Name = <Give the rule a unique name>
+   * Rule Name = <Give the rule a unique name>
   
- * Path for all storages = /
+   * Path for all storages = /
  
- * Default exclusions
+   * Default exclusions
  
- * Preserve HCFS Block Size = False
+   * Preserve HCFS Block Size = False
  
  ![image](https://user-images.githubusercontent.com/62353482/80546359-44153280-896a-11ea-9e12-bb85b6ceeafc.png)
  
- To know more click :link: [how to create rule](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/operation/create-rule)
+  To know more click :link: [how to create rule](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/operation/create-rule)
  
- **Click Finish** and wait for the rule to appear on the dashboard.
+  **Click Finish** and wait for the rule to appear on the dashboard.
 
 ## Consistency Check
   
@@ -105,9 +105,9 @@ Considerations for using the bi-directional sync pattern:
 
   2. The Consistency Status will determine the next steps:
 
-       * Consistent - no further action is required.
+       * Consistent - no action needed
    
-       * Inconsistent - consider migration
+       * Inconsistent - migration required
 
   Consistency check before migration:
   
@@ -119,15 +119,15 @@ Considerations for using the bi-directional sync pattern:
  
 ## Migration using LivMigrator
 
-Once HCFS replication rule is created, migration activity can be started using the LiveMigrator. This allows migration of data in a single pass while keeping up with all changes to the source storage(ADLS Gen1). The outcome is guaranteed data consistency between source and target. As data is being migrated it is immediately ready to be used, without interruption.
+Once HCFS replication rule is created, migration activity can be started using the LiveMigrator. This allows migration of data in a single pass while keeping up with all changes to the source storage(ADLS Gen1). As an outcome data consistency is gauranteed between source and target.
 
-**Note**: The Gen2 is synchronized with Gen1 source using consistency checks and scheduled migrations
+**Note**: The Gen2 is synchronized with Gen1 source using consistency checks and scheduled migrations.
 
  1. **Get Sample data**
  
- Upload sample data to your ADLS Gen1 storage account, see the [guide](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#uploaddata) to know more.
+ Upload sample data to the ADLS Gen1 storage account, see the [guide](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#uploaddata) to know more.
  
- 2. Place it within the Home Mount Point. 
+ 2. Place it within the home mount point. 
  
  3. On the Fusion UI dashboard, view the HCFS rule.
  
@@ -146,13 +146,13 @@ Once HCFS replication rule is created, migration activity can be started using t
  
     Target Zone = adls2
  
-    Overwrite Settings = Skip
+    Overwrite Settings = Skip / Overwrite
 
- 5. Wait until the migration is complete, and check the contents of your ADLS Gen2 container.
+ 5. Wait until the migration is complete, and check the contents in the ADLS Gen2 container.
  
  :bulb: **NOTE** : A hidden folder :file_folder: .fusion will be present in the ADLS Gen2 path.
                    
- :bulb: **Limitation : Client based replication is not enabled in Fusion UI , so replication process here is manually driven.
+ :bulb: **Limitation : Client based replication is not supported by Fusion UI , so replication process here is manually driven.
  
 ## Managing Replication
 
@@ -177,7 +177,7 @@ Once HCFS replication rule is created, migration activity can be started using t
  
  ### Beginning State 
  
- (**Before Migration**)-- The data pipeline on Gen1
+ (**Before Migration**)-- The data pipeline is on Gen1
  
  In this state the data pipeline is set to Gen1 which will include the data ingestion from ADB, writing the processed data and loading the processed data to SQL DW from Gen1 
  
@@ -193,27 +193,37 @@ Once HCFS replication rule is created, migration activity can be started using t
  
  The data pipeline on Gen1 and Gen2 partially
  
- In this state we will start with the migration of the existing Gen1 data to Gen2 using Wandisco fusion. The data pipeline will be set to both Gen1 and Gen2 which will include the data ingestion from ADB and writing the processed data still to Gen1 meanwhile loading the processed data to SQL DW from Gen2.
+ In this state we will start with the migration of the existing Gen1 data to Gen2 using Wandisco fusion. The data pipeline will be set to both Gen1 and Gen2 which will include the data ingestion from ADB and writing the processed data still to Gen1 meanwhile loading the processed data to SQL DW at Gen2.
   
  ![image](https://user-images.githubusercontent.com/62353482/81121499-beeaca00-8ee3-11ea-8c4e-dd6832a42dfe.png)
 
-Follow the steps for the [migration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md#migration-using-livmigrator).
+Follow the steps for the [migration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md#migration-using-livmigrator) of the data from Gen1 to Gen2 for the Raw and Processed data.
 
-**How to change the load to SQL DW to Gen2**
+**How to change the mount path**
+
+This will show how to configure the mount path for the work load Azure Databricks which will load processed data to SQL DW at Gen2.
 
 ![image](https://user-images.githubusercontent.com/62353482/81126936-b4cfc800-8ef1-11ea-86bc-8550b21a8aa3.png)
 
 
-
-### Eventual End State  
+ ### Eventual End State   
   
-This state depicts when all the work loads and applications are moved from Gen1 to Gen2 and the bi directional replication is ready to be turned off.
+ (**After Migration**) -- The data pipeline moved to Gen2
 
-![image](https://user-images.githubusercontent.com/62353482/81124187-ad0c2580-8ee9-11ea-9ca5-f1e2327dc2ab.png)
+ This state depicts when all the work loads and applications are moved from Gen1 to Gen2 and the bi directional replication is ready to   be turned off.
 
-Below are the steps to change the mount path from Gen1 to Gen2 for the Azure Databricks notebook.
+ ![image](https://user-images.githubusercontent.com/62353482/81124187-ad0c2580-8ee9-11ea-9ca5-f1e2327dc2ab.png)
 
+ Below are the steps to change the mount path from Gen1 to Gen2 for the Azure Databricks notebook.
 
+ ![image](https://user-images.githubusercontent.com/62353482/81138345-929c7100-8f16-11ea-9e0f-3681d7c76cf1.png)
+
+ Run the master pipeline consisting of all the ADB notebooks and check the data. The ingestion and processing of raw data should take place at Gen2 now along with writing to SQL DW.
+ 
+ **Cutover from Gen1 to Gen2**
+ After you're confident that your applications and workloads are stable on Gen2, you can begin using Gen2 to satisfy your business    scenarios. Turn off any remaining pipelines that are running on Gen1 and decommission your Gen1 account.
+ 
+ 
   
 ## Reach out to us
 
