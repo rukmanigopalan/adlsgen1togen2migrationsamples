@@ -232,6 +232,7 @@ In the master pipeline in Azure Datafactory, Go to the notebook **settings** -->
 
 ![image](https://user-images.githubusercontent.com/62353482/81126936-b4cfc800-8ef1-11ea-86bc-8550b21a8aa3.png)
 
+**Note**: At the end of this state we will acheive to establish data pipeline partially at Gen1 and Gen2.
 
  ### Eventual End State   
   
@@ -246,9 +247,14 @@ In the master pipeline in Azure Datafactory, Go to the notebook **settings** -->
  ![image](https://user-images.githubusercontent.com/62353482/81138345-929c7100-8f16-11ea-9e0f-3681d7c76cf1.png)
 
  Run the master pipeline consisting of all the ADB notebooks and check the data. The ingestion and processing of raw data should take place at Gen2 now along with writing to SQL DW.
+ This can be verified by checking the data at Gen2 storage. And when **Consistency check** is run using WAndisco Fusion UI , there will be files missing at Gen1.
  
+ ![image](https://user-images.githubusercontent.com/62353482/81352652-ed9ba880-907b-11ea-9cf2-c1620b28455a.png)
+
+**Note**: This marks the state where all the workloads are moved to Gen2. Gen1 will not revieve any new data in any form.
+
  **Cutover from Gen1 to Gen2**
- After you're confident that your applications and workloads are stable on Gen2, you can begin using Gen2 to satisfy your business    scenarios. Turn off any remaining pipelines that are running on Gen1 and decommission your Gen1 account.
+ After all the applications and workloads are stable on Gen2, Turn off any remaining pipelines that are running on Gen1 and decommission your Gen1 account. This will include deletion of the rules created for the migration and replication process. Shutting down the Azure VM and deleting the resource group.
  
  
   
