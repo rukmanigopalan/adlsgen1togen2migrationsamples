@@ -58,8 +58,6 @@ Considerations for using the bi-directional sync pattern:
  
     ![image](https://user-images.githubusercontent.com/62353482/80544309-9b64d400-8965-11ea-9b28-a4e4daf05a3d.png)
 
-    Click here [how to create azure vm](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-     directional/Wandisco%20Set%20up%20and%20Installation.md#azure-linux-virtual-machine-creation)
-   
  2. **Start the Fusion**
  
     Go to **SSH Client**. [Connect](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#connect-to-vm) and run below commands:
@@ -71,10 +69,13 @@ Considerations for using the bi-directional sync pattern:
   
        docker-compose up -d // start the fusion
     ```
- 3. **Login to Fusion UI**. Set up ADLS Gen1 and Gen2 storage. :link: [Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
+ 3. **Login to Fusion UI**.
  
- URL --> http://{dnsname}:8081
+    URL --> http://{dnsname}:8081
   
+ 4. **Set up ADLS Gen1 and Gen2 storage**.[Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
+ 
+   
 ## Create Replication Rule
 
   On the dashboard, create a HCFS rule with the following parameters:
@@ -100,10 +101,9 @@ Considerations for using the bi-directional sync pattern:
   
   On the Rules table, click to View rule.
 
-  1. On the rule page, start consistency check and wait for the Consistency status to update. The more objects contained within the     path, the longer it will take to complete the check.
+  1. On the rule page, start consistency check and wait for the Consistency status to update. 
   
   ![image](https://user-images.githubusercontent.com/62353482/80934228-0e15eb00-8d7c-11ea-8a8c-1975e2c0c9ba.png)
-
 
   2. The Consistency Status will determine the next steps:
 
@@ -115,11 +115,6 @@ Considerations for using the bi-directional sync pattern:
   
   ![image](https://user-images.githubusercontent.com/62353482/80765875-f418a600-8af8-11ea-9129-0791ccfcba12.png)
   
- 
- **Consistency check after migration**:
- 
- ![image](https://user-images.githubusercontent.com/62353482/81225979-f8ccd680-8f9e-11ea-9d93-42f8d4ad2c63.png)
-
  
   To know more refer to :link: [Consistency Check using Wandisco fusion](https://docs.wandisco.com/bigdata/wdfusion/2.12/#consistency-check)
 
@@ -158,6 +153,10 @@ Once HCFS replication rule is created, migration activity can be started using t
 
  5. Wait until the migration is complete, and check the contents in the ADLS Gen2 container.
  
+ **Consistency check after migration**:
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/81225979-f8ccd680-8f9e-11ea-9d93-42f8d4ad2c63.png)
+ 
  :bulb: **NOTE** : A hidden folder :file_folder: .fusion will be present in the ADLS Gen2 path.
                    
  :bulb: **Limitation : Client based replication is not supported by Fusion UI , so replication process here is manually driven.
@@ -171,7 +170,7 @@ Once HCFS replication rule is created, migration activity can be started using t
 
 ## Application Update
   
-  As part of this, we will [configure services in workloads](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-supported-azure-services) used to point to Gen2 endpoint and update the applications to use Gen2 mount.
+  As part of this, we will [configure services in workloads](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-supported-azure-services) used and update the applications to point to Gen2 mount after the migration is complete.
  
 :bulb: **Note**: We will be covering below azure services
 
@@ -181,11 +180,11 @@ Once HCFS replication rule is created, migration activity can be started using t
  Azure Databricks          |   [Use with Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [Quickstart: Analyze data in Azure Data Lake Storage Gen2 by using Azure Databricks](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account) <br>                    [Tutorial: Extract, transform, and load data by using Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/databricks-extract-load-sql-data-warehouse)
  SQL Data Warehouse        |   [Use with Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse)
 
- This can be achieved by following phased approach where in the migration of data, work loads and applications will be validated incrementally.
+ This can be achieved by following a phased approach where in the migration of data, work loads and applications will be validated incrementally.
  
  ### Mount path configuration
  
- This will show how to set and configure the mount paths for Gen1 and Gen2 in the script.
+ This will show how to set and configure the mount paths for Gen1 and Gen2 in the MountConfiguration script.
  
  **Gen1 mount path configuration**:
  
@@ -201,7 +200,7 @@ Once HCFS replication rule is created, migration activity can be started using t
  
  (**Before Migration**)-- The data pipeline is on Gen1
  
- In this state the data pipeline is set to Gen1 which will include the data ingestion from ADB, writing the processed data and loading the processed data to SQL DW from Gen1 
+ In this state the data ingestion from ADB to Raw folder, writing the processed data into the Processed folder and loading the processed data to SQL DW will be happening at Gen1.
  
  ![image](https://user-images.githubusercontent.com/62353482/81105450-c650aa00-8ec8-11ea-917c-619c6909b2c9.png)
 
@@ -224,6 +223,7 @@ Follow the steps for the [migration](https://github.com/rukmani-msft/adlsgen1tog
 **How to change the mount path**
 
 This will show how to configure the mount path for the work load Azure Databricks which will load processed data to SQL DW at Gen2.
+In the master pipeline in Azure Datafactory, Go to the notebook **settings** --> **Base parameters** and mount the **RootPathParam** to Gen2.
 
 ![image](https://user-images.githubusercontent.com/62353482/81126936-b4cfc800-8ef1-11ea-86bc-8550b21a8aa3.png)
 
@@ -236,7 +236,7 @@ This will show how to configure the mount path for the work load Azure Databrick
 
  ![image](https://user-images.githubusercontent.com/62353482/81124187-ad0c2580-8ee9-11ea-9ca5-f1e2327dc2ab.png)
 
- Below are the steps to change the mount path from Gen1 to Gen2 for the Azure Databricks notebook.
+ Below are the steps to change the mount path from Gen1 to Gen2 for the Azure Databricks notebook in Azure Datafactory pipeline
 
  ![image](https://user-images.githubusercontent.com/62353482/81138345-929c7100-8f16-11ea-9e0f-3681d7c76cf1.png)
 
