@@ -220,7 +220,8 @@ Once HCFS replication rule is created, migration activity can be started using t
  
  In this state we will start with the migration of the existing Gen1 data to Gen2 using Wandisco fusion. The data pipeline will be set to both Gen1 and Gen2 which will include the data ingestion from ADB and writing the processed data still to Gen1 meanwhile loading the processed data to SQL DW at Gen2.
   
- ![image](https://user-images.githubusercontent.com/62353482/81121499-beeaca00-8ee3-11ea-8c4e-dd6832a42dfe.png)
+ ![image](https://user-images.githubusercontent.com/62353482/81350988-1457e000-9078-11ea-9961-ac9192a58b5a.png)
+
 
 Follow the steps for the [migration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md#migration-using-livmigrator) of the data from Gen1 to Gen2 for the Raw and Processed data.
 
