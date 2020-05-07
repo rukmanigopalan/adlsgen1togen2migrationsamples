@@ -78,6 +78,10 @@ Considerations for using the bi-directional sync pattern:
    
 ## Create Replication Rule
 
+File system content is replicated selectively by defining Replication Rules.These specify the directory in the file system that will be replicated and the Zones that will participate in that replication.
+
+Without any Replication Rules defined, each Zone’s file system operates independently of the others. With the combination of Zones and Replication Rules, WANdisco Fusion gives you complete control over how data is replicated between your file systems and/or object stores.
+  
   On the dashboard, create a HCFS rule with the following parameters:
 
    * Rule Name = <Give the rule a unique name>
