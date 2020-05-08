@@ -215,15 +215,15 @@ Once HCFS replication rule is created, migration activity can be started using t
  All the ADB notebooks will be pointing to Gen1 Mounth path in this state and the data will be ingested, processed and loaded to SQL DW from Gen1.
  
  ### Interim State 
- 
- The data pipeline on Gen1 and Gen2 partially
- 
- In this state we will start with the migration of the existing Gen1 data to Gen2 using Wandisco fusion. The data pipeline will be set to both Gen1 and Gen2 which will include the data ingestion from ADB and writing the processed data still to Gen1 meanwhile loading the processed data to SQL DW at Gen2.
+  
+ In this state we will start with the migration of the existing Gen1 data to Gen2 using **Wandisco fusion**. The data pipeline will be set to Gen1 and Gen2 partially which will include the data ingestion and processing happening at Gen1 meanwhile writing the processed data to SQL DW at Gen2.
   
  ![image](https://user-images.githubusercontent.com/62353482/81351734-dc519c80-9079-11ea-8a8e-669b65e17b49.png)
 
 
-Follow the steps for the [migration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md#migration-using-livmigrator) of the data from Gen1 to Gen2 for the Raw and Processed data.
+Follow the steps for the [migration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md#migration-using-livmigrator) of Gen1 data to Gen2 for the Raw and Processed data.
+
+Once the data is migrated, run **Consistency check** in Fusion UI. There should be no inconsistencies.
 
 **How to change the mount path**
 
