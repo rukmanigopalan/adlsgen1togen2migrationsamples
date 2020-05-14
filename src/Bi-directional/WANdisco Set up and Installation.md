@@ -7,7 +7,7 @@ This quickstart will help in setting up the Azure Linux Virtual Machine (VM) sui
 
   *  Azure Linux Virtual Machine (VM) creation using Azure Portal
   
-  *  Configuration set up for Wandisco Fusion installation
+  *  Configuration set up and Installation guide for WANdisco Fusion 
   
 ## Table of contents
    
