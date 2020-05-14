@@ -86,7 +86,7 @@ Without any Replication Rules defined, each Zone’s file system operates indepe
   
   On the dashboard, create a HCFS rule with the following parameters:
 
-   * Rule Name = <Give the rule a unique name>
+   * Rule Name = migration (Give any unique name)
   
    * Path for all storages = /
  
