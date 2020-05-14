@@ -1,9 +1,9 @@
-Wandisco Fusion Set up and Installation Guide
+WANdisco Fusion Set up and Installation Guide
 ===================================================
 
 ## Overview
 
-This quickstart will help in setting up the Azure Linux Virtual Machine (VM) suitable for the Wandisco Fusion installation. Below will be covered:
+This quickstart will help in setting up the Azure Linux Virtual Machine (VM) suitable for the WANdisco Fusion installation. Below will be covered:
 
   *  Azure Linux Virtual Machine (VM) creation using Azure Portal
   
@@ -18,7 +18,7 @@ This quickstart will help in setting up the Azure Linux Virtual Machine (VM) sui
    * [Virtual Machine Connection set up](#virtual-machine-connection-set-up)
       * [Create an SSH connection with the VM](#create-an-ssh-connection-with-the-vm)
       * [Connect to VM](#connect-to-vm)
-   * [Wandisco Fusion Set up](#wandisco-fusion-set-up)
+   * [WANdisco Fusion Set up](#wandisco-fusion-set-up)
    * [ADLS Gen1 and Gen2 Configuration](#adls-gen1-and-gen2-configuration)
       * [ADLS Gen1 storage Configuration](#adls-gen1-storage-configuration)
       * [ADLS Gen2 storage Configuration](#adls-gen2-storage-configuration)
@@ -30,11 +30,11 @@ This quickstart will help in setting up the Azure Linux Virtual Machine (VM) sui
  
  * **Active Azure Subscription**
 
-* **Azure Data Lake Storage Gen1**
+ * **Azure Data Lake Storage Gen1**
 
-* **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
+ * **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* **Windows SSH client** like [Putty](https://www.putty.org/), [Git for Windows](https://gitforwindows.org/), [Cygwin](https://cygwin.com/), [MobaXterm](https://mobaxterm.mobatek.net/)
+ * **Windows SSH client** like [Putty](https://www.putty.org/), [Git for Windows](https://gitforwindows.org/), [Cygwin](https://cygwin.com/), [MobaXterm](https://mobaxterm.mobatek.net/)
 
 
 ## Azure Linux Virtual Machine Creation 
@@ -119,7 +119,7 @@ The above DNS name can be used to login into SSH client.
 ![image](https://user-images.githubusercontent.com/62353482/80334350-d18b4200-8805-11ea-881c-866858a255c4.png)
 
 
-### Wandisco Fusion Set up
+### WANdisco Fusion Set up
 
 1. Clone the Fusion docker repository using below command in SSH Client:
 
@@ -181,6 +181,8 @@ The above DNS name can be used to login into SSH client.
  
    ![image](https://user-images.githubusercontent.com/62353482/80413692-b7dd0f80-8884-11ea-82d0-9925706b4522.png)
    
+  **Note**: Get the DNS name from portal **-->** Go to Virtual machine **-->** Overview **-->** DNS name 
+   
  2. Create account and login to the Fusion.
  
  3. Click on settings icon for the adls1 storage. Select the ADLS Gen1 storage type
@@ -204,7 +206,7 @@ The above DNS name can be used to login into SSH client.
    
    * ADL credential / Application secret (Example: 8A767YUIa900IuaDEF786DTY67t-u=:])
    
-   5. Click on **APPLY CONFIGURATION**
+  5. Click on **APPLY CONFIGURATION**
   
 ### ADLS Gen2 storage Configuration
 
@@ -236,6 +238,6 @@ Make sure to remove any credential from your code before sharing it.
    
 ## References
 
-   * :link: [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)
+   * :link: [ WANdisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)
    
    * :link: [How to use SSH key with Windows on Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)   
