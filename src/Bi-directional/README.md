@@ -3,9 +3,9 @@ Bi-directional sync pattern Guide: A quick start template
 
 ## Overview
 
-This manual will introduce [Wandisco](https://docs.wandisco.com/bigdata/wdfusion/adls/) as a recommended tool to set up bi-directional sync between ADLS Gen1 and Gen2 using the Replication feature. Below will be covered as part of this guide:
+This manual will introduce [WANdisco](https://docs.wandisco.com/bigdata/wdfusion/adls/) as a recommended tool to set up bi-directional sync between ADLS Gen1 and Gen2 using the Replication feature. Below will be covered as part of this guide:
   
-  ✔️ Live migration from Gen1 to Gen2
+  ✔️ Data Migration from Gen1 to Gen2
   
   ✔️ Data Consistency Check 
   
@@ -23,13 +23,13 @@ Considerations for using the bi-directional sync pattern:
  <!--ts-->
    * [Overview](#overview)
    * [Prerequisites](#prerequisites)
-   * [Connect to Wandisco UI](#connect-to-wandisco-ui)
+   * [Login to Fusion UI](#login-to-fusion-ui)
    * [Create Replication Rule](#create-replication-rule)
    * [Consistency check](#consistency-check)
-   * [Migration using LivMigrator](#migration-using-livmigrator)
+   * [Migration using LiveMigrator](#migration-using-livemigrator)
    * [Managing Replication](managing-replication)
    * [Application Update](#application-update)
-     * [Mouth path configuration](#mount-path-configuration)
+     * [Mount path configuration](#mount-path-configuration)
      * [Beginning State](#beginning-state)
      * [Interim State](#interim-state)
      * [Eventual End State](#eventual-end-state)
@@ -52,7 +52,7 @@ Considerations for using the bi-directional sync pattern:
    * **Windows SSH client** like [Putty](https://www.putty.org/), [Git for Windows](https://gitforwindows.org/), [Cygwin](https://cygwin.com/), [MobaXterm](https://mobaxterm.mobatek.net/)
 
 
-## Connect to Wandisco UI
+## Login to Fusion UI
  
  1. **Start** the VM in azure portal if not in Running status.
  
@@ -69,11 +69,13 @@ Considerations for using the bi-directional sync pattern:
   
        docker-compose up -d // start the fusion
     ```
- 3. **Login to Fusion UI**.
+ 3. **Login to Fusion UI**. Open the web browser and give the path as below 
  
     URL --> http://{dnsname}:8081
+    
+    **Note**: The DNS name can be taken from VM Overview details.
   
- 4. **Set up ADLS Gen1 and Gen2 storage**.[Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/Wandisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
+ 4. **Set up ADLS Gen1 and Gen2 storage**.[Click here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/WANdisco%20Set%20up%20and%20Installation.md#adls-gen1-and-gen2-configuration) to know more.
  
    
 ## Create Replication Rule
@@ -120,11 +122,11 @@ Without any Replication Rules defined, each Zone’s file system operates indepe
   ![image](https://user-images.githubusercontent.com/62353482/80765875-f418a600-8af8-11ea-9129-0791ccfcba12.png)
   
  
-  To know more refer to :link: [Consistency Check using Wandisco fusion](https://docs.wandisco.com/bigdata/wdfusion/2.12/#consistency-check)
+  To know more refer to :link: [Consistency Check using WANdisco fusion](https://docs.wandisco.com/bigdata/wdfusion/2.12/#consistency-check)
 
  :bulb: **Note**: **START CONSISTENCY CHECK** is recommended for small set of data volume.
  
-## Migration using LivMigrator
+## Migration using LiveMigrator
 
 Once HCFS replication rule is created, migration activity can be started using the LiveMigrator. This allows migration of data in a single pass while keeping up with all changes to the source storage(ADLS Gen1). As an outcome data consistency is gauranteed between source and target.
 
@@ -268,6 +270,6 @@ Make sure to remove any credential from your code before sharing it.
   
 ## References
 
- * :link: [ Wandisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)     
+ * :link: [ WANdisco fusion Installation and set up guide ](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation)     
  
- * :link: [Wandisco LivMigrator](https://www.wandisco.com/products/live-migrator)
+ * :link: [WANdisco LiveMigrator](https://www.wandisco.com/products/live-migrator)
