@@ -82,7 +82,6 @@ The folder will contain below listed contents under **src**:
 ![image](https://user-images.githubusercontent.com/62351942/78948773-4debfa00-7a7e-11ea-952a-52071e5924c4.png)
 
 
-
 * **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/Configuration/IncrementalLoadConfig.json) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
 * **Migration**: Contains the json files, templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
@@ -96,20 +95,18 @@ The folder will contain below listed contents under **src**:
 
     **Important Prerequisite**: 
 
-     * Provide Service principal access to configure keyvault as below:
+  * Provide Service principal access to configure keyvault as below:
      
-     ![image](https://user-images.githubusercontent.com/62353482/79594064-3e2d7080-8091-11ea-872e-d69052da0ff7.png)
+   ![image](https://user-images.githubusercontent.com/62353482/79594064-3e2d7080-8091-11ea-872e-d69052da0ff7.png)
      
-    
-     * Make an entry of Gen2 connection string in the key vault as shown below :
+  
+   * Make an entry of Gen2 connection string in the key vault as shown below :
 
-     ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
+    ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
 
+ ```powershell
 
-
-```powershell
-
-// Below is the code snapshot for setting the configuration file to connect to azure data factory:
+  // Below is the code snapshot for setting the configuration file to connect to azure data factory:
 
 	  "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
 	  "gen2DestinationRootPath" : "https://<<Enter the Gen2 destination root path>>.dfs.core.windows.net", 
@@ -122,11 +119,11 @@ The folder will contain below listed contents under **src**:
 	  "location" : "<<Enter the location>>", 
 	  "overwrite" : "Enter the value" //  True = It will overwrite the existing data factory ,False = It will skip creating data factory
 
-```
+  ```
 
- **Scheduling the factory pipeline for incremental copy pattern**
+  **Scheduling the factory pipeline for incremental copy pattern**
 
-```powershell
+  ```powershell
 
 	  "pipelineId": "<<Enter the pipeline number. Eg: 1,2"
 	  "isChurningOrIsIncremental": "false"
@@ -141,19 +138,19 @@ The folder will contain below listed contents under **src**:
 	  "destinationContainer" : "Enter the Gen2 container name"
   
     
-```
+    ```
  
-  **Note**: Please note the **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
+ **Note**: Please note the **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
    Path to [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/Configuration/IncrementalLoadConfig.json) script for more reference.
  
-3. **Azure data factory pipeline creation and execution**
+ 3. **Azure data factory pipeline creation and execution**
 
  Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/StartIncrementalLoadMigration.ps1) to start the full data copy process. 
  
  ![image](https://user-images.githubusercontent.com/62351942/78946426-8a682780-7a77-11ea-973b-8f7cad667295.png)
 
  
-4. **Azure Data factory pipeline monitoring**
+ 4. **Azure Data factory pipeline monitoring**
 
  The pipeline will be created in Azure data factory and can be monitored in below way:
  
