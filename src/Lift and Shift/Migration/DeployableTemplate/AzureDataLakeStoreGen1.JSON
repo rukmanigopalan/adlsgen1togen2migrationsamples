@@ -1,0 +1,18 @@
+{
+    "name": "AzureDataLakeStoreGen1",
+    "properties": {
+        "annotations": [],
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://g1g2hdistore.azuredatalakestore.net/webhdfs/v1",
+            "servicePrincipalId": "19cfddb1-ceb8-4ae1-94c2-abad425269d2",
+			"servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "1C~9-Rw-o2~dSJ_8hYVVzwpYxwl-5Rr4.T"
+            },
+            "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+            "subscriptionId": "29440f0b-dc91-4851-8e0a-b714bb5d3f78",
+            "resourceGroupName": "Gen1ToGen2Migration"
+        }
+    }
+}
