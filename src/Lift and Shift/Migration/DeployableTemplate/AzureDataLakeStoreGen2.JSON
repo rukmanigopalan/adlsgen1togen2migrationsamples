@@ -1,0 +1,13 @@
+{
+    "name": "AzureDataLakeStoreGen2",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://g2hdistorage.dfs.core.windows.net",
+            "accountkey": { 
+                "type": "SecureString", 
+                "value": "MDudGx2H9qRHa8uREILSHnDkb+JuRexioX4FLkXrHOidPoCFUsXgUn/ZY+rovj1r7GHXmMP5H/F8S0nY+mj2lQ==" 
+            }
+        }
+    }
+}

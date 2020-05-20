@@ -1,0 +1,17 @@
+{
+    "name": "@@dataSetName@@",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "@@referenceName@@",
+            "type": "LinkedServiceReference"
+        },
+        "type": "@@type@@",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+				"folderPath": "@@folderPath@@",
+                "fileSystem": "@@fileSystem@@"
+            }
+        }
+    }
+}
