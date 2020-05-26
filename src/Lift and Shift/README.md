@@ -11,6 +11,14 @@ This guide covers the following tasks:
    * Data Validation between Gen1 and Gen2 post migration  
    
    * Application update for the workloads
+   
+ Considerations for using the lift and shift pattern
+ 
+   ✔️ Cutover from Gen1 to Gen2 for all workloads at the same time.
+
+   ✔️ Expect downtime during the migration and the cutover period.
+
+   ✔️ Ideal for pipelines that can afford downtime and all apps can be upgraded at one time.
   
   
 ## Table of contents
@@ -65,7 +73,6 @@ This version of code will have below limitations:
 
    * Gen1 & Gen2 should be in same subscription
    * Supports only for single Gen1 source and Gen2 destination
-   * Trigger event is manual process for incremental copy
    * Code Developed and Supported only in Windows PowerShell ISE
       
 ## Migration Framework Setup
@@ -82,13 +89,13 @@ The folder will contain below listed contents under **src**:
 ![image](https://user-images.githubusercontent.com/62351942/78948773-4debfa00-7a7e-11ea-952a-52071e5924c4.png)
 
 
-* **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/Configuration/IncrementalLoadConfig.json) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
+* **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/Configuration/FullLoadConfig.json) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
 * **Migration**: Contains the json files, templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
  
 * **Validation**: Contains the PowerShell scripts which will read the Gen1 and Gen2 data and validate it post migration to generate post migration report.
  
- [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/StartFullLoadMigrationAndValidation.ps1) script is to migrate the existing data from Gen1 to Gen2.
+ [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/StartFullLoadMigrationAndValidation.ps1) script is to migrate the existing data from Gen1 to Gen2.
   
  
  2. **Set up the Configuration file to connect to azure data factory**:
@@ -141,11 +148,11 @@ The folder will contain below listed contents under **src**:
     ```
  
  **Note**: Please note the **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
-   Path to [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/Configuration/IncrementalLoadConfig.json) script for more reference.
+   Path to [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/Configuration/FullLoadConfig.json) script for more reference.
  
  3. **Azure data factory pipeline creation and execution**
 
- Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/StartIncrementalLoadMigration.ps1) to start the full data copy process. 
+ Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/StartFullLoadMigrationAndValidation.ps1) to start the full data copy and Validation process post migration.
  
  ![image](https://user-images.githubusercontent.com/62351942/78946426-8a682780-7a77-11ea-973b-8f7cad667295.png)
 
@@ -161,10 +168,9 @@ The folder will contain below listed contents under **src**:
 
  This step will validate the Gen1 and Gen2 data based on file path and file size. 
  
- 
-  **Run the script** [StartFullLoadValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/StartIncrementalLoadValidation.ps1) in PowerShell.
+ The [script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/StartFullLoadMigrationAndValidation.ps1) will trigger the validation process.
   
-  ![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
+ ![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
   
      
  ### Data Comparison Report
@@ -178,7 +184,7 @@ The folder will contain below listed contents under **src**:
   ![image](https://user-images.githubusercontent.com/62353482/78966833-ad193100-7ab5-11ea-97b6-cf3ca372a451.png)
 
 
- **Note**: IsMatching status = Yes (For matched records ) and No (Unmatched records)
+  **Note**: IsMatching status = Yes (For matched records ) and No (Unmatched records)
 
  ## Application update  
 
