@@ -95,22 +95,22 @@ The folder will contain below listed contents under **src**:
  
 * **Validation**: Contains the PowerShell scripts which will read the Gen1 and Gen2 data and validate it post migration to generate post migration report.
  
- [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/StartFullLoadMigrationAndValidation.ps1) script is to migrate the existing data from Gen1 to Gen2.
+ * **[StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/StartIncrementalLoadValidation.ps1)** : Script to invoke the Validation process to compare the data between Gen1 and Gen2 post migration and generate summary report.
   
  
  2. **Set up the Configuration file to connect to azure data factory**:
 
     **Important Prerequisite**: 
 
-  * Provide Service principal access to configure keyvault as below:
+      * Provide Service principal access to configure keyvault as below:
      
-   ![image](https://user-images.githubusercontent.com/62353482/79594064-3e2d7080-8091-11ea-872e-d69052da0ff7.png)
+     ![image](https://user-images.githubusercontent.com/62353482/79594064-3e2d7080-8091-11ea-872e-d69052da0ff7.png)
      
-  
-   * Make an entry of Gen2 connection string in the key vault as shown below :
+    
+     * Make an entry of Gen2 connection string in the key vault as shown below :
 
-    ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
-
+     ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
+     
  ```powershell
 
   // Below is the code snapshot for setting the configuration file to connect to azure data factory:
