@@ -95,7 +95,7 @@ The folder will contain below listed contents under **src**:
  
 * **Validation**: Contains the PowerShell scripts which will read the Gen1 and Gen2 data and validate it post migration to generate post migration report.
  
- * **[StartIncrementalLoadValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/StartIncrementalLoadValidation.ps1)** : Script to invoke the Validation process to compare the data between Gen1 and Gen2 post migration and generate summary report.
+ * **[StartFullLoadMigrationAndValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/StartFullLoadMigrationAndValidation.ps1)** : Script to invoke the full load Migration and Validation process to compare the data between Gen1 and Gen2 post migration and generate summary report.
   
  
  2. **Set up the Configuration file to connect to azure data factory**:
