@@ -22,10 +22,10 @@ try {
 
     ForEach ($Gen1File in $Gen1Files) {
 
-        $Gen2Match = $Gen2Files | Where-Object { $_.Path -eq $Gen1File.Path -and $_.Permission -eq $Gen1File.Permission} 
+        $Gen2Match = $Gen2Files | Where-Object { $_.Path -eq $Gen1File.Path } 
         If ($Gen2Match) {
             # Process the data
-            if ($Gen1File.Length -eq $Gen2Match.Length) {
+            if ($Gen1File.Length -eq $Gen2Match.Length ) {
                 $MatchResult += New-Object PsObject -Property @{Gen1FilePath = $Gen1File.Path; Gen2FilePath = $Gen2Match.Path; Gen1FileSize = $Gen1File.Length; Gen2FileSize = $Gen2Match.Length; Gen1Permission= $Gen1File.Permission; Gen2Permission= $Gen2Match.Permission; IsMatching = "Yes"
                 }
             }
@@ -51,7 +51,7 @@ try {
         
         If ($Gen1Match) {
             # Process the data
-            if ($Gen2File.Length -eq $Gen1Match.Length) {
+            if ($Gen2File.Length -eq $Gen1Match.Length ) {
                 $MatchResult += New-Object PsObject -Property @{Gen1FilePath = $Gen1Match.Path; Gen2FilePath = $Gen2File.Path; Gen1FileSize = $Gen1Match.Length;
                     Gen2FileSize = $Gen2File.Length; Gen1Permission= $Gen1Match.Permission; Gen2Permission= $Gen2File.Permission; IsMatching = "Yes"
                 }
