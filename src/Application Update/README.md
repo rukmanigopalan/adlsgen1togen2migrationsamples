@@ -18,15 +18,15 @@ The purpose of this document is to provide steps and ways to migrate the workloa
  
  ## Prerequisites
  
-   **The migration of data from Gen1 to Gen2 should be completed
+ **The migration of data from Gen1 to Gen2 should be completed**
   
  ## How to Configure and Update Azure Databricks
    
-   **Before the migration**:
+ **Before the migration**:
  
  **1. Mount configured to Gen1 path**
 
-![image](https://user-images.githubusercontent.com/62353482/79265180-90c91b80-7e4a-11ea-9000-0f86aa7c6ebb.png)
+ ![image](https://user-images.githubusercontent.com/62353482/79265180-90c91b80-7e4a-11ea-9000-0f86aa7c6ebb.png)
 
  **2. Set up DataBricks cluster for scheduled job run**
   
@@ -36,7 +36,7 @@ The purpose of this document is to provide steps and ways to migrate the workloa
  
   **Note**: Refer to [IncrementalSampleLoad](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/Application/IncrementSampleLoad.py) script for more details.
  
-  **After the migration**:
+ **After the migration**:
   
  **1. Change the mount configuration to Gen2 container**
   
@@ -44,7 +44,7 @@ The purpose of this document is to provide steps and ways to migrate the workloa
 
   **Note**: **Stop** the job scheduler and change the mount configuration to point to Gen2 with the same mount name.
 
-![image](https://user-images.githubusercontent.com/62353482/79009824-49beeb80-7b15-11ea-8d14-ce444f7fd4b8.png)
+ ![image](https://user-images.githubusercontent.com/62353482/79009824-49beeb80-7b15-11ea-8d14-ce444f7fd4b8.png)
 
   **Note**: Refer to [mountconfiguration](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/Application/MountConfiguration.py) script for more details.
   
@@ -55,7 +55,7 @@ The purpose of this document is to provide steps and ways to migrate the workloa
 
  ## How to Configure and Update Azure Datafactory
  
-   **1. Stop the trigger to Gen1**
+  **1. Stop the trigger to Gen1**
     
   **2. Modify the existing factory by creating new linked service to point to Gen2 storage**.
   
@@ -69,25 +69,25 @@ The purpose of this document is to provide steps and ways to migrate the workloa
 
 ![image](https://user-images.githubusercontent.com/62353482/79276405-cd057780-7e5c-11ea-9c31-95dfd26db5b9.png)
 
-   **3. Modify the existing factory by creating new dataset in Gen2 storage**.
+  **3. Modify the existing factory by creating new dataset in Gen2 storage**.
    
    Go to **-->** Azure Data Factory **-->** Click on Author **-->** Click on Pipelines **-->** Select the pipeline **-->** Click on Activity **-->** Click on sink tab **-->** Choose the dataset to point to Gen2 
    
    ![image](https://user-images.githubusercontent.com/62353482/79279985-20c78f00-7e64-11ea-9e04-cdfd770d210f.png)
 
 
-   **4. Click on Publish all**
+  **4. Click on Publish all**
    
    ![image](https://user-images.githubusercontent.com/62353482/79280406-21145a00-7e65-11ea-8950-bff27882c4de.png)
 
 
-   **5. Go to Triggers and activate it**.
+  **5. Go to Triggers and activate it**.
    
    ![image](https://user-images.githubusercontent.com/62353482/79280526-66388c00-7e65-11ea-895e-915018092b67.png)
 
 
    **6. Check for the new files getting generated at the Gen2 root folder path**
   
- ## How to Configure and update HDIInsight
+  ## How to Configure and update HDIInsight
  
  
