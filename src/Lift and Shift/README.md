@@ -86,7 +86,7 @@ This version of code will have below limitations:
 
 The folder will contain below listed contents under **src**:
 
-![image](https://user-images.githubusercontent.com/62351942/78948773-4debfa00-7a7e-11ea-952a-52071e5924c4.png)
+![image](https://user-images.githubusercontent.com/62353482/83359762-2a805580-a331-11ea-8119-4fff58f78d44.png)
 
 
 * **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/Configuration/FullLoadConfig.json) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
