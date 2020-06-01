@@ -128,7 +128,7 @@ The folder will contain below listed contents under **src**:
 
   ```
 
-  **Scheduling the factory pipeline for incremental copy pattern**
+  **Scheduling the factory pipeline for lift and shift copy pattern**
 
   ```powershell
 
