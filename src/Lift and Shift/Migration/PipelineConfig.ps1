@@ -75,7 +75,7 @@ try {
     
             }
             
-            #Create Incremental pipeline definition
+            #Create Lift and Shift pipeline definition
             $pipelines.Add(@{"pipelineId" = $pipeline.pipelineId; "name" = "CopyGen1ToGen2Inc" + $pipelineCount; "type" = "Copy"; "overwrite" = $overwrite ; "incremental" = "true"; "triggerName" = "CopyGen1ToGen2IncTrigger" + $pipelineCount; "triggerFrequency" = $pipeline.triggerFrequency; "triggerInterval" = $pipeline.triggerInterval; "triggerUTCStartTime" = $pipeline.triggerUTCStartTime; "triggerUTCEndTime" = $pipeline.triggerUTCEndTime; "activities" = $pipelineIncActivities })
         }
         if ($pipeline.FullLoad -eq "true") {
