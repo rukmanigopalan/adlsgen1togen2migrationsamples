@@ -62,7 +62,15 @@ Considerations for using the dual pipeline pattern:
 
 **Prerequisite**
 
- * Create a **linked service** in ADF for Azure Databricks. Refer [How to create linked service for ADB in ADF](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)
+ * Create **HDInsight cluster** for Gen1. Refer [here](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal) for more details.
+ 
+ * Create **HDInsight cluster** for Gen2. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) for more details.
+ 
+ * Permission should be set up for the managed identity for Gen2 storage account. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) for more details.
+ 
+ * Additional blob storage should be created for Gen1 to support HDInsight linked service in ADF. Refer [here](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-create-account-block-blob?tabs=azure-portal) for more details.
+ 
+ * Create a **linked service** in ADF for **ADB**. Refer [How to create linked service for ADB in ADF](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)
 
  * Create a **linked service** in ADF for **HDInsight**. Refer [How to create linked service for HDInsight in ADF](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)
 
@@ -86,9 +94,9 @@ Create a pipeline for loading the processed data to SQL DW using stored procedur
 
 ![image](https://user-images.githubusercontent.com/62353482/83453396-48bc8300-a40f-11ea-8c7d-886097bbc323.png)
 
+Stored procedure Settings:
 
-
-
+![image](https://user-images.githubusercontent.com/62353482/83456907-73a9d580-a415-11ea-8515-ce9e57718c04.png)
 
 ### How to set up Gen2 data pipeline
  
