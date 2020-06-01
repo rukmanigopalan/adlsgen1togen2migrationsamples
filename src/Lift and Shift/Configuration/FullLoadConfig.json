@@ -17,13 +17,13 @@
 			"pipelineDetails": [
 				{
 					"sourcePath": "/AdventureWorks/Raw",
-					"destinationPath": "/AdventureWorks/RAW_DATA",
-					"destinationContainer": "fullloadtest"
+					"destinationPath": "/AdventureWorks/Raw",
+					"destinationContainer": "fullLoadtest"
 				},
 				{
 					"sourcePath": "/AdventureWorks/ProcessedHDI",
 					"destinationPath": "/AdventureWorks/ProcessedHDI",
-					"destinationContainer": "fullloadtest" 
+					"destinationContainer": "fullLoadtest" 
 				}
 		]
 	}
