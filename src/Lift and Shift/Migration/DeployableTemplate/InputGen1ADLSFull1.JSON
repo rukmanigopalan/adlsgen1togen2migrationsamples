@@ -1,0 +1,16 @@
+{
+    "name": "InputGen1ADLSFull1",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureDataLakeStoreGen1",
+            "type": "LinkedServiceReference"
+        },        
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureDataLakeStoreLocation",
+                "folderPath": "/AdventureWorks/Raw/DimCustomer"
+            }
+        }
+    }
+}

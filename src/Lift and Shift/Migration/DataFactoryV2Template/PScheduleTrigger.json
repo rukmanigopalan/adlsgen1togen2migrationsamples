@@ -1,0 +1,30 @@
+{
+    "name": "@@dataFactoryTriggerName@@",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Started",
+        "pipeline": {
+            "pipelineReference": {
+                "referenceName": "@@dataFactoryPipeLineName@@",
+                "type": "PipelineReference"
+            },
+            "parameters": {
+                "windowStart": "@trigger().outputs.windowStartTime",
+                "windowEnd": "@trigger().outputs.windowEndTime"
+            }
+        },
+        "type": "TumblingWindowTrigger",
+        "typeProperties": {
+            "frequency": "@@frequency@@",
+            "interval": @@interval@@,
+            "startTime": "@@startTime@@",
+			"endTime": "@@endTime@@",
+            "delay": "00:00:00",
+            "maxConcurrency": 5,
+            "retryPolicy": {
+                "intervalInSeconds": 30
+            },
+            "dependsOn": []
+        }
+    }
+}

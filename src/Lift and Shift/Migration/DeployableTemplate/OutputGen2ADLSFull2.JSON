@@ -1,0 +1,17 @@
+{
+    "name": "OutputGen2ADLSFull2",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureDataLakeStoreGen2",
+            "type": "LinkedServiceReference"
+        },
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+				"folderPath": "/AdventureWorks/Raw/DimCustomer",
+                "fileSystem": "fullloadtest"
+            }
+        }
+    }
+}

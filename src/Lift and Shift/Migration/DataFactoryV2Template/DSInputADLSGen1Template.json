@@ -1,0 +1,16 @@
+{
+    "name": "@@dataSetName@@",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "@@referenceName@@",
+            "type": "LinkedServiceReference"
+        },        
+        "type": "@@type@@",
+        "typeProperties": {
+            "location": {
+                "type": "AzureDataLakeStoreLocation",
+                "folderPath": "@@folderPath@@"
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "gen1SourceRootPath" : "https://<<gen1AccountName>>.azuredatalakestore.net/webhdfs/v1",
+  "gen2DestinationRootPath" : "https://<<gen2AccountName>>.dfs.core.windows.net",
+  "tenantId" : "<<tenantId>>",
+  "subscriptionId" : "<<subscriptionId>>",
+  "servicePrincipleId" : "<<servicePrincipleId>>",
+  "servicePrincipleSecret" : "<<servicePrincipleSecret>>",
+  "keyVaultName" : "<<keyVaultName>>",
+  "factoryName" : "<<factoryName>>",
+  "resourceGroupName" : "<<resourceGroupName>>",
+  "location" : "location",
+  "overwrite" : "true",
+  "pipeline": [  
+	{
+		"pipelineId" : "1",
+		"FullLoad": "true",
+			"pipelineDetails": [
+				{
+					"sourcePath": "/AdventureWorks/Raw",
+					"destinationPath": "/AdventureWorks/Raw",
+					"destinationContainer": "fullLoadtest"
+				},
+				{
+					"sourcePath": "/AdventureWorks/ProcessedHDI",
+					"destinationPath": "/AdventureWorks/ProcessedHDI",
+					"destinationContainer": "fullLoadtest" 
+				}
+		]
+	}
+  ]
+}
