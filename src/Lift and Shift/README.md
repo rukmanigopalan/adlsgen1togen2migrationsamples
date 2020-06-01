@@ -100,20 +100,20 @@ The folder will contain below listed contents under **src**:
  
  2. **Set up the Configuration file to connect to azure data factory**:
 
-    **Important Prerequisite**: 
+ **Important Prerequisite**: 
 
-      * Provide Service principal access to configure keyvault as below:
+   * Provide Service principal access to configure keyvault as below:
      
-     ![image](https://user-images.githubusercontent.com/62353482/79594064-3e2d7080-8091-11ea-872e-d69052da0ff7.png)
+    ![image](https://user-images.githubusercontent.com/62353482/79594064-3e2d7080-8091-11ea-872e-d69052da0ff7.png)
      
-    
-     * Make an entry of Gen2 connection string in the key vault as shown below :
+ 
+    * Make an entry of Gen2 connection string in the key vault as shown below :
 
      ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
      
  ```powershell
 
-  // Below is the code snapshot for setting the configuration file to connect to azure data factory:
+   // Below is the code snapshot for setting the configuration file to connect to azure data factory:
 
 	  "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
 	  "gen2DestinationRootPath" : "https://<<Enter the Gen2 destination root path>>.dfs.core.windows.net", 
@@ -135,19 +135,18 @@ The folder will contain below listed contents under **src**:
 	  "pipelineId": "<<Enter the pipeline number. Eg: 1,2"
 	  "fullLoad": "true"
 	  
-  // Activity 1 //
+          // Activity 1 //
   	  "sourcePath" : "Enter the Gen1 full path. Eg: /path-name",
 	  "destinationPath" : "Enter the Gen2 full path.Eg: path-name",
 	  "destinationContainer" : "Enter the Gen2 container name"
-  // Activity 2 //
+          // Activity 2 //
    	  "sourcePath" : "Enter the Gen1 full path. Eg: /path-name",
 	  "destinationPath" : "Enter the Gen2 full path.Eg: path-name",
 	  "destinationContainer" : "Enter the Gen2 container name"
-  
-    
-    ```
+   
+   ```
  
- **Note**: Please note the **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
+  **NOTE**: Please note the **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
    Path to [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/Configuration/FullLoadConfig.json) script for more reference.
  
  3. **Azure data factory pipeline creation and execution**
