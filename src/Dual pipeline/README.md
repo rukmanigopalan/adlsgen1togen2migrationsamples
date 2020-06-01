@@ -62,12 +62,13 @@ Considerations for using the dual pipeline pattern:
 
 **Prerequisite**
 
-Create a **linked service** in ADF for Azure Databricks. Refer to [How to create linked service for ADB in ADF](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)
+ * Create a **linked service** in ADF for Azure Databricks. Refer [How to create linked service for ADB in ADF](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)
 
-Create a **linked service** in ADF for **HDInsight**. Refer to [How to create linked service for HDInsight in ADF](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)
+ * Create a **linked service** in ADF for **HDInsight**. Refer [How to create linked service for HDInsight in ADF](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)
 
-
-**Raw data ingestion to Gen1 using ADB script in ADF**
+ * Create a **linked service** in ADF for **stored procedure**. Refer [How to create linked service for Azure synapse analytics](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)
+ 
+**Raw data ingestion using ADB script in ADF**
 
 Create a pipeline for data ingestion process using ADB activity.. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
 
@@ -75,9 +76,15 @@ Create a pipeline for data ingestion process using ADB activity.. Refer [here](h
 
 **Data processing using HDInsight in ADF**
 
-Create a pipeline for data processing using HDInsight activity. Refere [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
+Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
 
 ![image](https://user-images.githubusercontent.com/62353482/83450714-a6020580-a40a-11ea-8c99-55c2c9a96104.png)
+
+**Loading to Azure synapse analytics (SQL DW) using stored procedure in ADF**
+
+Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
+
+![image](https://user-images.githubusercontent.com/62353482/83453396-48bc8300-a40f-11ea-8c7d-886097bbc323.png)
 
 
 
