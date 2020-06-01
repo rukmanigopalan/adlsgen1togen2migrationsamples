@@ -54,7 +54,7 @@ try {
                 $dsCount++
                 $inputAdlsGen1Name = "InputGen1ADLSInc" + $dsCount
                 
-       #Create Input & Output dataset definitions
+       #Create Input & Output dataset definitionss
                 $ds1TypeProperties = @{ "locationType" = $adlsGen1DSLocationType; "folderPath" = $pipelineDetails.sourcePath }
                 $ds1Properties = @{ "type" = $pipelineCopyType; "typeProperties" = $ds1TypeProperties }
                 $ds.Add(@{ "dsId" = $dsCount; "name" = $inputAdlsGen1Name; "referenceName" = $adlsGen1LSName; "overwrite" = $overwrite ; "properties" = $ds1Properties })
