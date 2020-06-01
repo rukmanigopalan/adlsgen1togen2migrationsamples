@@ -46,25 +46,43 @@ Considerations for using the dual pipeline pattern:
  
 ## Data pipeline set up for Gen1 and Gen2
 
- Sample data pipeline set up for Gen1 using Azure DataBricks for data ingestion, HDInsights for data processing and Azure SQL DW for    storing the processed data for analytics. 
+ Sample data pipeline set up for Gen1 using Azure Databricks for data ingestion, HDInsight for data processing and Azure SQL DW for    storing the processed data for analytics. 
  
  ![image](https://user-images.githubusercontent.com/62353482/83429980-c2417a80-a3e9-11ea-9ab6-4d08b02b51b1.png)
  
  ![image](https://user-images.githubusercontent.com/62353482/83435523-477c5d80-a3f1-11ea-9288-a6f9063d81ec.png)
 
  
- Here ADF is used for orchestrating data-processing pipelines supporting data ingestion, copying data from and to different storage types(Gen1 and Gen2) in azure and executing transformation logic.
+ Here ADF is used for orchestrating data-processing pipelines supporting data ingestion, copying data from and to different storage types (Gen1 and Gen2) in azure, loading the processed data to datawarehouse and executing transformation logic.
  
  ![image](https://user-images.githubusercontent.com/62353482/83435632-6b3fa380-a3f1-11ea-8639-dba1e217e044.png)
 
- 
- 
-
-
-
 
 ### How to set up Gen1 data pipeline
- 
+
+**Prerequisite**
+
+Create a **linked service** in ADF for Azure Databricks. Refer to [How to create linked service for ADB in ADF](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)
+
+Create a **linked service** in ADF for **HDInsight**. Refer to [How to create linked service for HDInsight in ADF](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)
+
+
+**Raw data ingestion to Gen1 using ADB script in ADF**
+
+Create a pipeline for data ingestion process using ADB activity.. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
+
+![image](https://user-images.githubusercontent.com/62353482/83448158-63d6c500-a406-11ea-8a29-a1cdd514509c.png)
+
+**Data processing using HDInsight in ADF**
+
+Create a pipeline for data processing using HDInsight activity. Refere [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
+
+![image](https://user-images.githubusercontent.com/62353482/83450714-a6020580-a40a-11ea-8c99-55c2c9a96104.png)
+
+
+
+
+
 ### How to set up Gen2 data pipeline
  
 ### Creation of HDI clusters for Gen1 and Gen2 in ADF
