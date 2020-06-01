@@ -1,28 +1,31 @@
 {
-	"gen1SourceRootPath": "https://sourcedatalakestoregen1.azuredatalakestore.net/webhdfs/v1",
-	"gen2DestinationRootPath": "https://destndatalakestoregen2.dfs.core.windows.net",
-	"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-	"subscriptionId": "29440f0b-dc91-4851-8e0a-b714bb5d3f78",
-	"servicePrincipleId": "55b7545f-661a-4710-b336-ea1e3c474d09",
-	"servicePrincipleSecret": "Zjl/J.vWJyQ50u]@HOOeVkQwRPKiNw31",
-	"keyVaultName": "Gen2MigrationKV",
-	"factoryName": "Gen1ToGen2Factorytestchurning",
-	"resourceGroupName": "Gen1ToGen2Migration",
-	"location": "East US 2",
-	"overwrite": "true",
-	"pipeline": [
-		{
-			"FullLoad": "true",
+  "gen1SourceRootPath" : "https://<<gen1AccountName>>.azuredatalakestore.net/webhdfs/v1",
+  "gen2DestinationRootPath" : "https://<<gen2AccountName>>.dfs.core.windows.net",
+  "tenantId" : "<<tenantId>>",
+  "subscriptionId" : "<<subscriptionId>>",
+  "servicePrincipleId" : "<<servicePrincipleId>>",
+  "servicePrincipleSecret" : "<<servicePrincipleSecret>>",
+  "keyVaultName" : "<<keyVaultName>>",
+  "factoryName" : "<<factoryName>>",
+  "resourceGroupName" : "<<resourceGroupName>>",
+  "location" : "location",
+  "overwrite" : "true",
+  "pipeline": [  
+	{
+		"pipelineId" : "1",
+		"FullLoad": "true",
 			"pipelineDetails": [
 				{
-					"sourcePath": "/AdventureWorks/Raw/FactInternetSales/2020",
-					"destinationPath": "/AdventureWorks/Raw/FactInternetSales/2020",
-					"destinationContainer": "zufan-adv-filesystem"
+					"sourcePath": "/AdventureWorks/Raw",
+					"destinationPath": "/AdventureWorks/RAW_DATA",
+					"destinationContainer": "fullloadtest"
+				},
+				{
+					"sourcePath": "/AdventureWorks/ProcessedHDI",
+					"destinationPath": "/AdventureWorks/ProcessedHDI",
+					"destinationContainer": "fullloadtest" 
 				}
-			],
-			"pipelineId": "1"
-		}
-	]
+		]
+	}
+  ]
 }
-
-
