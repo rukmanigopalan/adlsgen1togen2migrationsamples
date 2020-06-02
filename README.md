@@ -8,7 +8,7 @@ You will find here the resources to help with below patterns:
 
    Click here [Incremental copy pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md) to know more and get started.
 
-2. **Bi-directional sync pattern** using [Wandisco](https://docs.wandisco.com/bigdata/wdfusion/adls/)
+2. **Bi-directional sync pattern** using **WANdisco Fusion**
 
    Click here [Bi-directional sync pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Bi-directional) to know more and get started.
    
@@ -24,5 +24,5 @@ You will find here the resources to help with below patterns:
 
 * [Azure Data Lake Storage migration from Gen1 to Gen2 ](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
 
-* [Why Wandisco](https://docs.wandisco.com/bigdata/wdfusion/adls/)
+* [Why WANdisco fusion](https://docs.wandisco.com/bigdata/wdfusion/adls/)
 
