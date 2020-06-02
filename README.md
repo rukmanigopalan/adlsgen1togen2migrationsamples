@@ -14,7 +14,7 @@ You will find here the resources to help with below patterns:
    
 3. **Lift and Shift pattern** using **Azure data factory**
 
-   Click here [Lift and SHift pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift) to know more and get started.
+   Click here [Lift and Shift pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift) to know more and get started.
    
 4. **Dual Pipeline pattern** 
 
