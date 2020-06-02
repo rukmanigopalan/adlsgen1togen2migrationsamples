@@ -1,6 +1,6 @@
 ## Azure data lake storage Gen1 to Gen2 Migration sample
 
-Welcome to the documentation on migration from Gen1 to Gen2. Please review the [Gen1-Gen2 Migration Approach guide](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2) to understand the patterns and approach to go for.
+Welcome to the documentation on migration from Gen1 to Gen2. Please review the [Gen1-Gen2 Migration Approach guide](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2) to understand the patterns and approach. You can choose one of these patterns, combine them together, or design a custom pattern of your own.
 
 You will find here the resources to help with below patterns:
 
