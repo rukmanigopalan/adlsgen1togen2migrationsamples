@@ -73,11 +73,11 @@ Considerations for using the dual pipeline pattern:
 
 ### Creation of HDI clusters for Gen1 and Gen2 in ADF
   
-   1. Create a **linked service** in ADF for **ADB**. Refer [How to create linked service for ADB in ADF](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)
+   1. Create a **[ADB linked service](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)** in ADF.
 
-   2. Create a **linked service** in ADF for **HDInsight**. Refer [How to create linked service for HDInsight in ADF](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)
+   2. Create a **[HDInsight linked service](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)** in ADF.
 
-   3. Create a **linked service** in ADF for **stored procedure**. Refer [How to create linked service for Azure synapse analytics](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)
+   3. Create a **[Stored procedure linked service](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)** in ADF.
  
 ### How to set up Gen1 data pipeline
 
