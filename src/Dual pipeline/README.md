@@ -100,8 +100,37 @@ Stored procedure Settings:
 
 ### How to set up Gen2 data pipeline
  
-### Creation of HDI clusters for Gen1 and Gen2 in ADF
+**Raw data ingestion using ADB script in ADF**
+
+Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
+
+![image](https://user-images.githubusercontent.com/62353482/83466106-ebcec600-a42a-11ea-875a-120cb4e2a821.png)
+
+**Data processing using HDInsight in ADF**
+
+Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
+
+![image](https://user-images.githubusercontent.com/62353482/83466207-39e3c980-a42b-11ea-9ed6-d056b1c1cf0f.png)
+
+**Loading to Azure synapse analytics (SQL DW) using stored procedure in ADF**
+
+Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
+
+![image](https://user-images.githubusercontent.com/62353482/83466549-43216600-a42c-11ea-9306-e62ad0d6fc67.png)
+
+Stored procedure Settings:
+
+![image](https://user-images.githubusercontent.com/62353482/83466582-60563480-a42c-11ea-937a-1f21a6d10fa3.png)
+
+### Creation of HDInsight linked service for Gen1 and Gen2 in ADF
  
+**How to create HDInsight linked service for Gen1(Blob storage)**
+
+Go to **Linked Services** --> **click** on **+ New** --> **New linked service** --> **Compute** --> **Azure HDInsight** --> **Continue**
+
+![image](https://user-images.githubusercontent.com/62353482/83468627-356edf00-a432-11ea-9375-0594ab25b975.png)
+
+
  
  ## Move data from Gen1 to Gen2
 
