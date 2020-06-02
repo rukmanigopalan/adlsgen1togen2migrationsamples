@@ -78,7 +78,7 @@ Considerations for using the dual pipeline pattern:
  
 **Raw data ingestion using ADB script in ADF**
 
-Create a pipeline for data ingestion process using ADB activity.. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
+Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
 
 ![image](https://user-images.githubusercontent.com/62353482/83448158-63d6c500-a406-11ea-8a29-a1cdd514509c.png)
 
@@ -130,13 +130,29 @@ Go to **Linked Services** --> **click** on **+ New** --> **New linked service** 
 
 ![image](https://user-images.githubusercontent.com/62353482/83468627-356edf00-a432-11ea-9375-0594ab25b975.png)
 
+Provide the details from Azure subscription with respect to each field and choose **Blob Storage** under **Azure Storage linked service**
 
- 
- ## Move data from Gen1 to Gen2
+![image](https://user-images.githubusercontent.com/62353482/83469679-335a4f80-a435-11ea-91c3-2d844be17cbe.png)
 
- ## Data ingestion to Gen1 and Gen2
+Provide the user name and password details. Click on **Create** button.
+
+**How to create HDInsight linked service for Gen2**
+
+Go to **Linked Services** --> **click** on **+ New** --> **New linked service** --> **Compute** --> **Azure HDInsight** --> **Continue**
+
+![image](https://user-images.githubusercontent.com/62353482/83468627-356edf00-a432-11ea-9375-0594ab25b975.png)
+
+Provide the details from Azure subscription with respect to each field and choose **ADLS Gen 2** under **Azure Storage linked service**
+
+![image](https://user-images.githubusercontent.com/62353482/83479945-d79cc000-a44e-11ea-8940-3884606cec7b.png)
+
+Provide the storage container name in the **File system** field. Give the user name and password. Click on **Create** button.
+
+## Move data from Gen1 to Gen2
+
+## Data ingestion to Gen1 and Gen2
  
- ## Run workloads at Gen2
+## Run workloads at Gen2
  
  ## Reach out to us
 
