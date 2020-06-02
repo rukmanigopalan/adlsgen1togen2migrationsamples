@@ -73,27 +73,27 @@ Considerations for using the dual pipeline pattern:
 
 ### Creation of HDI clusters for Gen1 and Gen2 in ADF
   
-   1. Create a **[ADB linked service](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)** in ADF.
+   1. Create **[ADB linked service](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)** in ADF.
 
-   2. Create a **[HDInsight linked service](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)** in ADF.
+   2. Create **[HDInsight linked service](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)** in ADF.
 
-   3. Create a **[Stored procedure linked service](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)** in ADF.
+   3. Create **[Stored procedure linked service](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)** in ADF.
  
 ### How to set up Gen1 data pipeline
 
-   1. **Raw data ingestion using ADB script in ADF**
+   1. **Raw data ingestion using ADB script**
 
    Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
 
    ![image](https://user-images.githubusercontent.com/62353482/83448158-63d6c500-a406-11ea-8a29-a1cdd514509c.png)
 
-   2. **Data processing using HDInsight in ADF**
+   2. **Data processing using HDInsight**
 
    Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
 
    ![image](https://user-images.githubusercontent.com/62353482/83450714-a6020580-a40a-11ea-8c99-55c2c9a96104.png)
 
-   3. **Loading to Azure synapse analytics (SQL DW) using stored procedure in ADF**
+   3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
 
    Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
 
@@ -105,19 +105,19 @@ Considerations for using the dual pipeline pattern:
 
 ### How to set up Gen2 data pipeline
  
-   1. **Raw data ingestion using ADB script in ADF**
+   1. **Raw data ingestion using ADB script**
 
    Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
 
   ![image](https://user-images.githubusercontent.com/62353482/83466106-ebcec600-a42a-11ea-875a-120cb4e2a821.png)
 
-   2. **Data processing using HDInsight in ADF**
+   2. **Data processing using HDInsight**
 
    Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
 
    ![image](https://user-images.githubusercontent.com/62353482/83466207-39e3c980-a42b-11ea-9ed6-d056b1c1cf0f.png)
 
-   3. **Loading to Azure synapse analytics (SQL DW) using stored procedure in ADF**
+   3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
 
    Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
 
