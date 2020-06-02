@@ -3,7 +3,8 @@ Lift and Shift Copy Pattern Guide: A quick start template
 
 ## Overview
 
-The purpose of this document is to provide a manual for the lift and shift copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and PowerShell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. It is intended to be used in form of steps to follow to implement the solution from local machine.
+The purpose of this document is to provide a manual in form of step by step guide for the lift and shift copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and PowerShell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. 
+
 This guide covers the following tasks:
 
    * Set up kit for lift and shift copy pattern from Gen1 to Gen2 
@@ -84,7 +85,7 @@ This version of code will have below limitations:
 
 **Note**: To avoid security warning error --> Right click on the zip folder downloaded --> Go to --> Properties --> General --> Check unblock option under security section. Unzip and extract the folder.
 
-The folder will contain below listed contents under **src/Lift and Shift/**:
+The folder **src/Lift and Shift/** will contain below listed contents:
 
 ![image](https://user-images.githubusercontent.com/62353482/83551794-b1623900-a4bd-11ea-9b84-f2885567bc92.png)
 
@@ -152,21 +153,21 @@ The folder will contain below listed contents under **src/Lift and Shift/**:
  
  3. **Azure data factory pipeline creation and execution**
 
- Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) to start the full load migration and validation process.
+  Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) to start the full load    migration and validation process.
  
  ![image](https://user-images.githubusercontent.com/62353482/83554216-4adf1a00-a4c1-11ea-9ea4-ae9284e678c0.png)
-
+ 
  
  4. **Azure Data factory pipeline monitoring**
 
- The pipeline will be created in Azure data factory and can be monitored in below way:
+  The pipeline will be created in Azure data factory and can be monitored in below way:
  
- ![image](https://user-images.githubusercontent.com/62353482/83555204-c8eff080-a4c2-11ea-8162-a8f86b5e9e9e.png)
+  ![image](https://user-images.githubusercontent.com/62353482/83555204-c8eff080-a4c2-11ea-8162-a8f86b5e9e9e.png)
 
  
  ## Data Validation 
 
-  The [script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) will trigger the data validation between Gen1 and Gen2 once the migration is completed in above step.
+  The [script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) will trigger the data  validation between Gen1 and Gen2 once the migration is completed in above step.
   
  ![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
   
