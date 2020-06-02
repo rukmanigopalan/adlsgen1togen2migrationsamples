@@ -77,25 +77,26 @@ This version of code will have below limitations:
       
 ## Migration Framework Setup
 
-1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/src/Lift and Shift) to local machine**:
+1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/src/) to local machine**:
 
 ![image](https://user-images.githubusercontent.com/62351942/78950970-50058700-7a85-11ea-9485-9cd605b1e0fe.png)
 
 
 **Note**: To avoid security warning error --> Right click on the zip folder downloaded --> Go to --> Properties --> General --> Check unblock option under security section. Unzip and extract the folder.
 
-The folder will contain below listed contents under **src**:
+The folder will contain below listed contents under **src/Lift and Shift/**:
 
-![image](https://user-images.githubusercontent.com/62353482/83359762-2a805580-a331-11ea-8119-4fff58f78d44.png)
+![image](https://user-images.githubusercontent.com/62353482/83551794-b1623900-a4bd-11ea-9b84-f2885567bc92.png)
 
+* **Application**: This folder will have sample code for Mount path configuration.
 
-* **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/Configuration/FullLoadConfig.json) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
+* **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift/Configuration) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
 * **Migration**: Contains the json files, templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
  
 * **Validation**: Contains the PowerShell scripts which will read the Gen1 and Gen2 data and validate it post migration to generate post migration report.
  
- * **[StartFullLoadMigrationAndValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/StartFullLoadMigrationAndValidation.ps1)** : Script to invoke the full load Migration and Validation process to compare the data between Gen1 and Gen2 post migration and generate summary report.
+ * **[StartFullLoadMigrationAndValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift)** : Script to invoke the full load Migration and Validation process to compare the data between Gen1 and Gen2 post migration and generate summary report.
   
  
  2. **Set up the Configuration file to connect to azure data factory**:
@@ -147,27 +148,25 @@ The folder will contain below listed contents under **src**:
    ```
  
   **NOTE**: Please note the **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
-   Path to [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/Configuration/FullLoadConfig.json) script for more reference.
+   Path to [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/Configuration/FullLoadConfig.json) script for more reference.
  
  3. **Azure data factory pipeline creation and execution**
 
- Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/StartFullLoadMigrationAndValidation.ps1) to start the full data copy and Validation process.
+ Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) to start the full load migration and validation process.
  
- ![image](https://user-images.githubusercontent.com/62351942/78946426-8a682780-7a77-11ea-973b-8f7cad667295.png)
+ ![image](https://user-images.githubusercontent.com/62353482/83554216-4adf1a00-a4c1-11ea-9ea4-ae9284e678c0.png)
 
  
  4. **Azure Data factory pipeline monitoring**
 
  The pipeline will be created in Azure data factory and can be monitored in below way:
  
- ![image](https://user-images.githubusercontent.com/62351942/78946760-6fe27e00-7a78-11ea-915e-e716fb1d1c78.png)
+ ![image](https://user-images.githubusercontent.com/62353482/83555204-c8eff080-a4c2-11ea-8162-a8f86b5e9e9e.png)
 
  
  ## Data Validation 
 
- This step will validate the Gen1 and Gen2 data based on file path and file size. 
- 
- The [script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift and Shift/StartFullLoadMigrationAndValidation.ps1) will trigger the validation process.
+  The [script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) will trigger the data validation between Gen1 and Gen2 once the migration is completed in above step.
   
  ![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
   
@@ -176,11 +175,11 @@ The folder will contain below listed contents under **src**:
 
   Once the Gen1 and Gen2 data is compared and validated, the result is generated in CSV file into the **Output** folder as below:
 
-  ![image](https://user-images.githubusercontent.com/62351942/78856445-ad44fe00-79db-11ea-89e7-c4f89dd62701.png)
+  ![image](https://user-images.githubusercontent.com/62353482/83555444-26843d00-a4c3-11ea-9fac-5bd0760aca0b.png)
 
   The CSV file will show the matched and unmatched records with Gen1 and Gen2 file path, Gen1 and Gen2 file size and Ismatching status.
 
-  ![image](https://user-images.githubusercontent.com/62353482/78966833-ad193100-7ab5-11ea-97b6-cf3ca372a451.png)
+  ![image](https://user-images.githubusercontent.com/62353482/83555536-44ea3880-a4c3-11ea-90d0-ccae337fb531.png)
 
 
   **Note**: IsMatching status = Yes (For matched records ) and No (Unmatched records)
