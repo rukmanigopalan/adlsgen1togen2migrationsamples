@@ -19,9 +19,9 @@ Considerations for using the dual pipeline pattern:
    * [Overview](#overview)
    * [Prerequisites](#prerequisites)
    * [Data pipeline set up for Gen1 and Gen2](#data-pipeline-set-up-for-gen1-and-gen2)
+     * [Creation of HDI clusters for Gen1 and Gen2 in ADF](#creation-of-hdi-clusters-for-gen1-and-gen2-in-adf)
      * [How to set up Gen1 data pipeline](#how-to-set-up-gen1-data-pipeline)
      * [How to set up Gen2 data pipeline](#how-to-set-up-gen2-data-pipeline)
-     * [Creation of HDI clusters for Gen1 and Gen2 in ADF](#creation-of-hdi-clusters-for-gen1-and-gen2-in-adf)
    * [Migrate data from Gen1 to Gen2](#migrate-data-from-gen1-to-gen2)
    * [Data ingestion to Gen1 and Gen2](#data-ingestion-to-gen1-and-gen2)
    * [Run workloads at Gen2](#run-workloads-at-gen2)
@@ -46,6 +46,19 @@ Considerations for using the dual pipeline pattern:
  
 ## Data pipeline set up for Gen1 and Gen2
 
+  **Prerequisite**
+
+  * Create **HDInsight cluster** for Gen1. Refer [here](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal) for more details.
+ 
+  * Create **HDInsight cluster** for Gen2. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) for more details.
+ 
+  * Create a **user assigned managed identity**. Refer [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity) to know more.
+ 
+  * Permission should be set up for the managed identity for Gen2 storage account. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) for more details.
+ 
+ * Additional blob storage should be created for Gen1 to support HDInsight linked service in ADF. Refer [here](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-create-account-block-blob?tabs=azure-portal) for more details.
+
+
  Sample data pipeline set up for Gen1 using Azure Databricks for data ingestion, HDInsight for data processing and Azure SQL DW for    storing the processed data for analytics. 
  
  ![image](https://user-images.githubusercontent.com/62353482/83429980-c2417a80-a3e9-11ea-9ab6-4d08b02b51b1.png)
@@ -58,23 +71,13 @@ Considerations for using the dual pipeline pattern:
  ![image](https://user-images.githubusercontent.com/62353482/83435632-6b3fa380-a3f1-11ea-8639-dba1e217e044.png)
 
 
-**Prerequisite**
+### Creation of HDI clusters for Gen1 and Gen2 in ADF
+  
+   1. Create a **linked service** in ADF for **ADB**. Refer [How to create linked service for ADB in ADF](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)
 
- * Create **HDInsight cluster** for Gen1. Refer [here](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal) for more details.
- 
- * Create **HDInsight cluster** for Gen2. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) for more details.
- 
- * Create a **user assigned managed identity**. Refer [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity) to know more.
- 
- * Permission should be set up for the managed identity for Gen2 storage account. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) for more details.
- 
- * Additional blob storage should be created for Gen1 to support HDInsight linked service in ADF. Refer [here](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-create-account-block-blob?tabs=azure-portal) for more details.
- 
- * Create a **linked service** in ADF for **ADB**. Refer [How to create linked service for ADB in ADF](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)
+   2. Create a **linked service** in ADF for **HDInsight**. Refer [How to create linked service for HDInsight in ADF](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)
 
- * Create a **linked service** in ADF for **HDInsight**. Refer [How to create linked service for HDInsight in ADF](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)
-
- * Create a **linked service** in ADF for **stored procedure**. Refer [How to create linked service for Azure synapse analytics](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)
+   3. Create a **linked service** in ADF for **stored procedure**. Refer [How to create linked service for Azure synapse analytics](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)
  
 ### How to set up Gen1 data pipeline
 
