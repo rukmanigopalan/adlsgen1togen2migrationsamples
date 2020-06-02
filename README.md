@@ -4,13 +4,21 @@ Welcome to the documentation on migration from Gen1 to Gen2. Please review the [
 
 You will find here the resources to help with below patterns:
 
-1. **Incremental copy pattern** using **Azure data factory** and PowerShell
+1. **Incremental copy pattern** using **Azure data factory**
 
    Click here [Incremental copy pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md) to know more and get started.
 
 2. **Bi-directional sync pattern** using [Wandisco](https://docs.wandisco.com/bigdata/wdfusion/adls/)
 
    Click here [Bi-directional sync pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Bi-directional) to know more and get started.
+   
+3. **Lift and Shift pattern** using **Azure data factory**
+
+   Click here [Lift and SHift pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift) to know more and get started.
+   
+4. **Dual Pipeline pattern** 
+
+   Click here [Dual pipeline pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Dual%20pipeline) to know more and get started.
 
 ## References
 
