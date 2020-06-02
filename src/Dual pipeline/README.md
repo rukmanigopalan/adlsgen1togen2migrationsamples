@@ -99,7 +99,7 @@ Considerations for using the dual pipeline pattern:
 
    ![image](https://user-images.githubusercontent.com/62353482/83453396-48bc8300-a40f-11ea-8c7d-886097bbc323.png)
 
-  **Stored procedure Settings:
+  **Stored procedure Settings**:
 
   ![image](https://user-images.githubusercontent.com/62353482/83456907-73a9d580-a415-11ea-8515-ce9e57718c04.png)
 
