@@ -4,6 +4,27 @@ Application and Workload Update
 ## Overview
 
 The purpose of this document is to provide steps and ways to migrate the workloads and applications from **Gen1** to **Gen2** after data copy is completed.
+
+This can be applicable for below migration patterns:
+
+1. Incremental Copy pattern
+
+2. Lift and Shift copy pattern
+
+3. Dual Pipeline pattern
+
+ As part of this, we will [configure services in workloads](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-supported-azure-services) used and update the applications to point to Gen2 mount.
+ 
+:bulb: **Note**: We will be covering below azure services
+
+  Azure Services           |        Related articles                                                     
+  -------------            |   -------------------------------------------------------------------       
+ Azure Data Factory        |   [Load data into Azure Data Lake Storage Gen2 with Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+ Azure Databricks          |   [Use with Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [Quickstart: Analyze data in Azure Data Lake Storage Gen2 by using Azure Databricks](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account) <br>                    [Tutorial: Extract, transform, and load data by using Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/databricks-extract-load-sql-data-warehouse)
+ SQL Data Warehouse        |   [Use with Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse)
+ HDInsight                 |   [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=/azure/storage/blobs/toc.json) <br>
+ [Tutorial: Extract, transform, and load data by using Azure HDInsight](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive)
+
   
 ## Table of contents
 
@@ -13,7 +34,8 @@ The purpose of this document is to provide steps and ways to migrate the workloa
    * [Prerequisites](#prerequisites)
    * [How to Configure and Update Azure Databricks](#how-to-configure-and-update-azure-databricks)
    * [How to Configure and Update Azure Datafactory](#how-to-configure-and-update-azure-datafactory)
-   * [How to Configure and update HDIInsight](#how-to-configure-and-update-hdiinsight)
+   * [How to Configure and update HDInsight](#how-to-configure-and-update-hdinsight)
+   * [How to configure and update Azure Synapse Analytics (SQL DW)](#how-to-configure-and-update-azure-synapse-analytics-SQL DW))
  <!--te-->
  
  ## Prerequisites
@@ -88,7 +110,7 @@ The purpose of this document is to provide steps and ways to migrate the workloa
 
    **6. Check for the new files getting generated at the Gen2 root folder path**
   
-  ## How to Configure and update HDIInsight
+  ## How to Configure and update HDInsight
   
    **Prerequisite**
    
@@ -105,5 +127,12 @@ The purpose of this document is to provide steps and ways to migrate the workloa
    The Hive script is mounted to Gen2 endpoint as shown below:
    
    ![image](https://user-images.githubusercontent.com/62353482/83672806-b8f01380-a58b-11ea-8c16-ae0c662d7de6.png)
-
+   
+   Once all the existing data is moved from Gen1 to Gen2, Start running the worloads at Gen2 endpoint.
+   
+  ## How to configure and update Azure Synapse Analytics (SQL DW)
+   
+   Mount path change to Gen2 endpoint
+   
+   ![image](https://user-images.githubusercontent.com/62353482/83685147-04f78400-a59d-11ea-8fdb-b319df6ede31.png)
 
