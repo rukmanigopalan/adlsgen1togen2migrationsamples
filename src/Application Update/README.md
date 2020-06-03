@@ -3,7 +3,7 @@ Application and Workload Update
 
 ## Overview
 
-The purpose of this document is to provide steps and ways to migrate the workloads and applications from **Gen1** to **Gen2** after migration of data is completed.
+The purpose of this document is to provide steps and ways to migrate the workloads and applications from **Gen1** to **Gen2** after data copy is completed.
   
 ## Table of contents
 
@@ -89,5 +89,21 @@ The purpose of this document is to provide steps and ways to migrate the workloa
    **6. Check for the new files getting generated at the Gen2 root folder path**
   
   ## How to Configure and update HDIInsight
+  
+   **Prerequisite**
+   
+   Two HDInsight clusters to be created for each Gen1 and Gen2 storage.
  
- 
+   **Before Migration**
+   
+   The Hive script is mounted to Gen1 endpoint as shown below:
+   
+   ![image](https://user-images.githubusercontent.com/62353482/83672012-74b04380-a58a-11ea-89b6-54564aeb52f5.png)
+   
+   **After Migration**
+   
+   The Hive script is mounted to Gen2 endpoint as shown below:
+   
+   ![image](https://user-images.githubusercontent.com/62353482/83672806-b8f01380-a58b-11ea-8c16-ae0c662d7de6.png)
+
+
