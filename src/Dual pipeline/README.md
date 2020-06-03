@@ -46,13 +46,15 @@ Considerations for using the dual pipeline pattern:
  
 ## Data pipeline set up for Gen1 and Gen2
 
+  To set up the data pipeline in ADF, HDInsight clusters should be created separately for both Gen1 and Gen2.
+
   **Prerequisite**
 
   * Create **HDInsight cluster** for Gen1. Refer [here](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal) for more details.
  
   * Create **HDInsight cluster** for Gen2. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) for more details.
  
-  * Create a **user assigned managed identity**. Refer [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity) to know more.
+  * Create  **user assigned managed identity**. Refer [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity) to know more.
  
   * Permission should be set up for the managed identity for Gen2 storage account. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) for more details.
  
