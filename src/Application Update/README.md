@@ -138,7 +138,13 @@ This can be applicable for below migration patterns:
    
   ## How to configure and update Azure Synapse Analytics
    
-   Mount path change to Gen2 endpoint
+   Change the Mount path in the parameter to Gen2 endpoint
    
    ![image](https://user-images.githubusercontent.com/62353482/83685147-04f78400-a59d-11ea-8fdb-b319df6ede31.png)
+   
+   Run the stored procedure activity to make sure the data is loaded at Gen2.
+   
+   The above updates to workloads pointing to Gen2 endpoint 
+   
+   
 
