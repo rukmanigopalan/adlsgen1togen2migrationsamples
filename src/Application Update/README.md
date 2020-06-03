@@ -22,8 +22,7 @@ This can be applicable for below migration patterns:
  Azure Data Factory        |   [Load data into Azure Data Lake Storage Gen2 with Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
  Azure Databricks          |   [Use with Azure Databricks](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-datalake-gen2) <br> [Quickstart: Analyze data in Azure Data Lake Storage Gen2 by using Azure Databricks](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account) <br>                    [Tutorial: Extract, transform, and load data by using Azure Databricks](https://docs.microsoft.com/en-us/azure/azure-databricks/databricks-extract-load-sql-data-warehouse)
  SQL Data Warehouse        |   [Use with Azure SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse)
- HDInsight                 |   [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=/azure/storage/blobs/toc.json) <br>
- [Tutorial: Extract, transform, and load data by using Azure HDInsight](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive)
+ HDInsight                 |   [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=/azure/storage/blobs/toc.json) <br>  [Tutorial: Extract, transform, and load data by using Azure HDInsight](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive)
 
   
 ## Table of contents
@@ -35,7 +34,7 @@ This can be applicable for below migration patterns:
    * [How to Configure and Update Azure Databricks](#how-to-configure-and-update-azure-databricks)
    * [How to Configure and Update Azure Datafactory](#how-to-configure-and-update-azure-datafactory)
    * [How to Configure and update HDInsight](#how-to-configure-and-update-hdinsight)
-   * [How to configure and update Azure Synapse Analytics (SQL DW)](#how-to-configure-and-update-azure-synapse-analytics-SQL DW))
+   * [How to configure and update Azure Synapse Analytics](#how-to-configure-and-update-azure-synapse-analytics)
  <!--te-->
  
  ## Prerequisites
@@ -43,10 +42,14 @@ This can be applicable for below migration patterns:
  **The migration of data from Gen1 to Gen2 should be completed**
   
  ## How to Configure and Update Azure Databricks
+ 
+ Applies where Databricks is used for data ingestion to ADLS Gen1.
    
  **Before the migration**:
  
  **1. Mount configured to Gen1 path**
+ 
+ Sample code showing mount path configured for ADLS Gen1 using service principle:
 
  ![image](https://user-images.githubusercontent.com/62353482/79265180-90c91b80-7e4a-11ea-9000-0f86aa7c6ebb.png)
 
@@ -54,8 +57,8 @@ This can be applicable for below migration patterns:
   
  Sample snapshot of working code:
  
- ![image](https://user-images.githubusercontent.com/62353482/79017669-c27a7380-7b26-11ea-8e3e-353b7b18e51c.png)
- 
+ ![image](https://user-images.githubusercontent.com/62353482/83693292-ac2ee800-a5aa-11ea-878e-e8f6d72daf72.png)
+
   **Note**: Refer to [IncrementalSampleLoad](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/Application/IncrementSampleLoad.py) script for more details.
  
  **After the migration**:
@@ -77,25 +80,26 @@ This can be applicable for below migration patterns:
 
  ## How to Configure and Update Azure Datafactory
  
-  **1. Stop the trigger to Gen1**
+ Once the data migration using ADF is completed from ADLS Gen1 to Gen2, follow the below steps:
+ 
+  **1. Stop the trigger to Gen1** used as part of Incremental copy pattern.
     
   **2. Modify the existing factory by creating new linked service to point to Gen2 storage**.
   
-  Go to **-->** Azure Data Factory **-->** Click on Author **-->** Connections **-->** Linked Service **-->** click on New **-->**   Choose Azure Data Lake Storage Gen2 **-->** Click on Continue button
+  Go to --> **Azure Data Factory** --> **Click on Author** --> **Connections** --> **Linked Service** --> **click on New*** --> **Choose Azure Data Lake Storage Gen2** --> **Click on Continue button**
 
  ![image](https://user-images.githubusercontent.com/62353482/79276321-a3e4e700-7e5c-11ea-9908-b013e2d1e12b.png)
 
 
  Provide the details to create new Linked service to point to Gen2 storage account.
 
-
 ![image](https://user-images.githubusercontent.com/62353482/79276405-cd057780-7e5c-11ea-9c31-95dfd26db5b9.png)
 
   **3. Modify the existing factory by creating new dataset in Gen2 storage**.
    
-   Go to **-->** Azure Data Factory **-->** Click on Author **-->** Click on Pipelines **-->** Select the pipeline **-->** Click on Activity **-->** Click on sink tab **-->** Choose the dataset to point to Gen2 
+   Go to --> **Azure Data Factory** --> **Click on Author** --> **Click on Pipelines** --> **Select the pipeline** --> **Click on Activity** --> **Click on sink tab** --> Choose the dataset to point to Gen2 
    
-   ![image](https://user-images.githubusercontent.com/62353482/79279985-20c78f00-7e64-11ea-9e04-cdfd770d210f.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83690089-eeedc180-a5a4-11ea-8a57-28a22822a595.png)
 
 
   **4. Click on Publish all**
@@ -111,6 +115,8 @@ This can be applicable for below migration patterns:
    **6. Check for the new files getting generated at the Gen2 root folder path**
   
   ## How to Configure and update HDInsight
+  
+   Applies where HDInsight is used as workload to process the Raw data and execute the transformations. Below is the step by step process used for Dual pipeline pattern.
   
    **Prerequisite**
    
@@ -130,7 +136,7 @@ This can be applicable for below migration patterns:
    
    Once all the existing data is moved from Gen1 to Gen2, Start running the worloads at Gen2 endpoint.
    
-  ## How to configure and update Azure Synapse Analytics (SQL DW)
+  ## How to configure and update Azure Synapse Analytics
    
    Mount path change to Gen2 endpoint
    
