@@ -35,6 +35,7 @@ This can be applicable for below migration patterns:
    * [How to Configure and Update Azure Datafactory](#how-to-configure-and-update-azure-datafactory)
    * [How to Configure and update HDInsight](#how-to-configure-and-update-hdinsight)
    * [How to configure and update Azure Synapse Analytics](#how-to-configure-and-update-azure-synapse-analytics)
+   * [Cutover from Gen1 to Gen2](#Cutover from Gen1 to Gen2)
  <!--te-->
  
  ## Prerequisites
@@ -144,7 +145,11 @@ This can be applicable for below migration patterns:
    
    Run the stored procedure activity to make sure the data is loaded at Gen2.
    
-   The above updates to workloads pointing to Gen2 endpoint 
+   ## Cutover from Gen1 to Gen2
+   
+   After you're confident that your applications and workloads are stable on Gen2, you can begin using Gen2 to satisfy your business scenarios. Turn off any remaining pipelines that are running on Gen1 and decommission your Gen1 account.
+   
+   
    
    
 
