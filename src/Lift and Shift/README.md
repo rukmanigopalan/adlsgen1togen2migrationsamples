@@ -119,7 +119,7 @@ This version of code will have below limitations:
      
   ```powershell
 
-          // Below is the code snapshot for setting the configuration file to connect to azure data factory:
+     // Below is the code snapshot for setting the configuration file to connect to azure data factory:
 
 	  "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
 	  "gen2DestinationRootPath" : "https://<<Enter the Gen2 destination root path>>.dfs.core.windows.net", 
@@ -156,7 +156,7 @@ This version of code will have below limitations:
  
  ### Azure data factory pipeline creation and execution
 
-   Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) to start the full load    migration and validation process.
+   Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) to start the full load    migration and validation process. This step will create the data factory as per the configuration file.
  
  ![image](https://user-images.githubusercontent.com/62353482/83554216-4adf1a00-a4c1-11ea-9ea4-ae9284e678c0.png)
  
@@ -181,12 +181,12 @@ This version of code will have below limitations:
 
   ![image](https://user-images.githubusercontent.com/62353482/83555444-26843d00-a4c3-11ea-9fac-5bd0760aca0b.png)
 
-  The CSV file will show the matched and unmatched records with Gen1 and Gen2 file path, Gen1 and Gen2 file size and Ismatching status.
+  The CSV file will show the matched and unmatched records with file path, file size, Permission for Gen1 and Gen2 records and Ismatching status.
 
   ![image](https://user-images.githubusercontent.com/62353482/83555536-44ea3880-a4c3-11ea-90d0-ccae337fb531.png)
 
 
-  **Note**: IsMatching status = Yes (For matched records ) and No ( For Unmatched records)
+  **Note**: IsMatching status = Yes (For matched records ) and No (For Unmatched records)
 
  ## Application update  
 
