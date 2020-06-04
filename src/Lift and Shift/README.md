@@ -30,6 +30,10 @@ This guide covers the following tasks:
    * [Prerequisites](#prerequisites)
    * [Limitations](#limitations)
    * [Migration Framework Setup](#migration-framework-setup)
+     * [Get Started](#get-started)
+     * [How to Set up Configuration file](#how-to-set-up-configuration-file)
+     * [Azure data factory pipeline creation and execution](#azure-data-factory-pipeline-creation-and-execution)
+     * [Azure Data factory pipeline monitoring](#azure-data-factory-pipeline-monitoring)
    * [Data Validation](#data-validation)
    * [Application Update](#application-update)
    * [Reach out to us](#reach-out-to-us)
@@ -78,31 +82,32 @@ This version of code will have below limitations:
       
 ## Migration Framework Setup
 
-1. **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/src/) to local machine**:
+### Get Started
 
-![image](https://user-images.githubusercontent.com/62351942/78950970-50058700-7a85-11ea-9485-9cd605b1e0fe.png)
+   **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/src/) to local machine**:
+
+   ![image](https://user-images.githubusercontent.com/62351942/78950970-50058700-7a85-11ea-9485-9cd605b1e0fe.png)
 
 
-**Note**: To avoid security warning error --> Right click on the zip folder downloaded --> Go to --> Properties --> General --> Check unblock option under security section. Unzip and extract the folder.
+   **Note**: To avoid security warning error --> Right click on the zip folder downloaded --> Go to --> Properties --> General --> Check unblock option under security section. Unzip and extract the folder.
 
-The folder **src/Lift and Shift/** will contain below listed contents:
+   The folder **src/Lift and Shift/** will contain below listed contents:
 
-![image](https://user-images.githubusercontent.com/62353482/83551794-b1623900-a4bd-11ea-9b84-f2885567bc92.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83551794-b1623900-a4bd-11ea-9b84-f2885567bc92.png)
 
-* **Application**: This folder will have sample code for Mount path configuration.
+   * **Application**: This folder will have sample code for Mount path configuration.
 
-* **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift/Configuration) and all the required details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
+   * **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift/Configuration) and all the required details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
-* **Migration**: Contains the templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
+   * **Migration**: Contains the templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
  
-* **Validation**: Contains the PowerShell scripts which will read the Gen1 and Gen2 data and write the comparison report post migration.
+   * **Validation**: Contains the PowerShell scripts which will read the Gen1 and Gen2 data and write the comparison report post migration.
  
- * **[StartFullLoadMigrationAndValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift)** : Script to invoke the full load Migration and Validation process to compare the data between Gen1 and Gen2 post migration and generate summary report.
+   * **[StartFullLoadMigrationAndValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift)** : Script to invoke the full load Migration and Validation process to compare the data between Gen1 and Gen2 post migration and generate summary report.
   
- 
- 2. **Set up the Configuration file to connect to azure data factory**:
+### How to Set up Configuration file
 
- **Important Prerequisite**: 
+   **Important Prerequisite**: 
 
    * Provide Service principal access to configure key vault as below:
    
@@ -112,9 +117,9 @@ The folder **src/Lift and Shift/** will contain below listed contents:
 
    ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
      
- ```powershell
+  ```powershell
 
-   // Below is the code snapshot for setting the configuration file to connect to azure data factory:
+          // Below is the code snapshot for setting the configuration file to connect to azure data factory:
 
 	  "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
 	  "gen2DestinationRootPath" : "https://<<Enter the Gen2 destination root path>>.dfs.core.windows.net", 
@@ -126,12 +131,11 @@ The folder **src/Lift and Shift/** will contain below listed contents:
 	  "resourceGroupName" : "<<Enter the resourceGroupName under which the azure data factory pipeline will be created>>",
 	  "location" : "<<Enter the location>>", 
 	  "overwrite" : "Enter the value" //  True = It will overwrite the existing data factory ,False = It will skip creating data factory
-
-  ```
+   ```
 
   **Setting up the factory pipeline for lift and shift copy pattern**
 
-  ```powershell
+   ```powershell
 
 	  "pipelineId": "<<Enter the pipeline number. Eg: 1,2"
 	  "fullLoad": "true"
@@ -144,20 +148,20 @@ The folder **src/Lift and Shift/** will contain below listed contents:
    	  "sourcePath" : "Enter the Gen1 full path. Eg: /path-name",
 	  "destinationPath" : "Enter the Gen2 full path.Eg: path-name",
 	  "destinationContainer" : "Enter the Gen2 container name"
-   
+ 
    ```
  
-  **NOTE**: Please note the **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
+  **NOTE**: The **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
    Path to [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/Configuration/FullLoadConfig.json) script for more reference.
  
- 3. **Azure data factory pipeline creation and execution**
+ ### Azure data factory pipeline creation and execution
 
-  Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) to start the full load    migration and validation process.
+   Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) to start the full load    migration and validation process.
  
  ![image](https://user-images.githubusercontent.com/62353482/83554216-4adf1a00-a4c1-11ea-9ea4-ae9284e678c0.png)
  
  
- 4. **Azure Data factory pipeline monitoring**
+ ### Azure Data factory pipeline monitoring
 
   The pipeline will be created in Azure data factory and can be monitored in below way:
  
