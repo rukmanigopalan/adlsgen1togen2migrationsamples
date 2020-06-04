@@ -46,9 +46,9 @@ Considerations for using the dual pipeline pattern:
  
 ## Data pipeline set up for Gen1 and Gen2
 
- As part of dual pipeline pattern, Gen1 and Gen2 pieplines will run side by side. 
+ As part of this pattern, Gen1 and Gen2 pipelines will run side by side. 
   
- Sample data pipeline set up for Gen1 and Gen2 using Azure Databricks for data ingestion, HDInsight for data processing and Azure SQL DW for storing the processed data for analytics. 
+ Below is the sample pipeline set up for Gen1 and Gen2 using Azure Databricks for data ingestion, HDInsight for data processing and Azure SQL DW for storing the processed data for analytics. 
  
  ![image](https://user-images.githubusercontent.com/62353482/83429980-c2417a80-a3e9-11ea-9ab6-4d08b02b51b1.png)
  
@@ -111,7 +111,7 @@ Considerations for using the dual pipeline pattern:
  
   3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
 
-  Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
+  Create a pipeline using Stored Procedure Activity to invoke a stored procedure in Azure SQL data warehouse.
 
   ![image](https://user-images.githubusercontent.com/62353482/83453396-48bc8300-a40f-11ea-8c7d-886097bbc323.png)
 
