@@ -35,7 +35,7 @@ This can be applicable for below migration patterns:
    * [How to Configure and Update Azure Datafactory](#how-to-configure-and-update-azure-datafactory)
    * [How to Configure and update HDInsight](#how-to-configure-and-update-hdinsight)
    * [How to configure and update Azure Synapse Analytics](#how-to-configure-and-update-azure-synapse-analytics)
-   * [Cutover from Gen1 to Gen2](#Cutover from Gen1 to Gen2)
+   * [Cutover from Gen1 to Gen2](#Cutover-from-Gen1-to-Gen2)
  <!--te-->
  
  ## Prerequisites
