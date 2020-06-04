@@ -46,7 +46,7 @@ Considerations for using the dual pipeline pattern:
  
 ## Data pipeline set up for Gen1 and Gen2
 
-  To set up the data pipeline in ADF, HDInsight clusters should be created separately for both Gen1 and Gen2.
+  To set up the data pipeline in ADF, two separate HDInsight clusters should be created each for Gen1 and Gen2.
 
   **Prerequisite**
 
@@ -61,7 +61,7 @@ Considerations for using the dual pipeline pattern:
  * Additional blob storage should be created for Gen1 to support HDInsight linked service in ADF. Refer [here](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-create-account-block-blob?tabs=azure-portal) for more details.
 
 
- Sample data pipeline set up for Gen1 using Azure Databricks for data ingestion, HDInsight for data processing and Azure SQL DW for    storing the processed data for analytics. 
+ Sample data pipeline set up for Gen1 and Gen2 using Azure Databricks for data ingestion, HDInsight for data processing and Azure SQL DW for storing the processed data for analytics. 
  
  ![image](https://user-images.githubusercontent.com/62353482/83429980-c2417a80-a3e9-11ea-9ab6-4d08b02b51b1.png)
  
