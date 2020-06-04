@@ -3,7 +3,7 @@ Lift and Shift Copy Pattern Guide: A quick start template
 
 ## Overview
 
-The purpose of this document is to provide a manual in form of step by step guide for the lift and shift copy pattern from Azure Data Lake Storage 1 (Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure Data Factory and PowerShell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. 
+The purpose of this document is to provide a manual in form of step by step guide for the lift and shift copy pattern from Gen1 to Gen2 storage using Azure Data Factory and PowerShell. As such it provides the directions, references, sample code examples of the PowerShell functions been used. 
 
 This guide covers the following tasks:
 
@@ -91,11 +91,11 @@ The folder **src/Lift and Shift/** will contain below listed contents:
 
 * **Application**: This folder will have sample code for Mount path configuration.
 
-* **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift/Configuration) and all the details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
+* **Configuration**: This folder will have the configuration file [FullLoadConfig.json](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift/Configuration) and all the required details of resource group and subscription along with source and destination path of ADLS Gen1 and Gen2.
      
-* **Migration**: Contains the json files, templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
+* **Migration**: Contains the templates to create dynamic data factory pipeline and copy the data from Gen1 to Gen2.
  
-* **Validation**: Contains the PowerShell scripts which will read the Gen1 and Gen2 data and validate it post migration to generate post migration report.
+* **Validation**: Contains the PowerShell scripts which will read the Gen1 and Gen2 data and write the comparison report post migration.
  
  * **[StartFullLoadMigrationAndValidation](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift)** : Script to invoke the full load Migration and Validation process to compare the data between Gen1 and Gen2 post migration and generate summary report.
   
@@ -104,7 +104,7 @@ The folder **src/Lift and Shift/** will contain below listed contents:
 
  **Important Prerequisite**: 
 
-   * Provide Service principal access to configure keyvault as below:
+   * Provide Service principal access to configure key vault as below:
      
     ![image](https://user-images.githubusercontent.com/62353482/79594064-3e2d7080-8091-11ea-872e-d69052da0ff7.png)
      
@@ -130,7 +130,7 @@ The folder **src/Lift and Shift/** will contain below listed contents:
 
   ```
 
-  **Scheduling the factory pipeline for lift and shift copy pattern**
+  **Setting up the factory pipeline for lift and shift copy pattern**
 
   ```powershell
 
@@ -183,11 +183,11 @@ The folder **src/Lift and Shift/** will contain below listed contents:
   ![image](https://user-images.githubusercontent.com/62353482/83555536-44ea3880-a4c3-11ea-90d0-ccae337fb531.png)
 
 
-  **Note**: IsMatching status = Yes (For matched records ) and No (Unmatched records)
+  **Note**: IsMatching status = Yes (For matched records ) and No ( For Unmatched records)
 
  ## Application update  
 
- This step will configure the path in the work loads to Gen2 endpoint. 
+ This step will configure the path in the workloads to Gen2 endpoint. 
  
  Refer to [Application and Workload Update](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Application%20Update) on how to plan and migrate workloads and applications to Gen2.
  
