@@ -3,7 +3,7 @@ Dual Pipeline pattern Guide: A quick start template
 
 ## Overview
 
-The purpose of this document is to provide a manual for the Dual pipeline migration pattern from Azure Data Lake Storage 1(Gen1) to Azure Data Lake Storage 2 (Gen2) using Azure data factory. This provides the directions, references and approach how to set up the dual pipeline, do migration of existing data from Gen1 to Gen2 and set up the workloads to run at Gen2 endpoint.
+The purpose of this document is to provide a manual for the Dual pipeline migration pattern from Data lake storage Gen1 to Data lake storage Gen2 using Azure data factory. This provides the directions, references and approach how to set up the dual pipeline, do migration of existing data from Gen1 to Gen2 and set up the workloads to run at Gen2 endpoint.
 
 Considerations for using the dual pipeline pattern:
 
@@ -46,26 +46,28 @@ Considerations for using the dual pipeline pattern:
  
 ## Data pipeline set up for Gen1 and Gen2
 
-  To set up the data pipeline in ADF, two separate HDInsight clusters should be created each for Gen1 and Gen2.
-
-  **Prerequisite**
-
-  * Create **HDInsight cluster** for Gen1. Refer [here](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal) for more details.
- 
-  * Create **HDInsight cluster** for Gen2. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) for more details.
- 
-  * Create  **user assigned managed identity**. Refer [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity) to know more.
- 
-  * Permission should be set up for the managed identity for Gen2 storage account. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) for more details.
- 
- * Additional blob storage should be created for Gen1 to support HDInsight linked service in ADF. Refer [here](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-create-account-block-blob?tabs=azure-portal) for more details.
-
-
+ As part of dual pipeline pattern, Gen1 and Gen2 pieplines will run side by side. 
+  
  Sample data pipeline set up for Gen1 and Gen2 using Azure Databricks for data ingestion, HDInsight for data processing and Azure SQL DW for storing the processed data for analytics. 
  
  ![image](https://user-images.githubusercontent.com/62353482/83429980-c2417a80-a3e9-11ea-9ab6-4d08b02b51b1.png)
  
  ![image](https://user-images.githubusercontent.com/62353482/83563507-16bf2580-a4d0-11ea-9707-ae659f87eb3d.png)
+ 
+ 
+ **Prerequisite**
+
+ * Create **HDInsight cluster** for Gen1. Refer [here](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal) for more details.
+ 
+ * Create **HDInsight cluster** for Gen2. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) for more details.
+ 
+ * Create  **user assigned managed identity**. Refer [here](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity) to know more.
+ 
+ * Permission should be set up for the managed identity for Gen2 storage account. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) for more details.
+ 
+ * Additional blob storage should be created for Gen1 to support HDInsight linked service in ADF. Refer [here](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-create-account-block-blob?tabs=azure-portal) for more details.
+
+ **Note**: To set up the data pipeline in ADF, two separate HDInsight clusters should be created each for Gen1 and Gen2.
 
  
  Here ADF is used for orchestrating data-processing pipelines supporting data ingestion, copying data from and to different storage types (Gen1 and Gen2) in azure, loading the processed data to datawarehouse and executing transformation logic.
@@ -75,59 +77,84 @@ Considerations for using the dual pipeline pattern:
 
 ### Creation of HDI clusters for Gen1 and Gen2 in ADF
   
-   1. Create **[ADB linked service](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)** in ADF.
+  1. Create **[ADB linked service](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)** in ADF.
 
-   2. Create **[HDInsight linked service](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)** in ADF.
+  2. Create **[HDInsight linked service](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)** in ADF.
 
-   3. Create **[Stored procedure linked service](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)** in ADF.
+  3. Create **[Stored procedure linked service](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)** in ADF.
  
 ### How to set up Gen1 data pipeline
 
-   1. **Raw data ingestion using ADB script**
+  1. **Raw data ingestion using ADB script**
 
-   Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
+  Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
 
-   ![image](https://user-images.githubusercontent.com/62353482/83448158-63d6c500-a406-11ea-8a29-a1cdd514509c.png)
+  ![image](https://user-images.githubusercontent.com/62353482/83448158-63d6c500-a406-11ea-8a29-a1cdd514509c.png)
+  
+  **Mount path configured to Gen1 endpoint**
+  
+  ![image](https://user-images.githubusercontent.com/62353482/83800138-cecd0980-a65b-11ea-93de-17b9fc016e90.png)
 
-   2. **Data processing using HDInsight**
+  2. **Data processing using HDInsight**
 
-   Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
+  Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
 
    ![image](https://user-images.githubusercontent.com/62353482/83450714-a6020580-a40a-11ea-8c99-55c2c9a96104.png)
 
-   3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
+  **Mount path configured to Gen1 endpoint**
+  
+  ![image](https://user-images.githubusercontent.com/62353482/83800757-da6d0000-a65c-11ea-9060-bbc0ac30a3fe.png)
 
-   Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
-
-   ![image](https://user-images.githubusercontent.com/62353482/83453396-48bc8300-a40f-11ea-8c7d-886097bbc323.png)
-
-  **Stored procedure Settings**:
-
-  ![image](https://user-images.githubusercontent.com/62353482/83456907-73a9d580-a415-11ea-8515-ce9e57718c04.png)
-
-### How to set up Gen2 data pipeline
+  **Sample input path**: adl://gen1storage.azuredatalakestore.net/AdventureWorks/Raw/FactFinance/
+  
+  **Sample output path**: adl://gen1storage.azuredatalakestore.net/AdventureWorks/ProcessedHDI/FactFinance/
  
-   1. **Raw data ingestion using ADB script**
+  3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
 
-   Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
+  Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
 
-  ![image](https://user-images.githubusercontent.com/62353482/83466106-ebcec600-a42a-11ea-875a-120cb4e2a821.png)
-
-   2. **Data processing using HDInsight**
-
-   Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
-
-   ![image](https://user-images.githubusercontent.com/62353482/83466207-39e3c980-a42b-11ea-9ed6-d056b1c1cf0f.png)
-
-   3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
-
-   Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
-
-   ![image](https://user-images.githubusercontent.com/62353482/83466549-43216600-a42c-11ea-9306-e62ad0d6fc67.png)
+  ![image](https://user-images.githubusercontent.com/62353482/83453396-48bc8300-a40f-11ea-8c7d-886097bbc323.png)
 
    **Stored procedure Settings**:
 
-   ![image](https://user-images.githubusercontent.com/62353482/83466582-60563480-a42c-11ea-937a-1f21a6d10fa3.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83801973-d7730f00-a65e-11ea-99f6-c0e1041d8f2d.png)
+
+
+### How to set up Gen2 data pipeline
+ 
+  1. **Raw data ingestion using ADB script**
+
+  Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
+
+  ![image](https://user-images.githubusercontent.com/62353482/83466106-ebcec600-a42a-11ea-875a-120cb4e2a821.png)
+  
+  Mount path configured to Gen2 endpoint
+  
+  ![image](https://user-images.githubusercontent.com/62353482/83802131-14d79c80-a65f-11ea-9dda-87240b9fec97.png)
+
+  2. **Data processing using HDInsight**
+
+  Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
+
+  ![image](https://user-images.githubusercontent.com/62353482/83466207-39e3c980-a42b-11ea-9ed6-d056b1c1cf0f.png)
+
+  Mount path configured to Gen2 endpoint
+  
+  ![image](https://user-images.githubusercontent.com/62353482/83802269-47819500-a65f-11ea-8800-ab4290641beb.png)
+
+  **Sample input path**: abfs://gen2storage@g2hdistorage.dfs.core.windows.net/AdventureWorks/Raw/FactInternetSales/
+  
+  **Sample output path**: abfs://gen2storage@g2hdistorage.dfs.core.windows.net/AdventureWorks/ProcessedHDI/FactInternetSales/
+  
+  3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
+
+  Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
+
+  ![image](https://user-images.githubusercontent.com/62353482/83466549-43216600-a42c-11ea-9306-e62ad0d6fc67.png)
+
+  **Stored procedure Settings**:
+
+  ![image](https://user-images.githubusercontent.com/62353482/83466582-60563480-a42c-11ea-937a-1f21a6d10fa3.png)
 
 ### Creation of HDInsight linked service for Gen1 and Gen2 in ADF
  
