@@ -170,9 +170,7 @@ This version of code will have below limitations:
  
  ## Data Validation 
 
-  The [script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) will trigger the data  validation between Gen1 and Gen2 once the migration is completed in above step.
-  
- ![image](https://user-images.githubusercontent.com/62353482/78954784-01121e80-7a92-11ea-8799-1b075e06b29d.png)
+  The [script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) will trigger the data  validation between Gen1 and Gen2 once the **migration is completed** in above step.  
   
      
  ### Data Comparison Report
