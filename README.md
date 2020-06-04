@@ -6,19 +6,19 @@ You will find here the resources to help with below patterns:
 
 1. **Incremental copy pattern** using **Azure data factory**
 
-   Click here [Incremental copy pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md) to know more and get started.
+   Refer [Incremental copy pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md) to know more and get started.
 
 2. **Bi-directional sync pattern** using **WANdisco Fusion**
 
-   Click here [Bi-directional sync pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Bi-directional) to know more and get started.
+   Refer [Bi-directional sync pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md) to know more and get started.
    
 3. **Lift and Shift pattern** using **Azure data factory**
 
-   Click here [Lift and Shift pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift) to know more and get started.
+   Refer [Lift and Shift pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/README.md) to know more and get started.
    
 4. **Dual Pipeline pattern** 
 
-   Click here [Dual pipeline pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Dual%20pipeline) to know more and get started.
+   Refer [Dual pipeline pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md) to know more and get started.
 
 ## References
 
