@@ -13,7 +13,7 @@ This guide covers the following tasks:
    
    * Application update for the workloads
    
- Considerations for using the lift and shift pattern
+Considerations for using the lift and shift pattern
  
    ✔️ Cutover from Gen1 to Gen2 for all workloads at the same time.
 
@@ -42,45 +42,51 @@ This guide covers the following tasks:
  
 ## Prerequisites 
 
-* **Active Azure Subscription**
+   * **Active Azure Subscription**
 
-* **Azure Data Lake Storage Gen1**
+   * **Azure Data Lake Storage Gen1**
 
-* **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
+   * **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
 
-* **Azure Key Vault**. Required keys and secrets to be configured here.
+   * **Azure Key Vault**. Required keys and secrets to be configured here.
 
-* **Service principal** with read, write and execute permission to the resource group, key vault, data lake store Gen1 and data lake store Gen2. 
+   * **Service principal** with read, write and execute permission to the resource group, key vault, data lake store Gen1 and data lake store Gen2. 
 To learn more, see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
-* **Windows PowerShell ISE**.
+   * **Windows PowerShell ISE**.
 
-  **Note** : Run as administrator
+   **Note** : Run as administrator
 
- ```powershell
-   // Run below code to enable running PS files
-      Set-ExecutionPolicy Unrestricted
+  ```powershell
+      
+     // Run below code to enable running PS files
+      
+     Set-ExecutionPolicy Unrestricted
 	
-   // Check for the below modules in PowerShell . If not existing, install one by one:
-      Install-Module Az.Accounts -AllowClobber -Force 
-      Install-Module Az.DataFactory -AllowClobber -Force
-      Install-Module Az.KeyVault -AllowClobber -Force    
-      Install-Module Az.DataLakeStore -AllowClobber -Force
-      Install-Module PowerShellGet –Repository PSGallery –Force
-   // Close the PowerShell ISE and Reopen as administrator. Run the below module       
-      Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
-
+     // Check for the below modules in PowerShell . If not existing, install one by one:
+      
+     Install-Module Az.Accounts -AllowClobber -Force 
+     Install-Module Az.DataFactory -AllowClobber -Force
+     Install-Module Az.KeyVault -AllowClobber -Force    
+     Install-Module Az.DataLakeStore -AllowClobber -Force
+     Install-Module PowerShellGet –Repository PSGallery –Force
+     
+     // Close the PowerShell ISE and Reopen as administrator. Run the below module       
+     
+     Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
   ```
 
 ## Limitations
 
-This version of code will have below limitations:
+   This version of code will have below limitations:
 
    * Gen1 & Gen2 should be in same subscription
    * Supports only for single Gen1 source and Gen2 destination
    * Code Developed and Supported only in Windows PowerShell ISE
       
 ## Migration Framework Setup
+
+  This section will help you with the steps needed to set up the framework and get started with the migration process.
 
 ### Get Started
 
@@ -188,21 +194,18 @@ This version of code will have below limitations:
 
   **Note**: IsMatching status = Yes (For matched records ) and No (For Unmatched records)
 
- ## Application update  
+## Application update  
 
  This step will configure the path in the workloads to Gen2 endpoint. 
  
  Refer to [Application and Workload Update](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Application%20Update) on how to plan and migrate workloads and applications to Gen2.
  
+## Reach out to us
 
- # Reach out to us
+   **You found a bug or want to propose a feature?**
 
-**You found a bug or want to propose a feature?**
-
-File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/issues/new).
-Make sure to remove any credential from your code before sharing it.
+   File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/issues/new).
 
 ## References
 
-* [Azure Data Lake Storage migration from Gen1 to Gen2 ](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
-* [Azure Databricks guide](https://docs.databricks.com/data/data-sources/azure/azure-storage.html)
+* [Migrate Azure Data Lake Storage from Gen1 to Gen2](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
