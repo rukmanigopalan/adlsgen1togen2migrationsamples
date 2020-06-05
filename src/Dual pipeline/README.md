@@ -163,7 +163,7 @@ Considerations for using the dual pipeline pattern:
 
   **Stored procedure Settings**:
 
-  ![image](https://user-images.githubusercontent.com/62353482/83466582-60563480-a42c-11ea-937a-1f21a6d10fa3.png)
+  ![image](https://user-images.githubusercontent.com/62353482/83824637-e7edae80-a68b-11ea-887b-db853a4a8600.png)
 
 ### Creation of HDInsight linked service for Gen1 and Gen2 in ADF
  
