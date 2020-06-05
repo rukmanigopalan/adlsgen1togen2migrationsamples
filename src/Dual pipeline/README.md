@@ -192,8 +192,16 @@ Considerations for using the dual pipeline pattern:
   **Stored procedure Settings**:
 
   ![image](https://user-images.githubusercontent.com/62353482/83824637-e7edae80-a68b-11ea-887b-db853a4a8600.png)
+  
+  **Stored procedures created to load processed data to main tables**:
+  
+  ![image](https://user-images.githubusercontent.com/62353482/83895821-13ae7a00-a708-11ea-8566-1683a20579b2.png)
+  
+  **External Table structure in SQL DW**:
+  
+  ![image](https://user-images.githubusercontent.com/62353482/83895724-f37ebb00-a707-11ea-9292-4e80b45a0da8.png)
 
-   
+     
 ## Migrate data from Gen1 to Gen2
 
    To migrate the existing data from Gen1 to Gen2, please refer to [lift and shift](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift) pattern.
@@ -210,13 +218,15 @@ Considerations for using the dual pipeline pattern:
   
 ## Run workloads at Gen2
 
-  This step make sure the workloads are run at Gen2 endpoint. 
+  This step make sure the workloads are run at Gen2 endpoint only. 
   
   1. Create a pipeline in ADF to execute the workloads for Gen2. Run the pipeline.
   
   ![image](https://user-images.githubusercontent.com/62353482/83572596-b8e60a00-a4de-11ea-84ff-a4a178fa7575.png)
 
-  2. Check the storage path and SQL DW at Gen2 for new processed data.
+  2. Check the Gen2 storage path for the new files. The SQL DW should be loading with new processed data.
+  
+  
   
 ## Cutover from Gen1 to Gen2 
 
@@ -231,4 +241,4 @@ Considerations for using the dual pipeline pattern:
 
 ## References
 
-   * [Azure Data Lake Storage migration from Gen1 to Gen2 ](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
+   * [Migrate Azure Data Lake Storage from Gen1 to Gen2 ](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
