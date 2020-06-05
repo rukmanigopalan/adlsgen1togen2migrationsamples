@@ -80,9 +80,37 @@ Considerations for using the dual pipeline pattern:
   1. Create **[ADB linked service](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)** in ADF.
 
   2. Create **[HDInsight linked service](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)** in ADF.
-
+  
   3. Create **[Stored procedure linked service](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)** in ADF.
  
+ **How to create HDInsight linked service for Gen1(Blob storage)**
+
+   1. Go to **Linked Services** --> **click** on **+ New** --> **New linked service** --> **Compute** --> **Azure HDInsight** --> **Continue**
+
+   ![image](https://user-images.githubusercontent.com/62353482/83468627-356edf00-a432-11ea-9375-0594ab25b975.png)
+
+   2. Provide the details from Azure subscription with respect to each field and choose **Blob Storage** under **Azure Storage linked service**
+
+   ![image](https://user-images.githubusercontent.com/62353482/83469679-335a4f80-a435-11ea-91c3-2d844be17cbe.png)
+
+   3. Provide the user name and password details.
+
+   4. Click on **Create** button.
+
+   **How to create HDInsight linked service for Gen2**
+
+   1. Go to **Linked Services** --> **click** on **+ New** --> **New linked service** --> **Compute** --> **Azure HDInsight** --> **Continue**
+
+   ![image](https://user-images.githubusercontent.com/62353482/83468627-356edf00-a432-11ea-9375-0594ab25b975.png)
+
+   2. Provide the details from Azure subscription with respect to each field and choose **ADLS Gen 2** under **Azure Storage linked service**
+
+   ![image](https://user-images.githubusercontent.com/62353482/83479945-d79cc000-a44e-11ea-8940-3884606cec7b.png)
+
+   3. Provide the storage container name in the **File system** field. Give the user name and password. 
+
+   4. Click on **Create** button.
+
 ### How to set up Gen1 data pipeline
 
  Create a master pipeline in ADF for Gen1 and invoke all activities listed below:
@@ -165,36 +193,7 @@ Considerations for using the dual pipeline pattern:
 
   ![image](https://user-images.githubusercontent.com/62353482/83824637-e7edae80-a68b-11ea-887b-db853a4a8600.png)
 
-### Creation of HDInsight linked service for Gen1 and Gen2 in ADF
- 
-   **How to create HDInsight linked service for Gen1(Blob storage)**
-
-   1. Go to **Linked Services** --> **click** on **+ New** --> **New linked service** --> **Compute** --> **Azure HDInsight** --> **Continue**
-
-   ![image](https://user-images.githubusercontent.com/62353482/83468627-356edf00-a432-11ea-9375-0594ab25b975.png)
-
-   2. Provide the details from Azure subscription with respect to each field and choose **Blob Storage** under **Azure Storage linked service**
-
-   ![image](https://user-images.githubusercontent.com/62353482/83469679-335a4f80-a435-11ea-91c3-2d844be17cbe.png)
-
-   3. Provide the user name and password details.
-
-   4. Click on **Create** button.
-
-   **How to create HDInsight linked service for Gen2**
-
-   1. Go to **Linked Services** --> **click** on **+ New** --> **New linked service** --> **Compute** --> **Azure HDInsight** --> **Continue**
-
-   ![image](https://user-images.githubusercontent.com/62353482/83468627-356edf00-a432-11ea-9375-0594ab25b975.png)
-
-   2. Provide the details from Azure subscription with respect to each field and choose **ADLS Gen 2** under **Azure Storage linked service**
-
-   ![image](https://user-images.githubusercontent.com/62353482/83479945-d79cc000-a44e-11ea-8940-3884606cec7b.png)
-
-   3. Provide the storage container name in the **File system** field. Give the user name and password. 
-
-   4. Click on **Create** button.
-
+   
 ## Migrate data from Gen1 to Gen2
 
    To migrate the existing data from Gen1 to Gen2, please refer to [lift and shift](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift) pattern.
