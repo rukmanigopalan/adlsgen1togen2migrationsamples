@@ -117,7 +117,7 @@ Considerations for using the dual pipeline pattern:
 
    **Stored procedure Settings**:
 
-   ![image](https://user-images.githubusercontent.com/62353482/83801973-d7730f00-a65e-11ea-99f6-c0e1041d8f2d.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83823216-3c8f2a80-a688-11ea-9a5e-c22097f05389.png)
 
 
 ### How to set up Gen2 data pipeline
