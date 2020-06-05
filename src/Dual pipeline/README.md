@@ -22,10 +22,11 @@ Considerations for using the dual pipeline pattern:
      * [Creation of HDI clusters for Gen1 and Gen2 in ADF](#creation-of-hdi-clusters-for-gen1-and-gen2-in-adf)
      * [How to set up Gen1 data pipeline](#how-to-set-up-gen1-data-pipeline)
      * [How to set up Gen2 data pipeline](#how-to-set-up-gen2-data-pipeline)
-   * [Migrate data from Gen1 to Gen2](#migrate-data-from-gen1-to-gen2)
-   * [Data ingestion to Gen1 and Gen2](#data-ingestion-to-gen1-and-gen2)
-   * [Run workloads at Gen2](#run-workloads-at-gen2)
-   * [Cutover from Gen1 to Gen2](#cutover-from-gen1-to-gen2)
+   * [Steps to be followed](#steps-to-be-followed)
+     * [Migrate data from Gen1 to Gen2](#migrate-data-from-gen1-to-gen2)
+     * [Data ingestion to Gen1 and Gen2](#data-ingestion-to-gen1-and-gen2)
+     * [Run workloads at Gen2](#run-workloads-at-gen2)
+     * [Cutover from Gen1 to Gen2](#cutover-from-gen1-to-gen2)
    * [Reach out to us](#reach-out-to-us)
    * [References](#references)
  <!--te-->
@@ -113,40 +114,40 @@ Considerations for using the dual pipeline pattern:
 
 ### How to set up Gen1 data pipeline
 
- Create a master pipeline in ADF for Gen1 and invoke all activities listed below:
+   Create a master pipeline in ADF for Gen1 and invoke all activities listed below:
  
- ![image](https://user-images.githubusercontent.com/62353482/83823632-48c7b780-a689-11ea-903f-068b26ca3741.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83823632-48c7b780-a689-11ea-903f-068b26ca3741.png)
 
 
-  1. **Raw data ingestion using ADB script**
+   1. **Raw data ingestion using ADB script**
 
-  Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
+   Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
 
   ![image](https://user-images.githubusercontent.com/62353482/83448158-63d6c500-a406-11ea-8a29-a1cdd514509c.png)
   
-  **Mount path configured to Gen1 endpoint**
+   **Mount path configured to Gen1 endpoint**
   
-  ![image](https://user-images.githubusercontent.com/62353482/83800138-cecd0980-a65b-11ea-93de-17b9fc016e90.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83800138-cecd0980-a65b-11ea-93de-17b9fc016e90.png)
 
-  2. **Data processing using HDInsight**
+   2. **Data processing using HDInsight**
 
-  Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
+   Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
 
    ![image](https://user-images.githubusercontent.com/62353482/83450714-a6020580-a40a-11ea-8c99-55c2c9a96104.png)
 
-  **Mount path configured to Gen1 endpoint**
+   **Mount path configured to Gen1 endpoint**
   
-  ![image](https://user-images.githubusercontent.com/62353482/83800757-da6d0000-a65c-11ea-9060-bbc0ac30a3fe.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83800757-da6d0000-a65c-11ea-9060-bbc0ac30a3fe.png)
 
-  **Sample input path**: adl://gen1storage.azuredatalakestore.net/AdventureWorks/Raw/FactFinance/
+   **Sample input path**: adl://gen1storage.azuredatalakestore.net/AdventureWorks/Raw/FactFinance/
   
-  **Sample output path**: adl://gen1storage.azuredatalakestore.net/AdventureWorks/ProcessedHDI/FactFinance/
+   **Sample output path**: adl://gen1storage.azuredatalakestore.net/AdventureWorks/ProcessedHDI/FactFinance/
  
-  3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
+   3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
 
-  Create a pipeline using Stored Procedure Activity to invoke a stored procedure in Azure SQL data warehouse.
+   Create a pipeline using Stored Procedure Activity to invoke a stored procedure in Azure SQL data warehouse.
 
-  ![image](https://user-images.githubusercontent.com/62353482/83453396-48bc8300-a40f-11ea-8c7d-886097bbc323.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83453396-48bc8300-a40f-11ea-8c7d-886097bbc323.png)
 
    **Stored procedure Settings**:
 
@@ -155,58 +156,62 @@ Considerations for using the dual pipeline pattern:
 
 ### How to set up Gen2 data pipeline
 
-  Create a master pipeline in ADF for Gen2 invoking all activities as listed below:
+   Create a master pipeline in ADF for Gen2 invoking all activities as listed below:
   
-  ![image](https://user-images.githubusercontent.com/62353482/83824400-3cdcf500-a68b-11ea-8622-1143e3691707.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83824400-3cdcf500-a68b-11ea-8622-1143e3691707.png)
  
-  1. **Raw data ingestion using ADB script**
+   1. **Raw data ingestion using ADB script**
 
-  Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
+   Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
 
-  ![image](https://user-images.githubusercontent.com/62353482/83466106-ebcec600-a42a-11ea-875a-120cb4e2a821.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83466106-ebcec600-a42a-11ea-875a-120cb4e2a821.png)
   
-  Mount path configured to Gen2 endpoint
+   Mount path configured to Gen2 endpoint
   
   ![image](https://user-images.githubusercontent.com/62353482/83802131-14d79c80-a65f-11ea-9dda-87240b9fec97.png)
 
-  2. **Data processing using HDInsight**
+   2. **Data processing using HDInsight**
 
-  Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
+   Create a pipeline for data processing using HDInsight activity. Refer [here](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-a-pipeline) for more details.
 
-  ![image](https://user-images.githubusercontent.com/62353482/83466207-39e3c980-a42b-11ea-9ed6-d056b1c1cf0f.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83466207-39e3c980-a42b-11ea-9ed6-d056b1c1cf0f.png)
 
-  Mount path configured to Gen2 endpoint
+   Mount path configured to Gen2 endpoint
   
-  ![image](https://user-images.githubusercontent.com/62353482/83802269-47819500-a65f-11ea-8800-ab4290641beb.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83802269-47819500-a65f-11ea-8800-ab4290641beb.png)
 
-  **Sample input path**: abfs://gen2storage@g2hdistorage.dfs.core.windows.net/AdventureWorks/Raw/FactInternetSales/
+   **Sample input path**: abfs://gen2storage@g2hdistorage.dfs.core.windows.net/AdventureWorks/Raw/FactInternetSales/
   
-  **Sample output path**: abfs://gen2storage@g2hdistorage.dfs.core.windows.net/AdventureWorks/ProcessedHDI/FactInternetSales/
+   **Sample output path**: abfs://gen2storage@g2hdistorage.dfs.core.windows.net/AdventureWorks/ProcessedHDI/FactInternetSales/
   
-  3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
+   3. **Loading to Azure synapse analytics (SQL DW) using stored procedure**
 
-  Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
+   Create a pipeline for loading the processed data to SQL DW using stored procedure activity. 
 
-  ![image](https://user-images.githubusercontent.com/62353482/83466549-43216600-a42c-11ea-9306-e62ad0d6fc67.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83466549-43216600-a42c-11ea-9306-e62ad0d6fc67.png)
 
-  **Stored procedure Settings**:
+   **Stored procedure Settings**:
 
-  ![image](https://user-images.githubusercontent.com/62353482/83824637-e7edae80-a68b-11ea-887b-db853a4a8600.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83824637-e7edae80-a68b-11ea-887b-db853a4a8600.png)
   
-  **Stored procedures created to load processed data to main tables**:
+   **Stored procedures created to load processed data to main tables**:
   
-  ![image](https://user-images.githubusercontent.com/62353482/83895821-13ae7a00-a708-11ea-8566-1683a20579b2.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83895821-13ae7a00-a708-11ea-8566-1683a20579b2.png)
   
-  **External Table structure in SQL DW**:
+   **External Table structure in SQL DW**:
   
-  ![image](https://user-images.githubusercontent.com/62353482/83895724-f37ebb00-a707-11ea-9292-4e80b45a0da8.png)
+   ![image](https://user-images.githubusercontent.com/62353482/83895724-f37ebb00-a707-11ea-9292-4e80b45a0da8.png)
 
-     
-## Migrate data from Gen1 to Gen2
+
+## Steps to be followed 
+  
+  This section will talk about the approach and steps to move ahead with this pattern once the data pipelines are set up for both Gen1 and Gen2.
+  
+### Migrate data from Gen1 to Gen2
 
    To migrate the existing data from Gen1 to Gen2, please refer to [lift and shift](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Lift%20and%20Shift) pattern.
  
-## Data ingestion to Gen1 and Gen2
+### Data ingestion to Gen1 and Gen2
 
   This step will ingest new data to both Gen1 and Gen2. 
   
@@ -216,7 +221,7 @@ Considerations for using the dual pipeline pattern:
 
   2. Check the storage path at Gen1 and Gen2 for the new data.
   
-## Run workloads at Gen2
+### Run workloads at Gen2
 
   This step make sure the workloads are run at Gen2 endpoint only. 
   
@@ -227,8 +232,7 @@ Considerations for using the dual pipeline pattern:
   2. Check the Gen2 storage path for the new files. The SQL DW should be loading with new processed data.
   
   
-  
-## Cutover from Gen1 to Gen2 
+### Cutover from Gen1 to Gen2 
 
    After you're confident that your applications and workloads are stable on Gen2, you can begin using Gen2 to satisfy your business   scenarios. Turn off any remaining pipelines that are running on Gen1 and decommission your Gen1 account.
   
