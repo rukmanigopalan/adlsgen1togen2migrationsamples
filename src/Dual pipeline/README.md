@@ -85,6 +85,11 @@ Considerations for using the dual pipeline pattern:
  
 ### How to set up Gen1 data pipeline
 
+ Create a master pipeline in ADF for Gen1 and invoke all activities listed below:
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/83823632-48c7b780-a689-11ea-903f-068b26ca3741.png)
+
+
   1. **Raw data ingestion using ADB script**
 
   Create a pipeline for data ingestion process using ADB activity. Refer [here](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-a-pipeline) for more details.
@@ -121,6 +126,10 @@ Considerations for using the dual pipeline pattern:
 
 
 ### How to set up Gen2 data pipeline
+
+  Create a master pipeline in ADF for Gen2 invoking all activities as listed below:
+  
+  ![image](https://user-images.githubusercontent.com/62353482/83824400-3cdcf500-a68b-11ea-8622-1143e3691707.png)
  
   1. **Raw data ingestion using ADB script**
 
