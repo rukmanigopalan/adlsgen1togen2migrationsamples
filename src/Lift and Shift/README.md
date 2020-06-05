@@ -143,16 +143,16 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
    ```powershell
 
-	  "pipelineId": "<<Enter the pipeline number. Eg: 1,2"
+	  "pipelineId": "<<Enter the pipeline number. For example: 1,2"
 	  "fullLoad": "true"
 	  
           // Activity 1 //
-  	  "sourcePath" : "Enter the Gen1 full path. Eg: /path-name",
-	  "destinationPath" : "Enter the Gen2 full path.Eg: path-name",
+  	  "sourcePath" : "Enter the Gen1 full path. For example: /path-name",
+	  "destinationPath" : "Enter the Gen2 full path. For example: path-name",
 	  "destinationContainer" : "Enter the Gen2 container name"
           // Activity 2 //
-   	  "sourcePath" : "Enter the Gen1 full path. Eg: /path-name",
-	  "destinationPath" : "Enter the Gen2 full path.Eg: path-name",
+   	  "sourcePath" : "Enter the Gen1 full path. For example: /path-name",
+	  "destinationPath" : "Enter the Gen2 full path. For example: path-name",
 	  "destinationContainer" : "Enter the Gen2 container name"
  
    ```
@@ -162,26 +162,26 @@ To learn more, see [create service principal account](https://docs.microsoft.com
  
  ### Azure data factory pipeline creation and execution
 
-   Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) to start the full load    migration and validation process. This step will create the data factory as per the configuration file.
+   After you run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) the full load    migration and validation process will start. This step will create the data factory as per the configuration file.
  
  ![image](https://user-images.githubusercontent.com/62353482/83554216-4adf1a00-a4c1-11ea-9ea4-ae9284e678c0.png)
  
  
  ### Azure Data factory pipeline monitoring
 
-  The pipeline will be created in Azure data factory and can be monitored in below way:
+  The pipeline is created in Azure data factory and can be monitored in below way:
  
   ![image](https://user-images.githubusercontent.com/62353482/83555204-c8eff080-a4c2-11ea-8162-a8f86b5e9e9e.png)
 
  
  ## Data Validation 
 
-  The [script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) will trigger the data  validation between Gen1 and Gen2 once the **migration is completed** in above step.  
+  The [script](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) triggers the data       validation process between Gen1 and Gen2 once the **migration is completed** in above step.  
   
-![image](https://user-images.githubusercontent.com/62353482/83807252-9fbc9500-a667-11ea-9f0c-8deeefa742e7.png)
+ ![image](https://user-images.githubusercontent.com/62353482/83807252-9fbc9500-a667-11ea-9f0c-8deeefa742e7.png)
  
      
- ### Data Comparison Report
+  ### Data Comparison Report
 
   Once the Gen1 and Gen2 data is compared and validated, the result is generated in CSV file into the **Output** folder as below:
 
