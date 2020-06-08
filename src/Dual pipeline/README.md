@@ -225,6 +225,11 @@ Considerations for using the dual pipeline pattern:
 
 ![image](https://user-images.githubusercontent.com/62353482/83543532-63473880-a4b1-11ea-8267-ee267f4845a9.png)
 
+ Setting for the Base parameter:
+ 
+ ![image](https://user-images.githubusercontent.com/62353482/84072859-b70bc300-a984-11ea-870b-db59c59584ac.png)
+
+
   2. Check the storage path at Gen1 and Gen2 for the new data.
   
 ### Run workloads at Gen2
