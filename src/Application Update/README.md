@@ -38,11 +38,11 @@ This can be applicable for below migration patterns:
    * [Cutover from Gen1 to Gen2](#Cutover-from-Gen1-to-Gen2)
  <!--te-->
  
- ## Prerequisites
+## Prerequisites
  
  **The migration of data from Gen1 to Gen2 should be completed**
   
- ## How to Configure and Update Azure Databricks
+## How to Configure and Update Azure Databricks
  
  Applies where Databricks is used for data ingestion to ADLS Gen1.
    
@@ -79,9 +79,9 @@ This can be applicable for below migration patterns:
  **3. Check for the new files getting generated at the Gen2 root folder path**
  
 
- ## How to Configure and Update Azure Datafactory
+## How to Configure and Update Azure Datafactory
  
- Once the data migration using ADF is completed from ADLS Gen1 to Gen2, follow the below steps:
+   Once the data migration using ADF is completed from ADLS Gen1 to Gen2, follow the below steps:
  
   **1. Stop the trigger to Gen1** used as part of Incremental copy pattern.
     
@@ -92,7 +92,7 @@ This can be applicable for below migration patterns:
  ![image](https://user-images.githubusercontent.com/62353482/79276321-a3e4e700-7e5c-11ea-9908-b013e2d1e12b.png)
 
 
- Provide the details to create new Linked service to point to Gen2 storage account.
+  Provide the details to create new Linked service to point to Gen2 storage account.
 
 ![image](https://user-images.githubusercontent.com/62353482/79276405-cd057780-7e5c-11ea-9c31-95dfd26db5b9.png)
 
@@ -115,9 +115,9 @@ This can be applicable for below migration patterns:
 
    **6. Check for the new files getting generated at the Gen2 root folder path**
   
-  ## How to Configure and update HDInsight
+ ## How to Configure and update HDInsight
   
-   Applies where HDInsight is used as workload to process the Raw data and execute the transformations. Below is the step by step process used for Dual pipeline pattern.
+   Applies where HDInsight is used as workload to process the Raw data and execute the transformations. Below is the step by step process used as part of [Dual pipeline pattern](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Dual%20pipeline#how-to-set-up-gen1-data-pipeline).
   
    **Prerequisite**
    
@@ -137,19 +137,33 @@ This can be applicable for below migration patterns:
    
    Once all the existing data is moved from Gen1 to Gen2, Start running the worloads at Gen2 endpoint.
    
-  ## How to configure and update Azure Synapse Analytics
+  ## How to configure and update Azure Synapse Analytics (Azure SQL DW)
+  
+   Applies to the data pipelines having Azure SQL DW as one of the workloads. Below is the step by step process used as part of [Dual pipeline pattern](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Dual%20pipeline#how-to-set-up-gen1-data-pipeline) :
    
-   Change the Mount path in the parameter to Gen2 endpoint
+   **Before Migration**
    
-   ![image](https://user-images.githubusercontent.com/62353482/83685147-04f78400-a59d-11ea-8fdb-b319df6ede31.png)
+   The stored procedure activity is pointed to Gen1 mount path.
    
-   Run the stored procedure activity to make sure the data is loaded at Gen2.
+   ![image](https://user-images.githubusercontent.com/62353482/84082011-eece3700-a993-11ea-8ba0-f4efab65c0e9.png)
+
+   **After Migration**
    
-   ## Cutover from Gen1 to Gen2
+   The stored procedure activity is pointed to Gen2 endpoint.
+   
+   ![image](https://user-images.githubusercontent.com/62353482/84082177-42408500-a994-11ea-84ba-d575ba1e3611.png)
+
+   
+   **Run the trigger**
+   
+   ![image](https://user-images.githubusercontent.com/62353482/84082352-8f245b80-a994-11ea-9132-45e335429145.png)
+
+   **Check the SQL table in the Data warehouse for new data load**.
+      
+ ## Cutover from Gen1 to Gen2
    
    After you're confident that your applications and workloads are stable on Gen2, you can begin using Gen2 to satisfy your business scenarios. Turn off any remaining pipelines that are running on Gen1 and decommission your Gen1 account.
-   
-   
+  
    
    
 
