@@ -137,9 +137,9 @@ This can be applicable for below migration patterns:
    
    Once all the existing data is moved from Gen1 to Gen2, Start running the worloads at Gen2 endpoint.
    
-  ## How to configure and update Azure Synapse Analytics (Azure SQL DW)
+  ## How to configure and update Azure Synapse Analytics
   
-   Applies to the data pipelines having Azure SQL DW as one of the workloads. Below is the step by step process used as part of [Dual pipeline pattern](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Dual%20pipeline#how-to-set-up-gen1-data-pipeline) :
+   Applies to the data pipelines having Azure synapse analytics formerly called as **Azure SQL DW** as one of the workloads. Below is the step by step process used as part of [Dual pipeline pattern](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Dual%20pipeline#how-to-set-up-gen1-data-pipeline) :
    
    **Before Migration**
    
