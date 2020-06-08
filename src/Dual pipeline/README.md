@@ -78,13 +78,17 @@ Considerations for using the dual pipeline pattern:
 
 ### Creation of linked service for Gen1 and Gen2 in ADF
 
-  Below clusters needs to be created
+  As part of this pipeline set up, below linked services needs to be created as first step in ADF:
   
-  1. Create **[ADB linked service](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)** in ADF.
+  Go to ADF --> Manage --> Linked service --> Click on **+ New**
+  
+  ![image](https://user-images.githubusercontent.com/62353482/84070157-875abc00-a980-11ea-9d27-9764b577e2d0.png)
 
-  2. Create **[HDInsight linked service](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)** in ADF.
+  1. Create **[ADB linked service](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-databricks-notebook#create-an-azure-databricks-linked-service)**.
+
+  2. Create **[HDInsight linked service](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf#create-an-azure-storage-linked-service)**.
   
-  3. Create **[Stored procedure linked service](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)** in ADF.
+  3. Create **[Stored procedure linked service](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse#load-data-into-azure-synapse-analytics)**.
  
  **How to create HDInsight linked service for Gen1(Blob storage)**
 
