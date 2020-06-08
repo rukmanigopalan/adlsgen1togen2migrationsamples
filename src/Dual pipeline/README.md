@@ -225,16 +225,19 @@ Considerations for using the dual pipeline pattern:
 
 ![image](https://user-images.githubusercontent.com/62353482/83543532-63473880-a4b1-11ea-8267-ee267f4845a9.png)
 
- Setting for the Base parameter:
+ Setting of the Base parameter:
  
  ![image](https://user-images.githubusercontent.com/62353482/84072859-b70bc300-a984-11ea-870b-db59c59584ac.png)
 
 
-  2. Check the storage path at Gen1 and Gen2 for the new data.
+  2. Check the storage path at Gen1 and Gen2 end points. New data should be ingested simultaneously at both paths.
+  
+  ![image](https://user-images.githubusercontent.com/62353482/84086549-fe05b280-a99c-11ea-8c89-f574d9ce9d2d.png)
+
   
 ### Run workloads at Gen2
 
-  This step make sure the workloads are run at Gen2 endpoint only. 
+  This step make sure that the workloads are run at Gen2 endpoint only. 
   
   1. Create a pipeline in ADF to execute the workloads for Gen2. Run the pipeline.
   
