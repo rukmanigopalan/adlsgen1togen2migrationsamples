@@ -19,7 +19,7 @@ Considerations for using the dual pipeline pattern:
    * [Overview](#overview)
    * [Prerequisites](#prerequisites)
    * [Data pipeline set up for Gen1 and Gen2](#data-pipeline-set-up-for-gen1-and-gen2)
-     * [Creation of HDI linked service for Gen1 and Gen2 in ADF](#creation-of-linked-service-for-gen1-and-gen2-in-adf)
+     * [Creation of linked service for Gen1 and Gen2 in ADF](#creation-of-linked-service-for-gen1-and-gen2-in-adf)
      * [How to set up Gen1 data pipeline](#how-to-set-up-gen1-data-pipeline)
      * [How to set up Gen2 data pipeline](#how-to-set-up-gen2-data-pipeline)
    * [Steps to be followed](#steps-to-be-followed)
@@ -76,7 +76,7 @@ Considerations for using the dual pipeline pattern:
  ![image](https://user-images.githubusercontent.com/62353482/83435632-6b3fa380-a3f1-11ea-8639-dba1e217e044.png)
 
 
-### Creation of HDI linked service for Gen1 and Gen2 in ADF
+### Creation of linked service for Gen1 and Gen2 in ADF
 
   Below clusters needs to be created
   
