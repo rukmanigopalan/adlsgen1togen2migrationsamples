@@ -1,9 +1,9 @@
-Dual Pipeline pattern Guide: A quick start template
+Dual Pipeline Pattern Guide: A quick start template
 ===================================================
 
 ## Overview
 
-The purpose of this document is to provide a manual for the Dual pipeline migration pattern from Data lake storage Gen1 to Data lake storage Gen2 using Azure data factory. This provides the directions, references and approach how to set up the dual pipeline, do migration of existing data from Gen1 to Gen2 and set up the workloads to run at Gen2 endpoint.
+The purpose of this document is to provide a manual for the use of Dual pipeline pattern for migration of data from Gen1 to Gen2. This provides the directions, references and approach how to set up the Dual pipeline, do migration of existing data from Gen1 to Gen2 and set up the workloads to run at Gen2 endpoint.
 
 Considerations for using the dual pipeline pattern:
 
