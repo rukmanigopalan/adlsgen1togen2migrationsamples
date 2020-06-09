@@ -129,7 +129,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
   
      //config file sample
 	 
-     "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
+           "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
 	   "gen2DestinationRootPath" : "https://<<Enter the Gen2 destination root path>>.dfs.core.windows.net", 
 	   "tenantId" : "<<Enter the tenantId>>", 
 	   "subscriptionId" : "<<Enter the subscriptionId>>", 
@@ -139,7 +139,6 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 	   "resourceGroupName" : "<<Enter the resourceGroupName under which the azure data factory pipeline will be created>>",
 	   "location" : "<<Enter the location>>", 
 	   "overwrite" : "Enter the value" //  True = It will overwrite the existing data factory ,False = It will skip creating data factory
-  
   ```
 
   **Setting up the factory pipeline for lift and shift copy pattern**
@@ -154,10 +153,9 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 	   "destinationPath" : "Enter the Gen2 full path. For example: path-name",
 	   "destinationContainer" : "Enter the Gen2 container name"
       // Activity 2 
-   	 "sourcePath" : "Enter the Gen1 full path. For example: /path-name",
+   	   "sourcePath" : "Enter the Gen1 full path. For example: /path-name",
 	   "destinationPath" : "Enter the Gen2 full path. For example: path-name",
 	   "destinationContainer" : "Enter the Gen2 container name"
- 
    ```
  
   **NOTE**: The **destinationPath** string will not be having Gen2 container name. It will have the file path same as Gen1.  
