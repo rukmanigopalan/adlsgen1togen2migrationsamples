@@ -59,11 +59,11 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
   ```powershell
       
-     // Run below code to enable running PS files
+     //Run below code to enable running PS files
       
      Set-ExecutionPolicy Unrestricted
 	
-     // Check for the below modules in PowerShell . If not existing, install one by one:
+     //Check for the below modules in PowerShell . If not existing, install one by one:
       
      Install-Module Az.Accounts -AllowClobber -Force 
      Install-Module Az.DataFactory -AllowClobber -Force
@@ -71,7 +71,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
      Install-Module Az.DataLakeStore -AllowClobber -Force
      Install-Module PowerShellGet –Repository PSGallery –Force
      
-     // Close the PowerShell ISE and Reopen as administrator. Run the below module       
+     //Close the PowerShell ISE and Reopen as administrator. Run the below module       
      
      Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
   ```
