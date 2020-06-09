@@ -122,12 +122,12 @@ To learn more, see [create service principal account](https://docs.microsoft.com
    * Make an entry of Gen2 connection string in the key vault as shown below :
 
    ![image](https://user-images.githubusercontent.com/62353482/78953831-f1dda180-7a8e-11ea-82e9-07aa66fd2856.png)
+   
+   **Below is the code snapshot for setting the configuration file to connect to azure data factory**:
      
   ```powershell
 
-     // Below is the code snapshot for setting the configuration file to connect to azure data factory:
-
-	  "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
+          "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
 	  "gen2DestinationRootPath" : "https://<<Enter the Gen2 destination root path>>.dfs.core.windows.net", 
 	  "tenantId" : "<<Enter the tenantId>>", 
 	  "subscriptionId" : "<<Enter the subscriptionId>>", 
