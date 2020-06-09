@@ -162,7 +162,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
  
  ### Azure data factory pipeline creation and execution
 
-   After you run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) the full load    migration and validation process will start. This step will create the data factory as per the configuration file.
+   Run the script [StartFullLoadMigrationAndValidation.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/StartFullLoadMigrationAndValidation.ps1) which will trigger the    migration and validation process. This step will create the data factory as per the configuration file.
  
  ![image](https://user-images.githubusercontent.com/62353482/83554216-4adf1a00-a4c1-11ea-9ea4-ae9284e678c0.png)
  
