@@ -127,8 +127,6 @@ To learn more, see [create service principal account](https://docs.microsoft.com
      
   ```powershell
   
-     //config file sample
-	 
             "gen1SourceRootPath" : "https://<<Enter the Gen1 source root path>>.azuredatalakestore.net/webhdfs/v1", 
 	    "gen2DestinationRootPath" : "https://<<Enter the Gen2 destination root path>>.dfs.core.windows.net", 
 	    "tenantId" : "<<Enter the tenantId>>", 
@@ -148,12 +146,15 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 	   "pipelineId": "<<Enter the pipeline number. For example: 1,2"
 	   "fullLoad": "true"
   
-      // Activity 1 
- 	    "sourcePath" : "Enter the Gen1 full path. For example: /path-name",
+            // Activity 1 
+ 	   
+	    "sourcePath" : "Enter the Gen1 full path. For example: /path-name",
 	    "destinationPath" : "Enter the Gen2 full path. For example: path-name",
 	    "destinationContainer" : "Enter the Gen2 container name"
-      // Activity 2 
-            "sourcePath" : "Enter the Gen1 full path. For example: /path-name",
+           
+	   // Activity 2 
+            
+	    "sourcePath" : "Enter the Gen1 full path. For example: /path-name",
 	    "destinationPath" : "Enter the Gen2 full path. For example: path-name",
 	    "destinationContainer" : "Enter the Gen2 container name"
    ```
