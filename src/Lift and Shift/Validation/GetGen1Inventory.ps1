@@ -24,12 +24,13 @@ try {
                                6= 'RW-';
                                7= 'RWX';
                             }
-            [int]$number = $aclDigit
+            $number = $aclDigit
             $array = [System.Collections.ArrayList]@()          
             while($number -gt 1)
             {
-                $array.Add($number % 10)                
-               $number = $number / 10
+               [int]$temp = $number % 10 
+                $array.Add($temp)                
+               $number = [Math]::Floor($number / 10)
             }
 
             $aclresult = "{0}{1}{2}" -f $hashtable2[$array[2]], $hashtable2[$array[1]], $hashtable2[$array[0]]
