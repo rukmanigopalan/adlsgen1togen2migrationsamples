@@ -182,6 +182,8 @@ To learn more, see [create service principal account](https://docs.microsoft.com
   
  ![image](https://user-images.githubusercontent.com/62353482/83807252-9fbc9500-a667-11ea-9f0c-8deeefa742e7.png)
  
+ 
+ **Verify that the data is copied into your Azure Data Lake Storage Gen2 account**.
      
   ### Data Comparison Report
 
