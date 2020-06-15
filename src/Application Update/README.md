@@ -3,7 +3,7 @@ Application and Workload Update
 
 ## Overview
 
-The purpose of this document is to provide steps and ways to migrate the workloads and applications from **Gen1** to **Gen2** after data copy is completed.
+The purpose of this document is to provide steps and ways to migrate the workloads and applications from **Gen1** to **Gen2** after data migration is completed.
 
 This can be applicable for below migration patterns:
 
@@ -15,7 +15,7 @@ This can be applicable for below migration patterns:
 
  As part of this, we will [configure services in workloads](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-supported-azure-services) used and update the applications to point to Gen2 mount.
  
-:bulb: **Note**: We will be covering below azure services
+:bulb: **NOTE** : We will be covering below azure services
 
   Azure Services           |        Related articles                                                     
   -------------            |   -------------------------------------------------------------------       
