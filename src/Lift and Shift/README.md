@@ -133,7 +133,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 	    "subscriptionId" : "<<Enter the subscriptionId>>", 
 	    "servicePrincipleId" : "<<Enter the servicePrincipleId>>", 
 	    "servicePrincipleSecret" : "<<Enter the servicePrincipleSecret Key>>", 
-	    "keyVaultName" : "<<keyVaultName>>",
+	    "keyVaultName" : "<<Enter the keyVaultName>>",
 	    "factoryName" : "<<Enter the factoryName>>", 
 	    "resourceGroupName" : "<<Enter the resourceGroupName under which the azure data factory pipeline will be created>>",
 	    "location" : "<<Enter the location>>", 
