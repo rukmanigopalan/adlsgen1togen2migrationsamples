@@ -119,6 +119,7 @@ The folder will contain below listed contents under **src**:
 	  "subscriptionId" : "<<Enter the subscriptionId>>", 
 	  "servicePrincipleId" : "<<Enter the servicePrincipleId>>", 
 	  "servicePrincipleSecret" : "<<Enter the servicePrincipleSecret Key>>", 
+	  "keyVaultName" : "<<Enter the keyVaultName>>",
 	  "factoryName" : "<<Enter the factoryName>>", 
 	  "resourceGroupName" : "<<Enter the resourceGroupName under which the azure data factory pipeline will be created>>",
 	  "location" : "<<Enter the location>>", 
