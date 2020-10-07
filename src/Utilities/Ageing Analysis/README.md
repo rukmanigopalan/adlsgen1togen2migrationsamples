@@ -40,5 +40,32 @@ Considerations for using the ageing analysis approach
    * **Active Azure Subscription**
 
    * **Azure Data Lake Storage Gen1**
+ 
+   * **Azure Key Vault**. Required keys and secrets to be configured here.
 
-   * **Azure Data Lake Storage Gen2**. For more details please refer to [create azure storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) 
+   * **Service principal** with read, write and execute permission to the resource group, key vault, data lake store Gen1 and data lake store Gen2. 
+To learn more, see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
+
+   * **Windows PowerShell ISE**.
+
+   **Note** : Run as administrator
+
+  ```powershell
+      
+     //Run below code to enable running PS files
+      
+     Set-ExecutionPolicy Unrestricted
+	
+     //Check for the below modules in PowerShell . If not existing, install one by one:
+      
+     Install-Module Az.Accounts -AllowClobber -Force 
+     Install-Module Az.DataFactory -AllowClobber -Force
+     Install-Module Az.KeyVault -AllowClobber -Force    
+     Install-Module Az.DataLakeStore -AllowClobber -Force
+     Install-Module PowerShellGet –Repository PSGallery –Force
+     
+     //Close the PowerShell ISE and Reopen as administrator. Run the below module       
+     
+     Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
+  ```
+
