@@ -90,11 +90,14 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
    **Note**: To avoid security warning error --> Right click on the zip folder downloaded --> Go to --> Properties --> General --> Check unblock option under security section. Unzip and extract the folder.
 
-   The folder **src/Utilities/** will contain below listed contents:
+   The folder **src/Utilities/Ageing Analysis/** will contain below listed contents:
 
    ![image](https://user-images.githubusercontent.com/62353482/83551794-b1623900-a4bd-11ea-9b84-f2885567bc92.png)
 
-   * **Application**: This folder will have sample code for Mount path configuration.
+   * **Inventory**: This folder will have PowerShell code for inventory analysis of Applications.
+   * **Pivot**: This Folder contains the python code snippet for pivot sheet generation from PowerShell output.
+   * **Sample Pivot**: This Folder contains sample pivot data sheet.
+
 
 	
 
