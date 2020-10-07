@@ -25,12 +25,13 @@ Considerations for using the ageing analysis approach
  <!--ts-->
    * [Overview](#overview)
    * [Prerequisites](#prerequisites)
-   * [Ageing Analysis Setup](#Ageing-Analysis-Setup)
+   * [Limitations](#limitations)
+   * [Ageing Analysis Setup](#ageing-analysis-Setup)
      * [Get Started](#get-started)
-     * [Inventory Collection using PowerShell ](#Inventory-Collection-using-PowerShell)
-     * [Ageing Analysis approach](#Ageing-Analysis-approach)
-     * [Ageing analysis Application Data sheet](#Ageing-analysis-Application-Data-sheet)
-   * [Pivot Sheet using python Snippet](#Pivot-Sheet-using-python-Snippet)
+     * [Inventory Collection using PowerShell ](#inventory-collection-using-PowerShell)
+     * [Ageing Analysis approach](#ageing-Analysis-approach)
+     * [Ageing analysis Application Data sheet](#ageing-analysis-application-data-sheet)
+   * [Pivot Sheet using python snippet](#pivot-sheet-using-python-snippet)
    * [Reach out to us](#reach-out-to-us)
    * [References](#references)
 <!--te-->
@@ -68,4 +69,32 @@ To learn more, see [create service principal account](https://docs.microsoft.com
      
      Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force
   ```
+  ## Limitations
+
+   This version of code will have below limitations:
+
+   * Supports only for Gen1 Locations.
+   * Inventory Code Developed and Supported only in Windows PowerShell ISE 
+   * Pivot Code developed and supported only in python
+      
+## Ageing Analysis Setup
+
+    This section will help you with the steps needed to set up the framework and get started with the ageing analysis process.
+  
+### Get Started
+
+   **Download the migration source code from [Github repository](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/src/) to local machine**:
+
+   ![image](https://user-images.githubusercontent.com/62351942/78950970-50058700-7a85-11ea-9485-9cd605b1e0fe.png)
+
+
+   **Note**: To avoid security warning error --> Right click on the zip folder downloaded --> Go to --> Properties --> General --> Check unblock option under security section. Unzip and extract the folder.
+
+   The folder **src/Utilities/** will contain below listed contents:
+
+   ![image](https://user-images.githubusercontent.com/62353482/83551794-b1623900-a4bd-11ea-9b84-f2885567bc92.png)
+
+   * **Application**: This folder will have sample code for Mount path configuration.
+
+	
 
