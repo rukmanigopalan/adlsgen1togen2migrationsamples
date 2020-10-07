@@ -97,6 +97,33 @@ To learn more, see [create service principal account](https://docs.microsoft.com
    * **Inventory**: This folder will have PowerShell code for inventory analysis of Applications.
    * **Pivot**: This Folder contains the python code snippet for pivot sheet generation from PowerShell output.
    * **Sample Pivot**: This Folder contains sample pivot data sheet.
+  
+  ### How to Set up Configuration file
+
+   **Important Prerequisite**: 
+   
+   **Below is the code snapshot of ADLS connection**:
+     
+  ```powershell
+  
+      "gen1SourceRootPath" : "<<Enter the Gen1 source root path>>", 
+      "outPutPath" : "<<Enter the path where the results needs to store>>",
+      "tenantId" : "<<Enter the tenantId>>", 
+      "subscriptionId" : "<<Enter the subscriptionId>>", 
+      "servicePrincipleId" : "<<Enter the servicePrincipleId>>", 
+      "servicePrincipleSecret" : "<<Enter the servicePrincipleSecret Key>>", 
+      "dataLakeStore" : "<<Enter the dataLakeStore name>>"
+
+  ```
+ **Setting up the connection to azure for inventory collection**:
+ ```powershell
+  
+	$SecurePassword = ConvertTo-SecureString $ServicePrincipalKey -AsPlainText -Force
+	$Credential = New-Object System.Management.Automation.PSCredential ( $ServicePrincipalId, $SecurePassword)	
+	Login-AzAccount -ServicePrincipal  -TenantId $TenantId -Credential $Credential
+	
+  ```
+## Inventory Collection using PowerShell
 
 
 	
