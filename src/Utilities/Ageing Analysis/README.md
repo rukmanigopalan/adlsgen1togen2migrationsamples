@@ -125,6 +125,54 @@ To learn more, see [create service principal account](https://docs.microsoft.com
   ```
 ## Inventory Collection using PowerShell
 
+ **Below is the code snapshot for inventory collection of application folder**:
+ 
+	*The Application folders are run with the inventory PowerShell code.
+	*The PowerShell code is run with minimum folder depth, especially for Large applications.
+	*The code exports .csv file with inventory details including Size, Files count, Directory Count, Last Modification Time with depth level mentioned.
+	*The generated result is in txt file, saved into the Output folder.
+	*This .csv is further analyzed for determining the ageing analysis approach for identifying active and inactive folders
+	
+ ## Ageing Analysis Approach
+ 
+	*The Objective of ageing analysis is to find Active and Inactive Folders in an application.
+	*Majorly Ageing analysis approach is done by considering the size of the folder and recent child modification time.
+	*The Analysis is done on the inventory data output file extracted from the PowerShell code.
+	*The sub folders in the application is identified based on Active and storage strategy or user requirements.
+	*The sub folder paths are given as input to PowerShell Inventory code and exported the Datasheet csv file.
+	
+## Ageing Analysis Datasheet
+
+	*The Datasheet is the output of inventory PowerShell code.
+	*The sub folders or application path is derived from analysis based on storage, Active or user requirements.
+	*The Data sheet are given as input to python snippet and final pivot table is created.
+	*The Data sheet differs from analysis approach for a single application.
+	
+## Pivot Sheet using python snippet
+	*The python code snippet for the generation of pivot table in .xlsx document. 
+	*The Datasheets from multiple applications are placed in the output folder, python snippet takes the csv files as input and create Data pivot sheets respectively
+	*The input and output path are provided by the user. Python snippet read all the files present in the input folder and calls the create pivot table function 
+
+	*The Code snippet to generate the pivot table. 
+
+	*The Final pivot Datasheet is created and saved in the same output folder. 
+
+
+## Reach out to us
+
+  **You found a bug or want to propose a feature?**
+
+   File an issue here on GitHub: [![File an issue](https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&maxAge=31557600)](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/issues/new).
+   
+## References
+
+*[Microsoft Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azps-4.7.0)
+
+
+
+
+
+
 
 	
 
