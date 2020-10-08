@@ -92,7 +92,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
    The folder **src/Utilities/Ageing Analysis/** will contain below listed contents:
 
-   ![image](https://user-images.githubusercontent.com/62353482/83551794-b1623900-a4bd-11ea-9b84-f2885567bc92.png)
+   ![image](https://user-images.githubusercontent.com/69287541/95416601-bd20a900-0950-11eb-8743-010b715734f5.png)
 
    * **Inventory**: This folder will have PowerShell code for inventory analysis of Applications.
    * **Pivot**: This Folder contains the python code snippet for pivot sheet generation from PowerShell output.
