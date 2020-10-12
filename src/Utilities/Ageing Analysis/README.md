@@ -125,11 +125,9 @@ To learn more, see [create service principal account](https://docs.microsoft.com
   ```
 ## Inventory Collection using PowerShell
 
- **Refer powershell script for inventory collection of application folder below**:
+Run the script  [Inventory.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Utilities/Ageing%20Analysis/Inventory/Inventory.ps1) which will   trigger the inventory collection process. 
  
- [Inventory Collection](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Utilities/Ageing%20Analysis/Inventory/Inventory.ps1)
- 
-  * The Application folders are run with the inventory PowerShell code.
+  * The Application folders are run with the inventory PowerShell script.
   * The PowerShell code is run with minimum folder depth, especially for Large applications
   * The code exports .csv file with inventory details including Size, Files count, Directory Count, Last Modification Time with depth level mentioned.
   * The generated result is in txt file, saved into the Output folder.
@@ -137,7 +135,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 	
  ## Ageing Analysis Approach
  
- * The Objective of ageing analysis is to find Active and Inactive Folders in an application.
+ * The Objective of Ageing Analysis is to find Active and Inactive Folders in an application.
  * Majorly Ageing analysis approach is done by considering the size of the folder and recent child modification time.
  * The Analysis is done on the inventory data output file extracted from the PowerShell code.
  * The sub folders in the application is identified based on Active and storage strategy or user requirements.
@@ -154,14 +152,21 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 	
 ## Pivot Sheet using python snippet
 
-* The python code snippet for the generation of pivot table in .xlsx document. 
+ Run python script [PivotSheetGeneration.py](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Utilities/Ageing%20Analysis/Pivot/PivotSheetGeneration.py) for pivot sheet generation
+ 
+* The python script is used  for the generaing pivot table in .xlsx document. 
 * The Datasheets from multiple applications are placed in the output folder, python snippet takes the csv files as input and create Data pivot sheets respectively
 * The input and output path are provided by the user. Python snippet read all the files present in the input folder and calls the create pivot table function 
 
+![image](https://user-images.githubusercontent.com/69287541/95709479-5830c000-0c7c-11eb-8111-8c2fc592f168.png)
+
 * The Code snippet to generate the pivot table. 
+
+![image](https://user-images.githubusercontent.com/69287541/95709529-71d20780-0c7c-11eb-803a-b6a63bdd464e.png)
 
 * The Final pivot Datasheet is created and saved in the same output folder. 
 
+![image](https://user-images.githubusercontent.com/69287541/95709586-8910f500-0c7c-11eb-9f13-c8dea1928a82.png)
 
 ## Reach out to us
 
