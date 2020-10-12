@@ -125,8 +125,9 @@ To learn more, see [create service principal account](https://docs.microsoft.com
   ```
 ## Inventory Collection using PowerShell
 
- **Below is the code snapshot for inventory collection of application folder**:
+ **Refer powershell script for inventory collection of application folder below**:
  
+ [Inventory Collection](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Utilities/Ageing%20Analysis/Inventory/Inventory.ps1)
  
   * The Application folders are run with the inventory PowerShell code.
   * The PowerShell code is run with minimum folder depth, especially for Large applications
