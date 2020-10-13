@@ -127,7 +127,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
 Run the script  [Inventory.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Utilities/Ageing%20Analysis/Inventory/Inventory.ps1) which will   trigger the inventory collection process. 
  
-  * The Application folders are run with the inventory PowerShell script.
+  * The Inventory PowerShell script colletcs inventory details of given Aplication folder.
   * The PowerShell code is run with minimum folder depth, especially for Large applications
   * The code exports .csv file with inventory details including Size, Files count, Directory Count, Last Modification Time with depth level mentioned.
   * The generated result is in txt file, saved into the Output folder.
