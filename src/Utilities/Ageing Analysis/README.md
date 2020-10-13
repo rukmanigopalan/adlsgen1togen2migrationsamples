@@ -135,7 +135,7 @@ Run the script  [Inventory.ps1](https://github.com/rukmani-msft/adlsgen1togen2mi
 	
  ## Ageing Analysis Approach
  
- * The Objective of Ageing Analysis is to find Active and Inactive Folders in an application.
+ * The objective of Ageing Analysis is to find Active and Inactive Folders in an application.
  * Majorly Ageing analysis approach is done by considering the size of the folder and recent child modification time.
  * The Analysis is done on the inventory data output file extracted from the PowerShell code.
  * The sub folders in the application is identified based on Active and storage strategy or user requirements.
