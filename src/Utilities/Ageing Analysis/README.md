@@ -72,7 +72,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
   ## Limitations
 
    This version of code will have below limitations:
-
+   
    * Supports only for Gen1 Locations.
    * Inventory Code Developed and Supported only in Windows PowerShell ISE 
    * Pivot Code developed and supported only in python
@@ -127,13 +127,15 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
 Run the script  [Inventory.ps1](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Utilities/Ageing%20Analysis/Inventory/Inventory.ps1) which will   trigger the inventory collection process. 
  
-  * The Inventory PowerShell script colletcs inventory details of given Aplication folder.
-  * The PowerShell code is run with minimum folder depth, especially for Large applications
+  * The Inventory PowerShell script collects inventory details of given Aplication folder.
+  * The PowerShell code is run with minimum folder depth, especially for Large applications.
   * The code exports .csv file with inventory details including Size, Files count, Directory Count, Last Modification Time with depth level mentioned.
   * The generated result is in txt file, saved into the Output folder.
-  * This .csv is further analyzed for determining the ageing analysis approach for identifying active and inactive folders
+  * This .csv is further analyzed for determining the ageing analysis approach for identifying active and inactive folders.
 	
  ## Ageing Analysis Approach
+ 
+ Below is the approach on the ageing analysis using this powershell script:
  
  * The objective of Ageing Analysis is to find Active and Inactive Folders in an application.
  * Majorly Ageing analysis approach is done by considering the size of the folder and recent child modification time.
@@ -152,15 +154,15 @@ Run the script  [Inventory.ps1](https://github.com/rukmani-msft/adlsgen1togen2mi
 	
 ## Pivot Sheet using python snippet
 
- Run python script [PivotSheetGeneration.py](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Utilities/Ageing%20Analysis/Pivot/PivotSheetGeneration.py) for pivot sheet generation
+ Run python script [PivotSheetGeneration.py](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Utilities/Ageing%20Analysis/Pivot/PivotSheetGeneration.py) for pivot sheet generation.Below are the steps how this script works:
  
-* The python script is used  for the generaing pivot table in .xlsx document. 
-* The Datasheets from multiple applications are placed in the output folder, python snippet takes the csv files as input and create Data pivot sheets respectively
-* The input and output path are provided by the user. Python snippet read all the files present in the input folder and calls the create pivot table function 
+* The python script is used for the generating pivot table in .xlsx document. 
+* The Datasheets from multiple applications are placed in the output folder, python snippet takes the csv files as input and create Data pivot sheets respectively.
+* The input and output path are provided by the user. Python snippet read all the files present in the input folder and calls the create pivot table function. 
 
 ![image](https://user-images.githubusercontent.com/69287541/95709479-5830c000-0c7c-11eb-8111-8c2fc592f168.png)
 
-* The Code snippet to generate the pivot table. 
+ **The Code snippet to generate the pivot table**
 
 ![image](https://user-images.githubusercontent.com/69287541/95709529-71d20780-0c7c-11eb-803a-b6a63bdd464e.png)
 
@@ -177,12 +179,3 @@ Run the script  [Inventory.ps1](https://github.com/rukmani-msft/adlsgen1togen2mi
 ## References
 
 * [Microsoft Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azps-4.7.0)
-
-
-
-
-
-
-
-	
-
