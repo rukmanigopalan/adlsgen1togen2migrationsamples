@@ -1,15 +1,15 @@
-## Ageing Analysis Pattern Guide: A quick start template
+## Ageing Analysis Guide: A quick start template
 
 ### Overview
 
-Ageing analysis is a process of Identifying active and inactive folders in an Application from Gen1 Data Lake using directory details such as recent child modification date and size. The purpose of this document is to provide a manual in the form of step by step guide for the ageing analysis which can be done before the actual data migration starts. As such it provides the directions, references, sample code examples of the PowerShell functions and python code snippets been used.
+The inventory aging analysis determines the storage duration of an item. That is, for how long a given item quantity is in storage. The main purpose is to find out which items stay in inventory for a long time or are perhaps becoming obsolete. This also identifies the active and inactive folders in the applications from Gen1 Data Lake using directory details such as recent child modification date and size. The purpose of this document is to provide a manual in the form of step by step guide for the ageing analysis which can be done before the actual data migration starts during the **Assessment phase**. As such it provides the directions, references, sample code examples of the PowerShell functions and python code snippets been used.
 
 This guide covers the following tasks:
 * Inventory collection of application folders
 * An insight to ageing analysis using inventory list
 * Creation of ageing analysis to single pivot sheet using python snippet
 
-Considerations for using the ageing analysis approach
+Considerations for using the ageing analysis approach:
 
   ✔️ Planning Cutover from Gen1 to Gen2 for all workloads at the same time.
 
