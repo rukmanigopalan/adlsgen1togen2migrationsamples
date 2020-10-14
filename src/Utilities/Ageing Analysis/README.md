@@ -2,7 +2,7 @@
 
 ### Overview
 
-The inventory aging analysis determines the storage duration of an item. That is, for how long a given item quantity is in storage. The main purpose is to find out which items stay in inventory for a long time or are perhaps becoming obsolete. This also identifies the active and inactive folders in the applications from Gen1 Data Lake using directory details such as recent child modification date and size. The purpose of this document is to provide a manual in the form of step by step guide for the ageing analysis which can be done before the actual data migration starts during the **Assessment phase**. As such it provides the directions, references, sample code examples of the PowerShell functions and python code snippets been used.
+The inventory ageing analysis determines the storage duration of an item. That is, for how long a given item quantity is in storage. The main purpose is to find out which items stay in inventory for a long time or are perhaps becoming obsolete. This also identifies the active and inactive folders in the applications from Gen1 Data Lake using directory details such as recent child modification date and size. The purpose of this document is to provide a manual in the form of step by step guide for the ageing analysis which can be done before the actual data migration starts during the **Assessment phase**. As such it provides the directions, references, sample code examples of the PowerShell functions and python code snippets been used.
 
 This guide covers the following tasks:
 * Inventory collection of application folders
