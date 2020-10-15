@@ -48,6 +48,7 @@ Considerations for using the ageing analysis approach:
 To learn more, see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
    * **Windows PowerShell ISE**.
+   * **Python IDE**.
 
    **Note** : Run as administrator
 
