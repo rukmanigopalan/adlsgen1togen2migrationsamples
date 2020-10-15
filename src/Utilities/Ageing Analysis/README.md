@@ -132,9 +132,9 @@ Run the script [Inventory.ps1](https://github.com/rukmani-msft/adlsgen1togen2mig
  
   * The Inventory PowerShell script collects inventory details of given Application folder
   * The PowerShell code is run with minimum folder depth, especially for Large applications
-  * The code exports .csv file with inventory details including Size, Files count, Directory Count, Last Modification Time with depth level mentioned
+  * The code exports .txt file with inventory details including Size, Files count, Directory Count, Last Modification Time within the given depth level
   * The generated result is in txt file, saved into the Output folder
-  * This .csv is further analyzed for determining the ageing analysis approach for identifying active and inactive folders
+  * The output file is further analyzed for determining the ageing analysis approach for identifying active and inactive folders
 	
  ## Ageing Analysis Approach
  
