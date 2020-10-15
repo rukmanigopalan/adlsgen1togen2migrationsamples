@@ -20,6 +20,10 @@ You will find here the resources to help with below patterns:
 
    Refer [Dual pipeline pattern guide](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md) to know more and get started.
 
+### How to migrate the workloads and Applications post data migration
+
+   Refer [here](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/tree/master/src/Application%20Update) for more details on the steps to update the workloads and application post migration.
+   
 ## References
 
 * [Azure Data Lake Storage migration from Gen1 to Gen2 ](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2)
