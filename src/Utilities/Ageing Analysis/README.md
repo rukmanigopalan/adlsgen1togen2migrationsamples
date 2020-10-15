@@ -17,7 +17,7 @@ Considerations for using the ageing analysis approach:
 
   ✔️ Ideal for all applications from Gen1 (Blob Storage) to be migrated or also critical applications where the migration need to be managed.
   
-  ✔️ Clean up activity as part of Cost reduction
+  ✔️ Purging can be done  as part of Cost reduction
   
   ## Table of contents
 
