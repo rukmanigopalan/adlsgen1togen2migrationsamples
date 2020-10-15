@@ -1,10 +1,6 @@
-# Inventory
+# Inventory 
 
-This folder contains the powerShell script for Inventory Collection.
+This folder contains the PowerShell script for Inventory Collection. 
 
-* Input : Applcation folder path
-* Output : txt file which contains inventry details of given application folder
-
-
-
-
+* Input: Application folder path 
+* Output: text file which contains inventory details of the given application folder
