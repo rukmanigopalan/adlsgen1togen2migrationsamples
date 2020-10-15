@@ -77,6 +77,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
    * Supports only for Gen1 Locations.
    * Inventory Code Developed and Supported only in Windows PowerShell ISE 
    * Pivot Code developed and supported only in python
+   * Manual intervention is required to analysis application folders patterns.
       
 ## Ageing Analysis Setup
 
