@@ -101,13 +101,17 @@ During file and directory creation, there are scenarios where a store default pe
 1.	Create a directory on Gen1 via ADB/Portal and check permissions 
     *	Step1: Connect ADLS gen1 with service principal (SPN)
     *	Step2 : Create a directory on Gen1/ via ADB/Portal and check permissions
-2. Test the same for superuser, other users
+2. Check conditions that Parent directory contains default ACLs 
+3. Check conditions that Parent directory does not contain default ACLs 
+
     
 **GEN2 Behavior Testing Steps**
 1. Create a directory on Gen2 via ADB/Portal and check permissions
      *	Step1: Connect ADLS gen2 with service principal (SPN)
      *	Step2: : Create a directory on Gen2/ via ADB/Portal and check permissions
-2. Test the same for superuser, other users
+2. Check conditions that Parent directory contains default ACLs 
+3. Check conditions that Parent directory does not contain default ACLs 
+
 
 
 
