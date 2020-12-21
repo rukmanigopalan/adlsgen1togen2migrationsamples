@@ -35,7 +35,7 @@ Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- | --------- |
 GetFileStatus and GetAclStatus API do not mandate any minimum permission on a path in Hadoop and need only traversal (X) permission till the parent path. Hence a user with no permission can successfully run these APIs on account root | A minimum of RX permission was introduced on the account root so that a user with no permission fails to get a view of contents on account root | Like Hadoop. A user who doesn’t have any permission on container root can successfully run GetFileStatus and GetAclStatus operations |
 
-####TEST STEPS:####
+***TEST STEPS:***
 
 **GEN1 Behavior Testing Steps**
 1.	validate getFileStatus,getACLStatus on ADLS Gen1 directory/file by using Java SDK
@@ -44,9 +44,9 @@ GetFileStatus and GetAclStatus API do not mandate any minimum permission on a pa
     
 **GEN2 Behavior Testing Steps**
 
-2.  validate getFileStaus,getAclStatus on  ADLS Gen2 by using SDK
-  *	Step1: Connect ADLS gen2 with service principal (SPN)
-  *	Step2: SPN should have read and execute permissions on directory/file on which getAClStatus/ getFileStatus API calls. 
+1.  validate getFileStaus,getAclStatus on  ADLS Gen2 by using SDK
+     *	Step1: Connect ADLS gen2 with service principal (SPN)
+     *	Step2: SPN should have read and execute permissions on directory/file on which getAClStatus/ getFileStatus API calls. 
 
 ## 2.	OID-UPN CONVERSION  ##
 Scenario  | GEN1 Behavior | GEN2 Behavior |
