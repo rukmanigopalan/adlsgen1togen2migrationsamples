@@ -1,4 +1,4 @@
-Gen1 and Gen2 ACL behavior and differences
+Gen1 and Gen2 ACL Behavior Analysis
 ================================================
 
 ## Overview
@@ -52,6 +52,21 @@ GetFileStatus and GetAclStatus API do not mandate any minimum permission on a pa
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
 Some APIs accept identity inputs in UPN format (SetAcl, ModifyAclEntries, RemoveAclEntries) and few based on a request queryparam can provide identity info in UPN format (GetAclStatus, Liststatus and GetFileStatus) within response. | OID <-> UPN conversion is supported for Users, Service principals and groups (in case of groups, as there is no UPN, conversion is done to Display name property) | Supports only User OID-UPN conversion. As per a discussion, this is because of a known issue in conversion for service principal and groups.  UPN or Display Name is not unique to one service principal or group respectively. Hence the derived OID could end up being an unintended identity |
+
+***TEST STEPS:***
+
+**GEN1 Behavior Testing Steps**
+1.	validate GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true 
+    *	Step1: Connect ADLS gen1 with service principal (SPN)
+    *	Step2 : Check GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true and vice -versa
+2. Test the same for AAD group and user
+    
+**GEN2 Behavior Testing Steps**
+1. validate GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true 
+     *	Step1: Connect ADLS gen2 with service principal (SPN)
+     *	Step2: : Check GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true and vice -versa. 
+2. Test the same for AAD group and user
+
 
 ## Reach out to us
 
