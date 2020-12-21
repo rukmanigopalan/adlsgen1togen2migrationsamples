@@ -43,6 +43,7 @@ GetFileStatus and GetAclStatus API do not mandate any minimum permission on a pa
     *	Step2 : SPN should have read and execute permissions on directory/file on which getAClStatus/ getFileStatus API calls
     
 **GEN2 Behavior Testing Steps**
+
 2.  validate getFileStaus,getAclStatus on  ADLS Gen2 by using SDK
   *	Step1: Connect ADLS gen2 with service principal (SPN)
   *	Step2: SPN should have read and execute permissions on directory/file on which getAClStatus/ getFileStatus API calls. 
