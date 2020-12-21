@@ -68,6 +68,28 @@ Some APIs accept identity inputs in UPN format (SetAcl, ModifyAclEntries, Remove
 2. Test the same for AAD group and user
 
 
+
+## 3. RBAC USER ROLE SIGNIFICANCE  ##
+
+Scenario  | GEN1 Behavior | GEN2 Behavior |
+------------- | ------------- |-----------|
+RBAC roles and access control | All users in RBAC Owner role are superusers.Refer for more details [Access control in Azure Data Lake Storage Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-access-control). All other users (non-superusers), need to have permission that abides by File Folder ACL | Users can be provided different roles that govern their permissions for write, read and delete. And this takes precedence to the ACLs sent on individual file or folder. Refer for more details [Access control in Azure Data Lake Storage Gen2](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control). For a user to be superuser, they need to be given “Storage blob data owner” RBAC role |
+
+***TEST STEPS:***
+
+**GEN1 Behavior Testing Steps**
+1.	Perform read or write operation on Gen1 with different roles 
+    *	Step1: Connect ADLS gen1 with service principal (SPN)
+    *	Step2 : Perform read or write operation on Gen1 file  with connected SPN as owner  of  the file
+2. Test the same for superuser, other users
+    
+**GEN2 Behavior Testing Steps**
+1. Perform read or write operation on Gen2 with different roles
+     *	Step1: Connect ADLS gen2 with service principal (SPN)
+     *	Step2: : Perform read or write operation on Gen1 file with connected SPN as owner of  the file
+2. Test the same for superuser, other users
+
+
 ## Reach out to us
 
 ## References
