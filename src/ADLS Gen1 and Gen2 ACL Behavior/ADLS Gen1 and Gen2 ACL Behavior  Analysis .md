@@ -3,7 +3,7 @@ Gen1 and Gen2 ACL Behavior Analysis
 
 ## Overview
 
-Azure Data Lake Storage is Microsoft's optimized storage solution for big data analytics workloads.  Current Azure Storage ADLS Gen1 enhanced and developed ADLS Gen2. ADLS Gen2 is the combination of the current ADLS (now called Gen1) and Blob storage.  
+Azure Data Lake Storage is Microsoft's optimized storage solution for big data analytics workloads. ADLS Gen2 is the combination of the current ADLS (now called Gen1) and Blob storage.  
 Azure Data Lake Storage Gen2 is built on Azure Blob storage and provides a set of capabilities dedicated to big data analytics. Data Lake Storage Gen2 combines features from Azure Data Lake Storage Gen1, such as file system semantics, directory, and file level security and scale with low-cost, tiered storage, high availability/disaster recovery capabilities from Azure Blob storage. 
 Azure Data Lake Storage Gen1 implements an access control model that derives from HDFS, which in turn derives from the POSIX access control model.
 Azure Data Lake Storage Gen2 implements an access control model that supports both Azure role-based access control (Azure RBAC) and POSIX-like access control lists (ACLs).
