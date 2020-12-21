@@ -86,8 +86,29 @@ RBAC roles and access control | All users in RBAC Owner role are superusers.Refe
 **GEN2 Behavior Testing Steps**
 1. Perform read or write operation on Gen2 with different roles
      *	Step1: Connect ADLS gen2 with service principal (SPN)
-     *	Step2: : Perform read or write operation on Gen1 file with connected SPN as owner of  the file
+     *	Step2: : Perform read or write operation on Gen2 file with connected SPN as owner of  the file
 2. Test the same for superuser, other users
+
+## 4.	STORE DEFAULT PERMISSION ##
+
+Scenario  | GEN1 Behavior | GEN2 Behavior |
+------------- | ------------- |-----------|
+During file and directory creation, there are scenarios where a store default permission is taken into the permission computation | It is fixed to 770 (considering a fixed umask of 007 at server) | If default acl is present on the parent, default permissions is 777 for directory and 666 for file. If default acl is not present on the parent, a umask of 027  gets applied on the above mentioned default permissions of file/directory | 
+
+***TEST STEPS:***
+
+**GEN1 Behavior Testing Steps**
+1.	Create a directory on Gen1 via ADB/Portal and check permissions 
+    *	Step1: Connect ADLS gen1 with service principal (SPN)
+    *	Step2 : Create a directory on Gen1/ via ADB/Portal and check permissions
+2. Test the same for superuser, other users
+    
+**GEN2 Behavior Testing Steps**
+1. Create a directory on Gen2 via ADB/Portal and check permissions
+     *	Step1: Connect ADLS gen2 with service principal (SPN)
+     *	Step2: : Create a directory on Gen2/ via ADB/Portal and check permissions
+2. Test the same for superuser, other users
+
 
 
 ## Reach out to us
