@@ -27,6 +27,7 @@ This article summarizes the behavioral differences of the access control models 
    * **Azure Key Vault**. Required keys and secrets to be configured here.
    * **Service principal** with read, write and execute permission to the resource group, key vault, data lake store Gen1 and data lake store Gen2. 
 To learn more, see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
+   * ** Java Development Kit (JDK 7 or higher, using Java version 1.7 or higher) for Filesystem operations on Azure Data Lake Storage Gen1 and Gen2
    
 ## ACL Behavior in ADLS Gen1 and Gen2 
 ## 1.	ACCOUNT ROOT PERMISSIONS ##
@@ -38,16 +39,18 @@ GetFileStatus and GetAclStatus API do not mandate any minimum permission on a pa
 ***TEST STEPS:***
 
 **GEN1 Behavior Testing Steps**
-1.	validate getFileStatus,getACLStatus on ADLS Gen1 directory/file
-    *	Step1: Connect ADLS gen1 with service principal (SPN)
+1.	validate getFileStatus,getACLStatus on ADLS Gen1 directory/file via Java SDK
+    *	Step1 : Connect ADLS gen1 with service principal (SPN)
     *	Step2 : SPN should have read and execute permissions on directory/file on which getAClStatus/ getFileStatus API calls
+    * Step3 : Check whether getAClStatus/ getFileStatus API calls are succcesful or not. It should not fail
     
 **GEN2 Behavior Testing Steps**
 
 1.  validate getFileStaus,getAclStatus on  ADLS Gen2 by using SDK
-     *	Step1: Connect ADLS gen2 with service principal (SPN)
-     *	Step2: SPN should have read and execute permissions on directory/file on which getAClStatus/ getFileStatus API calls. 
-
+     *	Step1 : Connect ADLS gen2 with service principal (SPN)
+     *	Step2 : Remove all permissions from SPN on directory/file on which getAClStatus/ getFileStatus API calls. 
+     * Step3 : Check whether getAClStatus/ getFileStatus API calls are succcesful or not . It should not fail
+     
 ## 2.	OID-UPN CONVERSION  ##
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
