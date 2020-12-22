@@ -38,7 +38,7 @@ GetFileStatus and GetAclStatus API do not mandate any minimum permission on a pa
 ***TEST STEPS:***
 
 **GEN1 Behavior Testing Steps**
-1.	validate getFileStatus,getACLStatus on ADLS Gen1 directory/file by using Java SDK
+1.	validate getFileStatus,getACLStatus on ADLS Gen1 directory/file
     *	Step1: Connect ADLS gen1 with service principal (SPN)
     *	Step2 : SPN should have read and execute permissions on directory/file on which getAClStatus/ getFileStatus API calls
     
