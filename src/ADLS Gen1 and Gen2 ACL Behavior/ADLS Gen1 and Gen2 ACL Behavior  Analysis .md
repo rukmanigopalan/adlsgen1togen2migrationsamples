@@ -62,13 +62,13 @@ Some APIs accept identity inputs in UPN format (SetAcl, ModifyAclEntries, Remove
 1.	validate GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
     *	Step2 : Check GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true and vice -versa.  See how OID <-> UPN conversion is supporting at ADLS Gen1
-2. Test the same for AAD group and user
+2.  Repeat  steps 1&2 for AAD group and user
     
 **GEN2 Behavior Testing Steps**
 1. validate GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
      *	Step2: : Check GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true and vice -versa. See how OID -> UPN conversion is supporting at ADLS Gen2
-2. Repeat above steps for AAD group and user
+2. Repeat  steps 1 & 2 for AAD group and user
 
 
 
@@ -84,13 +84,13 @@ RBAC roles and access control | All users in RBAC Owner role are superusers.Refe
 1.	Perform read or write operation on Gen1 with different roles via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
     *	Step2 : Perform read or write operation on Gen1 file  with connected SPN as owner  of  the file and see the relation of RBAC roles and access control in Gen2
-2. Repeat above steps for superuser, other users
+2. Repeat  steps 1&2 for superuser, other users
     
 **GEN2 Behavior Testing Steps**
 1. Perform read or write operation on Gen2 with different roles via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
      *	Step2: : Perform read or write operation on Gen2 file with connected SPN as owner of  the file and see the relation of RBAC roles and access control in Gen2
-2. Repeat above steps for superuser, other users
+2. Repeat  steps 1&2 for superuser, other users
 
 ## 4.	STORE DEFAULT PERMISSION ##
 
