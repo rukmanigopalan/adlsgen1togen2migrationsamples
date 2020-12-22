@@ -112,6 +112,79 @@ During file and directory creation, there are scenarios where a store default pe
 2. Check conditions that Parent directory contains default ACLs 
 3. Check conditions that Parent directory does not contain default ACLs 
 
+## 5.	USER PROVIDED PERMISSION ON FILE/DIRECTORY CREATION ##
+
+Scenario  | GEN1 Behavior | GEN2 Behavior |
+------------- | ------------- |-----------|
+Users can provide an explicit permission that needs to be set during file/directory creation | File/Directory is created, and the final permission will be same as the user provided permission | (Considering the case where no user request input for umask is present) File/Directory is created, and the final permission will be computed as [user provided permission ^ umask (which is currently 027 in Gen2 code)] |
+
+***TEST STEPS:***
+
+**GEN1 Behavior Testing Steps**
+1.Create a file/directory in Gen1 with explicit permissions 
+    *	Step1: Connect ADLS gen1 with service principal (SPN)
+    *	Step2 : Create a file/directory with explicit permissions
+    
+**GEN2 Behavior Testing Steps**
+1. Create a file/directory in Gen2  with explicit permissions
+     *	Step1: Connect ADLS gen2 with service principal (SPN)
+     *	Step2: : Perform read or write operation on Gen2 file with connected SPN as owner of  the file
+
+## 6.	SET PERMISSION WITH NO PERMISSION PROVIDED ##
+
+Scenario  | GEN1 Behavior | GEN2 Behavior |
+------------- | ------------- |-----------|
+Setpermission Api is called with permission = null/space or the permission parameter is not present | Store default of 770 is set for both file and directory | Gen2 will return bad request as permission header is a necessity |
+
+***TEST STEPS:***
+
+**GEN1 Behavior Testing Steps**
+1.Call setpermission with permision= null/space and see the result 
+    *	Step1: Connect ADLS gen1 with service principal (SPN)
+    *	Step2 : Call setpermission with permision= null/space and see the result
+    
+**GEN2 Behavior Testing Steps**
+1. Call setpermission with permision= null/space and see the result
+     *	Step1: Connect ADLS gen2 with service principal (SPN)
+     *	Step2: : Call setpermission with permision= null/space and see the result
+
+## 7.	NESTED FILE OR DIRECTORY CREATION SCENARIO FOR NON-OWNER USER ##
+
+Scenario  | GEN1 Behavior | GEN2 Behavior |
+------------- | ------------- |-----------|
+When a non-owner does creation of nested file or directory I.e. dir1 exists and user desires to create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent | Gen1 adds wx for owner user | Gen2 doesn’t add wx  In the sub directory |
+
+
+***TEST STEPS:***
+
+**GEN1 Behavior Testing Steps**
+1.	Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
+    *	Step1: Connect ADLS gen1 with service principal (SPN)
+    *	Step2 : Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
+    
+**GEN2 Behavior Testing Steps**
+1. Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
+     *	Step1: Connect ADLS gen2 with service principal (SPN)
+     *	Step2: : Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
+
+## 8.	UMASK SUPPORT ##
+
+Scenario  | GEN1 Behavior | GEN2 Behavior |
+------------- | ------------- |-----------|
+UMASK is a client concept where new file or directory permissions can be controlled | Clients need to apply umask on the permission they expect on new file/directory before sending the request to server. Server doesn’t provide explicit support in accepting umask as an input | Clients can provide umask as means of request query params during file and directory creations. If client does not pass umask parameter, 027 default umask in Gen2 store will get applied |
+
+
+***TEST STEPS:***
+
+**GEN1 Behavior Testing Steps**
+1.	Create a file/directory with UMASK set 
+    *	Step1: Connect ADLS gen1 with service principal (SPN)
+    *	Step2 : Create a file/directory with UMASK set 
+    
+**GEN2 Behavior Testing Steps**
+1. Create a file/directory with UMASK set 
+     *	Step1: Connect ADLS gen2 with service principal (SPN)
+     *	Step2: : Create a file/directory with UMASK set 
 
 
 
@@ -125,3 +198,5 @@ Make sure to remove any credential from your code before sharing it.
 ## References
 
 * :link: [ACL in ADLS Gen2](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control)
+* :link: [ACL in ADLS Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-access-control)
+* :link: [Securing data stored in Azure Data Lake Storage Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-secure-data)
