@@ -59,16 +59,16 @@ Some APIs accept identity inputs in UPN format (SetAcl, ModifyAclEntries, Remove
 ***TEST STEPS:***
 
 **GEN1 Behavior Testing Steps**
-1.	validate GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true 
+1.	validate GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
-    *	Step2 : Check GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true and vice -versa
+    *	Step2 : Check GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true and vice -versa.  See how OID <-> UPN conversion is supporting at ADLS Gen1
 2. Test the same for AAD group and user
     
 **GEN2 Behavior Testing Steps**
-1. validate GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true 
+1. validate GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
-     *	Step2: : Check GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true and vice -versa. 
-2. Test the same for AAD group and user
+     *	Step2: : Check GetAclStatus or Liststatus or GetFileStatus with OID =false and UPN =true and vice -versa. See how OID -> UPN conversion is supporting at ADLS Gen2
+2. Repeat above steps for AAD group and user
 
 
 
@@ -81,16 +81,16 @@ RBAC roles and access control | All users in RBAC Owner role are superusers.Refe
 ***TEST STEPS:***
 
 **GEN1 Behavior Testing Steps**
-1.	Perform read or write operation on Gen1 with different roles 
+1.	Perform read or write operation on Gen1 with different roles via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
-    *	Step2 : Perform read or write operation on Gen1 file  with connected SPN as owner  of  the file
-2. Test the same for superuser, other users
+    *	Step2 : Perform read or write operation on Gen1 file  with connected SPN as owner  of  the file and see the relation of RBAC roles and access control in Gen2
+2. Repeat above steps for superuser, other users
     
 **GEN2 Behavior Testing Steps**
-1. Perform read or write operation on Gen2 with different roles
+1. Perform read or write operation on Gen2 with different roles via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
-     *	Step2: : Perform read or write operation on Gen2 file with connected SPN as owner of  the file
-2. Test the same for superuser, other users
+     *	Step2: : Perform read or write operation on Gen2 file with connected SPN as owner of  the file and see the relation of RBAC roles and access control in Gen2
+2. Repeat above steps for superuser, other users
 
 ## 4.	STORE DEFAULT PERMISSION ##
 
@@ -104,16 +104,16 @@ During file and directory creation, there are scenarios where a store default pe
 1.	Create a directory on Gen1 via ADB/Portal and check permissions 
     *	Step1: Connect ADLS gen1 with service principal (SPN)
     *	Step2 : Create a directory on Gen1/ via ADB/Portal and check permissions
-2. Check conditions that Parent directory contains default ACLs 
-3. Check conditions that Parent directory does not contain default ACLs 
+2. Check conditions that Parent directory contains default ACLs and repeat step 1&2
+3. Check conditions that Parent directory does not contain default ACLs and repeat step 1&2
 
     
 **GEN2 Behavior Testing Steps**
 1. Create a directory on Gen2 via ADB/Portal and check permissions
      *	Step1: Connect ADLS gen2 with service principal (SPN)
      *	Step2: : Create a directory on Gen2/ via ADB/Portal and check permissions
-2. Check conditions that Parent directory contains default ACLs 
-3. Check conditions that Parent directory does not contain default ACLs 
+2. Check conditions that Parent directory contains default ACLs and repeat step 1&2
+3. Check conditions that Parent directory does not contain default ACLs and repeat step 1&2
 
 ## 5.	USER PROVIDED PERMISSION ON FILE/DIRECTORY CREATION ##
 
@@ -124,12 +124,12 @@ Users can provide an explicit permission that needs to be set during file/direct
 ***TEST STEPS:***
 
 **GEN1 Behavior Testing Steps**
-1.Create a file/directory in Gen1 with explicit permissions 
+1.Create a file/directory in Gen1 with explicit permissions via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
     *	Step2 : Create a file/directory with explicit permissions
     
 **GEN2 Behavior Testing Steps**
-1. Create a file/directory in Gen2  with explicit permissions
+1. Create a file/directory in Gen2  with explicit permissions via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
      *	Step2: : Perform read or write operation on Gen2 file with connected SPN as owner of  the file
 
@@ -142,12 +142,12 @@ Setpermission Api is called with permission = null/space or the permission param
 ***TEST STEPS:***
 
 **GEN1 Behavior Testing Steps**
-1.Call setpermission with permision= null/space and see the result 
+1.Call setpermission with permision= null/space and see the result via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
     *	Step2 : Call setpermission with permision= null/space and see the result
     
 **GEN2 Behavior Testing Steps**
-1. Call setpermission with permision= null/space and see the result
+1. Call setpermission with permision= null/space and see the result via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
      *	Step2: : Call setpermission with permision= null/space and see the result
 
@@ -161,12 +161,12 @@ When a non-owner does creation of nested file or directory I.e. dir1 exists and 
 ***TEST STEPS:***
 
 **GEN1 Behavior Testing Steps**
-1.	Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
+1.	Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
     *	Step2 : Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
     
 **GEN2 Behavior Testing Steps**
-1. Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
+1. Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
      *	Step2: : Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
 
@@ -180,12 +180,12 @@ UMASK is a client concept where new file or directory permissions can be control
 ***TEST STEPS:***
 
 **GEN1 Behavior Testing Steps**
-1.	Create a file/directory with UMASK set 
+1.	Create a file/directory with UMASK set via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
     *	Step2 : Create a file/directory with UMASK set 
     
 **GEN2 Behavior Testing Steps**
-1. Create a file/directory with UMASK set 
+1. Create a file/directory with UMASK set via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
      *	Step2: : Create a file/directory with UMASK set 
 
