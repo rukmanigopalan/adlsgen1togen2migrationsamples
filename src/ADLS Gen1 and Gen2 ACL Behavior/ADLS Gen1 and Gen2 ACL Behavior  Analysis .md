@@ -132,7 +132,7 @@ Users can provide an explicit permission that needs to be set during file/direct
 **GEN2 Behavior Testing Steps**
 1. Create a file/directory in Gen2  with explicit permissions via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
-     *	Step2: : Perform read or write operation on Gen2 file with connected SPN as owner of  the file
+     *	Step2: : Perform read or write operation on Gen2 file with explicit permissions and connected SPN as owner of  the file
 
 ## 6.	SET PERMISSION WITH NO PERMISSION PROVIDED ##
 
@@ -145,12 +145,12 @@ Setpermission Api is called with permission = null/space or the permission param
 **GEN1 Behavior Testing Steps**
 1.Call setpermission with permision= null/space and see the result via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
-    *	Step2 : Call setpermission with permision= null/space and see the result
+    *	Step2 : Call setpermission with permision= null/space and see the result. Default permission 770 will be set.
     
 **GEN2 Behavior Testing Steps**
 1. Call setpermission with permision= null/space and see the result via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
-     *	Step2: : Call setpermission with permision= null/space and see the result
+     *	Step2: : Call setpermission with permision= null/space and see the result. It  will return bad request as permission header is a necessity 
 
 ## 7.	NESTED FILE OR DIRECTORY CREATION FOR NON-OWNER USER ##
 
@@ -164,12 +164,13 @@ When a non-owner create a nested file or directory i.e. dir1 exists and user des
 **GEN1 Behavior Testing Steps**
 1.	Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
-    *	Step2 : Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
+    *	Step2 : Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent and see the owner user's permissions 
     
 **GEN2 Behavior Testing Steps**
 1. Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
-     *	Step2: : Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent
+     *	Step2: : Create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent and see the owner user's permissions 
+    
 
 ## 8.	UMASK SUPPORT ##
 
@@ -183,12 +184,12 @@ UMASK is a client concept where new file or directory permissions can be control
 **GEN1 Behavior Testing Steps**
 1.	Create a file/directory with UMASK set via Java SDK
     *	Step1: Connect ADLS gen1 with service principal (SPN)
-    *	Step2 : Create a file/directory with UMASK set 
+    *	Step2 : Create a file/directory with UMASK set and see the result
     
 **GEN2 Behavior Testing Steps**
 1. Create a file/directory with UMASK set via Java SDK
      *	Step1: Connect ADLS gen2 with service principal (SPN)
-     *	Step2: : Create a file/directory with UMASK set 
+     *	Step2: : Create a file/directory with UMASK set and see the result
 
 
 
