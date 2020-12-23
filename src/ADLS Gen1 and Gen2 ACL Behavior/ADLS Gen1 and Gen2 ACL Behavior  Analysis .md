@@ -152,11 +152,11 @@ Setpermission Api is called with permission = null/space or the permission param
      *	Step1: Connect ADLS gen2 with service principal (SPN)
      *	Step2: : Call setpermission with permision= null/space and see the result
 
-## 7.	NESTED FILE OR DIRECTORY CREATION SCENARIO FOR NON-OWNER USER ##
+## 7.	NESTED FILE OR DIRECTORY CREATION FOR NON-OWNER USER ##
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-When a non-owner does creation of nested file or directory I.e. dir1 exists and user desires to create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent | Gen1 adds wx for owner user | Gen2 doesn’t add wx  In the sub directory |
+When a non-owner create a nested file or directory i.e. dir1 exists and user desires to create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent | Gen1 adds wx for owner user | Gen2 doesn’t add wx  In the sub directory |
 
 
 ***TEST STEPS:***
