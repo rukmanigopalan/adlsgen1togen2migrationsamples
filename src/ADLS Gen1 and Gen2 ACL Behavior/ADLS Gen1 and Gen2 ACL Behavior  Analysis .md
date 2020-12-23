@@ -27,7 +27,7 @@ This article summarizes the behavioral differences of the access control models 
    * **Azure Key Vault**. Required keys and secrets to be configured here.
    * **Service principal** with read, write and execute permission to the resource group, key vault, data lake store Gen1 and data lake store Gen2. 
 To learn more, see [create service principal account](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) and to provide SPN access to Gen1 refer to [SPN access to Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
-   * ** Java Development Kit (JDK 7 or higher, using Java version 1.7 or higher) for Filesystem operations on Azure Data Lake Storage Gen1 and Gen2
+   * **Java Development Kit (JDK 7 or higher, using Java version 1.7 or higher)** for Filesystem operations on Azure Data Lake Storage Gen1 and Gen2
    
 ## ACL Behavior in ADLS Gen1 and Gen2 
 ## 1.	ACCOUNT ROOT PERMISSIONS ##
