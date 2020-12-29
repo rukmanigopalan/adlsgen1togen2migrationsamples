@@ -35,7 +35,7 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- | --------- |
-GetFileStatus and GetAclStatus API do not mandate any minimum permission on a path in Hadoop and need only traversal (X) permission till the parent path. Hence a user with no permission can successfully run these APIs on account root | A minimum of RX permission was introduced on the account root so that a user with no permission fails to get a view of contents on account root | Like Hadoop. A user who doesn’t have any permission on container root can successfully run GetFileStatus and GetAclStatus operations |
+GetFileStatus and GetAclStatus API do not mandate any minimum permission on a path in Hadoop and need only traversal (X) permission till the parent path. Hence a user with no permission can successfully run these APIs on account root | A minimum of RX permission required on the account root so that a user with no permission fails to get a view of contents on account root | A user who doesn’t have any permission on container root can successfully run GetFileStatus and GetAclStatus operations |
     
 ## 2.	OID-UPN CONVERSION  ##
 Scenario  | GEN1 Behavior | GEN2 Behavior |
