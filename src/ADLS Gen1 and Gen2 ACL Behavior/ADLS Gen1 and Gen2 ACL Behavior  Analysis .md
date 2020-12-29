@@ -69,7 +69,7 @@ Users can provide an explicit permission that needs to be set during file/direct
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-Setpermission Api is called with permission = null/space or the permission parameter is not present | Store default of 770 is set for both file and directory | Gen2 will return bad request as permission header is a necessity |
+Setpermission Api is called with permission = null/space or the permission parameter is not present |A default value of 770 is set for both file and directory  | Gen2 will return bad request as permission header is a necessity |
 
 
 ## 7.	NESTED FILE OR DIRECTORY CREATION FOR NON-OWNER USER ##
