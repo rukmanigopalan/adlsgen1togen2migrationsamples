@@ -35,48 +35,51 @@ To learn more, see [create service principal account](https://docs.microsoft.com
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- | --------- |
-GetFileStatus and GetAclStatus API do not mandate any minimum permission on a path in Hadoop and need only traversal (X) permission till the parent path. Hence a user with no permission can successfully run these APIs on account root | A minimum of RX permission required on the account root so that a user with no permission fails to get a view of contents on account root | A user who doesn’t have any permission on container root can successfully run GetFileStatus and GetAclStatus operations |
+Check GetFileStatus and GetAclStatus APIs with or without permissions on root Account path  | Permission required on Account root- RX(minimum) or  RWX , to get an account root content view | A user with or without permissions on container root can view account root content
     
 ## 2.	OID-UPN CONVERSION  ##
+
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-Some APIs accept identity inputs in UPN format (SetAcl, ModifyAclEntries, RemoveAclEntries) and few based on a request queryparam can provide identity info in UPN format (GetAclStatus, Liststatus and GetFileStatus) within response. | OID <-> UPN conversion is supported for Users, Service principals and groups (in case of groups, as there is no UPN, conversion is done to Display name property) | Supports only User OID-UPN conversion. As per a discussion, this is because of a known issue in conversion for service principal and groups.  UPN or Display Name is not unique to one service principal or group respectively. Hence the derived OID could end up being an unintended identity |
+Check the identity inputs for UPN format APIs  (Eg:GetAclStatus, Liststatus ,GetFileStatus) and OID format APIs (Eg:SetAcl, ModifyAclEntries, RemoveAclEntries)   | OID <-> UPN conversion is supported for Users, Service principals and groups Note: For groups, as there is no UPN, conversion is done to Display name property | Supports only User OID-UPN conversion.  Note:  For service principal or group ,as UPN or Display Name is not unique, the derived OID could end up being an unintended identity  |
 
 
 ## 3. RBAC USER ROLE SIGNIFICANCE  ##
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-RBAC roles and access control | All users in RBAC Owner role are superusers.Refer for more details [Access control in Azure Data Lake Storage Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-access-control). All other users (non-superusers), need to have permission that abides by File Folder ACL | Users can be provided different roles that govern their permissions for write, read and delete. And this takes precedence to the ACLs sent on individual file or folder. Refer for more details [Access control in Azure Data Lake Storage Gen2](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control). For a user to be superuser, they need to be given “Storage blob data owner” RBAC role |
+RBAC roles and access control | All users in RBAC Owner role are superusers. All other users (non-superusers), need to have permission that abides by File Folder ACL 
+Refer for more details https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-access-control | All users in ‘RBAC -Storage blob data owner’ role are superusers 
+All other users can be provided different roles(contributor, reader etc.) that govern their read ,write and delete permissions, this takes precedence to the ACLs sent on individual file or folder.  Refer for more details https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-access-control  |
 
 
 ## 4.	STORE DEFAULT PERMISSION ##
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-During file and directory creation, there are scenarios where a store default permission is taken into the permission computation | It is fixed to 770 (considering a fixed umask of 007 at server) | If default acl is present on the parent, default permissions is 777 for directory and 666 for file. If default acl is not present on the parent, a umask of 027  gets applied on the above mentioned default permissions of file/directory | 
+Check if default permission is considered during file and directory creation  | Permissions for an item(file/directory) cannot be inherited from the parent items. 
+Reference: https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-access-control | IPermissions are only inherited if default permissions have been set on the parent items before the child items have been created. Reference: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control  | 
 
 
 ## 5.	USER PROVIDED PERMISSION ON FILE/DIRECTORY CREATION ##
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-Users can provide an explicit permission that needs to be set during file/directory creation | File/Directory is created, and the final permission will be same as the user provided permission | (Considering the case where no user request input for umask is present) File/Directory is created, and the final permission will be computed as [user provided permission ^ umask (which is currently 027 in Gen2 code)] |
-
+Create a file/directory with explicit permission | File/Directory is created, and the final permission will be same as the user provided permission  | (File/Directory is created, and the final permission will be computed as [user provided permission ^ umask (currently 027 in code)]  |
 
 
 ## 6.	SET PERMISSION WITH NO PERMISSION PROVIDED ##
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-Setpermission Api is called with permission = null/space or the permission parameter is not present |A default value of 770 is set for both file and directory  | Gen2 will return bad request as permission header is a necessity |
+Setpermission Api is called with permission = null/space and permission parameter not present  | A default value of 770 is set for both file and directory  | Gen2 will return bad request as permission parameter is mandatory |
 
 
 ## 7.	NESTED FILE OR DIRECTORY CREATION FOR NON-OWNER USER ##
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-When a non-owner create a nested file or directory i.e. dir1 exists and user desires to create dir2/dir3/a.txt or dir2/dir3/dir4 when non owner user has wx permission on parent | Gen1 adds wx for owner user | Gen2 doesn’t add wx  In the sub directory |
+Check if wx permission on parent is copied to nested file/directory when non-owner creates it. (i.e. dir1 exists and user desires to create dir2/dir3/a.txt or dir2/dir3/dir4) | Adds wx permissions for owner in the sub directory  | Doesn’t add wx permissions in the sub directory  |
  
     
 
@@ -84,7 +87,8 @@ When a non-owner create a nested file or directory i.e. dir1 exists and user des
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-UMASK is a client concept where new file or directory permissions can be controlled | Clients need to apply umask on the permission they expect on new file/directory before sending the request to server. Server doesn’t provide explicit support in accepting umask as an input | Clients can provide umask as means of request query params during file and directory creations. If client does not pass umask parameter, 027 default umask in Gen2 store will get applied |
+Permissions of file/directory can be controlled by applying UMASK on it.  |Client needs to apply umask on the permission on new file/directory before sending the request to server. Note: Server doesn’t provide explicit support in accepting umask as an input | Clients can provide umask as request query params during file and directory creations. 
+ If client does not pass umask parameter, default umask 027 will be applied on file/directory  |
 
 
 ## Reach out to us
