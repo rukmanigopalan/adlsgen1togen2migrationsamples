@@ -56,7 +56,7 @@ RBAC roles and access control | All users in RBAC Owner role are superusers. All
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-Check if default permission is considered during file and directory creation  | Permissions for an item(file/directory) cannot be inherited from the parent items. Refer [here](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-access-control) | Permissions are only inherited if default permissions have been set on the parent items before the child items have been created. Refer [here](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control  | 
+Check if default permission is considered during file and directory creation  | Permissions for an item(file/directory) cannot be inherited from the parent items. Refer [here](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-access-control) | Permissions are only inherited if default permissions have been set on the parent items before the child items have been created. Refer [here](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control)  | 
 
 
 ## 5.	USER PROVIDED PERMISSION ON FILE/DIRECTORY CREATION ##
