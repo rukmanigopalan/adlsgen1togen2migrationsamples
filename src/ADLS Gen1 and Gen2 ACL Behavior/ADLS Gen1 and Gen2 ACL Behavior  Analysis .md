@@ -42,7 +42,7 @@ Check GetFileStatus and GetAclStatus APIs with or without permissions on root Ac
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-Check the identity inputs for UPN format APIs  (Eg:GetAclStatus, Liststatus ,GetFileStatus) and OID format APIs (Eg:SetAcl, ModifyAclEntries, RemoveAclEntries)   | OID <-> UPN conversion is supported for Users, Service principals and groups Note: For groups, as there is no UPN, conversion is done to Display name property | Supports only User OID-UPN conversion.  Note:  For service principal or group ,as UPN or Display Name is not unique, the derived OID could end up being an unintended identity  |
+Check the identity inputs for UPN format APIs  (Eg:GetAclStatus, Liststatus ,GetFileStatus) and OID format APIs (Eg:SetAcl, ModifyAclEntries, RemoveAclEntries)   | OID <-> UPN conversion is supported for Users, Service principals and groups <br />Note: For groups, as there is no UPN, conversion is done to Display name property | Supports only User OID-UPN conversion.  <br />Note:  For service principal or group ,as UPN or Display Name is not unique, the derived OID could end up being an unintended identity  |
 
 
 ## 3. RBAC USER ROLE SIGNIFICANCE  ##
@@ -85,7 +85,7 @@ Check if wx permission on parent is copied to nested file/directory when non-own
 
 Scenario  | GEN1 Behavior | GEN2 Behavior |
 ------------- | ------------- |-----------|
-Permissions of file/directory can be controlled by applying UMASK on it.  | Client needs to apply umask on the permission on new file/directory before sending the request to server. Note: Server doesn’t provide explicit support in accepting umask as an input | Clients can provide umask as request query params during file and directory creations.If client does not pass umask parameter, default umask 027 will be applied on file/directory  |
+Permissions of file/directory can be controlled by applying UMASK on it.  | Client needs to apply umask on the permission on new file/directory before sending the request to server. <br />Note: Server doesn’t provide explicit support in accepting umask as an input | Clients can provide umask as request query params during file and directory creations.If client does not pass umask parameter, default umask 027 will be applied on file/directory  |
 
 
 ## Reach out to us
