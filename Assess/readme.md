@@ -10,11 +10,11 @@ If you already have log analytics configured for your data lake gen1 account, sk
 
 Open your data lake gen1 account in the Azure portal, and go to the diagnostics settings in the control blade on the left hand side:
 
-![image](/adlsgen1togen2migrationsamples\images\datalakegen1law1.jpg)
+![image](\images\datalakegen1law1.jpg)
 
 Select "+ Add Diagnostic setting" in the resulting screen and check the boxes for the telemetry you wish to gather. Then check "Send to Log Analytics workspace" and select the name of the log analytics you wish to send the telemetry too. For cost and latency purposes, it is recommended to select a Log Analytics workspace in the same region as your data lake gen1 account. 
 
-![image](/adlsgen1togen2migrationsamples\images\datalakegen1law2.jpg)
+![image](\images\datalakegen1law2.jpg)
 
 ## Log Analytics queries
 Once you have configured your data lake to send telemetry to Log Analytics, the next step is to gather some analysis on who and what is accessing your system. It's now possible to answer a variety of questions, such as 
@@ -64,6 +64,6 @@ AzureDiagnostics
 # Inventory 
 In addition to gathering the telemetry of what's currently being accessed, you should also be aware of the overall inventory of your environment. Here we've included a helpful PowerShell script to run against your environment. See here for more information:
 
-[UtilitiesReadme](/adlsgen1togen2migrationsamples/Utilities/Readme.md)
+[UtilitiesReadme](\Utilities\Readme.md)
 
 easier way to make the excel pivot without Python? This could be a blocker for some? Sample Power BI Template instead perhaps?
