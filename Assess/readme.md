@@ -9,13 +9,12 @@ When it comes to migrations, often, it is not the migration itself that is the c
 --instructions for connfiguring data lake gen1 to LA
 
 ## Log Analytics queries
-    Once you have configured your data lake to send telemetry to Log Analytics, the next step is to gather some analysis on who and what is accessing your system. It's now possible to answer a variety of questions, such as 
-
-    What blobs were accessed?
-    * What is being written and what containers are heavily accessed?
-    * What containers are heavily read from?
-    * How long do operations against the account take?
-    * Am I being throttled due to high volume usage? 
+Once you have configured your data lake to send telemetry to Log Analytics, the next step is to gather some analysis on who and what is accessing your system. It's now possible to answer a variety of questions, such as 
+What blobs were accessed?
+* What is being written and what containers are heavily accessed?
+* What containers are heavily read from?
+* How long do operations against the account take?
+* Am I being throttled due to high volume usage? 
 
 ### Number of Calls By Container and HTTP Type
 The below query can be used to see the number of calls and http method against specific containers in your environment. For example, this would show you which containers are most heavily used. 
