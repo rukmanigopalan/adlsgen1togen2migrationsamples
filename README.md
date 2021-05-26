@@ -2,7 +2,20 @@
 
 Welcome to the documentation on migration from Gen1 to Gen2. Please review the [Gen1-Gen2 Migration Approach guide](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-migrate-gen1-to-gen2) to understand the patterns and approach. You can choose one of these patterns, combine them together, or design a custom pattern of your own.
 
-You will find here the resources to help with below patterns:
+Storage migration projects are similar to other technology projects and should follow a general pattern:
+
+Assess -> Plan -> Migrate -> Validate
+
+We have visually represented this in a Mindmap hosted on Mindmeister. This starts at a very high level and demonstrates where to start and what to consider. Most of the material covered is covered more in-depth in other parts of this repo. This is to allow yourself to become familiar with the high-level concepts and the "general flow" quickly.
+
+<iframe width="600" height="400" frameborder="0" src="https://www.mindmeister.com/maps/public_map_shell/1857393315/adls-gen1-to-gen2-migrations?width=600&height=400&z=auto&t=a4ffTlBIX6&presentation=1" scrolling="no" style="overflow: hidden; margin-bottom: 5px;">Your browser is not able to display frames. Please visit <a href="https://www.mindmeister.com/1857393315/adls-gen1-to-gen2-migrations?t=a4ffTlBIX6" target="_blank">ADLS Gen1 to Gen2 Migrations</a> on MindMeister.</iframe><div class="mb-5"><a href="https://www.mindmeister.com/1857393315/adls-gen1-to-gen2-migrations?t=a4ffTlBIX6" target="_blank">ADLS Gen1 to Gen2 Migrations</a> by <a href="https://www.mindmeister.com/users/channel/60151929" target="_blank">Andrés P</a></div>
+</iframe>
+
+![MindtreeMap](https://mm.tt/1857393315?t=a4ffTlBIX6)
+
+This repo is a collection of tools and resources from Microsoft to assist you with migrating your data lake gen1 account to gen2. It is a collection of tools, sample scripts, and learnings that can be used to assist you with your own migration project. 
+
+You will find here resources to help with planning, migrating, and validating. When migrating the data there are multiple patterns:
 
 1. **Incremental copy pattern** using **Azure data factory**
 
