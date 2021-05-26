@@ -4,5 +4,8 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"markdown.showToolbar": true,
+		"markdown.alwaysIncludeLocScope": true
+	}
 }
